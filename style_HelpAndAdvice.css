@@ -119,49 +119,60 @@ header {
 
 /*RESTUL*/
 .main {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 100px;
+ 
+  
   padding-top: 100px;
   margin-left: 40px;
   margin-right: 40px;
 }
 
-
-.container_1 {
-    margin-top: 50px;
-  width: 60%;
+.main .card {
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    width: 1300px; /* Asigură lățimea de 100% */
 }
 
-.container_2 {
-  margin-top: 50px;;
-  width: 35%;
+
+/* Stilurile pentru acordeon */
+.main .card .accordion {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  
 }
 
-.card {
-  background-color: #FFFFFF;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 20px;
-}
-
-.card h2 {
-  color: #3A4D39;
-}
-
-.card ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.card ul li {
-  margin-bottom: 10px;
-}
-
-.emergency {
-  background-color: #f74949;
+.accordion .accordion-header {
+  background-color: #f1f1f1;
   padding: 10px;
-  border-radius: 5px;
-  font-size: 20px;
+  cursor: pointer;
+}
+
+.accordion .accordion-header:hover {
+  background-color: #ddd;
+}
+
+.accordion .accordion-header .plus-minus-toggle::after {
+    content: "+";
+    float: right;
+    transition: transform 0.3s ease, color 0.3s ease; /* Adăugăm o tranziție pentru a face schimbarea mai lină */
+  }
+  
+  /* Stilurile pentru simbolul + la hover */
+  .accordion .accordion-header:hover .plus-minus-toggle::after {
+    color: #3A4D39; /* Schimbăm culoarea la hover */
+  }
+  
+  /* Stilurile pentru simbolul + când este activat */
+  .accordion .accordion-header.active .plus-minus-toggle::after {
+    content: "−"; /* Schimbăm simbolul când este activat */
+    transform: rotate(45deg); /* Rotim simbolul pentru a arăta mai interactiv */
+    color: #3A4D39; /* Schimbăm culoarea când este activat */
+  }
+.accordion .accordion-content {
+  padding: 10px;
+  display: none;
 }

@@ -1,0 +1,244 @@
+body {
+    background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
+    radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+    radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+    radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+    radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    display: flex;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.title {
+    background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
+    radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+    radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+    radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+    radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+
+    text-align: center;
+    width: 100%; /* Face ca titlul să se întindă pe întreaga lățime a .nav-container */
+    margin: 0; /* Elimină marginile pentru a asigura umplerea completă */
+    padding: 0; /* Elimină padding-ul pentru a asigura umplerea completă */
+    padding-top: 20px;
+    height: 60px;
+}
+  
+
+
+.items {
+     /* In caz ca vreau sa fie mai mare
+   background-color: #E9F5DB;
+    height: 80px;
+    font-size: 2em;
+    border-bottom: 1px solid #0003;
+    display: flex;
+    justify-content: space-between; /* Așază elementele în spațiu egal între ele 
+    align-items: center; /* Alinează elementele vertical pe axa y 
+    padding: 0 40px; /* Ajustează marginile stânga și dreapta 
+    */
+    background-color: #E9F5DB;
+    height: 50px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #0003;
+    display: flex;
+    justify-content: space-between; /* Așază elementele în spațiu egal între ele */
+    align-items: center; /* Alinează elementele vertical pe axa y */
+    padding: 0 40px; /* Ajustează marginile stânga și dreapta */
+
+}
+
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Alinează elementele orizontal în centrul containerului */
+}
+
+.list > a {
+    color: #739072;
+    padding: .75em;
+    text-align: center;
+    text-decoration: none;
+    transition: color .5s; /* Tranzitie pentru culoare la hover */
+    position: relative;
+    margin: 0 10px; /* Spațiere între elementele listei */
+}
+
+
+.list > a:hover {
+    color: #3A4D39; /* Schimbă culoarea la hover */
+}
+
+.list > a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #3A4D39;
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    transition: width .5s; /* Tranzitie pentru latimea liniei */
+}
+
+.list > a:hover::after {
+    width: 100%;
+}
+
+.logo {
+    padding-left: 50px; 
+    margin: 5px;
+}
+
+.logo a {
+    color: #3A4D39; /* Culoare pentru textul logo-ului */
+    text-decoration: none; /* Fără subliniere pentru link */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 50px;
+}
+
+
+.for_login {
+    background-color: #3A4D39;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.for_login > a {
+    color: #becbaf;
+    text-decoration: none;
+    padding: 10px 10px; /* Măriți padding-ul pentru a mări zona colorată */
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.for_login:hover{
+    background-color: #8d9188; /* Schimbă culoarea fundalului la hover/focus */
+}
+
+.for_login a:hover{
+    color: #3A4D39;
+}
+
+
+
+.body_for_home {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinează titlul orizontal */
+    align-items:center; /* Alinează titlul vertical */
+}
+
+.body_for_home  h1 {
+    font-size: 80px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
+    text-align: center; /* Alinează textul la centru */
+    color: #243024;
+    padding-top: 100px;
+    margin-bottom: 30px;
+}
+
+.body_for_home  p {
+    font-size: 30px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
+    text-align: center; /* Alinează textul la centru */
+    color: #757D6B;
+    padding: 0px 50px;
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .body_for_home h1 {
+      font-size: 50px; /* Reducem dimensiunea fontului la 30px când lățimea viewport-ului este mai mică de 768px */
+      text-align: left;
+      padding-left: 50px;
+    }
+  }
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px 50px;
+}
+.buttons p{
+    margin: 10px;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 40px;
+}
+
+.buttons .button{
+    background-color:  #3A4D39;
+    padding: 20px 30px;
+    color: #becbaf;
+    font-size: 30px;
+    border-radius: 10px;
+    border: 1px solid #3e4c3d;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.1);
+    font-family: Georgia, serif;
+    margin: 20px;
+    text-decoration: none;
+}
+
+
+.button:hover{
+    background-color:#8d9188;
+    color:#3A4D39;
+    border: 1px solid #87986A;
+}
+
+.about_us{
+    background-color: #becbaf;
+    margin-top: 100px;
+    width: 100%;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .about_us {
+      grid-template-columns: 1fr; /* Schimbăm structura gridului pentru o singură coloană */
+    }
+  }
+
+.container_1{
+    background-color: aquamarine;
+
+}
+
+.container_2{
+    padding: 20px 30px;
+}
+
+.container_2  .text-container {
+    background-color: #87986A;;
+    padding-left: 3px;
+    border-radius: 10px;
+    color: #333333;
+    
+
+}
+
+.container_2 .text-container h3{
+    font-size: 5vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.container_2 .text-container .text{
+    color: #333333;
+    font-size: 3vh;
+    text-align: left;
+    
+}

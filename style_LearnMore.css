@@ -131,114 +131,192 @@ header {
 
 
 
-.body_for_home {
+/*RESTUL*/
+.main {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Alinează titlul orizontal */
-    align-items:center; /* Alinează titlul vertical */
-}
-
-.body_for_home  h1 {
-    font-size: 80px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
-    text-align: center; /* Alinează textul la centru */
-    color: #243024;
+    flex-direction: column; /* Schimbați direcția fluxului la coloană */
+    align-items: center; /* Alineați elementele pe axa orizontală */
     padding-top: 100px;
-    margin-bottom: 30px;
+    margin: 0 auto; /* Margin: 0 și auto pentru a centra conținutul */
+    max-width: 1200px; /* Setați o lățime maximă pentru conținut */
+    width: 100%; /* Asigurați-vă că conținutul se întinde pe întreaga lățime */
 }
-
-.body_for_home  p {
-    font-size: 30px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
-    text-align: center; /* Alinează textul la centru */
-    color: #757D6B;
-    padding: 0px 50px;
-    margin-top: 40px;
+  
+.main h1 {
+    padding-top: 50px; /* mențineți spațiul de deasupra */
+    margin-left: 10px; /* adăugați spațiu la stânga textului */
+    display: inline-block; /* Faceți ca titlul să fie afișat pe aceeași linie cu câmpul de selectare */
+    margin-right: 20px; /* Adăugați spațiu între titlu și câmpul de selectare */
 }
-
-@media screen and (max-width: 768px) {
-    .body_for_home h1 {
-      font-size: 50px; /* Reducem dimensiunea fontului la 30px când lățimea viewport-ului este mai mică de 768px */
-      text-align: left;
-      padding-left: 50px;
-    }
-  }
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    transition: background-color 0.3s, color 0.3s;
-    padding: 10px 50px;
+.main .input-field {
+    display: inline-block; /* Faceți câmpul de selectare să fie afișat pe aceeași linie cu titlul */
+    vertical-align: top; /* Aliniați câmpul de selectare în partea de sus a liniei */
 }
-.buttons p{
-    margin: 10px;
-    align-items: center;
-    padding: 10px 20px;
+.main .year {
+    padding-top: 0%;
+    text-decoration: underline; /* Adăugați subliniere textului */
     font-size: 40px;
 }
+    
+.container_1 {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
 
-.buttons .button{
-    background-color:  #3A4D39;
-    padding: 20px 30px;
-    color: #becbaf;
-    font-size: 30px;
-    border-radius: 10px;
-    border: 1px solid #3e4c3d;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.1);
-    font-family: Georgia, serif;
-    margin: 20px;
-    text-decoration: none;
+.card {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;/* Distribuie spațiul disponibil între coloane */
+    margin-right: 0px; 
+    
 }
 
 
-.button:hover{
-    background-color:#8d9188;
-    color:#3A4D39;
-    border: 1px solid #87986A;
-}
-
-.about_us{
-    background-color: #becbaf;
+.button-column {
     margin-top: 100px;
-    width: 100%;
-    height: 300px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 150px;
 }
 
-@media screen and (max-width: 768px) {
-    .about_us {
-      grid-template-columns: 1fr; /* Schimbăm structura gridului pentru o singură coloană */
-    }
+.image-column {
+    margin-top: 0px;
+    max-width: 50%;
+    padding-left: 40px; /* Spațiu între imagine și marginile containerului */
+}
+.image-column h1{
+    margin-top: 0%;
+}
+
+
+
+.button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+/* Stiluri pentru butoane */
+.container_1 .button1 {
+    background-color: #720006;
+    width: 70px;
+}
+
+.container_1 .button2 {
+    background-color: #dd1515;
+    width: 100px;
+}
+
+.container_1 .button3 {
+    background-color: #e6700f;
+    width: 130px;
+}
+
+.container_1 .button4 {
+    background-color: #f0ec14;
+    width: 160px;
+}
+
+.container_1 .button5 {
+    background-color: #c8d64b;
+    width: 190px;
+}
+
+.container_1 .button6 {
+    background-color: #82f160;
+    width: 220px;
+}
+
+.container_1 .button7 {
+    background-color: #257a3f;
+    width: 250px;
+}
+
+.container_1 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+  .container_2 {
+    margin-top: 40px;
+    margin-left: 20px;
+    width: 100%;
+  }
+  .container_2 h1{
+    padding-top: 0; /* mențineți spațiul de deasupra */
+    font-size: 40px ;
+  }
+  
+  .container_2 .card ul li .large.material-icons {
+    font-size: 4rem; /* Mărește dimensiunea iconiței la 36 de pixeli */
+    vertical-align: middle; /* Aliniați vertical textul la mijlocul iconiței */
+    margin-right: 10px; /* Adăugați un spațiu mic între iconiță și text */
+  }
+  
+  
+  .card {
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    
   }
 
-.container_1{
-    background-color: aquamarine;
-
+  .card h1 {
+    font-size: 24px; /* Dimensiunea fontului pentru titlu */
+    margin-bottom: 10px; /* Spațierea inferioară între titlu și lista de link-uri */
 }
 
-.container_2{
-    padding: 20px 30px;
+.card ul {
+    list-style-type: none; /* Eliminarea stilului implicit al listei */
+    padding: 0; /* Eliminarea spațierii interioare a listei */
 }
 
-.container_2  .text-container {
-    background-color: #87986A;;
-    padding-left: 3px;
-    border-radius: 10px;
-    color: #333333;
-    
-
+.card ul li {
+    margin-bottom: 10px; /* Spațierea între elementele listei */
 }
 
-.container_2 .text-container h3{
-    font-size: 5vh;
-    text-align: center;
-    padding: 20px;
+.card ul li a {
+    color: #333; /* Culoarea textului link-urilor */
+    text-decoration: underline; /* Adăugați subliniere la link-uri */
+    transition: color 0.3s; /* Efect de tranziție pentru culoarea textului */
 }
 
-.container_2 .text-container .text{
-    color: #333333;
-    font-size: 3vh;
-    text-align: left;
-    
+.card ul li a:hover {
+    color: #007bff; /* Culoarea textului la hover */
 }
+/* Stilurile personalizate pentru elementul de selectare Materialize */
+.input-field select {
+    display: block;
+    width: 100%; /* Lățimea selectului */
+    padding: 10px; /* Spațiul intern */
+    font-size: 16px; /* Dimensiunea fontului */
+    border: 1px solid #ccc; /* Bordura selectului */
+    border-radius: 5px; /* Rotunjirea colțurilor */
+    background-color: #fff; /* Culoarea fundalului */
+    transition: border-color 0.3s ease; /* Efect de tranziție pentru culoarea bordurii */
+}
+
+.input-field select:focus {
+    outline: none; /* Eliminarea conturului la focus */
+    border-color: #007bff; /* Schimbarea culorii bordurii la focus */
+}
+
+.input-field label {
+    font-size: 16px; /* Dimensiunea fontului etichetei */
+    color: #333; /* Culoarea textului etichetei */
+}
+

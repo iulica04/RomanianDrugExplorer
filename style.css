@@ -135,7 +135,7 @@ header {
 
 @media screen and (max-width: 768px) {
     .body_for_home h1 {
-      font-size: 50px; /* Reducem dimensiunea fontului la 30px când lățimea viewport-ului este mai mică de 768px */
+      font-size: 50px; 
       text-align: left;
       padding-left: 50px;
     }
@@ -154,8 +154,8 @@ header {
     }
     
     #menu-toggle:checked ~ .list {
-        display: flex; /* Afișează lista de navigare când meniul este deschis */
-        opacity: 1; /* Face lista de navigare vizibilă */
+        display: flex;
+        opacity: 1; 
     }
     
     #menu-toggle:checked + .menu-icon {
@@ -217,7 +217,7 @@ header {
     height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(5, 15%);
+    grid-template-rows: repeat(3, 25%);
     grid-gap: 40px;
 }
 
@@ -240,24 +240,24 @@ header {
     padding: 100px;
     font-size: 5vh;
     color: #243024;
-   /* grid-row: 1; */
+    grid-row: 1; 
     
 }
 
 .container_2{
     padding: 20px 30px;
-    /* grid-row: 1; */
+    grid-row: 1; 
 }
 
 .container_3{
     padding: 20px 30px;
-    /* grid-row: 2; */
+    grid-row: 2; 
 }
 
 .container_4{
     padding: 20px 30px;
-    /* grid-column: 2; */
-    /* grid-row: 3; */
+    grid-row: 3;
+    grid-column: 2;
 }
 
  .text-container {

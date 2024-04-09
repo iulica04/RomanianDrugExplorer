@@ -14,7 +14,7 @@
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <div class="list">
-              <a href="#" onclick="scrollDown()">About</a>
+              <a href="#about">About</a>
               <a href="#">Projects</a>
               <a href="#">News</a>
               <div class="for_login">
@@ -27,11 +27,11 @@
         <h1>Exploring the World of Drugs Together</h1><br><br>
         <p>At Romanian Drug Explorer, we're here for you. Our mission is to provide support, resources, and information about drugs to help individuals live healthier lives. We believe in the power of community and are committed to helping those who need it most</p>
         <div class="buttons">
-            <a href="#" class="button" >Learn more</a>
+            <a href="LearnMore.html" class="button" >Learn more</a>
             <p>or</p>
             <a href="register.html" class="button" >Sing up</a>
         </div>
-        <div id="target" class="about_us">
+        <div id="about" class="about_us">
             <div class ="container_1"> <h2>About Us</h2> </div>
             <div class ="container_2">
                 <div class="text-container">
@@ -54,10 +54,6 @@
         </div>
     </div>   
     <script>
-        function scrollDown() {
-            window.scrollTo(0, 1000);
-        }
-
         function toggleMenu() {
              var navList = document.getElementById('navList');
             navList.classList.toggle('active');

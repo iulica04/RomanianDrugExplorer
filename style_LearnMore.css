@@ -25,9 +25,9 @@ header {
     radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 
     text-align: center;
-    width: 100%; /* Face ca titlul să se întindă pe întreaga lățime a .nav-container */
-    margin: 0; /* Elimină marginile pentru a asigura umplerea completă */
-    padding: 0; /* Elimină padding-ul pentru a asigura umplerea completă */
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
     padding-top: 20px;
     height: 60px;
 }
@@ -35,24 +35,15 @@ header {
 
 
 .items {
-     /* In caz ca vreau sa fie mai mare
-   background-color: #E9F5DB;
-    height: 80px;
-    font-size: 2em;
-    border-bottom: 1px solid #0003;
-    display: flex;
-    justify-content: space-between; /* Așază elementele în spațiu egal între ele 
-    align-items: center; /* Alinează elementele vertical pe axa y 
-    padding: 0 40px; /* Ajustează marginile stânga și dreapta 
-    */
+   
     background-color: #E9F5DB;
     height: 50px;
     font-size: 1.5em;
     border-bottom: 1px solid #0003;
     display: flex;
-    justify-content: space-between; /* Așază elementele în spațiu egal între ele */
-    align-items: center; /* Alinează elementele vertical pe axa y */
-    padding: 0 40px; /* Ajustează marginile stânga și dreapta */
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 40px; 
 
 }
 
@@ -60,7 +51,7 @@ header {
 .list {
     display: flex;
     flex-wrap: wrap;
-    align-items: center; /* Alinează elementele orizontal în centrul containerului */
+    align-items: center; 
 }
 
 .list > a {
@@ -68,14 +59,14 @@ header {
     padding: .75em;
     text-align: center;
     text-decoration: none;
-    transition: color .5s; /* Tranzitie pentru culoare la hover */
+    transition: color .5s; 
     position: relative;
-    margin: 0 10px; /* Spațiere între elementele listei */
+    margin: 0 10px; 
 }
 
 
 .list > a:hover {
-    color: #3A4D39; /* Schimbă culoarea la hover */
+    color: #3A4D39; 
 }
 
 .list > a::after {
@@ -86,8 +77,7 @@ header {
     position: absolute;
     left: 0;
     bottom: 15px;
-    transition: width .5s; /* Tranzitie pentru latimea liniei */
-}
+    transition: width .5s; }
 
 .list > a:hover::after {
     width: 100%;
@@ -99,8 +89,8 @@ header {
 }
 
 .logo a {
-    color: #3A4D39; /* Culoare pentru textul logo-ului */
-    text-decoration: none; /* Fără subliniere pentru link */
+    color: #3A4D39; 
+    text-decoration: none; 
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-size: 50px;
@@ -116,13 +106,13 @@ header {
 .for_login > a {
     color: #becbaf;
     text-decoration: none;
-    padding: 10px 10px; /* Măriți padding-ul pentru a mări zona colorată */
+    padding: 10px 10px; 
     margin: 0 10px;
     display: inline-block;
 }
 
 .for_login:hover{
-    background-color: #8d9188; /* Schimbă culoarea fundalului la hover/focus */
+    background-color: #8d9188; 
 }
 
 .for_login a:hover{
@@ -134,26 +124,27 @@ header {
 /*RESTUL*/
 .main {
     display: flex;
-    flex-direction: column; /* Schimbați direcția fluxului la coloană */
-    align-items: center; /* Alineați elementele pe axa orizontală */
-    padding-top: 100px;
-    margin: 0 auto; /* Margin: 0 și auto pentru a centra conținutul */
-    max-width: 1200px; /* Setați o lățime maximă pentru conținut */
-    width: 100%; /* Asigurați-vă că conținutul se întinde pe întreaga lățime */
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto; 
+    max-width: 1200px; 
+    width: 100%; 
+    margin-top: 150px;
 }
   
 .main h1 {
-    padding-top: 50px; /* mențineți spațiul de deasupra */
-    margin-left: 10px; /* adăugați spațiu la stânga textului */
-    display: inline-block; /* Faceți ca titlul să fie afișat pe aceeași linie cu câmpul de selectare */
-    margin-right: 20px; /* Adăugați spațiu între titlu și câmpul de selectare */
+    margin-top: 20px; /* Adaugă un spațiu de 20px între .items și h1 */
+    margin-left: 100px; /* Menține margin-left-ul existent pentru h1 */
+    display: inline-block; 
 }
 .main .input-field {
-    display: inline-block; /* Faceți câmpul de selectare să fie afișat pe aceeași linie cu titlul */
-    vertical-align: top; /* Aliniați câmpul de selectare în partea de sus a liniei */
+    margin-left: 70px;
+    display: inline-block;
+    vertical-align: top;
+   width: 250px;
 }
 .main .year {
-    padding-top: 0%;
+    
     text-decoration: underline; /* Adăugați subliniere textului */
     font-size: 40px;
 }
@@ -166,30 +157,62 @@ header {
     margin-right: 20px;
 }
 
+
 .card {
     display: flex;
-    flex: 1;
-    justify-content: space-evenly;/* Distribuie spațiul disponibil între coloane */
-    margin-right: 0px; 
-    
+    flex-direction: row; /* Așază elementele într-un rând */
+    justify-content: space-between; /* Distribuie spațiul între elemente */
+    align-items: flex-start; /* Alinează elementele pe axa verticală la începutul containerului */
+    background-color: #FFFFFF;
+    padding: 20px; /* Adaugă un padding pentru a separa conținutul de marginile containerului */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 
-.button-column {
-    margin-top: 100px;
+.card .card_1{
     display: flex;
     flex-direction: column;
-    padding-right: 150px;
+    align-items: center;
+    margin-right: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    width: 100%;
+
+}
+
+.image-column, .button-column {
+    flex: 1; /* Atribuie spațiul disponibil în mod egal ambelor coloane */
+    margin-right: 20px; /* Adaugă un spațiu între coloane */
+}
+
+.button-column {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
 }
 
 .image-column {
     margin-top: 0px;
-    max-width: 50%;
-    padding-left: 40px; /* Spațiu între imagine și marginile containerului */
+    display: flex;
+    flex-direction: column;
+    padding-right: 20px;
 }
-.image-column h1{
-    margin-top: 0%;
+.card_1 .title_map {
+   
+    text-align: left;
+    width: 100%; 
+   
+    height: 70px;
 }
+  
 
 
 
@@ -259,55 +282,59 @@ header {
   }
   
   .container_2 .card ul li .large.material-icons {
-    font-size: 4rem; /* Mărește dimensiunea iconiței la 36 de pixeli */
-    vertical-align: middle; /* Aliniați vertical textul la mijlocul iconiței */
-    margin-right: 10px; /* Adăugați un spațiu mic între iconiță și text */
+    font-size: 4rem; 
+    vertical-align: middle; 
+    margin-right: 10px; 
   }
   
   
-  .card {
-    background-color: #FFFFFF;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
-    
-  }
+ 
 
   .card h1 {
     font-size: 24px; /* Dimensiunea fontului pentru titlu */
     margin-bottom: 10px; /* Spațierea inferioară între titlu și lista de link-uri */
 }
+.card .card_2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0px;
 
-.card ul {
-    list-style-type: none; /* Eliminarea stilului implicit al listei */
-    padding: 0; /* Eliminarea spațierii interioare a listei */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    background-color: #FFFFFF;
+    width: 100%;
+
+}
+.card_2 ul {
+    list-style-type: none; 
+    padding: 0; 
 }
 
-.card ul li {
-    margin-bottom: 10px; /* Spațierea între elementele listei */
+.card_2 ul li {
+    margin-bottom: 10px; 
 }
 
-.card ul li a {
-    color: #333; /* Culoarea textului link-urilor */
-    text-decoration: underline; /* Adăugați subliniere la link-uri */
-    transition: color 0.3s; /* Efect de tranziție pentru culoarea textului */
+.card_2 ul li a {
+    color: #333; 
+    text-decoration: underline; 
+    transition: color 0.3s; 
 }
 
-.card ul li a:hover {
-    color: #007bff; /* Culoarea textului la hover */
+.card_2 ul li a:hover {
+    color: #007bff; 
 }
-/* Stilurile personalizate pentru elementul de selectare Materialize */
+
 .input-field select {
     display: block;
-    width: 100%; /* Lățimea selectului */
-    padding: 10px; /* Spațiul intern */
-    font-size: 16px; /* Dimensiunea fontului */
-    border: 1px solid #ccc; /* Bordura selectului */
-    border-radius: 5px; /* Rotunjirea colțurilor */
-    background-color: #fff; /* Culoarea fundalului */
-    transition: border-color 0.3s ease; /* Efect de tranziție pentru culoarea bordurii */
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #fff; 
+    transition: border-color 0.3s ease; 
 }
 
 .input-field select:focus {
@@ -320,3 +347,111 @@ header {
     color: #333; /* Culoarea textului etichetei */
 }
 
+@media only screen and (max-width: 800px) {
+    .items {
+      padding: 0 20px; 
+    }
+  
+    .logo {
+      padding-left: 20px; 
+    }
+  
+    .title {
+      padding-top: 10px; 
+      height: 50px; 
+    }
+  
+    .list > a {
+      font-size: 1em; 
+    }
+  
+
+    .list {
+      display: none; 
+      flex-direction: column;
+      position: absolute;
+      top: 80px; 
+      left: 0;
+      background-color: #283019;;
+      width: 100%;
+      height: auto;
+      transition: opacity 1s ease-in-out; 
+      opacity: 0; 
+  }
+  
+    #menu-toggle:checked ~ .list {
+      display: flex;
+      opacity: 1; 
+  }
+  
+  #menu-toggle:checked + .menu-icon {
+      display: block; 
+  }
+  
+  .menu-icon {
+      color:  #3A4D39;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out; 
+  }
+  
+  #menu-toggle:checked + .menu-icon {
+      transform: rotate(90deg); 
+  }
+  #menu-toggle{
+      display: none;
+  }
+
+  
+  }
+  
+  @media all and (min-width: 801px) {
+    .menu-icon {
+        display: none; 
+    }
+    #menu-toggle{
+        display: none;
+    }
+  }
+  
+@media only screen and (max-width: 800px) {
+    .card{
+        flex-direction: column; /* Așază elementele într-o coloană */
+        margin-top: 0;
+    }
+    .card_1{
+        margin-top: 0;
+        flex-direction: column; 
+        margin-left: 20px;
+    }
+
+    .button-column,.image-column {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin: 0 auto; 
+        max-width: 1200px; 
+        width: 100%; 
+        margin-top: 150px;
+    }
+    .image-column {
+        margin-top: 0;
+    }
+    .button-column {
+        margin-top: 0; 
+    }
+}
+
+/* Stilurile pentru ecranele mai mari */
+@media only screen and (min-width: 801px) {
+    .image-column, .button-column {
+        flex: 1; 
+        width: auto; 
+        margin-right: 20px; 
+        margin-top: 0; 
+    }
+    
+    .button-column {
+        margin-top: 150px; 
+    }
+}

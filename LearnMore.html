@@ -8,26 +8,28 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <header>
-        <h1 class="title">Romanian Drug Explorer</h1>
-        <nav class="items">
-            <div class="logo">
-                <a href="#">RoDX</a>
-            </div>            
-            <div class="list">
-              <a href="LearnMore.html">Home</a>
-              <a href="index.html#about">About</a>
-              <a href="Contact.html">Contact</a>
-              <a href="HelpAndAdvice.html">Help & Advice</a>
-              <div class="for_login">
-                <a href="#">Login</a>
-              </div> 
-            </div>
-        </nav>
-    </header>
+  <header>
+    <h1 class="title">Romanian Drug Explorer</h1>
+    <nav class="items">
+        <div class="logo">
+            <a href="#">RoDX</a>
+        </div>          
+        <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>     
+        <div class="list">
+          <a href="LearnMore.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="Contact.html">Contact</a>
+          <a href="HelpAndAdvice.html">Help & Advice</a>
+          <div class="for_login">
+            <a href="#">Login</a>
+          </div> 
+        </div>
+    </nav>
+</header>
 
     <div class="main">
-      
+          
             <h1>Statistics of the drug abuse :</h1>
             <div class="input-field col s12">
                 <select onchange="redirect()">
@@ -37,20 +39,21 @@
                     <option value="statistics_2021.html">2021</option>
                     <option value="statistics_2020.html">2020</option>
                 </select>
-            </div>
-          
-         <div><h1 class="year">2023</h1></div> 
-          
-
+          </div>
+          <div><h1 class="year">2023</h1></div> 
+         
         <div class="container_1">
-           
             <div class="card">
-                
+             
                 <div class="image-column">
-                    <div><h1>Drug Abuse Map:</h1></div>
+                  <div class ="card_1">
+                    <div class="title_map"><h1>Drug Abuse Map:</h1></div>
                     <img src="C:\Users\Cpirlac\Desktop\TEH web\Harta.jpg" alt="Drug Abuse Map">
                   </div>
+                </div>
+               
                <div class="button-column">
+                <div class ="card_1">
                   <button class="button button1">0%</button>
                   <button class="button button2">0-5%</button>
                   <button class="button button3">5-10%</button>
@@ -59,13 +62,14 @@
                   <button class="button button6">30-50%</button>
                   <button class="button button7">50-100%</button>
                </div>
+               </div>
             </div>
         </div>
         
         <div class="container_2">
             <div class="card">
-            <div><h1>Data and resources: </h1></div>
-            <ul>
+            <ul> 
+              <h1>Resources:</h1>
                 <li><i class="large material-icons">library_books</i>
                     <a href="Admiterea_la_tratament.xlsx">Admiterea la tratament ca urmare a consumului de stupefiante</a>
                     <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
@@ -95,10 +99,17 @@
                     <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
                 </li>
             </ul>
+            
             </div>
         </div>
 
       </div>
       
+      <script>
+        function toggleMenu() {
+          var navList = document.getElementById('navList');
+          navList.classList.toggle('active');
+        }
+      </script>
 </body>
 </html>

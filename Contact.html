@@ -7,14 +7,14 @@
 </head>
 <body>
   <header>
-
     <h1 class="title">Romanian Drug Explorer</h1>
-
     <div class="nav-container">
-       
       <div class="logo">
         <a href="#">RoDX</a>
-      </div>            
+      </div>    
+      
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>        
       <div class="list">
         <a href="LearnMore.html">Home</a>
         <a href="mainPage.html#about">About</a>
@@ -29,27 +29,27 @@
 
   <div class="main">
     <div class="container_1">
-        <div class="card">
-      <h1>Need some friendly, confidential advice?</h1>
-      <p>PhoneCall <a href="tel:0800 080 999">0800 080 999</a><br>
+      <div class="card">
+        <h1>Need some friendly, confidential advice?</h1>
+        <p>PhoneCall <a href="tel:0800 080 999">0800 080 999</a><br>
           It's availble 24 hours a day, 7 days a week.</p>
 
-      <h2>Call service details</h2>
-      <p>ChatText  7484 <br>
-      Write a question through SMS and you will get a respond as fast as posible.</p>
+        <h2>Call service details</h2>
+        <p>ChatText  7484 <br>
+          Write a question through SMS and you will get a respond as fast as posible.</p>
 
-      <h2>Text service details</h2>
-      <p>EmailSend an email<br>
-        Send an email at info@droguri-help-line.ro.</p>
+        <h2>Text service details</h2>
+        <p>EmailSend an email<br>
+          Send an email at info@droguri-help-line.ro.</p>
 
-      <h2>Email service details</h2>
-      <p>Live Chat - offline<br>
-      Live chat (offline)<br>
-      Our live chat service operates from 10am - 6pm, 5 days a week.</p>
+        <h2>Email service details</h2>
+        <p>Live Chat - offline<br>
+          Live chat (offline)<br>
+          Our live chat service operates from 10am - 6pm, 5 days a week.</p>
 
-      <h3>Telephone</h3>
-      <p>Call 0800 080 999 when in need.</p>
-        </div>
+        <h3>Telephone</h3>
+        <p>Call 0800 080 999 when in need.</p>
+      </div>
     </div>
 
     <div class="container_2">
@@ -68,5 +68,12 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleMenu() {
+      var navList = document.getElementById('navList');
+      navList.classList.toggle('active');
+    }
+  </script> 
 </body>
 </html>

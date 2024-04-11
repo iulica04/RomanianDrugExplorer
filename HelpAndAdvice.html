@@ -7,14 +7,14 @@
 </head>
 <body>
   <header>
-
     <h1 class="title">Romanian Drug Explorer</h1>
-
     <div class="nav-container">
-       
       <div class="logo">
         <a href="#">RoDX</a>
-      </div>            
+      </div>    
+      
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>        
       <div class="list">
         <a href="LearnMore.html">Home</a>
         <a href="mainPage.html#about">About</a>
@@ -239,6 +239,10 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
         accordionContent.style.display = "block";
       }
     }
-    </script>
+        function toggleMenu() {
+          var navList = document.getElementById('navList');
+          navList.classList.toggle('active');
+        }
+      </script> 
 </body>
 </html>

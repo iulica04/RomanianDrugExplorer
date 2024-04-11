@@ -165,3 +165,51 @@ header {
   border-radius: 5px;
   font-size: 20px;
 }
+
+
+
+@media only screen and (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px; 
+  }
+
+  .logo {
+    padding-left: 20px; 
+  }
+
+  .title {
+    padding-top: 10px; 
+    height: 50px; 
+  }
+
+  .list > a {
+    font-size: 1em; 
+  }
+
+  .container_1,
+  .container_2 {
+    width: 100%; 
+  }
+
+  .main {
+    flex-direction: column; 
+    padding-top: 80px; 
+    margin: 0 20px; 
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .logo a {
+    font-size: 40px; 
+  }
+
+  .list > a {
+    margin: 0 5px;
+  }
+
+  .container_1,
+  .container_2 {
+    padding: 0 10px; 
+}
+}

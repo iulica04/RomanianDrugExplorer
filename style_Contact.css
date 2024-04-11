@@ -43,6 +43,10 @@ header {
     align-items: center; /* Alinează elementele vertical pe axa y */
     padding: 0 40px; /* Ajustează marginile stânga și dreapta */
 }
+
+
+
+
 /*LOGO*/
 .logo {
     padding-left: 50px; 
@@ -168,7 +172,7 @@ header {
 
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
   .nav-container {
     padding: 0 20px; 
   }
@@ -196,6 +200,41 @@ header {
     padding-top: 80px; 
     margin: 0 20px; 
   }
+  .list {
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    top: 80px; 
+    left: 0;
+    background-color: #283019;;
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out; 
+    opacity: 0; 
+}
+
+  #menu-toggle:checked ~ .list {
+    display: flex;
+    opacity: 1; 
+}
+
+#menu-toggle:checked + .menu-icon {
+    display: block; /* Afișează meniul hamburger când meniul este deschis */
+}
+
+.menu-icon {
+    color:  #3A4D39;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Adaugă o tranziție pentru iconul meniului */
+}
+
+#menu-toggle:checked + .menu-icon {
+    transform: rotate(90deg); /* Rotirea iconului pentru a arăta că meniul este deschis */
+}
+#menu-toggle{
+    display: none;
+}
 }
 
 
@@ -212,4 +251,12 @@ header {
   .container_2 {
     padding: 0 10px; 
 }
+}
+@media all and (min-width: 801px) {
+  .menu-icon {
+      display: none; /* Ascunde checkbox-ul pentru ecrane mari */
+  }
+  #menu-toggle{
+      display: none;
+  }
 }

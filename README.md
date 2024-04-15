@@ -1,3 +1,3 @@
 ## Vizualizare DOCUMENTATIE 
 
-Puteți vizualiza documentatia [aici](https://raw.githubusercontent.com/iulica04/RomanianDrugExplorer/main/Documentatie.html).
+Puteți vizualiza documentatia [aici](https://iulica04.github.io/RomanianDrugExplorer/Documentatie.html).

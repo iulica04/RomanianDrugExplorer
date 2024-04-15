@@ -3,8 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoDx</title>
-    <link rel="stylesheet" href="style_Documentatie.css">
+    <title>RoDX</title>
+    <style>
+        /* Resetare stiluri */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
+            radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+            radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+            radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+            radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column; /* Așază elementele într-un rând */
+            align-items: flex-start; /* Alinează elementele pe axa verticală la începutul containerului */
+            background-color: #FFFFFF;
+            padding: 20px; /* Adaugă un padding pentru a separa conținutul de marginile containerului */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .text-container {
+            margin-top: 50px;
+            padding-left: 3px;
+            border-radius: 10px;
+            color: #333333;
+            margin-left: 50px;
+        }
+
+        .text-container .text {
+            color: #333333;
+            font-size: 3vh;
+            text-align: left;
+            padding-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,8 +63,9 @@
 
         <h1>Romanian Drug Explorer</h1>
         <h3>Ingrijorat pentru situatia actuala a drogurilor? Verifica statisticile in orasul tau.</h3>
+        <div class="text-container">
         <nav>
-            <ul>
+            <ul style="list-style-position: inside;">
                 <li><a href="#rezumat">Rezumat</a></li>
                 <li><a href="#introducere">Introducere</a></li>
                 <li><a href="#descrie">Descriere generala</a></li>
@@ -24,95 +75,88 @@
                 <li><a href="#referinte">Referinte</a></li>
             </ul>
         </nav>
-    
+        </div>
         <div id="rezumat" class="rezumat">
                 <div class="text-container">
                     <h2>Rezumat</h2>
-                    <p class="text">  Folosind datele statistice privitoare la situația drogurilor în România, sa va realizeze un instrument Web de analiza si vizualizare la consumul de droguri in ultimii 3 ani, in corelatie cu infractiunile si confiscarile efectuate, plus urgentele medicale si campaniile de prevenire a consului de stupediante. Cautarile multi-criteriale si rapoartele aferente generate vor fi expuse ca documente HTML si in format CSV. Functionalitatile sistemului dezvoltat vor fi si de un API REST/GraphQL propriu. Vizualizarile generate – minim 3 maniere – vor putea fi exportate in formatele PNG si SVG.</p>
-                </div>
+                    <p class="text">  Proiectul nostru vizeaza realizarea un instrument Web de analiza si vizualizare a consumul de droguri in ultimii 3 ani, in corelatie cu infractiunile si confiscarile efectuate, plus urgentele medicale si campaniile de prevenire a consului de stupefiant, folosindu-se de datele statistice privitoare la situația drogurilor în România. Aceste informatii, cautarile multi-criteriale si rapoartele aferente generate, vor fi expuse ca documente HTML si in format CSV. Functionalitatile sistemului dezvoltat vor fi si de un API REST/GraphQL propriu. Vizualizarile posibile generate vor fi in minim 3 maniere si vor putea fi exportate in formatele PNG si SVG.</div>
         </div>
          
         <div id="introducere" class="introducere">
             <div class="text-container">
                 <h2> Introducere</h2>
                <p class="text">2.1 Scop</p>
-               <p class="text"> Scopul acestui proiect este de a crea un instrument web carevsa ofere utilizatorului o modalitate usoara si flexibila de a vizualiza si analiza datele legate de situatia actuala a drogurilor in Romania, de a obtine statisticile relevante si informatiile suplimentare pentri fiecare oras in parte.</p>
+               <p class="text"> Scopul proiectul este de a crea un instrument web care va oferi utilizatorului o modalitate usoara si flexibila de a vizualiza si analiza datele legate de situatia actuala a drogurilor in Romania, de a obtine statisticile cu date actualizate la situatia curenta si informatiile suplimentare pentru fiecare oras in parte.</p>
               
-               <p class="text">2.2 Publicul vizat și sugestii de lectură</p>  
-               <ul>
-                <li>
-                    <p class="text">Profesioniști din domeniul sănătății: Medici, asistenți medicali, psihiatri și alți profesioniști din domeniul sănătății ar putea fi interesați de datele statistice pentru a înțelege tendințele legate de consumul de droguri și pentru a dezvolta strategii de intervenție și prevenire.</p>
-                </li>
-                <li>
-                    <p class="text">Autorități și decidenți politici: Guvernele și agențiile de reglementare ar putea utiliza statistici despre droguri pentru a formula politici și programe de prevenire și tratare a dependenței de droguri.</p>
-                </li>
-                <li>
-                    <p class="text">Cercetători și academicieni: Oamenii de știință și cercetătorii ar putea utiliza datele statistice pentru a efectua analize și studii în domeniul drogurilor și pentru a identifica noi tendințe sau probleme emergente.</p>
-                </li>
-                <li>
-                    <p class="text">Jurnaliști și mass-media: Jurnaliștii ar putea utiliza statistici despre droguri pentru a scrie articole și reportaje despre consumul de droguri și impactul acestuia asupra societății.</p>
-                </li>
-                <li>
-                    <p class="text">Publicul larg: Persoanele interesate de sănătate, societate și politici publice ar putea fi interesate de datele statistice despre droguri pentru a-și forma o înțelegere mai bună a problemei și pentru a lua decizii informate.</p>
-                </li>
+               <p class="text">2.2 Publicul vizat </p>  
+               <ul style="list-style-position: inside;">
+                <li class="text">Profesioniști din domeniul sănătății: Medici, asistenți medicali, psihiatri și alți profesioniști din domeniul sănătății ar putea fi interesați de datele statistice pentru a înțelege tendințele legate de consumul de droguri și pentru a dezvolta strategii de intervenție și prevenire.</li>
+                <li class="text">Jurnaliști și mass-media: Jurnaliștii ar putea utiliza statistici despre droguri pentru a scrie articole și reportaje despre consumul de droguri și impactul acestuia asupra societății.</li>
+                <li class="text">Publicul larg: Persoanele interesate de a ajuta pe cineva drag sau chiar pe ele insasi, in cazul in care se afla intr-un impas. </li>
             </ul>
 
                <p class="text">2.3 Domeniul de aplicare al produsului</p>
-               <ul>
-                <li>
-                    <p class="text">Permiterea exportului statisticilor în formatele CSV, WebP și SVG și vizualizărilor în formate ușor de prelucrat și de utilizat în alte aplicații.</p>
-                </li>
-                <li>
-                    <p class="text">Generarea de statistici și vizualizări personalizate, în cel puțin trei moduri diferite, care permit utilizatorilor să interpreteze datele într-un mod mai intuitiv și accesibil.</p>
-                </li>
-                <li>
-                    <p class="text">Oferirea unei interfețe ușor de utilizat și a unor modalități variate de vizualizare a datelor.</p>
-                </li>
-                <li>
-                    <p class="text">Crearea unui instrument web de vizualizare flexibilă a datelor referitoare la situația stupefiantelor din România.</p>
-                </li>
+               <ul style="list-style-position: inside;">
+                 <li class="text">Permiterea exportului statisticilor în formatele CSV, WebP și SVG și vizualizărilor în formate ușor de prelucrat și de utilizat în alte aplicații.</li>
+                <li class="text">Generarea de statistici și vizualizări personalizate, în cel puțin trei moduri diferite, care permit utilizatorilor să interpreteze datele într-un mod mai interactiv.</li>
+                <li class="text">Ofera o interfeța ușor de utilizat. </li>
+                <li class="text">Crearea unui instrument web de vizualizare flexibilă a datelor referitoare la situația stupefiantelor din România.</li>
             </ul>
-
-             </div>
+               
+        </div>
         </div>
 
 
         <div id="descrie" class="descrie">
             <div class="text-container">
                 <h2>Descriere generala</h2>
-                <p class="text">Perspectiva produsului</p>
-                <p class="text"> Perspectiva proiectului este de a dezvolta un instrument web util și ușor de utilizat pentru vizualizarea datelor referitoare la sitatia stupefiantelor in Romania, oferind utilizatorilor posibilitatea de a explora aceste date în mod flexibil și interactiv. Următoarea diagramă prezintă componentele majore ale sistemului aplicației:</p>    
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/Diagrama.png?raw=true" alt="Diagrama componentelor majore ale sistemului" />
+                <p class="text">3.1 Perspectiva produsului</p>
+                <p class="text"> Dezvoltarea unui instrument web util și ușor de utilizat pentru vizualizarea datelor referitoare la sitatia stupefiantelor in Romania. Următoarea diagramă prezintă componentele majore ale sistemului aplicației, cum ar fi FRONTEND, care reprezintă partea cu care interctioneaza utilizatorul, ce include interfața grafică si este dezvoltată cu ajutorul unor tehnologii web precum HTML, CSS și PHP (si putin JavaScript momentan); API REST/GraphQL, reprezintă partea de interacțiune între frontend și backend; BACKEND, care reprezintă partea de procesare și stocare a datelor din aplicație, și include servicii ale aplicației și gestionarea datelor din baze de date si DATABASE&STORAGE, reprezintă componenta de stocare a datelor ce vor fi utilizate de aplicație.</p>    
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/Diagrama.png" alt="Diagrama " />
+           
             </div>
         </div>
+
         <div id="interfata" class="interfata">
             <div class="text-container">
-                <h2> Interfata aplicatiei</h2>
-                <h3>Interfata cu utilizatorul</h3>
-                <p class="text">Interacțiunile și interfața utilizatorului pentru proiectul Romanian Drug Explorer pentru vizualizare a datelor ar putea fi următoarele:</p>
+                <h2>Interfata aplicatiei</h2>
+                <h3>4.1 Interfata cu utilizatorul</h3>
+                <p class="text">Interacțiunile și interfața utilizatorului pentru proiectul Romanian Drug Explorer ar putea fi următoarele:</p>
                 <p class="text">1. Pagina de start</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/mainPage1.png?raw=true" alt="mainPage1 " width="800"  />
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/mainPage2.png?raw=true" alt="mainPage2 " width="800" />
+                <p class="text">Pagina de start va conține un meniu de navigare care va permite utilizatorilor să acceseze diferite secțiuni ale aplicației, cum ar fi pagina de autentificare, About, pagina de Help&Advice și pagina de contact. Apasand pe "Learn more" se va putea merge la pagina de Home, unde utilizatorul va vedea statisticile din cel putin ultimii 3 ani, iar apasand pe "Sign up" utilizatorul isi poate crea cont pentru a avea acces la mai multe lucruri pe care le ofera site-ul. </p>
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/mainPage1.png" alt="mainPage1 " width="800"  />
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/mainPage2.png" alt="mainPage2 " width="800" />
               
                 <p class="text">2. Pagina de autentificare</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/Login.png?raw=true" alt="singup " width="800" />
+                <p class="text">Pagina de autentificare va permite utilizatorilor să se conecteze folosind un nume de utilizator și o parolă. Dacă utilizatorul nu are un cont, acesta poate apăsa pe "Sign up" pentru a crea unul.</p>
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/2e3f79a1c5fbbc6606aa070e2b25df51b9bdf2f3/Photos/Login.png" alt="login"  width="800" />
+                
                 <p class="text">3. Pagina de înregistrare</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/Register.png?raw=true" alt="login" width="800" />
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/2e3f79a1c5fbbc6606aa070e2b25df51b9bdf2f3/Photos/Register.png" alt="register" width="800" />
+                
                 <p class="text">4. Home</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/home1.png?raw=true" alt="home1 " width="800" />
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/home2.png?raw=true" alt="home2 " width="800" />
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/home3.png?raw=true" alt="home3" width="800" />
+                <p class="text">Pagina Home va afișa statisticile privind situația drogurilor în România, inclusiv datele privind consumul de droguri, sub forma unei harti la care utilizatorii vor putea selecta un oraș pentru a vizualiza mai specific statisticile pentru acel oraș, si mai jos avem resurse care pot fi citite de catre utilizator. </p>
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/home1.png" alt="home1 " width="800" />
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/home2.png" alt="home2 " width="800" />
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/home3.png" alt="home3" width="800" />
+                
                 <p class="text">5. Help & Advice</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/help.png?raw=true" alt="help" width="800" />
+                <p class="text">Pagina Help & Advice va oferi utilizatorilor informații despre cum să obțină ajutor în cazul în care au întrebări sau probleme cu drogurile si ce pot sa faca in cazul unei urgente. </p>
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/975da9295a75f39d6983affe7669baaf5cbfa2ea/Photos/help.png" alt="help" width="800" />
+                
                 <p class="text">6. Contact</p>
-                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/main/Photos/contact.png?raw=true" alt="contact"width="800"  />
+                <p class="text">Pagina Contact va oferi utilizatorilor informații despre cum să ia legătura cu echipa Romanian Drug Explorer sau cu alte organizatii ce ii pot ajuta. </p>
+                <img src="https://github.com/iulica04/RomanianDrugExplorer/blob/ceb382c3dc54090f3e63f38d6434098ea96f77ef/Photos/contact.png" alt="contact"width="800"  />
 
-                <h3>Interfața hardware</h3>
-                <p class="text">Următoarele tipuri de dispozitive vor fi acceptate de proiectul FireStream:</p>
-                <ul>
-                    <li>Laptop-uri și desktop-uri: Aceste dispozitive trebuie să poată rula un browser web și să aibă acces la internet pentru a utiliza aplicația.</li>
-                    <li>Tablete și telefoane mobile: Dispozitivele trebuie să ruleze un sistem de operare, cum ar fi iOS sau Android, și să poată accesa internetul prin intermediul unui browser web pentru a utiliza aplicația.</li>
-                </ul>
+                <h3>4.2 Interfața hardware</h3>
+                <p class="text">Interacțiunea dintre utilizator și aplicație se realizează prin intermediul unui browser web, care este software-ul utilizatorului. Astfel următoarele tipuri de dispozitive vor fi acceptate de proiectul Romanian Drug Explorer:</p>
+                <ul style="list-style-position: inside;">
+                    <ul>
+                        <li class="text">Laptop-uri și desktop-uri: Aceste dispozitive trebuie să fie echipate cu un browser web funcțional și conectate la internet pentru a accesa aplicația.</a></li>
+                        <li class="text">Tablete și telefoane mobile: Dispozitivele trebuie să ruleze un sistem de operare, precum iOS sau Android, și să fie capabile să se conecteze la internet prin intermediul unui browser web pentru a utiliza aplicația.</a></li>
+                    </ul>
+                    </ul>
+                
                 
                </div>
         </div>
@@ -120,25 +164,13 @@
         <div id="caracteristici" class="caracteristici">
             <div class="text-container">
                 <h2>Caracteristicile sistemului</h2>
-                <ul>
-                    <li>
-                        <p class="text">Vizualizarea și analiza datelor.</p>
-                    </li>
-                    <li>
-                        <p class="text">Înregistrarea de noi utilizatori prin intermediul unei interfețe de înregistrare.</p>
-                    </li>
-                    <li>
-                        <p class="text">Încărcarea și descărcarea fișierelor de date în format CSV.</p>
-                    </li>
-                    <li>
-                        <p class="text">Generarea de fișiere grafice în format SVG și imagini WebP pentru vizualizarea datelor.</p>
-                    </li>
-                    <li>
-                        <p class="text">Sincronizarea datelor cu API-ul extern al serviciului de informare a tipurilor de droguri si impactul asupra oamenilor.</p>
-                    </li>
-                    <li>
-                        <p class="text">Afișarea statisticilor privind situatia drogurilor în timp real.</p>
-                    </li>
+                <ul style="list-style-position: inside;">
+                    <li class="text">Vizualizarea și analiza datelor.</li>
+                    <li class="text">Înregistrarea de noi utilizatori prin intermediul unei interfețe de înregistrare.</li>
+                    <li class="text">Încărcarea și descărcarea fișierelor de date în format CSV.</li>
+                    <li class="text">Generarea de fișiere grafice în format SVG și imagini WebP pentru vizualizarea datelor.</li>
+                    <li class="text">Sincronizarea datelor cu API-ul extern al serviciului de informare a tipurilor de droguri si impactul asupra oamenilor.</li>
+                    <li class="text">Afișarea statisticilor privind situatia drogurilor în timp real.</li>
                 </ul>
                 
             </div>
@@ -147,28 +179,24 @@
         <div id="cerinte" class="cerinte">
             <div class="text-container">
                 <h2> Cerinte nefunctionale</h2>
-                <ul>
-                    <li>
-                        <p class="text">Performanță: sistemul trebuie să fie capabil să ofere o experiență rapidă pentru utilizatori, chiar și în cazul în care baza de date se va mări.</p>
-                    </li>  
-                    <li>
-                        <p class="text">Fiabilitate: sistemul trebuie să fie capabil să gestioneze situații de eroare și să își revină rapid.</p>
-                    </li>
-                    <li>
-                        <p class="text">Interoperabilitate: sistemul trebuie să fie capabil să se integreze cu alte aplicații și servicii, cum ar fi API-uri.</p>
-                    </li>
-                    <li>
-                        <p class="text">Scalabilitate: sistemul trebuie să fie capabil să suporte creșterea numărului de utilizatori și volumul de date fără a afecta performanța.</p>
-                    </li>
-                </ul>
+                <ul style="list-style-position: inside;">
+                    <li class="text">Performanță: Sistemul trebuie să ofere o experiență rapidă utilizatorilor, chiar și pe măsură ce volumul de date crește.</a></li>
+                    <li class="text">Fiabilitate: Sistemul trebuie să gestioneze eficient situațiile de eroare și să revină rapid la funcționarea normală.</a></li>
+                    <li class="text">Interoperabilitate: Sistemul trebuie să se integreze ușor cu alte aplicații și servicii, inclusiv cu API-uri.</a></li>
+                    <li class="text">Scalabilitate: Sistemul trebuie să suporte creșterea numărului de utilizatori și a volumului de date fără a afecta performanța sau disponibilitatea.</a></li>
+                    </ul>
+                     </ul>
                  </div>
         </div>
 
         <div id="referinte" class="referinte">
             <div class="text-container">
                 <h2> Referinte</h2>
-                <p class="text">    At Romanian Drug Explorer, we care about improving people's lives. We understand that drug addiction can be a huge challenge and we want to help put an end to it. We offer a variety of services designed to help you overcome addiction and live your best life. Whether you need support, counseling, or just someone to talk to, our experienced team is here to help.</p>
-            </div>
+                <ul style="list-style-position: inside;">
+                    <li class="text"><a href="https://w3c.github.io/scholarly-html/">Formatul ScholarlyHTML.</a></li>
+                    <li class="text"><a href="https://github.com/rick4470/IEEE-SRS-Tempate#readme">IEEE System Requirements Specification Template.</a></li>
+                    <li class="text"><a href="https://www.canva.com/">Pentru crearea de diagrame Canva.</a></li>
+                </ul>
 
         
     </div>   

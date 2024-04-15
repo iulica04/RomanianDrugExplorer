@@ -41,6 +41,7 @@ body {
     padding-left: 3px;
     border-radius: 10px;
     color: #333333;
+    margin-left: 50px;
 }
 
 
@@ -49,4 +50,5 @@ body {
     font-size: 3vh;
     text-align: left;
     padding-bottom: 20px;
+   
 }

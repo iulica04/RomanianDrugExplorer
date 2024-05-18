@@ -10,7 +10,7 @@
         <input type="checkbox" id="chk">
         
         <div class="signup">
-            <form action="sing_up.php" method="post">
+            <form id="createUserForm">
                 <label class="title" for="chk" aria-hidden="true">Sign up</label>
                 <div class="input-group">
                     <input type="text" name="username"  id="username-for-sign-up" class="input" required>
@@ -54,5 +54,6 @@
         </div>
     </div>
     <script src="../utils/checkValidity.js"></script>
+    <script src="../utils/createUser.js"></script>
 </body>
 </html>

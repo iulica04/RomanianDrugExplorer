@@ -18,7 +18,7 @@
               <a href="#">Projects</a>
               <a href="#">News</a>
               <div class="for_login">
-                <a href="./public/pages/Login.html">Login</a>
+                <a href="public/pages/login">Login</a>
               </div> 
             </div>
         </nav>
@@ -29,7 +29,7 @@
         <div class="buttons">
             <a href="./public/pages/LearnMore.html" class="button" >Learn more</a>
             <p>or</p>
-            <a href="./public/pages/register.html" class="button" >Sign up</a>
+            <a href="public/pages/register.php" class="button" >Sign up</a>
         </div>
         <div id="about" class="about_us">
             <div class ="container_1"> <h2>About Us</h2> </div>

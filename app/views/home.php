@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title> Home Page</title>
-    <link rel = "stylesheet" href="./public/styles/style.css">
+    <link rel = "stylesheet" href="../public/styles/style.css">
     <meta charset="UTF-8">
 </head>
 <body>
@@ -18,7 +18,7 @@
               <a href="#">Projects</a>
               <a href="#">News</a>
               <div class="for_login">
-                <a href="public/pages/login">Login</a>
+                <a href="public/pages/login.php">Login</a>
               </div> 
             </div>
         </nav>

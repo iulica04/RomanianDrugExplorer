@@ -1,1 +1,8 @@
-DirectoryIndex index.php index.html
+RewriteEngine On    # Turn on the rewriting engine
+
+# If the requested filename is not a directory,
+RewriteCond %{REQUEST_FILENAME} !-d
+# and if the requested filename is not a file that exists,
+RewriteCond %{REQUEST_FILENAME} !-f
+# then rewrite the request to index.php
+RewriteRule ^ index.php [L]

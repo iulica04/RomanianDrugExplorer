@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../styles/style_for_login.css">
+    <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Login.css">
     <meta charset="UTF-8">
 </head>
 <body>

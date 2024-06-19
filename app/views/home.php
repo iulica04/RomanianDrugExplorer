@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title> Home Page</title>
-    <link rel = "stylesheet" href="../public/styles/style.css">
+    <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Home.css">
     <meta charset="UTF-8">
 </head>
 <body>
@@ -18,7 +17,7 @@
               <a href="#">Projects</a>
               <a href="#">News</a>
               <div class="for_login">
-                <a href="public/pages/login.php">Login</a>
+                <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
               </div> 
             </div>
         </nav>
@@ -29,7 +28,7 @@
         <div class="buttons">
             <a href="./public/pages/LearnMore.html" class="button" >Learn more</a>
             <p>or</p>
-            <a href="public/pages/register.php" class="button" >Sign up</a>
+            <a href="/RomanianDrugExplorer/app/views/register.php" class="button" >Sign up</a>
         </div>
         <div id="about" class="about_us">
             <div class ="container_1"> <h2>About Us</h2> </div>
@@ -51,6 +50,12 @@
                     <p class="text">Drug prevention is at the forefront of what we do at Drug He. Our journey began with a desire to improve the drug situation in Romania, and we have succeeded in making a difference through our extensive experience. Our prevention services help individuals recognize the risks of drug abuse and provide the necessary steps to lead a healthy lifestyle. We’re here for you every step of the way.</p>
                 </div>
             </div>
+          </div>
+        <div>
+            <footer>
+                <p>Author: Hege Refsnes</p>
+  <p><a href="mailto:hege@example.com">hege@example.com</a></p>
+            </footer>
         </div>
     </div>   
     <script>
@@ -58,6 +63,19 @@
              var navList = document.getElementById('navList');
             navList.classList.toggle('active');
         }
+
+      /*  document.querySelector('.for_login a').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../app/views/login.php');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.body.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }); */
     </script> 
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Router {
     public function dispatch() {
 
@@ -7,14 +9,18 @@ class Router {
         $method = $_SERVER['REQUEST_METHOD'];
 
         // Get the request URL
-        $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
+        $url = $_SERVER['REQUEST_URI'];
+        
+
+        
 
         // Split the URL into segments
         $segments = explode('/', $url);
+        array_shift($segments);
 
         // Extract the controller and method from the URL
-        $controllerName = !empty($segments[0]) ? ucfirst($segments[0]) . 'Controller' : 'HomeController';
-        $methodName = !empty($segments[1]) ? $segments[1] : 'index';
+        $controllerName = !empty($segments[1]) ? ucfirst($segments[1]) . 'Controller' : 'HomeController';
+        $methodName = !empty($segments[2]) ? $segments[2] : 'index';
 
         // Extract parameters from URL segments
         $params = array_slice($segments, 2);
@@ -31,7 +37,7 @@ class Router {
         } else {
             // Handle 404 Not Found
             http_response_code(404);
-            echo '404 Not Found';
+            echo '404 Not Found' . $controllerFile;
             exit;
         }
 
@@ -42,8 +48,6 @@ class Router {
        
 
         // Call the appropriate method based on HTTP method
-         
-        echo $method;
 
         switch ($method) {
             case 'GET':
@@ -63,8 +67,8 @@ class Router {
                 } 
                 else {
                     // Handle 405 Method Not Allowed for other controllers
-                    http_response_code(405);
-                    echo '405 Method Not Allowed';
+                    http_response_code(405);  //////// nu aici
+                    echo '405 Method Not Allowed2';
                     exit;
                 }
                 break;
@@ -80,13 +84,12 @@ class Router {
                 }
                 break;
             case 'POST':
-                if ($controllerName === 'UsersController' && empty($segments[1])) {
+                if ($controllerName === 'UsersController' && empty($segments[2])) {
                     // Handle POST /users
                     $controller->createUser();
                 } else {
-                    // Handle 405 Method Not Allowed for other controllers or invalid endpoint
                     http_response_code(405);
-                    echo '405 Method Not Allowed';
+                    echo '405 Method Not Allowed3'. $controllerName;
                     exit;
                 }
                 break;
@@ -96,15 +99,17 @@ class Router {
                     $controller->deleteUser($segments[1]);
                 } else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
-                    http_response_code(405);
-                    echo '405 Method Not Allowed';
+                    
+                    echo '405 Method Not Allowed4 ' . $controllerName;
                     exit;
                 }
                 break;
             default:
                 // Handle other HTTP methods
-                http_response_code(405);
-                echo '405 Method Not Allowed';
+
+                
+                header('Content-Type: application/json');
+                echo json_encode(['message' => 'Mesajul tau personalizat pentru eroarea 405']);
                 exit;
         }
         

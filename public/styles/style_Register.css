@@ -163,9 +163,9 @@
 	}
 	
 	.error{
-		color: red;
+		color: rgb(192, 17, 17);
 		justify-content: center;
-		padding: 0px 5%;
+		padding: 2px 5%;
 		font-size: 0.8em;
 	}
 }
@@ -287,9 +287,16 @@
 	.error{
 		color: red;
 		justify-content: center;
-		padding: 0px 7%;
+		padding: 0px 10%;
 		font-size: 0.8em;
 	}
 }
+
+
+
+
+
+
+
 
 

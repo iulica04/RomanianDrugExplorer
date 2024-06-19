@@ -22,9 +22,10 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(data => {
             // Check the message received from the server
-            if (data.message === 'User created successfully') {
+            if (data.message === 'User created successfully!') {
                 // If the user was created successfully, show a green Snackbar
-                showSnackbar(data.message, 'info');
+                showSnackbar(data.message + " Now you can login!", 'info');
+                
             } else {
                 // If there was an error, show a red Snackbar
                 showSnackbar(data.message, 'error');
@@ -34,6 +35,10 @@ $(document).ready(function() {
           console.error('Error:', error);
           // If there was an error with the fetch operation, show a red Snackbar
           showSnackbar('An error occurred while creating the user', 'error');
+          
         });
+
+        clearFormInputs('createUserForm');
+
     });
 });

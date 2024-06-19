@@ -87,7 +87,10 @@ class Router {
                 if ($controllerName === 'UsersController' && empty($segments[2])) {
                     // Handle POST /users
                     $controller->createUser();
-                } else {
+                } elseif($controllerName === 'UsersController' && $segments[2] === 'login') {
+                    // Handle POST /users/login
+                    $controller->loginUser();
+                 }else {
                     http_response_code(405);
                     echo '405 Method Not Allowed3'. $controllerName;
                     exit;

@@ -1,3 +1,5 @@
+
+<?php session_start(); ?>
 <html>
 <head>
     <title> Home Page</title>
@@ -17,7 +19,11 @@
               <a href="#">Projects</a>
               <a href="#">News</a>
               <div class="for_login">
-                <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
+              <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
+                    <a href="/RomanianDrugExplorer/app/views/logout.php">Logout</a>
+              <?php else: ?>
+                     <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
+              <?php endif; ?>
               </div> 
             </div>
         </nav>
@@ -26,7 +32,7 @@
         <h1>Exploring the World of Drugs Together</h1><br><br>
         <p>At Romanian Drug Explorer, we're here for you. Our mission is to provide support, resources, and information about drugs to help individuals live healthier lives. We believe in the power of community and are committed to helping those who need it most</p>
         <div class="buttons">
-            <a href="./public/pages/LearnMore.html" class="button" >Learn more</a>
+            <a href="/RomanianDrugExplorer/app/views/LearnMore.php" class="button" >Learn more</a>
             <p>or</p>
             <a href="/RomanianDrugExplorer/app/views/register.php" class="button" >Sign up</a>
         </div>

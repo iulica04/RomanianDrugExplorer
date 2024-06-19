@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start(); ?>
 <html>
 <head>
     <title>Register</title>
@@ -39,7 +39,7 @@
         </div>
         
         <div class="login">
-            <form action="logged.php" method="post">
+            <form id="loginForm" method="post">
                 <label class="title-login" for="chk" aria-hidden="true">Login</label>
                 <div class="input-group">
                     <input type="text" name="username" id="username" class="input" required>
@@ -51,15 +51,18 @@
                     <label class="label" for="password">Password</label>
                     <span class="error" id="password-error"></span>
                 </div>
-                <button type="submit">Login</button>
+                <button id="loginbutton">Login</button>
             </form>
         </div>
     </div>
 
     <div id="snackbar"></div>
 
-    <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/clearFormInputs.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/login.js"></script>
+    
 </body>
 </html>

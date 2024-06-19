@@ -1,5 +1,6 @@
 <?php
 
+
 require_once dirname(__FILE__) .'/../config/Db.php';
 
 class User extends DB {
@@ -42,7 +43,7 @@ class User extends DB {
             $stmt->execute();
             return $this->pdo->lastInsertId();
         } catch (PDOException $e) {
-            echo "Error adding user: " . $e->getMessage();
+            echo $e->getMessage();
             return false;
         }
     }
@@ -87,7 +88,7 @@ class User extends DB {
         }
     }
 
-    public function usernameExists($username) {
+     public function usernameExists($username) {
         $sql = "SELECT COUNT(*) FROM users WHERE username = :username";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['username' => $username]);
@@ -95,5 +96,38 @@ class User extends DB {
 
         return $count > 0;
     }
+
+    public function authenticateUser($username, $password) {
+        $sql = "SELECT * FROM users WHERE username = :username";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // If no user was found, return a specific error code
+        if (!$user) {
+            return 'invalid_username';
+        }
+    
+        // If a user was found but the password is incorrect, return a different error code
+        if (!password_verify($password, $user['password'])) {
+            return 'invalid_password';
+        }
+    
+        // If a user was found and the password is correct
+        return $user;
+    }
+
+    public function phoneNumberExists($phonenumber) {
+        $sql = "SELECT COUNT(*) FROM users WHERE phonenumber = :phonenumber";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['phonenumber' => $phonenumber]);
+        $count = $stmt->fetchColumn();
+
+        return $count > 0;
+    }
+
+    
 }
 ?>

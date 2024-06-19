@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title> Learn More</title>
-    <link rel = "stylesheet" href="../styles/style_LearnMore.css">
+    <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <meta charset="UTF-8">
@@ -17,12 +17,12 @@
         <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>     
         <div class="list">
-          <a href="LearnMore.html">Home</a>
+          <a href="/RomanianDrugExplorer/app/views/LearnMore.php">Home</a>
           <a href="index.html#about">About</a>
-          <a href="Contact.html">Contact</a>
-          <a href="HelpAndAdvice.html">Help & Advice</a>
+          <a href="/RomanianDrugExplorer/app/views/Contact.php">Contact</a>
+          <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
           <div class="for_login">
-            <a href="#">Login</a>
+            <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
           </div> 
         </div>
     </nav>

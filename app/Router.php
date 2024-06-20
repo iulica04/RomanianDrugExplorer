@@ -44,16 +44,44 @@ class Router {
                         $controller->getUsers();
                     }
                 } elseif ($controllerName === 'DrugStatsController') {
-                    // Handle GET /DrugStats/{year}
-                    
-                    if (!empty($segments[1]) &&is_numeric($segments[2])){
+                    // Handle GET /DrugStats/{type}/{year}
+                    if(!empty($segments[2]) && $segments[2]==='confiscations') {
+                        if (!empty($segments[3]) && is_numeric($segments[3])){
                        
-                     $controller->getStatsByYear($segments[2]);
-
-                    } else {
-                        $controller->getDrugStats();
-                       // echo 'nu e numeric';
-                    }
+                            $controller->getStatsByYear($segments[3]);
+       
+                           } else {
+                               $controller->getDrugStats();
+                              // echo 'nu e numeric';
+                           }
+                    } elseif(!empty($segments[2]) && $segments[2]==='infractionality') {
+                        if (!empty($segments[3]) &&is_numeric($segments[3])){
+                       
+                            $controller->getStatsByYearInfractionality($segments[3]);
+       
+                           } else {
+                               $controller->getDrugStatsInfractionality();
+                              // echo 'nu e numeric';
+                           }
+                    }elseif(!empty($segments[2]) && $segments[2]==='emergencies') {
+                        if (!empty($segments[3]) &&is_numeric($segments[3])){
+                       
+                            $controller->getStatsByYearMedic($segments[3]);
+       
+                           } else {
+                               $controller->getDrugStatsMedic();
+                              // echo 'nu e numeric';
+                           }
+                    }elseif(!empty($segments[2]) && $segments[2]==='projects') {
+                        if (!empty($segments[3]) &&is_numeric($segments[3])){
+                       
+                            $controller->getStatsByYearProject($segments[3]);
+       
+                           } else {
+                               $controller->getDrugStatsProject();
+                              // echo 'nu e numeric';
+                           }
+                    }  
                 } elseif ($controllerName === 'HomeController') {
                     $controller->index();
                 } else {

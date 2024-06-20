@@ -171,12 +171,6 @@ header {
     margin-bottom: 20px;
 }
 
-.card_3 {
-    width: 100%; /* Ocupă toată lățimea disponibilă */
-    margin-bottom: 10px; /* Spațiu între carduri */
-    background-color: #f0f0f0; /* Culoare de fundal opțională */
-    padding: 10px; /* Spațiu interior */
-}
 
 .card .card_1{
     display: flex;
@@ -187,9 +181,9 @@ header {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
-    background-color: #FFFFFF;
+    background-color: #E0FBE2;
     margin-bottom: 20px;
-    width: 100%;
+    width: 40%;
 
 }
 
@@ -230,22 +224,60 @@ header {
     cursor: pointer;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    width: 100px;
+   
 }
 
 /* Stiluri pentru butoane */
 .container_1 .button1 {
-    background-color: #f0ec14;
+    background-color: #b5b5b5;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 250px;
    
 }
-
-.container_1 .button2 {
-    background-color: #dd1515;
-    
+.container_1 .button1 > a {
+    color: #2a865d;
+    text-decoration: none;
+    padding: 10px 10px; 
+    margin: 0 10px;
+    display: inline-block;
+}
+.container_1 .button1:hover{
+    background-color: #436918; 
 }
 
+.container_1 .button1 a:hover{
+    color: #7f9f7d;
+}
+
+
+/*BUTON 2*/
+.container_1 .button2 {
+    background-color: #3A4D39;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 200px;
+}
+
+.container_1 .button2 > a {
+    color: #becbaf;
+    text-decoration: none;
+    padding: 10px 10px; 
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.container_1 .button2:hover{
+    background-color: #8d9188; 
+}
+
+.container_1 .button2 a:hover{
+    color: #3A4D39;
+}
+
+
 .container_1 .button3 {
-    background-color: #e6700f;
+    background-color: #CA8787;
  
 }
 
@@ -310,7 +342,7 @@ header {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
-    background-color: #FFFFFF;
+    background-color: #d1d0d0;
     width: 100%;
 
 }
@@ -355,27 +387,101 @@ header {
 }
 
   /* Stiluri pentru tabel */
-  #stats-table {
+  #confiscations-table {
     width: 100%;
     border-collapse: collapse; /* Asigură bordurile comune între celule */
 }
 
-#stats-table th, #stats-table td {
+#confiscations-table th, #confiscations-table td {
     border: 1px solid #ddd; /* Bordura pentru celule */
     padding: 8px; /* Spațiu în interiorul celulelor */
     text-align: center; /* Aliniere text în centru */
 }
 
-#stats-table th {
+#confiscations-table th {
     background-color: #f2f2f2; /* Fundal pentru antet */
     font-weight: bold; /* Text îngroșat pentru antet */
 }
 
-#stats-table tr:nth-child(even) {
+#confiscations-table tr:nth-child(even) {
     background-color: #f9f9f9; /* Fundal pentru rândurile pare */
 }
 
-#stats-table tr:hover {
+#confiscations-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+
+
+  /* Stiluri pentru tabel -> infractionality */
+  #infractionality-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#infractionality-table th, #infractionality-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#infractionality-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#infractionality-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#infractionalitys-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+ /* Stiluri pentru tabel -> emergencies */
+ #emergencies-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#emergencies-table th, #emergencies-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#emergencies-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#emergencies-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#emergencies-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+ /* Stiluri pentru tabel -> 'projects */
+ #projects-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#projects-table th, #projects-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#projects-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#projects-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#iprojects-table tr:hover {
     background-color: #ddd; /* Fundal la hover */
 }
 

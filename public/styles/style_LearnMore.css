@@ -230,42 +230,43 @@ header {
     cursor: pointer;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
+    width: 100px;
 }
 
 /* Stiluri pentru butoane */
 .container_1 .button1 {
-    background-color: #720006;
-    width: 70px;
+    background-color: #f0ec14;
+   
 }
 
 .container_1 .button2 {
     background-color: #dd1515;
-    width: 100px;
+    
 }
 
 .container_1 .button3 {
     background-color: #e6700f;
-    width: 130px;
+ 
 }
 
 .container_1 .button4 {
-    background-color: #f0ec14;
-    width: 160px;
+    background-color: #720006;
+   
 }
 
 .container_1 .button5 {
     background-color: #c8d64b;
-    width: 190px;
+   
 }
 
 .container_1 .button6 {
     background-color: #82f160;
-    width: 220px;
+  
 }
 
 .container_1 .button7 {
     background-color: #257a3f;
-    width: 250px;
+    
 }
 
 .container_1 img {
@@ -351,6 +352,31 @@ header {
 .input-field label {
     font-size: 16px; /* Dimensiunea fontului etichetei */
     color: #333; /* Culoarea textului etichetei */
+}
+
+  /* Stiluri pentru tabel */
+  #stats-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#stats-table th, #stats-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#stats-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#stats-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#stats-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
 }
 
 @media only screen and (max-width: 800px) {

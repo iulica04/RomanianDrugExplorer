@@ -40,7 +40,7 @@
             </form>
             <div class="have-account">
                 <p >Already have an account? </p>
-                <a href="pagina_de_login.php">Login</a>
+                <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
             </div>
         </div>
         

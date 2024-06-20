@@ -21,7 +21,7 @@
               <a href="#">News</a>
               <div class="for_login">
               <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
-                    <a href="/RomanianDrugExplorer/app/views/logout.php">Logout</a>
+                    <a>Logout</a>
               <?php else: ?>
                      <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
               <?php endif; ?>

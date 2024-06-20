@@ -76,7 +76,8 @@ class Router {
                 if ($controllerName === 'UsersController' && !empty($segments[1]) && is_numeric($segments[1])) {
                     // Handle PUT /users/{id}
                     $controller->updateUser($segments[1]);
-                } else {
+                } 
+                else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
                     http_response_code(405);
                     echo '405 Method Not Allowed';
@@ -93,7 +94,14 @@ class Router {
                  } elseif($controllerName === 'UsersController' && $segments[2] === 'logout') {
                     // Handle POST /users/logout
                     $controller->logoutUser();
-                 } else {
+                 } elseif ($controllerName === 'UsersController' && $segments[2] === 'forgot-password')
+                 {
+                    // Handle POST /users/forgot-password
+                    $controller->forgotPassword();
+                 } elseif($controllerName === 'UsersController' && $segments[2] === 'verify-code'){
+                    $controller->verifyCode();
+                 }
+                 else {
                     http_response_code(405);
                     echo '405 Method Not Allowed3'. $controllerName;
                     exit;

@@ -20,7 +20,7 @@ $('#loginForm').on('submit', function(e) {
             // Wait for 3 seconds then redirect to home page
             setTimeout(function() {
                 window.location.href = '/RomanianDrugExplorer/home';
-            }, 3000);
+            }, 2000);
         } else {
             showSnackbar(data.message, 'error');
         }

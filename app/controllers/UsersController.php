@@ -1,14 +1,17 @@
 <?php
 
 require_once dirname(__FILE__) . '/../models/User.php';
+require_once dirname(__FILE__) . '/../models/Code.php';
 require_once dirname(__FILE__) . '/../../vendor/autoload.php';
 use \Firebase\JWT\JWT;
 
 class UsersController {
     private $userModel;
+    private $codeModel;
 
     public function __construct() {
         $this->userModel = new User();
+        $this->codeModel = new Code();
     }
 
     public function getUsers() {
@@ -102,7 +105,7 @@ class UsersController {
         }
     
         // Check if the username already exists
-        if ($this->userModel->usernameExists($data['username'])) {
+        if ($this->userModel->getUserByUsername($data['username'])) {
             // Send response with status code 409 for conflict
             http_response_code(409);
             echo json_encode(['message' => 'Username already exists.']);
@@ -110,10 +113,17 @@ class UsersController {
         }
     
         // Check if the phone number already exists
-        if ($this->userModel->phoneNumberExists($data['phonenumber'])) {
+        if ($this->userModel->getUserByPhonenumber($data['phonenumber'])) {
             // Send response with status code 409 for conflict
             http_response_code(409);
             echo json_encode(['message' => 'Phone number already exists.']);
+            return;
+        }
+
+        if ($this->userModel->getUserByEmail($data['email'])) {
+            // Send response with status code 409 for conflict
+            http_response_code(409);
+            echo json_encode(['message' => 'Email already exists.']);
             return;
         }
     
@@ -193,6 +203,129 @@ class UsersController {
     // Send response with status code 200
     http_response_code(200);
     echo json_encode(["message" => "Login successful."]);
+    }
+
+
+    public function logoutUser() {
+        // Distrugi sesiunea
+        session_start();
+        session_destroy();
+
+        if (isset($_COOKIE['token'])) {
+            unset($_COOKIE['token']);
+            setcookie('token', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
+        }
+    
+        // Setezi un răspuns de succes
+        http_response_code(200);
+        echo json_encode(['message' => 'Successfully logged out']);
+    }
+
+    public function forgotPassword() {
+        // Get the JSON data from the request body
+        $json_data = file_get_contents('php://input');
+        $data = json_decode($json_data, true);
+    
+        // Check if JSON data is valid
+        if ($data === null) {
+            // Send response with status code 400 for invalid JSON
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid JSON data']);
+            return;
+        }
+    
+        // Define the required fields
+        $required_fields = ['username', 'email'];
+    
+        // Check if all required fields are present in the JSON data
+        foreach ($required_fields as $field) {
+            if (!array_key_exists($field, $data)) {
+                // Send response with status code 400 for missing fields
+                http_response_code(400);
+                echo json_encode(['message' => 'Missing required field: ' . $field]);
+                return;
+            }
+        }
+    
+        $user = $this->userModel->getUserByUsername($data['username']);
+        if (!$user) {
+            // Send response with status code 404 if username not found
+            http_response_code(404);
+            echo json_encode(['message' => 'Username not found']);
+            return;
+        }
+    
+        // Check if the email matches the username
+        if ($user['email'] !== $data['email']) {
+            // Send response with status code 400 if email does not match username
+            http_response_code(400);
+            echo json_encode(['message' => 'Email does not match username']);
+            return;
+        }
+    
+        // Generate a random token
+        $code = rand(1000, 9999);
+    
+        while($this->codeModel->getCodeByCode($code)) {
+            $code = rand(1000, 9999);
+        }
+
+        // Save the code in the database
+        $this->codeModel->addCode($user['id'], $code);
+
+        // Send the code to the user's email
+        if($this->userModel->sendEmail($data['email'], $code, $user['username'])) {
+            // Send response with status code 200
+            http_response_code(200);
+            echo json_encode(['message' => 'Reset code sent to email']);
+        } else {
+            // Send response with status code 500 for server error
+            http_response_code(500);
+            echo json_encode(['message' => 'Failed to send reset code']);
+        }
+        
+    }
+
+    public function verifyCode(){
+        $json_data = file_get_contents('php://input');
+        $data = json_decode($json_data, true);
+    
+        // Check if JSON data is valid
+        if ($data === null) {
+            // Send response with status code 400 for invalid JSON
+            http_response_code(400);
+            echo json_encode(['error' => 'Invalid JSON data']);
+            return;
+        }
+    
+        // Define the required fields
+        $required_fields = ['code'];
+
+        // Check if all required fields are present in the JSON data
+        foreach ($required_fields as $field) {
+            if (!array_key_exists($field, $data)) {
+                // Send response with status code 400 for missing fields
+                http_response_code(400);
+                echo json_encode(['message' => 'Missing required field: ' . $field]);
+                return;
+            }
+        }
+
+        // Get the code from the request
+        $code = $data['code'];
+
+        // Find the code in the database
+        $codeData = $this->codeModel->getCodeByCode($code);
+        if(!$codeData) {
+            // Send response with status code 404 if code not found
+            http_response_code(404);
+            echo json_encode(['message' => 'Code not found']);
+            return;
+        }
+
+        // Send response with status code 200 if code is valid
+        http_response_code(200);
+        echo json_encode(['message' => 'Code verified successfully']);
     }
 }
 

@@ -40,36 +40,37 @@
         </select>
     </div>
     <div>
-        <h1 class="year">
-            <?php if(isset($_GET['year'])) {
-                echo $_GET['year'];
-            } else {
-                echo 'Choose a year...';
-            } ?>
-        </h1>
-    </div>
+    <h1 id="selected-year">
+        <?php if(isset($_GET['year'])) {
+            echo $_GET['year'];
+        } else {
+            echo 'Choose a year...';
+        } ?>
+    </h1>
+   </div>
+  
     <div class="container_1">
-        <div class="card">
-            <div class="image-column">
-                <div class="card_1">
-                    <div class="title_map"><h1>Drug Abuse Map:</h1></div>
-                    <img src="C:\Users\Cpirlac\Desktop\TEH web\Harta.jpg" alt="Drug Abuse Map">
-                </div>
-            </div>
-
-            <div class="button-column">
-                <div class="card_1">
-                    <button class="button button1">0%</button>
-                    <button class="button button2">0-5%</button>
-                    <button class="button button3">5-10%</button>
-                    <button class="button button4">10-20%</button>
-                    <button class="button button5">20-30%</button>
-                    <button class="button button6">30-50%</button>
-                    <button class="button button7">50-100%</button>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card_2">
+            <h1>Drug Abuse Statistics:</h1>
+            <p>Here you can find the statistics of the drug abuse in Romania. The data is updated every year.</p>
         </div>
+    <table id="stats-table">
+        <thead>
+            <tr>
+                <th>Drog</th>
+                <th>Gramaj</th>
+                <th>Comprimate</th>
+                <th>Mililitri</th>
+                <th>Capturi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aici vor fi adăugate rândurile pentru statistici -->
+        </tbody>
+    </table>
     </div>
+   </div>
 
     <div class="container_2">
         <div class="card">
@@ -117,7 +118,8 @@
         }
         console.log('Selected year:', selectedYear);
      // Face o cerere GET către ruta corespunzătoare în router
-        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/${selectedYear}';
+         var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + selectedYear;
+        console.log('Requesting data from:', url);
         fetch(url)
     .then(response => {
         if (!response.ok) {
@@ -145,28 +147,26 @@
     }
     
     function renderStats(stats, year) {
-        var container = document.querySelector('.container_1');
-        container.innerHTML = ''; // Curăță containerul existent
+    var tableBody = document.querySelector('#stats-table tbody');
+    tableBody.innerHTML = ''; // Curăță conținutul actual al tabelului
+
+    // Iterează prin fiecare statistică și adaugă un rând nou în tabel pentru fiecare
+    stats.forEach(stat => {
+        var row = document.createElement('tr');
         
-        // Crează elemente HTML pentru fiecare dată din stats și adaugă-le în container
-        stats.forEach(stat => {
-            var card = document.createElement('div');
-            card.classList.add('card_3');
-            
-            // Aici poți construi structura HTML pentru fiecare înregistrare de confiscare de droguri
-            var content = `
-            <h2>${stat.drog}</h2> 
-            <p>Gramaj: ${stat.grame}  </p>
-            <p>Comprimate: ${stat.comprimate}</p>
-            <p>Mililitri: ${stat.mililitri} </p>
-            <p>Capturi: ${stat.capturi}</p>
-            `;
-               
-            
-            card.innerHTML = content;
-            container.appendChild(card);
-        });
-    }
+        // Construiește celulele pentru fiecare câmp din statistică
+        var cells = `
+            <td>${stat.drog}</td>
+            <td>${stat.grame}</td>
+            <td>${stat.comprimate}</td>
+            <td>${stat.mililitri}</td>
+            <td>${stat.capturi}</td>
+        `;
+        
+        row.innerHTML = cells;
+        tableBody.appendChild(row);
+    });
+}
 </script>
 
 </body>

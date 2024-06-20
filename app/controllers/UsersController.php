@@ -194,6 +194,22 @@ class UsersController {
     http_response_code(200);
     echo json_encode(["message" => "Login successful."]);
     }
+
+
+    public function logoutUser() {
+        // Distrugi sesiunea
+        session_start();
+        session_destroy();
+
+        if (isset($_COOKIE['token'])) {
+            unset($_COOKIE['token']);
+            setcookie('token', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
+        }
+    
+        // Setezi un răspuns de succes
+        http_response_code(200);
+        echo json_encode(['message' => 'Successfully logged out']);
+    }
 }
 
 ?>

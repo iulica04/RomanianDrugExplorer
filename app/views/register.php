@@ -1,8 +1,9 @@
 <?php session_start(); ?>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Register.css">
+    <link rel="stylesheet" type="text/css" href="/RomanianDrugExplorer/public/styles/style_Register.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
@@ -10,6 +11,7 @@
 <body>
     <div class="main">
         <input type="checkbox" id="chk">
+        
         
         <div class="signup">
             <form id="createUserForm" method="post">
@@ -36,7 +38,12 @@
                 </div>
                 <button id="signUpButton" disabled>Sign up</button>
             </form>
+            <div class="have-account">
+                <p >Already have an account? </p>
+                <a href="pagina_de_login.php">Login</a>
+            </div>
         </div>
+        
         
         <div class="login">
             <form id="loginForm" method="post">
@@ -52,17 +59,16 @@
                     <span class="error" id="password-error"></span>
                 </div>
                 <button id="loginbutton">Login</button>
-            </form>
+            </form>   
         </div>
+
+        <div id="snackbar"></div>
+
+        <script src="/RomanianDrugExplorer/public/utils/clearFormInputs.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/login.js"></script>
     </div>
-
-    <div id="snackbar"></div>
-
-    <script src="/RomanianDrugExplorer/public/utils/clearFormInputs.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/login.js"></script>
-    
 </body>
 </html>

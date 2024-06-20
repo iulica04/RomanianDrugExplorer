@@ -90,7 +90,10 @@ class Router {
                 } elseif($controllerName === 'UsersController' && $segments[2] === 'login') {
                     // Handle POST /users/login
                     $controller->loginUser();
-                 }else {
+                 } elseif($controllerName === 'UsersController' && $segments[2] === 'logout') {
+                    // Handle POST /users/logout
+                    $controller->logoutUser();
+                 } else {
                     http_response_code(405);
                     echo '405 Method Not Allowed3'. $controllerName;
                     exit;

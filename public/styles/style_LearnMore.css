@@ -171,6 +171,12 @@ header {
     margin-bottom: 20px;
 }
 
+.card_3 {
+    width: 100%; /* Ocupă toată lățimea disponibilă */
+    margin-bottom: 10px; /* Spațiu între carduri */
+    background-color: #f0f0f0; /* Culoare de fundal opțională */
+    padding: 10px; /* Spațiu interior */
+}
 
 .card .card_1{
     display: flex;

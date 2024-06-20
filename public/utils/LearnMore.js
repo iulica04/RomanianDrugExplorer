@@ -1,3 +1,19 @@
+// Definește funcția showSnackbar înainte de utilizare
+function showSnackbar(message, messageType) {
+    var snackbar = document.getElementById("snackbar");
+    snackbar.innerHTML = message;
+    snackbar.className = "show";
+
+    // Adaugă clasa de tip de mesaj la Snackbar
+    if (messageType === 'error') {
+        snackbar.className += " error";
+    } else if (messageType === 'info') {
+        snackbar.className += " info";
+    }
+
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+}
+
 function updateYearUrl() {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
@@ -102,6 +118,7 @@ function downloadFile(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         console.error('No year selected.');
+        showSnackbar('Selectează un an înainte de a descărca fișierul.', 'error');
         return;
     }
 
@@ -113,6 +130,7 @@ function downloadFile(type, format) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
+                showSnackbar('Descărcarea fișierului a eșuat.', 'error');
                 throw new Error('Failed to download file.');
             }
             return response.blob();
@@ -125,6 +143,7 @@ function downloadFile(type, format) {
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+            showSnackbar('Descărcarea fișierului a reușit.', 'info');
         })
         .catch(error => {
             console.error('Download error:', error);

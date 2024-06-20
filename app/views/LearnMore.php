@@ -3,6 +3,7 @@
 <head>
     <title>Learn More</title>
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta charset="UTF-8">
 </head>
@@ -169,6 +170,8 @@
         </div>
     </div>
 
+    <div id="snackbar"></div>
+
     <div class="container_2">
         <div class="card">
             <ul>
@@ -176,7 +179,7 @@
                 <li>
                     <i class="large material-icons">library_books</i>
                     <a href="2021-capturidroguri.xlsx">Situația confiscărilor de droguri</a>
-                    <button class="button button1" onclick="downloadFile('capturidroguri', 'csv')"><a>Download Report CSV</a></button>
+                    <button class="button button2" onclick="downloadFile('capturidroguri', 'csv')"><a>Download Report CSV</a></button>
                     <p id="download-error-confiscations" style="color: red; display: none;">Failed to download file.</p>
                 </li>
                 <li>

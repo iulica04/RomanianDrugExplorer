@@ -481,9 +481,11 @@ header {
     background-color: #f9f9f9; /* Fundal pentru rândurile pare */
 }
 
-#iprojects-table tr:hover {
+#projects-table tr:hover {
     background-color: #ddd; /* Fundal la hover */
 }
+
+
 
 @media only screen and (max-width: 800px) {
     .items {

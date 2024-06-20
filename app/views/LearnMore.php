@@ -105,7 +105,7 @@
 
 <script>
     function updateYearUrl() {
-        var selectedYear = document.getElementById('year-select').value;
+        var selectedYear = document.getElementById('year-select').value ;
         if (selectedYear === '') {
             return; // Dacă nu este selectat niciun an, nu face nimic
         }
@@ -178,7 +178,7 @@ function downloadFile(fileName) {
         console.error('No year selected.');
         return;
     }
-    
+
     var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName; // Asigură-te că adresa URL este corectă și conduce la locația reală a fișierului
 
     fetch(url)

@@ -189,7 +189,7 @@ function saveTableAsSVG(tableId) {
     link.download = 'table.svg';
     link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
     link.click();
-    snackbar('Tabelul a fost salvat ca fișier SVG.', 'info');
+    showSnackbar('Tabelul a fost salvat ca fișier SVG.', 'info');
 }
 
 // Download CSV file related to the selected year

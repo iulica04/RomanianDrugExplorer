@@ -22,11 +22,13 @@ function updateYearUrl() {
                 try {
                     const jsonData = JSON.parse(data);
                     if (jsonData && jsonData.stats) {
-                      
-                            renderChartGenderAge(jsonData.stats, jsonData.year);
+                           if(type === 'emergencies/gender') {  
                             renderChartGenderDrug(jsonData.stats, jsonData.year);
+                           }else if(type === 'infractionality/gender') {
+                            renderChartGenderAge(jsonData.stats, jsonData.year);
+                           }else {
                             renderStats(jsonData.stats, jsonData.year, type);
-                        
+                           }
                     } else {
                         console.error('Empty response or invalid data received:', jsonData);
                     }
@@ -283,7 +285,7 @@ function renderChartPenalitiesSituation(stats, year) {
             backgroundColor: ["#007bff", "#87cefa", "#ff69b4"],
             borderColor: ["#0056b3", "#6495ed", "#ff1493"],
             borderWidth: 1,
-            data: [0, 0, 0, 0]
+            data: [0, 0, 0]
         }]
     };
 
@@ -301,7 +303,7 @@ function renderChartPenalitiesSituation(stats, year) {
     if (existingChart) {
         existingChart.destroy();
     }
-
+    ctx.canvas.height = 200;
     existingChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
@@ -453,8 +455,8 @@ function renderChartPenalitiesSituation(stats, year) {
         });
 }
 
-// Funcția pentru afișarea statisticilor de uregnte medicale si drog 
-// Funcția pentru afișarea statisticilor de urgențe medicale și droguri
+
+// Functia pentru afisarea statisticilor de gen si droguri
 function renderChartGenderDrug(stats, year) {
     var chartData = {
         labels: ["M-Canabis", "M-Stimulanti", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanti", "F-Opiacee", "F-NSP"],
@@ -586,62 +588,63 @@ function renderChartGenderDrug(stats, year) {
     });
 }
 
-
-// Funcția pentru afișarea statisticilor de vârstă și drog
+// Functia pentru afisarea statisticilor de varsta și drog
 function renderChartAgeDrug(stats, year) {
     var chartData = {
-        labels: ["Male - Major", "Male - Minor", "Female - Major", "Female - Minor"],
+        labels: ["(<25)-Canabis", "(25-34)-Canabis", "(>35)-Canabis", "(<25)-Stimulanti", "(25-34)-Stimulanti", "(>35)-Stimulanti", "(<25)-Opiacee", "(25-34)-Opiacee", "(>35)-Opiacee", "(<25)-NSP", "(25-34)-NSP", "(>35)-NSP"],
         datasets: [{
             label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1"], // Culori personalizate
-            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a"], // Culori de border personalizate
-            borderWidth: 1, // Grosimea borderului
-            
-            innerHeight: 300, // Înălțimea interioară a barelor
-            outerHeight: 300, // Înălțimea exterioară a barelor
-            data: [0, 0, 0, 0] // Inițializare cu zero pentru fiecare categorie
+            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1", "#7bff00", "#cefa87", "#69b4ff", "#b6c1ff", "#ff8c00", "#ffd700", "#32cd32", "#8b0000"], // Custom colors
+            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a", "#5f9ea0", "#98fb98", "#4682b4", "#dda0dd", "#cd853f", "#ffc0cb", "#7fff00", "#ff4500"], // Custom border colors
+            borderWidth: 1, // Border width
+            data: Array(12).fill(0) // Initialize with zero for each category
         }]
     };
 
     stats.forEach(stat => {
-        if (stat.gen === 'barbati' && stat.varsta === 'majori') {
-            chartData.datasets[0].data[0] = stat.numar;
-        } else if (stat.gen === 'barbati' && stat.varsta === 'minori') {
-            chartData.datasets[0].data[1] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'majori') {
-            chartData.datasets[0].data[2] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'minori') {
-            chartData.datasets[0].data[3] = stat.numar;
+        if (stat.drog === 'Canabis') {
+            if (stat.varsta === '<25') chartData.datasets[0].data[0] = stat.numar;
+            else if (stat.varsta === '25-34') chartData.datasets[0].data[1] = stat.numar;
+            else if (stat.varsta === '>35') chartData.datasets[0].data[2] = stat.numar;
+        } else if (stat.drog === 'Stimulanti') {
+            if (stat.varsta === '<25') chartData.datasets[0].data[3] = stat.numar;
+            else if (stat.varsta === '25-34') chartData.datasets[0].data[4] = stat.numar;
+            else if (stat.varsta === '>35') chartData.datasets[0].data[5] = stat.numar;
+        } else if (stat.drog === 'Opiacee') {
+            if (stat.varsta === '<25') chartData.datasets[0].data[6] = stat.numar;
+            else if (stat.varsta === '25-34') chartData.datasets[0].data[7] = stat.numar;
+            else if (stat.varsta === '>35') chartData.datasets[0].data[8] = stat.numar;
+        } else if (stat.drog === 'NSP') {
+            if (stat.varsta === '<25') chartData.datasets[0].data[9] = stat.numar;
+            else if (stat.varsta === '25-34') chartData.datasets[0].data[10] = stat.numar;
+            else if (stat.varsta === '>35') chartData.datasets[0].data[11] = stat.numar;
         }
     });
 
     var ctx = document.getElementById('emergencies-chart').getContext('2d');
-   // ctx.canvas.height = 350; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
-    // Distruge chart-ul existent dacă există
+
+    // Destroy existing chart if it exists
     if (existingChartEmergency) {
         existingChartEmergency.destroy();
     }
-    
-     ctx.canvas.height = 200; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
+
+    ctx.canvas.height = 200; // Canvas height
 
     existingChartEmergency = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: {
-            
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Culoarea grilajului
-                        borderDash: [2, 2], // Linie întreruptă pentru grilaj
+                        color: "rgba(0, 0, 0, 0.1)", // Grid color
+                        borderDash: [2, 2], // Dashed grid lines
                     },
                     title: {
                         display: true,
                         text: 'Number of Cases',
-                        color: '#333', // Culoarea textului
+                        color: '#333', // Text color
                         font: {
                             family: 'Arial',
                             size: 14,
@@ -670,7 +673,7 @@ function renderChartAgeDrug(stats, year) {
                 title: {
                     display: true,
                     text: 'Drug Related Emergencies by Age and Drugs (' + year + ')',
-                    color: '#000', // Culoarea titlului
+                    color: '#000', // Title color
                     font: {
                         family: 'Arial',
                         size: 18,
@@ -717,60 +720,64 @@ function renderChartAgeDrug(stats, year) {
         }
     });
 }
+
+//Functia pentru afisarea statisticilor de urgente medicale si droguri
 function renderChartEmergencyDrug(stats, year) {
     var chartData = {
-        labels: ["Male - Major", "Male - Minor", "Female - Major", "Female - Minor"],
+        labels: ["Intoxicație", "Utilizare nocivă", "Dependență", "Sevraj", "Tulburări de comportament", "Supradoză", "Alte diagnostice", "Testare toxicologică"],
         datasets: [{
             label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1"], // Culori personalizate
-            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a"], // Culori de border personalizate
-            borderWidth: 1, // Grosimea borderului
-            
-            innerHeight: 300, // Înălțimea interioară a barelor
-            outerHeight: 300, // Înălțimea exterioară a barelor
-            data: [0, 0, 0, 0] // Inițializare cu zero pentru fiecare categorie
+            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1", "#7bff00", "#cefa87", "#ff8c00", "#ffd700"], // Custom colors
+            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a", "#5f9ea0", "#98fb98", "#cd853f", "#ffc0cb"], // Custom border colors
+            borderWidth: 1, // Border width
+            data: Array(8).fill(0) // Initialize with zero for each category
         }]
     };
 
     stats.forEach(stat => {
-        if (stat.gen === 'barbati' && stat.varsta === 'majori') {
+        if (stat.diagnostic === 'Intoxicatie') {
             chartData.datasets[0].data[0] = stat.numar;
-        } else if (stat.gen === 'barbati' && stat.varsta === 'minori') {
+        } else if (stat.diagnostic === 'Utilizare nociva') {
             chartData.datasets[0].data[1] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'majori') {
+        } else if (stat.diagnostic === 'Dependenta') {
             chartData.datasets[0].data[2] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'minori') {
+        } else if (stat.diagnostic === 'Sevraj') {
             chartData.datasets[0].data[3] = stat.numar;
+        } else if (stat.diagnostic === 'Tulburari de comportament') {
+            chartData.datasets[0].data[4] = stat.numar;
+        } else if (stat.diagnostic === 'Supradoaza') {
+            chartData.datasets[0].data[5] = stat.numar;
+        } else if (stat.diagnostic === 'Alte diagnostice') {
+            chartData.datasets[0].data[6] = stat.numar;
+        } else if (stat.diagnostic === 'Testare toxicologica') {
+            chartData.datasets[0].data[7] = stat.numar;
         }
     });
 
     var ctx = document.getElementById('emergencies-chart').getContext('2d');
-   // ctx.canvas.height = 350; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
-    // Distruge chart-ul existent dacă există
+
+    // Destroy existing chart if it exists
     if (existingChartEmergency) {
         existingChartEmergency.destroy();
     }
-    
-     ctx.canvas.height = 200; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
+
+    ctx.canvas.height = 200; // Canvas height
 
     existingChartEmergency = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: {
-            
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Culoarea grilajului
-                        borderDash: [2, 2], // Linie întreruptă pentru grilaj
+                        color: "rgba(0, 0, 0, 0.1)", // Grid color
+                        borderDash: [5, 5], // Dashed grid lines
                     },
                     title: {
                         display: true,
                         text: 'Number of Cases',
-                        color: '#333', // Culoarea textului
+                        color: '#333', // Text color
                         font: {
                             family: 'Arial',
                             size: 14,
@@ -781,7 +788,7 @@ function renderChartEmergencyDrug(stats, year) {
                 x: {
                     grid: {
                         color: "rgba(0, 0, 0, 0.1)",
-                        borderDash: [2, 2],
+                        borderDash: [5, 5],
                     },
                     title: {
                         display: true,
@@ -798,8 +805,8 @@ function renderChartEmergencyDrug(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Related Emergencies by Emergencies and Drugs (' + year + ')',
-                    color: '#000', // Culoarea titlului
+                    text: 'Drug Related Emergencies by Type (' + year + ')',
+                    color: '#000', // Title color
                     font: {
                         family: 'Arial',
                         size: 18,
@@ -846,3 +853,4 @@ function renderChartEmergencyDrug(stats, year) {
         }
     });
 }
+

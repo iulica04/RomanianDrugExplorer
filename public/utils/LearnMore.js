@@ -1,23 +1,8 @@
-// Definește funcția showSnackbar înainte de utilizare
-function showSnackbar(message, messageType) {
-    var snackbar = document.getElementById("snackbar");
-    snackbar.innerHTML = message;
-    snackbar.className = "show";
-
-    // Adaugă clasa de tip de mesaj la Snackbar
-    if (messageType === 'error') {
-        snackbar.className += " error";
-    } else if (messageType === 'info') {
-        snackbar.className += " info";
-    }
-
-    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
-}
 
 function updateYearUrl() {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
-        return; // Dacă nu este selectat niciun an, nu face nimic
+        return; 
     }
     console.log('Selected year:', selectedYear);
 

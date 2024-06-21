@@ -183,26 +183,27 @@ class UsersController {
         }
 
 
-    $key = "your_secret_key"; // Replace with your secret key
-    $payload = array(
-        "iss" => "your_issuer", // Replace with your issuer
-        "aud" => "your_audience", // Replace with your audience
-        "iat" => time(),
-        "exp" => time() + (60*60), // Token valid for 1 hour
-        "data" => array(
-            "id" => $user['id'],
-            "username" => $user['username']
-        )
-    );
-    $jwt = JWT::encode($payload, $key, 'HS256');
+        $key = "your_secret_key"; // Replace with your secret key
+        $payload = array(
+            "iss" => "your_issuer", // Replace with your issuer
+            "aud" => "your_audience", // Replace with your audience
+            "iat" => time(),
+            "exp" => time() + (60*60), // Token valid for 1 hour
+            "data" => array(
+                "id" => $user['id'],
+                "username" => $user['username']
+            )
+        );
+        $jwt = JWT::encode($payload, $key, 'HS256');
 
-    // Store JWT in a cookie
-    setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
-    $_SESSION['loggedin'] = true;
+        // Store JWT in a cookie
+        setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
+        $_SESSION['loggedin'] = true;
+        $_SESSION['isAdmin'] = $user['role'] === 'admin' ? true : false;
 
-    // Send response with status code 200
-    http_response_code(200);
-    echo json_encode(["message" => "Login successful."]);
+        // Send response with status code 200
+        http_response_code(200);
+        echo json_encode(["message" => "Login successful."]);
     }
 
 
@@ -363,10 +364,12 @@ class UsersController {
         $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
         $result = $this->userModel->resetPassword($id, $hashed_password);
 
-
+        $user = $this->userModel->getUserById($id);
+        $this->codeModel->deleteCodeByUserId($user['id']);
         //You can be more thorough with error codes for example and include the 204 no content
         if($result) {
             // Send response with status code 200 if user was updated
+
             http_response_code(200);
             echo json_encode(['message' => 'User updated succesfully']);
         } else {

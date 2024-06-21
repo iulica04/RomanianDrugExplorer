@@ -1,7 +1,10 @@
+
+<?php session_start(); ?>
 <html>
 <head>
     <title> Home Page</title>
     <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Home.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <meta charset="UTF-8">
 </head>
 <body>
@@ -13,11 +16,20 @@
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <div class="list">
-              <a href="#about">About</a>
-              <a href="#">Projects</a>
-              <a href="#">News</a>
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true)
+            { ?>
+                <a href="/RomanianDrugExplorer/app/views/addData.php">Add Data</a>
+                <a href="/RomanianDrugExplorer/app/views/getUsers.php">Users</a>
+              <?php }  else { ?>
+                <a href="#about">About</a>
+                <a href="#">Contact</a>
+                <?php } ?>
               <div class="for_login">
-                <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
+              <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
+                    <a>Logout</a>
+              <?php else: ?>
+                     <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
+              <?php endif; ?>
               </div> 
             </div>
         </nav>
@@ -51,6 +63,7 @@
                 </div>
             </div>
           </div>
+          <div id="snackbar"></div>
         <div>
             <footer>
                 <p>Author: Hege Refsnes</p>
@@ -58,24 +71,20 @@
             </footer>
         </div>
     </div>   
+    <script src="/RomanianDrugExplorer/public/utils/logout.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
     <script>
         function toggleMenu() {
              var navList = document.getElementById('navList');
             navList.classList.toggle('active');
         }
 
-      /*  document.querySelector('.for_login a').addEventListener('click', function(event) {
-            event.preventDefault();
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '../app/views/login.php');
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.body.innerHTML = xhr.responseText;
-                }
-            };
-            xhr.send();
-        }); */
+        document.querySelector('.for_login a').addEventListener('click', function(event) {
+    if (event.target.textContent === 'Logout') {
+        event.preventDefault();
+        logout();
+    }
+});
     </script> 
 </body>
 </html>

@@ -1,115 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> Learn More</title>
-    <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
+    <title>Learn More</title>
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <meta charset="UTF-8">
 </head>
+
 <body>
-  <header>
-    <h1 class="title">Romanian Drug Explorer</h1>
-    <nav class="items">
-        <div class="logo">
-            <a href="#">RoDX</a>
-        </div>          
-        <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>     
-        <div class="list">
-          <a href="LearnMore.html">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="Contact.html">Contact</a>
-          <a href="HelpAndAdvice.html">Help & Advice</a>
-          <div class="for_login">
-            <a href="#">Login</a>
-          </div> 
-        </div>
-    </nav>
-</header>
+    <header>
+        <h1 class="title">Romanian Drug Explorer</h1>
+        <nav class="items">
+            <div class="logo">
+                <a href="#">RoDX</a>
+            </div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <div class="list">
+                <a href="/RomanianDrugExplorer/app/views/LearnMore.php">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="/RomanianDrugExplorer/app/views/Contact.php">Contact</a>
+                <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
+                <div class="for_login">
+                    <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <div class="main">
-          
-            <h1>Statistics of the drug abuse :</h1>
-            <div class="input-field col s12">
-                <select onchange="redirect()">
-                    <option value="" disabled selected>Choose a year...</option>
-                    <option value="1">2023</option>
-                    <option value="statistics_2022.html">2022</option>
-                    <option value="statistics_2021.html">2021</option>
-                    <option value="statistics_2020.html">2020</option>
-                </select>
-          </div>
-          <div><h1 class="year">2023</h1></div> 
-         
+        <h1>Statistics of the drug abuse:</h1>
+        <div class="input-field col s12">
+            <select id="year-select" onchange="updateYearUrl()">
+                <option value="" disabled selected>Choose a year...</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+        </div>
+
+        <div>
+            <h1 id="selected-year">
+                <?php if (isset($_GET['year'])) {
+                    echo $_GET['year'];
+                } else {
+                    echo 'Statistici pe ani...';
+                } ?>
+            </h1>
+        </div>
+
         <div class="container_1">
             <div class="card">
-             
-                <div class="image-column">
-                  <div class ="card_1">
-                    <div class="title_map"><h1>Drug Abuse Map:</h1></div>
-                    <img src="C:\Users\Cpirlac\Desktop\TEH web\Harta.jpg" alt="Drug Abuse Map">
-                  </div>
+                <div class="card_1">
+                    <h1>Drug Confiscation Statistics:</h1>
+                    <p>Here you can find the statistics about drug confiscation in Romania.</p>
+                    <button class="button button2" onclick="downloadFile('confiscations', 'png')">
+                        <a href="#">Download PNG</a>
+                    </button>
+                    <button class="button button2" onclick="downloadFile('confiscations', 'svg')">
+                        <a href="#">Download SVG</a>
+                    </button>
                 </div>
-               
-               <div class="button-column">
-                <div class ="card_1">
-                  <button class="button button1">0%</button>
-                  <button class="button button2">0-5%</button>
-                  <button class="button button3">5-10%</button>
-                  <button class="button button4">10-20%</button>
-                  <button class="button button5">20-30%</button>
-                  <button class="button button6">30-50%</button>
-                  <button class="button button7">50-100%</button>
-               </div>
-               </div>
-            </div>
-        </div>
-        
-        <div class="container_2">
-            <div class="card">
-            <ul> 
-              <h1>Resources:</h1>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Admiterea_la_tratament.xlsx">Admiterea la tratament ca urmare a consumului de stupefiante</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                    </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Urgente_medicale.xlsx">Urgențele medicale datorate consumului de droguri</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Bolile_infectioase.xlsx">Bolile infecțioase asociate consumului de droguri</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Confiscari_droguri.xlsx">Situația confiscărilor de droguri</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Infractiuni_regim_droguri.xlsx">Infracționalitatea la regimul drogurilor</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Proiecte_campanii_prevenire.xlsx">Proiectele și campaniile naționale de prevenire</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-                <li><i class="large material-icons">library_books</i>
-                    <a href="Precursori.xlsx">Precursorii (substanțe clasificate și operațiunile autorizate)</a>
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Download</button>
-                </li>
-            </ul>
-            
+
+                <div class="card_2">
+                    <table id="confiscations-table">
+                        <thead>
+                            <tr>
+                                <th>Drog</th>
+                                <th>Grame</th>
+                                <th>Comprimate</th>
+                                <th>Mililitri</th>
+                                <th>Capturi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aici vor fi adăugate rândurile pentru statistici -->
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 
-      </div>
-      
-      <script>
-        function toggleMenu() {
-          var navList = document.getElementById('navList');
-          navList.classList.toggle('active');
-        }
-      </script>
+        <div class="container_1">
+            <div class="card">
+                <div class="card_1">
+                    <h1>Drug Related Infractionality Statistics:</h1>
+                    <p>Here you can find the statistics about drug related infractionality in Romania.</p>
+                    <button class="button button2"
+                        onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
+                    <button class="button button2"
+                        onclick="saveChart('infractionality-chart', 'chart', 'svg')"><a>Download SVG</a></button>
+
+                </div>
+
+                <div class="card_2">
+                    <div class="chart-container">
+                        <canvas id="infractionality-chart"></canvas>
+                    </div>
+                    <div class="radio-buttons">
+                        <label>
+                            <input name="chartType" type="radio" checked onchange="updateChart('gender-age','infractionality')" />
+                            <span>Gender & Age</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChart('penalties-situation','infractionality')" />
+                            <span>Penalties & Situation</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container_1">
+            <div class="card">
+                <div class="card_1">
+                    <h1>Drug Emergencies Statistics:</h1>
+                    <p>Here you can find the statistics about drug emergencies in Romania.</p>
+                     <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
+                     <button class="button button2" onclick="saveChart('emergencies-chart', 'chart', 'svg')"><a>Download SVG</a></button>
+
+                </div>
+
+                <div class="card_2">
+                    <div class="chart-container">
+                        <canvas id="emergencies-chart"></canvas>
+                    </div>
+                    <div class="radio-buttons">
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug','emergencies')" />
+                            <span>Emergencie & Drug</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" checked onchange="updateChartEmergencies('gender-drug','emergencies')" />
+                            <span>Gender & Drug</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('age-drug','emergencies')" />
+                            <span>Age & Drug</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container_1">
+            <div class="card">
+                <div class="card_1">
+                    <h1>Anti-Drug Projects Statistics:</h1>
+                    <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
+                    <button class="button button2" onclick="downloadFile('projects', 'png')"><a>Download
+                            PNG</a></button>
+                    <button class="button button2" onclick="downloadFile('projects', 'svg')"><a>Download
+                            SVG</a></button>
+                </div>
+
+                <div class="card_2">
+                    <table id="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Tip Proiect</th>
+                                <th>Nume Proiect</th>
+                                <th>Numar de beneficiari</th>
+                                <th>Nivel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aici vor fi adăugate rândurile pentru statistici -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="snackbar"></div>
+
+        <div class="container_2">
+            <div class="card">
+                <ul>
+                    <h1>Resources:</h1>
+                    <li>
+                        <i class="large material-icons">library_books</i>
+                        <a href="Test.php">Situația confiscărilor de droguri</a>
+                        <button class="button button2" onclick="downloadFile('capturidroguri', 'csv')"><a>Download
+                                Report CSV</a></button>
+                    </li>
+                    <li>
+                        <i class="large material-icons">library_books</i>
+                        <a href="Urgente_medicale.xlsx">Urgențele medicale datorate consumului de droguri</a>
+                        <button class="button button2" onclick="downloadFile('urgentemedicale', 'csv')"><a>Download
+                                Report CSV</a></button>
+
+                    </li>
+                    <li>
+                        <i class="large material-icons">library_books</i>
+                        <a href="Infractiuni_regim_droguri.xlsx">Infracționalitatea la regimul drogurilor</a>
+                        <button class="button button2" onclick="downloadFile('infractionalitate', 'csv')"><a>Download
+                                Report CSV</a></button>
+
+                    </li>
+                    <li>
+                        <i class="large material-icons">library_books</i>
+                        <a href="Proiecte_campanii_prevenire.xlsx">Proiectele și campaniile naționale de prevenire</a>
+                        <button class="button button2" onclick="downloadFile('proiectesicampanii', 'csv')"><a>Download
+                                Report CSV</a></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

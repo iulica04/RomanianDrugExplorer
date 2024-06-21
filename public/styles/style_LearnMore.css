@@ -181,30 +181,18 @@ header {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
-    background-color: #FFFFFF;
+    background-color: #E0FBE2;
     margin-bottom: 20px;
-    width: 100%;
-
+    width: 40%;
+    margin-top: 0%;
 }
 
-.image-column, .button-column {
+.card_1, .card_2 {
     flex: 1; /* Atribuie spațiul disponibil în mod egal ambelor coloane */
     margin-right: 20px; /* Adaugă un spațiu între coloane */
 }
 
-.button-column {
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
-    padding-right: 20px;
-}
 
-.image-column {
-    margin-top: 0px;
-    display: flex;
-    flex-direction: column;
-    padding-right: 20px;
-}
 .card_1 .title_map {
    
     text-align: left;
@@ -224,42 +212,81 @@ header {
     cursor: pointer;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
+   
 }
 
 /* Stiluri pentru butoane */
 .container_1 .button1 {
-    background-color: #720006;
-    width: 70px;
+    background-color: #b5b5b5;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 250px;
+   
+}
+.container_1 .button1 > a {
+    color: #2a865d;
+    text-decoration: none;
+    padding: 10px 10px; 
+    margin: 0 10px;
+    display: inline-block;
+}
+.container_1 .button1:hover{
+    background-color: #436918; 
 }
 
-.container_1 .button2 {
-    background-color: #dd1515;
-    width: 100px;
+.container_1 .button1 a:hover{
+    color: #7f9f7d;
 }
+
+
+/*BUTON 2*/
+.container_1 .button2 {
+    background-color: #3A4D39;
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 200px;
+}
+
+.container_1 .button2 > a {
+    color: #becbaf;
+    text-decoration: none;
+    padding: 10px 10px; 
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.container_1 .button2:hover{
+    background-color: #8d9188; 
+}
+
+.container_1 .button2 a:hover{
+    color: #3A4D39;
+}
+
 
 .container_1 .button3 {
-    background-color: #e6700f;
-    width: 130px;
+    background-color: #CA8787;
+ 
 }
 
 .container_1 .button4 {
-    background-color: #f0ec14;
-    width: 160px;
+    background-color: #720006;
+   
 }
 
 .container_1 .button5 {
     background-color: #c8d64b;
-    width: 190px;
+   
 }
 
 .container_1 .button6 {
     background-color: #82f160;
-    width: 220px;
+  
 }
 
 .container_1 .button7 {
     background-color: #257a3f;
-    width: 250px;
+    
 }
 
 .container_1 img {
@@ -303,10 +330,13 @@ header {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
-    background-color: #FFFFFF;
+    background-color: #d1d0d0;
     width: 100%;
-
+    margin-bottom: 20px;
+    padding: 20px;
 }
+
+
 .card_2 ul {
     list-style-type: none; 
     padding: 0; 
@@ -346,6 +376,131 @@ header {
     font-size: 16px; /* Dimensiunea fontului etichetei */
     color: #333; /* Culoarea textului etichetei */
 }
+
+  /* Stiluri pentru tabel */
+  #confiscations-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#confiscations-table th, #confiscations-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#confiscations-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#confiscations-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#confiscations-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+
+
+  /* Stiluri pentru tabel -> infractionality */
+  #infractionality-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#infractionality-table th, #infractionality-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#infractionality-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#infractionality-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#infractionalitys-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+ /* Stiluri pentru tabel -> emergencies */
+ #emergencies-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#emergencies-table th, #emergencies-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#emergencies-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#emergencies-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#emergencies-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+ /* Stiluri pentru tabel -> 'projects */
+ #projects-table {
+    width: 100%;
+    border-collapse: collapse; /* Asigură bordurile comune între celule */
+}
+
+#projects-table th, #projects-table td {
+    border: 1px solid #ddd; /* Bordura pentru celule */
+    padding: 8px; /* Spațiu în interiorul celulelor */
+    text-align: center; /* Aliniere text în centru */
+}
+
+#projects-table th {
+    background-color: #f2f2f2; /* Fundal pentru antet */
+    font-weight: bold; /* Text îngroșat pentru antet */
+}
+
+#projects-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Fundal pentru rândurile pare */
+}
+
+#projects-table tr:hover {
+    background-color: #ddd; /* Fundal la hover */
+}
+
+.card_2 .radio-buttons {
+    display: flex;
+    justify-content:baseline; /* Afișăm radio buttons în centru */
+    margin-bottom: 20px;
+}
+
+.card_2 .radio-buttons label {
+    margin-right: 20px; /* Spațiu între fiecare radio button */
+    font-size: 16px;
+}
+
+.card_2 .chart-container {
+    width: 100%; /* Lățime de 100% a containerului pentru a ocupa toată lățimea disponibilă */
+    max-width: 900px; /* Limităm lățimea maximă la 700px pentru a nu ocupa prea mult spațiu */
+    height: 100%;
+    max-height: 350px;
+    margin: 0 auto; /* Afișăm containerul în centru pe axa orizontală */
+    margin-bottom: 20px; /* Adăugăm un spațiu între chart-container și radio buttons */
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    border: solid 3px rgb(85, 170, 116);
+    
+}
+
+
 
 @media only screen and (max-width: 800px) {
     .items {

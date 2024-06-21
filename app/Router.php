@@ -120,10 +120,11 @@ class Router {
                 }
                 break;
             case 'PUT':
-                if ($controllerName === 'UsersController' && !empty($segments[1]) && is_numeric($segments[1])) {
+                if ($controllerName === 'UsersController' && !empty($segments[2]) && is_numeric($segments[2]) && $segments[3] === 'reset-password') {
                     // Handle PUT /users/{id}
-                    $controller->updateUser($segments[1]);
-                } else {
+                    $controller->resetPassword($segments[2]);
+                } 
+                else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
                     http_response_code(405);
                     echo '405 Method Not Allowed';
@@ -134,16 +135,29 @@ class Router {
                 if ($controllerName === 'UsersController' && empty($segments[2])) {
                     // Handle POST /users
                     $controller->createUser();
-                } else {
+                } elseif($controllerName === 'UsersController' && $segments[2] === 'login') {
+                    // Handle POST /users/login
+                    $controller->loginUser();
+                 } elseif($controllerName === 'UsersController' && $segments[2] === 'logout') {
+                    // Handle POST /users/logout
+                    $controller->logoutUser();
+                 } elseif ($controllerName === 'UsersController' && $segments[2] === 'forgot-password')
+                 {
+                    // Handle POST /users/forgot-password
+                    $controller->forgotPassword();
+                 } elseif($controllerName === 'UsersController' && $segments[2] === 'verify-code'){
+                    $controller->verifyCode();
+                 }
+                 else {
                     http_response_code(405);
                     echo '405 Method Not Allowed';
                     exit;
                 }
                 break;
             case 'DELETE':
-                if ($controllerName === 'UsersController' && !empty($segments[1]) && is_numeric($segments[1])) {
+                if ($controllerName === 'UsersController' && !empty($segments[2]) && is_numeric($segments[2])) {
                     // Handle DELETE /users/{id}
-                    $controller->deleteUser($segments[1]);
+                    $controller->deleteUser($segments[2]);
                 } else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
                     http_response_code(405);

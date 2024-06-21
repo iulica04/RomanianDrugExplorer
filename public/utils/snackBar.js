@@ -10,5 +10,16 @@ function showSnackbar(message, messageType) {
         snackbar.className += " info";
     }
 
-    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 4000);
+}
+
+window.clearFormInputs = function(formId) {
+    var form = document.getElementById(formId);
+
+    // Get all input elements within the form
+    var inputs = form.getElementsByTagName('input');
+
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
+    }
 }

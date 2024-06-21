@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Learn More</title>
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
@@ -220,5 +219,4 @@
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
-
 </html>

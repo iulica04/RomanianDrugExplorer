@@ -24,7 +24,11 @@ document.getElementById('verifyCodeButton').addEventListener('click', function(e
     .then(({ status, body: data }) => {
         if (status === 200) {
             showSnackbar(data.message, 'info');
-            // Așteaptă 3 secunde apoi redirecționează către pagina de login
+            localStorage.setItem('userId', data.userId);
+            
+            setTimeout(function() {
+                window.location.href = '/RomanianDrugExplorer/app/views/resetPassword.php';
+            }, 2000);
             
         } else {
             showSnackbar(data.message, 'error');

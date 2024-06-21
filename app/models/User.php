@@ -246,5 +246,25 @@ class User extends DB {
             return false;
         }
     }
+
+    public function resetPassword($id, $password) {
+        try {
+            $sql = "UPDATE users SET password = :password WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            // Check if any rows were affected
+            if ($stmt->rowCount() > 0) {
+                return true; // Password updated successfully
+            } else {
+                return false; // User not found
+            }
+        } catch (PDOException $e) {
+            echo "Error resetting password: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

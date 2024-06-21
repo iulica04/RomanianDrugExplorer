@@ -1,4 +1,7 @@
-RewriteEngine On    # Turn on the rewriting engine
+RewriteEngine On
+
+# Exclude the views directory from URL rewriting
+RewriteCond %{REQUEST_URI} !^/RomanianDrugExplorer/app/views/
 
 # If the requested filename is not a directory,
 RewriteCond %{REQUEST_FILENAME} !-d

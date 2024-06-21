@@ -17,7 +17,7 @@ $('#forgotPasswordForm').on('submit', function(event) {
             showSnackbar("Password reset code sent. Check inbox and spam folder.", 'info');
            
             setTimeout(function() {
-                window.location.href = '/RomanianDrugExplorer/verifyCode';
+                window.location.href = '/RomanianDrugExplorer/app/views/verifyCode.php';
             }, 2000);
         } else {
             showSnackbar(data.message, 'error');

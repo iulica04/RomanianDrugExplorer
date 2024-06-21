@@ -15,20 +15,21 @@
 
         <div class = "forgotPassword">
             <form id="forgotPasswordForm" action="send_reset_email.php" method="post">
-                <label class="title" for="chk" aria-hidden="true">Forgot Password</label>
+                <label class="title" for="chk" aria-hidden="true">Reset Password</label>
                 <div class="input-group">
-                    <label class="label" for="username-for-sign-up">Enter your username: </label>
-                    <input type="text" name="username" id="username" class="input" required>
-                    
-                </div>   
+                    <label class="label" for="password">Enter your new password: </label>
+                    <input type="password" name="password" id="password" class="input" required>
+                    <span class="error" id="password-error"></span>
+                </div>
 
                 <div class="input-group">
-                    <label class="label" for="email">Email</label>
-                    <input type="text" name="email" id="email" class="input" required>
+                    <label class="label" for="confirm-password">Confirm password: </label>
+                    <input type="password" name="confirm-password" id="confirm-password" class="input" required>
+                    <span class="error" id="confirm-password-error"></span>
                 </div>
 
                   
-                <button id = "resetPasswordButton">Send Reset Code</button>
+                <button id = "resetPasswordButton">Reset Password</button>
 
 
             </form>
@@ -37,7 +38,8 @@
         <div id="snackbar"></div>
 
         <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/forgotPassword.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/checkPasswordsMatch.js"></script>
+        <script src="/RomanianDrugExplorer/public/utils/resetPassword.js"></script>
     </div>
 </body>
 </html>

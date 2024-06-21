@@ -183,26 +183,27 @@ class UsersController {
         }
 
 
-    $key = "your_secret_key"; // Replace with your secret key
-    $payload = array(
-        "iss" => "your_issuer", // Replace with your issuer
-        "aud" => "your_audience", // Replace with your audience
-        "iat" => time(),
-        "exp" => time() + (60*60), // Token valid for 1 hour
-        "data" => array(
-            "id" => $user['id'],
-            "username" => $user['username']
-        )
-    );
-    $jwt = JWT::encode($payload, $key, 'HS256');
+        $key = "your_secret_key"; // Replace with your secret key
+        $payload = array(
+            "iss" => "your_issuer", // Replace with your issuer
+            "aud" => "your_audience", // Replace with your audience
+            "iat" => time(),
+            "exp" => time() + (60*60), // Token valid for 1 hour
+            "data" => array(
+                "id" => $user['id'],
+                "username" => $user['username']
+            )
+        );
+        $jwt = JWT::encode($payload, $key, 'HS256');
 
-    // Store JWT in a cookie
-    setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
-    $_SESSION['loggedin'] = true;
+        // Store JWT in a cookie
+        setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
+        $_SESSION['loggedin'] = true;
+        $_SESSION['isAdmin'] = $user['role'] === 'admin' ? true : false;
 
-    // Send response with status code 200
-    http_response_code(200);
-    echo json_encode(["message" => "Login successful."]);
+        // Send response with status code 200
+        http_response_code(200);
+        echo json_encode(["message" => "Login successful."]);
     }
 
 
@@ -270,6 +271,12 @@ class UsersController {
             $code = rand(1000, 9999);
         }
 
+        if($this->codeModel->getCodeByUserId($user['id'])) {
+            http_response_code(429);
+            echo json_encode(['message' => 'A reset code has already been sent. Please wait before requesting another.']);
+            return;
+        }
+
         // Save the code in the database
         $this->codeModel->addCode($user['id'], $code);
 
@@ -325,7 +332,51 @@ class UsersController {
 
         // Send response with status code 200 if code is valid
         http_response_code(200);
-        echo json_encode(['message' => 'Code verified successfully']);
+        echo json_encode(['message' => 'Code verified successfully', 'userId' => $codeData['user_id']]);
+    }
+
+    public function resetPassword($id){
+        $json_data = file_get_contents('php://input');
+         $data = json_decode($json_data, true);
+     
+         // Check if JSON data is valid
+         if ($data === null) {
+             // Send response with status code 400 for invalid JSON
+             http_response_code(400);
+             echo json_encode(['error' => 'Invalid JSON data']);
+             return;
+         }
+     
+         // Define the required fields
+         $required_fields = ['password'];
+     
+         // Check if all required fields are present in the JSON data
+         foreach ($required_fields as $field) {
+             if (!array_key_exists($field, $data)) {
+                 // Send response with status code 400 for missing fields
+                 http_response_code(400);
+                 echo json_encode(['error' => 'Missing required field: ' . $field]);
+                 return;
+
+             }
+         }
+
+        $hashed_password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $result = $this->userModel->resetPassword($id, $hashed_password);
+
+        $user = $this->userModel->getUserById($id);
+        $this->codeModel->deleteCodeByUserId($user['id']);
+        //You can be more thorough with error codes for example and include the 204 no content
+        if($result) {
+            // Send response with status code 200 if user was updated
+
+            http_response_code(200);
+            echo json_encode(['message' => 'User updated succesfully']);
+        } else {
+            // Send response with status code 404 if user not found
+            http_response_code(404);
+            echo json_encode(['error' => 'User not found']);
+        }
     }
 }
 

@@ -73,9 +73,9 @@ class Router {
                 }
                 break;
             case 'PUT':
-                if ($controllerName === 'UsersController' && !empty($segments[1]) && is_numeric($segments[1])) {
+                if ($controllerName === 'UsersController' && !empty($segments[2]) && is_numeric($segments[2]) && $segments[3] === 'reset-password') {
                     // Handle PUT /users/{id}
-                    $controller->updateUser($segments[1]);
+                    $controller->resetPassword($segments[2]);
                 } 
                 else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
@@ -108,9 +108,9 @@ class Router {
                 }
                 break;
             case 'DELETE':
-                if ($controllerName === 'UsersController' && !empty($segments[1]) && is_numeric($segments[1])) {
+                if ($controllerName === 'UsersController' && !empty($segments[2]) && is_numeric($segments[2])) {
                     // Handle DELETE /users/{id}
-                    $controller->deleteUser($segments[1]);
+                    $controller->deleteUser($segments[2]);
                 } else {
                     // Handle 405 Method Not Allowed for other controllers or invalid endpoint
                     

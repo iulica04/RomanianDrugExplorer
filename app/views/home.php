@@ -16,9 +16,14 @@
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <div class="list">
-              <a href="#about">About</a>
-              <a href="#">Projects</a>
-              <a href="#">News</a>
+            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true)
+            { ?>
+                <a href="/RomanianDrugExplorer/app/views/addData.php">Add Data</a>
+                <a href="/RomanianDrugExplorer/app/views/getUsers.php">Users</a>
+              <?php }  else { ?>
+                <a href="#about">About</a>
+                <a href="#">Contact</a>
+                <?php } ?>
               <div class="for_login">
               <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
                     <a>Logout</a>

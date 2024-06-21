@@ -4,7 +4,6 @@
 require_once dirname(__FILE__) .'/../config/Db.php';
 
 class Code extends DB {
-    
         public function getCodes() {
             try {
                 $sql = "SELECT * FROM codes";
@@ -70,6 +69,19 @@ class Code extends DB {
             } catch (PDOException $e) {
                 echo "Error adding code: " . $e->getMessage();
                 return null;
+            }
+        }
+
+        public function deleteCodeByUserId($user_id) {
+            try {
+                $sql = "DELETE FROM codes WHERE user_id = :user_id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                echo "Error deleting code: " . $e->getMessage();
+                return false;
             }
         }
 }

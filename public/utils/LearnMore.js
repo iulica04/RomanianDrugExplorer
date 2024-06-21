@@ -22,7 +22,7 @@ function updateYearUrl() {
     console.log('Selected year:', selectedYear);
 
     // Trimite cereri GET pentru fiecare tip de statistică
-    ['confiscations', 'infractionality', 'emergencies', 'projects'].forEach(type => {
+    ['confiscations', 'emergencies', 'projects'].forEach(type => {
         var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
         console.log('Requesting data from:', url);
         fetch(url)
@@ -52,16 +52,27 @@ function updateYearUrl() {
 }
 
 // Afiseaza datele in tabelul specific
+// Afiseaza datele in tabelul specific
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
+    
+    if (!tableBody) {
+        console.error(`Table body for type "${type}" not found.`);
+        return; // Încheie funcția dacă tabelul nu este găsit
+    }
+
     tableBody.innerHTML = ''; // Curăță conținutul actual al tabelului
 
     // Actualizează textul anului selectat pe pagină
     var selectedYearElement = document.getElementById('selected-year');
-    if (year) {
-        selectedYearElement.textContent = year;
+    if (selectedYearElement) {
+        if (year) {
+            selectedYearElement.textContent = year;
+        } else {
+            selectedYearElement.textContent = ' Statistici pe ani ';
+        }
     } else {
-        selectedYearElement.textContent = ' Statistici pe ani ';
+        console.error('Selected year element not found.');
     }
 
     // Iterează prin fiecare statistică și adaugă un rând nou în tabel pentru fiecare
@@ -77,15 +88,6 @@ function renderStats(stats, year, type) {
                     <td>${stat.comprimate}</td>
                     <td>${stat.mililitri}</td>
                     <td>${stat.capturi}</td>
-                `;
-                break;
-            case 'infractionality':
-                cells = `
-                    <td>${stat.gen}</td>
-                    <td>${stat.varsta}</td>
-                    <td>${stat.stare}</td>
-                    <td>${stat.situatia_pedepsei}</td>
-                    <td>${stat.numar}</td>
                 `;
                 break;
             case 'emergencies':
@@ -150,3 +152,5 @@ function downloadFile(type, format) {
             document.getElementById(`download-error-${type}`).style.display = 'block';
         });
 }
+
+

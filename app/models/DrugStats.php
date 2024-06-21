@@ -60,6 +60,26 @@ class DrugStats  extends Db{
             return null;
         }
     }
+
+    public function getStatsByYearInfractionalityGenderAge($an) {
+        try {
+            $sql = "SELECT gen, varsta, numar 
+                    FROM infractionalitate 
+                    WHERE an = :an 
+                    AND gen IS NOT NULL AND gen != '' 
+                    AND varsta IS NOT NULL AND varsta != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
+    
+    
 /////////////////////////////////////////MEDICAL EMERGENCIES/////////////////////////////////////////////////////////////
 
 public function getStatsMedic() {

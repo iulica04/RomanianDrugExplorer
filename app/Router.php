@@ -57,7 +57,7 @@ class Router {
                     } elseif(!empty($segments[2]) && $segments[2]==='infractionality') {
                         if (!empty($segments[3]) &&is_numeric($segments[3])){
                        
-                            $controller->getStatsByYearInfractionality($segments[3]);
+                            $controller->getStatsByYearInfractionalityGenderAge($segments[3]);
        
                            } else {
                                $controller->getDrugStatsInfractionality();

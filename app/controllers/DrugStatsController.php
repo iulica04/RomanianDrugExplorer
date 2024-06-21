@@ -70,6 +70,21 @@ public function getDrugStatsInfractionality() {
     }
 }
 
+public function getStatsByYearInfractionalityGenderAge($year) {
+    $stats = $this->drugStatsModel->getStatsByYearInfractionalityGenderAge($year);
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    if ($stats) {
+        $response = [
+            'stats' => $stats,
+            'year' => $year
+        ];
+        echo json_encode($response);
+    } else {
+        echo json_encode(['stats' => [], 'year' => $year]);
+    }
+}
+
 ///////////////////////////////////////////MEDICAL EMERGENCIES////////////////////////////////////////////
 public function getStatsByYearMedic($year) {
     $stats = $this->drugStatsModel->getStatsByYearMedic($year);

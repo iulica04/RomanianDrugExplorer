@@ -84,6 +84,20 @@ public function getStatsByYearInfractionalityGenderAge($year) {
         echo json_encode(['stats' => [], 'year' => $year]);
     }
 }
+public function getStatsByYearInfractionalityPenalities($year) {
+    $stats = $this->drugStatsModel->getStatsByYearInfractionalityPenalities($year);
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    if ($stats) {
+        $response = [
+            'stats' => $stats,
+            'year' => $year
+        ];
+        echo json_encode($response);
+    } else {
+        echo json_encode(['stats' => [], 'year' => $year]);
+    }
+}
 
 ///////////////////////////////////////////MEDICAL EMERGENCIES////////////////////////////////////////////
 public function getStatsByYearMedic($year) {

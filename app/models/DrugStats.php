@@ -78,6 +78,22 @@ class DrugStats  extends Db{
             return null;
         }
     }
+    public function getStatsByYearInfractionalityPenalities($an) {
+        try {
+            $sql = "SELECT stare, numar 
+                    FROM infractionalitate 
+                    WHERE an = :an 
+                    AND stare IS NOT NULL AND stare != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
     
     
 /////////////////////////////////////////MEDICAL EMERGENCIES/////////////////////////////////////////////////////////////

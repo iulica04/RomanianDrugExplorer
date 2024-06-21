@@ -55,14 +55,23 @@ class Router {
                               // echo 'nu e numeric';
                            }
                     } elseif(!empty($segments[2]) && $segments[2]==='infractionality') {
-                        if (!empty($segments[3]) &&is_numeric($segments[3])){
-                       
-                            $controller->getStatsByYearInfractionalityGenderAge($segments[3]);
+                        if (!empty($segments[3]) &&  $segments[3]=== 'gender'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                            $controller->getStatsByYearInfractionalityGenderAge($segments[4]);
        
                            } else {
                                $controller->getDrugStatsInfractionality();
                               // echo 'nu e numeric';
                            }
+                        }elseif (!empty($segments[3]) &&  $segments[3] ==='penalities'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                            $controller->getStatsByYearInfractionalityPenalities($segments[4]);
+       
+                           } else {
+                               $controller->getDrugStatsInfractionality();
+                              // echo 'nu e numeric';
+                           }
+                        }
                     }elseif(!empty($segments[2]) && $segments[2]==='emergencies') {
                         if (!empty($segments[3]) &&is_numeric($segments[3])){
                        

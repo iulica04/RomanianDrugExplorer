@@ -73,14 +73,33 @@ class Router {
                            }
                         }
                     }elseif(!empty($segments[2]) && $segments[2]==='emergencies') {
-                        if (!empty($segments[3]) &&is_numeric($segments[3])){
-                       
-                            $controller->getStatsByYearMedic($segments[3]);
+                        if (!empty($segments[3]) &&  $segments[3]=== 'gender'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                            $controller->getStatsByYearMedicGenderDrug($segments[4]);
        
                            } else {
                                $controller->getDrugStatsMedic();
                               // echo 'nu e numeric';
                            }
+                        }elseif (!empty($segments[3]) &&  $segments[3] ==='emergency'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                            $controller->getStatsByYearMedicEmergencyDrug($segments[4]);
+       
+                           } else {
+                               $controller->getDrugStatsMedic();
+                              // echo 'nu e numeric';
+                           }
+                        }elseif (!empty($segments[3]) &&  $segments[3] ==='age'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                            $controller->getStatsByYearMedicAgeDrug($segments[4]);
+       
+                           } else {
+                               $controller->getDrugStatsMedic();
+                              // echo 'nu e numeric';
+                           }
+                        }else{
+                            $controller->getDrugStatsMedic();
+                        }
                     }elseif(!empty($segments[2]) && $segments[2]==='projects') {
                         if (!empty($segments[3]) &&is_numeric($segments[3])){
                        

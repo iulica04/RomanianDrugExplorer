@@ -103,11 +103,11 @@
                     </div>
                     <div class="radio-buttons">
                         <label>
-                            <input name="chartType" type="radio" checked onchange="updateChart('gender-age')" />
+                            <input name="chartType" type="radio" checked onchange="updateChart('gender-age','infractionality')" />
                             <span>Gender & Age</span>
                         </label>
                         <label>
-                            <input name="chartType" type="radio" onchange="updateChart('penalties-situation')" />
+                            <input name="chartType" type="radio" onchange="updateChart('penalties-situation','infractionality')" />
                             <span>Penalties & Situation</span>
                         </label>
                     </div>
@@ -121,28 +121,29 @@
                 <div class="card_1">
                     <h1>Drug Emergencies Statistics:</h1>
                     <p>Here you can find the statistics about drug emergencies in Romania.</p>
-                    <button class="button button2" onclick="downloadFile('emergencies', 'png')"><a>Download
-                            PNG</a></button>
-                    <button class="button button2" onclick="downloadFile('emergencies', 'svg')"><a>Download
-                            SVG</a></button>
+                     <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
+                     <button class="button button2" onclick="saveChart('emergencies-chart', 'chart', 'svg')"><a>Download SVG</a></button>
+
                 </div>
 
                 <div class="card_2">
-                    <table id="emergencies-table">
-                        <thead>
-                            <tr>
-                                <th>Drog</th>
-                                <th>Gen</th>
-                                <th>Varsta</th>
-                                <th>Administrare</th>
-                                <th>Diagnostic</th>
-                                <th>Numar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Aici vor fi adăugate rândurile pentru statistici -->
-                        </tbody>
-                    </table>
+                    <div class="chart-container">
+                        <canvas id="emergencies-chart"></canvas>
+                    </div>
+                    <div class="radio-buttons">
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug','emergencies')" />
+                            <span>Emergencie & Drug</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" checked onchange="updateChartEmergencies('gender-drug','emergencies')" />
+                            <span>Gender & Drug</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('age-drug','emergencies')" />
+                            <span>Age & Drug</span>
+                        </label>
+                    </div>
                 </div>
 
             </div>
@@ -216,6 +217,7 @@
 
     <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 

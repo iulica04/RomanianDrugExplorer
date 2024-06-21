@@ -114,6 +114,48 @@ public function getStatsByYearMedic($year) {
         echo json_encode(['stats' => [], 'year' => $year]);
     }
 }
+public function getStatsByYearMedicEmergencyDrug($year) {
+    $stats = $this->drugStatsModel->getStatsByYearMedicEmergencyDrug($year);
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    if ($stats) {
+        $response = [
+            'stats' => $stats,
+            'year' => $year
+        ];
+        echo json_encode($response);
+    } else {
+        echo json_encode(['stats' => [], 'year' => $year]);
+    }
+}
+public function getStatsByYearMedicGenderDrug($year) {
+    $stats = $this->drugStatsModel->getStatsByYearMedicGenderDrug($year);
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    if ($stats) {
+        $response = [
+            'stats' => $stats,
+            'year' => $year
+        ];
+        echo json_encode($response);
+    } else {
+        echo json_encode(['stats' => [], 'year' => $year]);
+    }
+}
+public function getStatsByYearMedicAgeDrug($year) {
+    $stats = $this->drugStatsModel->getStatsByYearMedicAgeDrug($year);
+    header('Content-Type: application/json'); // Ensure the response is JSON
+
+    if ($stats) {
+        $response = [
+            'stats' => $stats,
+            'year' => $year
+        ];
+        echo json_encode($response);
+    } else {
+        echo json_encode(['stats' => [], 'year' => $year]);
+    }
+}
 
 public function getDrugStatsMedic() {
     $stats = $this->drugStatsModel->getStatsMedic();

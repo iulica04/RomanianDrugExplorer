@@ -124,6 +124,58 @@ public function getStatsByYearMedic($an) {
         return null;
     }
 }
+
+public function getStatsByYearMedicEmergencyDrug($an) {
+    try {
+        $sql = "SELECT drog, diagnostic, numar 
+        FROM urgente_medicale 
+        WHERE an = :an 
+        AND drog IS NOT NULL AND drog != '' 
+        AND diagnostic IS NOT NULL AND diagnostic != ''";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+        $stmt->execute();
+        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $drugs;
+    } catch (PDOException $e) {
+        echo "Error fetching drugs: " . $e->getMessage();
+        return null;
+    }
+}
+public function getStatsByYearMedicGenderDrug($an) {
+    try {
+        $sql = "SELECT drog, gen, numar 
+        FROM urgente_medicale 
+        WHERE an = :an 
+        AND drog IS NOT NULL AND drog != '' 
+        AND gen IS NOT NULL AND gen != ''";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+        $stmt->execute();
+        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $drugs;
+    } catch (PDOException $e) {
+        echo "Error fetching drugs: " . $e->getMessage();
+        return null;
+    }
+}
+public function getStatsByYearMedicAgeDrug($an) {
+    try {
+        $sql = "SELECT drog, varsta, numar 
+        FROM urgente_medicale 
+        WHERE an = :an 
+        AND drog IS NOT NULL AND drog != '' 
+        AND varsta IS NOT NULL AND varsta != ''";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+        $stmt->execute();
+        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+        return $drugs;
+    } catch (PDOException $e) {
+        echo "Error fetching drugs: " . $e->getMessage();
+        return null;
+    }
+}
 ///////////////////////////////////////////PROJECTS//////////////////////////////////////////////
 
 public function getStatsProject() {

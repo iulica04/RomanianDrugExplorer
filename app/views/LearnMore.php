@@ -39,6 +39,7 @@
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
                 <option value="2020">2020</option>
+                <option value="Ani">Satistici pe ani...</option>
             </select>
         </div>
 
@@ -57,29 +58,18 @@
                 <div class="card_1">
                     <h1>Drug Confiscation Statistics:</h1>
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
-                    <button class="button button2" onclick="downloadFile('confiscations', 'png')">
+                    <button class="button button2" onclick="savePieChart('confiscations-chartpie', 'chartPie', 'png')">
                         <a href="#">Download PNG</a>
                     </button>
-                    <button class="button button2" onclick="downloadFile('confiscations', 'svg')">
+                    <button class="button button2" onclick="savePieChart('confiscations-chartpie','chartPie', 'svg')">
                         <a href="#">Download SVG</a>
                     </button>
                 </div>
 
                 <div class="card_2">
-                    <table id="confiscations-table">
-                        <thead>
-                            <tr>
-                                <th>Drog</th>
-                                <th>Grame</th>
-                                <th>Comprimate</th>
-                                <th>Mililitri</th>
-                                <th>Capturi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Aici vor fi adăugate rândurile pentru statistici -->
-                        </tbody>
-                    </table>
+                <div class="chartpie-container">
+                      <canvas id="confiscations-chartpie" width="900" height="900"></canvas>
+                    </div>
                 </div>
 
             </div>
@@ -154,14 +144,15 @@
                 <div class="card_1">
                     <h1>Anti-Drug Projects Statistics:</h1>
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
-                    <button class="button button2" onclick="downloadFile('projects', 'png')"><a>Download
+                    <button class="button button2" onclick="saveTableAsPNG('projects-table','png')"><a>Download
                             PNG</a></button>
-                    <button class="button button2" onclick="downloadFile('projects', 'svg')"><a>Download
+                    <button class="button button2" onclick="saveTableAsSVG('projects-table')"><a>Download
                             SVG</a></button>
                 </div>
 
                 <div class="card_2">
                     <table id="projects-table">
+                    <canvas id="my-canvas" style="display: none;"></canvas>
                         <thead>
                             <tr>
                                 <th>Tip Proiect</th>

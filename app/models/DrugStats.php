@@ -20,7 +20,11 @@ class DrugStats  extends Db{
 
     public function getStatsByYear($an) {
         try {
-            $sql = "SELECT * FROM confiscari_droguri WHERE an = :an";
+            $sql = "SELECT drog, capturi 
+                    FROM confiscari_droguri
+                    WHERE an =:an
+                    And drog IS NOT NULL AND drog != '' 
+                    AND capturi IS NOT NULL AND capturi != ''";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();
@@ -36,7 +40,10 @@ class DrugStats  extends Db{
     /////////////////////////////////////////INFRACTIONALITY////////////////////////////////////////////
     public function getStatsInfractionality() {
         try {
-            $sql = "SELECT * FROM infractionalitate";
+            $sql = "SELECT an, stare, numar 
+                    FROM infractionalitate 
+                    WHERE an IS NOT NULL AND an != '' 
+                    AND stare IS NOT NULL AND stare != ''";
             $stmt = $this->pdo->query($sql);
             $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $drugs;

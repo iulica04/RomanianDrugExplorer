@@ -494,10 +494,12 @@ function renderChartPenalitiesSituation(stats, year) {
                     }else if (chartType === 'gender-drug') {
                        
                         renderChartGenderDrug(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'emergencie-drug-canabis') {
-                        renderChartEmergencyDrugCanabis(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'emergencie-drug-stimulanti') {
-                        renderChartEmergencyDrugStimulanti(jsonData.stats, jsonData.year);
+                    }else if (chartType === 'emergencie-drug-stimulanti' ||chartType === 'emergencie-drug-canabis') {
+                        let parts = chartType.split('-');
+                        let type = parts[parts.length - 1];
+                        console.log('Type:', type);
+                        renderChartEmergencyDrug(jsonData.stats, jsonData.year, type);
+
                     }else if (chartType === 'emergencie-drug-opiacee') {
                         renderChartEmergencyDrugOpiacee(jsonData.stats, jsonData.year);
                     }else if (chartType === 'emergencie-drug-NSP') {
@@ -923,7 +925,7 @@ function renderChartEmergencyDrugCanabis(stats, year) {
         }
     });
 }
-function renderChartEmergencyDrugStimulanti(stats, year) {
+function renderChartEmergencyDrug(stats, year, type) {
     var chartData = {
         labels: ["Intoxicație", "Utilizare nocivă", "Dependență", "Sevraj", "Tulburări de comportament", "Supradoză", "Alte diagnostice", "Testare toxicologică"],
         datasets: [{
@@ -936,6 +938,7 @@ function renderChartEmergencyDrugStimulanti(stats, year) {
     };
 
     stats.forEach(stat => {
+        if(type === 'stimulanti') {
         if(stat.drug_type === 'Stimulanti') {
         if (stat.subcategory === 'Intoxicatie') {
             chartData.datasets[0].data[0] = stat.cases;
@@ -954,6 +957,26 @@ function renderChartEmergencyDrugStimulanti(stats, year) {
         } else if (stat.subcategory  === 'Testare toxicologica') {
             chartData.datasets[0].data[7] = stat.cases;
         }
+       }}else if(type === 'canabis'){
+        if(stat.drug_type === 'Canabis') {
+            if (stat.subcategory === 'Intoxicatie') {
+                chartData.datasets[0].data[0] = stat.cases;
+            } else if (stat.subcategory  === 'Utilizare nociva') {
+                chartData.datasets[0].data[1] = stat.cases;
+            } else if (stat.subcategory  === 'Dependenta') {
+                chartData.datasets[0].data[2] = stat.cases;
+            } else if (stat.subcategory  === 'Sevraj') {
+                chartData.datasets[0].data[3] =stat.cases;
+            } else if (stat.subcategory  === 'Tulburari de comportament') {
+                chartData.datasets[0].data[4] = stat.cases;
+            } else if (stat.subcategory  === 'Supradoaza') {
+                chartData.datasets[0].data[5] = stat.cases;
+            } else if (stat.subcategory  === 'Alte diagnostice') {
+                chartData.datasets[0].data[6] = stat.cases;
+            } else if (stat.subcategory  === 'Testare toxicologica') {
+                chartData.datasets[0].data[7] = stat.cases;
+            }
+           }
        }
      });
 

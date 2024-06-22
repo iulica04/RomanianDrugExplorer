@@ -5,6 +5,7 @@
     <title> Home Page</title>
     <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Home.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
+    <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
     <meta charset="UTF-8">
 </head>
 <body>
@@ -26,6 +27,7 @@
                 <?php } ?>
               <div class="for_login">
               <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
+                <script src="/RomanianDrugExplorer/public/utils/verifyCookie.js"></script>
                     <a>Logout</a>
               <?php else: ?>
                      <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>

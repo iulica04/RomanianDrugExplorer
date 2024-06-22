@@ -2,33 +2,33 @@ Urgențe medicale datorate consumului de droguri,,,,
 ,,,,
 "Distribuția cazurilor de urgențe medicale datorate consumului de droguri, în funcție de tipul drogului și sex",,,,
 ,Canabis,Stimulanți,Opiacee,NSP
-Masculin,497,171,107,500
-Feminin,111,55,48,93
+Masculin,490,149,139,438
+Feminin,99,42,42,73
 ,,,,
 "Distribuția cazurilor de urgențe medicale datorate consumului de droguri, în funcție de tipul drogului și vârstă",,,,
 ,Canabis,Stimulanți,Opiacee,NSP
-<25,332,110,45,310
-25-34,209,84,59,191
->35,67,32,51,92
+<25,343,93,54,295
+25-34,187,69,58,160
+>35,59,29,69,56
 ,,,,
 "Distribuția cazurilor de urgențe medicale datorate consumului de droguri, în funcție de tipul drogului și calea de administrare",,,,
 ,Canabis,Stimulanți,Opiacee,NSP
-Oral/fumat/prizat,608,224,108,573
-Altele,0,0,0,0
-Injectabil,0,2,47,20
+Oral/fumat/prizat,571,180,101,375
+Altele,18,11,5,111
+Injectabil,0,0,75,25
 ,,,,
 "Distribuția cazurilor de urgențe medicale datorate consumului de droguri, în funcție de tipul drogului și modelul de consum",,,,
 ,Canabis,Stimulanți,Opiacee,NSP
-Consum singular,344,62,58,436
-Consum combinat,264,164,97,157
+Consum singular,328,48,60,340
+Consum combinat,261,143,121,171
 ,,,,
 "Distribuția cazurilor de urgențe medicale datorate consumului de droguri, în funcție de tipul drogului și diagnosticul de urgență",,,,
 ,Canabis,Stimulanți,Opiacee,NSP
-Intoxicație,239,109,47,367
-Utilizare nocivă,101,32,32,43
-Dependență,63,23,39,67
-Sevraj,16,10,17,5
-Tulburări de comportament,137,38,15,105
-Supradoză,0,2,3,0
+Intoxicație,296,106,38,305
+Utilizare nocivă,71,25,17,56
+Dependență,58,16,85,64
+Sevraj,11,4,26,13
+Tulburări de comportament,116,32,10,67
+Supradoză,1,0,2,0
 Alte diagnostice,0,0,0,0
-Testare toxicologică,52,12,2,6
+Testare toxicologică,36,8,3,6

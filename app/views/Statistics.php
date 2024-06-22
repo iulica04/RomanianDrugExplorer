@@ -40,9 +40,6 @@
                     <button class="button button2" onclick="saveChart('confiscations-chart', 'chart', 'png')">
                         <a href="#">Download PNG</a>
                     </button>
-                    <button class="button button2" onclick="saveChart('confiscations-chart','chart', 'svg')">
-                        <a href="#">Download SVG</a>
-                    </button>
                 </div>
 
                 <div class="card_2">
@@ -63,9 +60,6 @@
                     <p>Here you can find the statistics about drug related infractionality in Romania.</p>
                     <button class="button button2"
                         onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
-                    <button class="button button2"
-                        onclick="saveChart('infractionality-chart', 'chart', 'svg')"><a>Download SVG</a></button>
-
                 </div>
 
                 <div class="card_2">
@@ -83,7 +77,6 @@
                     <h1>Drug Emergencies Statistics:</h1>
                     <p>Here you can find the statistics about drug emergencies in Romania.</p>
                      <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
-                     <button class="button button2" onclick="saveChart('emergencies-chart', 'chart', 'svg')"><a>Download SVG</a></button>
 
                 </div>
 
@@ -103,8 +96,6 @@
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
                     <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download
                             PNG</a></button>
-                    <button class="button button2" onclick="saveChart('projects-chart','chart','svg')"><a>Download
-                            SVG</a></button>
                 </div>
 
                 <div class="card_2">

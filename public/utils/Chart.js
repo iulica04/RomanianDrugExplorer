@@ -494,16 +494,11 @@ function renderChartPenalitiesSituation(stats, year) {
                     }else if (chartType === 'gender-drug') {
                        
                         renderChartGenderDrug(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'emergencie-drug-stimulanti' ||chartType === 'emergencie-drug-canabis') {
+                    }else if (chartType === 'emergencie-drug-stimulanti' ||chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
                         let parts = chartType.split('-');
                         let type = parts[parts.length - 1];
                         console.log('Type:', type);
                         renderChartEmergencyDrug(jsonData.stats, jsonData.year, type);
-
-                    }else if (chartType === 'emergencie-drug-opiacee') {
-                        renderChartEmergencyDrugOpiacee(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'emergencie-drug-NSP') {
-                        renderChartEmergencyDrugNSP(jsonData.stats, jsonData.year);
                     }else {
                         renderStats(jsonData.stats, jsonData.year, chartType);
                     }
@@ -792,139 +787,6 @@ function renderChartAgeDrug(stats, year) {
 }
 
 //Functia pentru afisarea statisticilor de urgente medicale si droguri
-function renderChartEmergencyDrugCanabis(stats, year) {
-    var chartData = {
-        labels: ["Intoxicație", "Utilizare nocivă", "Dependență", "Sevraj", "Tulburări de comportament", "Supradoză", "Alte diagnostice", "Testare toxicologică"],
-        datasets: [{
-            label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1", "#7bff00", "#cefa87", "#ff8c00", "#ffd700"], // Custom colors
-            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a", "#5f9ea0", "#98fb98", "#cd853f", "#ffc0cb"], // Custom border colors
-            borderWidth: 1, // Border width
-            data: Array(8).fill(0) // Initialize with zero for each category
-        }]
-    };
-
-    stats.forEach(stat => {
-        if(stat.drug_type === 'Canabis') {
-        if (stat.subcategory === 'Intoxicatie') {
-            chartData.datasets[0].data[0] = stat.cases;
-        } else if (stat.subcategory  === 'Utilizare nociva') {
-            chartData.datasets[0].data[1] = stat.cases;
-        } else if (stat.subcategory  === 'Dependenta') {
-            chartData.datasets[0].data[2] = stat.cases;
-        } else if (stat.subcategory  === 'Sevraj') {
-            chartData.datasets[0].data[3] =stat.cases;
-        } else if (stat.subcategory  === 'Tulburari de comportament') {
-            chartData.datasets[0].data[4] = stat.cases;
-        } else if (stat.subcategory  === 'Supradoaza') {
-            chartData.datasets[0].data[5] = stat.cases;
-        } else if (stat.subcategory  === 'Alte diagnostice') {
-            chartData.datasets[0].data[6] = stat.cases;
-        } else if (stat.subcategory  === 'Testare toxicologica') {
-            chartData.datasets[0].data[7] = stat.cases;
-        }
-       }
-     });
-
-    var ctx = document.getElementById('emergencies-chart').getContext('2d');
-
-    // Destroy existing chart if it exists
-    if (existingChartEmergency) {
-        existingChartEmergency.destroy();
-    }
-
-    ctx.canvas.height = 200; // Canvas height
-
-    existingChartEmergency = new Chart(ctx, {
-        type: 'bar',
-        data: chartData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Grid color
-                        borderDash: [5, 5], // Dashed grid lines
-                    },
-                    title: {
-                        display: true,
-                        text: 'Number of Cases',
-                        color: '#333', // Text color
-                        font: {
-                            family: 'Arial',
-                            size: 14,
-                            weight: 'bold',
-                        },
-                    }
-                },
-                x: {
-                    grid: {
-                        color: "rgba(0, 0, 0, 0.1)",
-                        borderDash: [5, 5],
-                    },
-                    title: {
-                        display: true,
-                        text: 'Category',
-                        color: '#333',
-                        font: {
-                            family: 'Arial',
-                            size: 14,
-                            weight: 'bold',
-                        },
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Drug Related Emergencies by Type (' + year + ')',
-                    color: '#000', // Title color
-                    font: {
-                        family: 'Arial',
-                        size: 18,
-                        weight: 'bold',
-                    },
-                    padding: {
-                        top: 10,
-                        bottom: 30
-                    },
-                },
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        color: '#000',
-                        font: {
-                            family: 'Arial',
-                            size: 12,
-                            weight: 'bold',
-                        },
-                        padding: 20,
-                    },
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0,0,0,0.8)',
-                    titleFont: {
-                        family: 'Arial',
-                        size: 14,
-                        weight: 'bold',
-                        color: '#fff',
-                    },
-                    bodyFont: {
-                        family: 'Arial',
-                        size: 12,
-                        color: '#fff',
-                    },
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
-                        }
-                    }
-                }
-            }
-        }
-    });
-}
 function renderChartEmergencyDrug(stats, year, type) {
     var chartData = {
         labels: ["Intoxicație", "Utilizare nocivă", "Dependență", "Sevraj", "Tulburări de comportament", "Supradoză", "Alte diagnostice", "Testare toxicologică"],
@@ -957,8 +819,49 @@ function renderChartEmergencyDrug(stats, year, type) {
         } else if (stat.subcategory  === 'Testare toxicologica') {
             chartData.datasets[0].data[7] = stat.cases;
         }
-       }}else if(type === 'canabis'){
+       }
+    }else if(type === 'canabis'){
         if(stat.drug_type === 'Canabis') {
+            if (stat.subcategory === 'Intoxicatie') {
+                chartData.datasets[0].data[0] = stat.cases;
+            } else if (stat.subcategory  === 'Utilizare nociva') {
+                chartData.datasets[0].data[1] = stat.cases;
+            } else if (stat.subcategory  === 'Dependenta') {
+                chartData.datasets[0].data[2] = stat.cases;
+            } else if (stat.subcategory  === 'Sevraj') {
+                chartData.datasets[0].data[3] =stat.cases;
+            } else if (stat.subcategory  === 'Tulburari de comportament') {
+                chartData.datasets[0].data[4] = stat.cases;
+            } else if (stat.subcategory  === 'Supradoaza') {
+                chartData.datasets[0].data[5] = stat.cases;
+            } else if (stat.subcategory  === 'Alte diagnostice') {
+                chartData.datasets[0].data[6] = stat.cases;
+            } else if (stat.subcategory  === 'Testare toxicologica') {
+                chartData.datasets[0].data[7] = stat.cases;
+            }
+           }
+       }else if(type === 'opiacee'){
+        if(stat.drug_type === 'Opiacee') {
+            if (stat.subcategory === 'Intoxicatie') {
+                chartData.datasets[0].data[0] = stat.cases;
+            } else if (stat.subcategory  === 'Utilizare nociva') {
+                chartData.datasets[0].data[1] = stat.cases;
+            } else if (stat.subcategory  === 'Dependenta') {
+                chartData.datasets[0].data[2] = stat.cases;
+            } else if (stat.subcategory  === 'Sevraj') {
+                chartData.datasets[0].data[3] =stat.cases;
+            } else if (stat.subcategory  === 'Tulburari de comportament') {
+                chartData.datasets[0].data[4] = stat.cases;
+            } else if (stat.subcategory  === 'Supradoaza') {
+                chartData.datasets[0].data[5] = stat.cases;
+            } else if (stat.subcategory  === 'Alte diagnostice') {
+                chartData.datasets[0].data[6] = stat.cases;
+            } else if (stat.subcategory  === 'Testare toxicologica') {
+                chartData.datasets[0].data[7] = stat.cases;
+            }
+           }
+       }else if(type === 'NSP'){
+        if(stat.drug_type === 'NSP') {
             if (stat.subcategory === 'Intoxicatie') {
                 chartData.datasets[0].data[0] = stat.cases;
             } else if (stat.subcategory  === 'Utilizare nociva') {

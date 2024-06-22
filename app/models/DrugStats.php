@@ -85,6 +85,7 @@ class DrugStats  extends Db{
             return null;
         }
     }
+
     public function getStatsByYearInfractionalityPenalities($an) {
         try {
             $sql = "SELECT category, subcategory, value 
@@ -121,69 +122,74 @@ class DrugStats  extends Db{
     }
 
 
-public function getStatsByYearMedic($an) {
-    try {
-        $sql = "SELECT * FROM urgente_medicale WHERE year = :an";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
-        $stmt->execute();
-        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-        return $drugs;
-    } catch (PDOException $e) {
-        echo "Error fetching drugs: " . $e->getMessage();
-        return null;
+    public function getStatsByYearMedic($an) {
+        try {
+            $sql = "SELECT * FROM urgente_medicale WHERE year = :an";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
     }
 
-public function getStatsByYearMedicEmergencyDrug($an) {
-    try {
-        $sql = "SELECT subcategory, drug_type, cases
-        FROM urgente_medicale 
-        WHERE year = :an 
-        AND category = 'Diagnostic' 
-        AND subcategory is not null AND subcategory != ''";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
-        $stmt->execute();
-        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-        return $drugs;
-    } catch (PDOException $e) {
-        echo "Error fetching drugs: " . $e->getMessage();
-        return null;
+    public function getStatsByYearMedicEmergencyDrug($an) {
+        try {
+            $sql = "SELECT subcategory, drug_type, cases
+            FROM urgente_medicale 
+            WHERE year = :an 
+            AND category = 'Diagnosis' 
+            AND subcategory is not null AND subcategory != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
     }
-}
-public function getStatsByYearMedicGenderDrug($an) {
-    try {
-        $sql = "SELECT subcategory, drug_type, cases
-                FROM urgente_medicale 
-                WHERE year = :an 
-                AND category = 'Sex' 
-                AND subcategory IS NOT NULL AND subcategory != ''";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
-        $stmt->execute();
-        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-        return $drugs;
-    } catch (PDOException $e) {
-        echo "Error fetching drugs: " . $e->getMessage();
-        return null;
-    }
-}
-public function getStatsByYearMedicAgeDrug($an) {
-    try {
-        $sql = "SELECT subcategory, drug_type, cases
-                FROM urgente_medicale 
-                WHERE year = :an 
-                AND category = 'Age' 
-                AND subcategory IS NOT NULL AND subcategory != ''";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
-        $stmt->execute();
-        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-        return $drugs;
-    } catch (PDOException $e) {
-        echo "Error fetching drugs: " . $e->getMessage();
-        return null;
 
+    public function getStatsByYearMedicGenderDrug($an) {
+        try {
+            $sql = "SELECT subcategory, drug_type, cases
+                    FROM urgente_medicale 
+                    WHERE year = :an 
+                    AND category = 'Sex' 
+                    AND subcategory IS NOT NULL AND subcategory != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
+
+
+    public function getStatsByYearMedicAgeDrug($an) {
+        try {
+            $sql = "SELECT subcategory, drug_type, cases
+                    FROM urgente_medicale 
+                    WHERE year = :an 
+                    AND category = 'Age' 
+                    AND subcategory IS NOT NULL AND subcategory != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+
+        }
     }
     ///////////////////////////////////////////PROJECTS//////////////////////////////////////////////
 
@@ -200,18 +206,19 @@ public function getStatsByYearMedicAgeDrug($an) {
     }
 
 
-public function getStatsByYearProject($an) {
-    try {
-        $sql = "SELECT * FROM proiecte WHERE year = :an";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':an', $an, PDO::PARAM_INT);
-        $stmt->execute();
-        $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-        return $drugs;
-    } catch (PDOException $e) {
-        echo "Error fetching drugs: " . $e->getMessage();
-        return null;
-
+    public function getStatsByYearProject($an) {
+        try {
+            $sql = "SELECT * FROM proiecte WHERE year = :an";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
 
     public function addDataToUrgenteMedicale($year, $category, $subcategory, $drug_type, $cases){
         try {
@@ -284,7 +291,6 @@ public function getStatsByYearProject($an) {
             return false;
         }
     }
-
 }
 
 ?>

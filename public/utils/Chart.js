@@ -464,9 +464,9 @@ function renderChartPenalitiesSituation(stats, year) {
           url += statsType + '/age/' + selectedYear;
           } else if (chartType === 'gender-drug') {
            url += statsType + '/gender/' + selectedYear;
-           } else if ( chartType === 'emergencie-drug') {
-             url +=statsType + '/emergency/' + selectedYear;
-         }
+           } else if ( chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-stimulanti' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
+             url += statsType + '/emergency/' + selectedYear;
+            }
     } else {
         console.error('Unsupported chart type:', chartType);
         return;

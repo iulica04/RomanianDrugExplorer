@@ -5,6 +5,7 @@
     <title> Home Page</title>
     <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Home.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
     <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
     <meta charset="UTF-8">
 </head>

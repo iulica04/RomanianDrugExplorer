@@ -523,4 +523,3 @@ public function addDataToConfiscariDroguri($year){
 
 }
 
-?>

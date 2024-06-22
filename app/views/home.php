@@ -41,7 +41,7 @@
         <h1>Exploring the World of Drugs Together</h1><br><br>
         <p>At Romanian Drug Explorer, we're here for you. Our mission is to provide support, resources, and information about drugs to help individuals live healthier lives. We believe in the power of community and are committed to helping those who need it most</p>
         <div class="buttons">
-            <a href="/RomanianDrugExplorer/app/views/LearnMore.php" class="button" >Learn more</a>
+            <a href="/RomanianDrugExplorer/app/views/Statistics.php" class="button" >Learn more</a>
             <p>or</p>
             <a href="/RomanianDrugExplorer/app/views/register.php" class="button" >Sign up</a>
         </div>

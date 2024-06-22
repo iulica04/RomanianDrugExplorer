@@ -59,18 +59,12 @@ class Router {
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                             $controller->getStatsByYearInfractionalityGenderAge($segments[4]);
        
-                           } else {
-                               $controller->getDrugStatsInfractionality();
-                              // echo 'nu e numeric';
                            }
                         }elseif (!empty($segments[3]) &&  $segments[3] ==='penalities'){
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                             $controller->getStatsByYearInfractionalityPenalities($segments[4]);
        
-                           } else {
-                               $controller->getDrugStatsInfractionality();
-                              // echo 'nu e numeric';
-                           }
+                           } 
                         }else{
                             $controller->getDrugStatsInfractionality();
                         }
@@ -182,4 +176,3 @@ class Router {
         }
     }
 }
-?>

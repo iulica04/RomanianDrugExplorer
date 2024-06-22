@@ -145,7 +145,6 @@ class UsersController {
 
         if ($success) {
             // Remove the user from the users array
-
             // Send response with status code 200
             http_response_code(200);
             echo json_encode(['message' => 'User deleted successfully']);
@@ -188,7 +187,7 @@ class UsersController {
             "iss" => "your_issuer", // Replace with your issuer
             "aud" => "your_audience", // Replace with your audience
             "iat" => time(),
-            "exp" => time() + (60*60), // Token valid for 1 hour
+            "exp" => time() + (60), // Token valid for 1 hour
             "data" => array(
                 "id" => $user['id'],
                 "username" => $user['username']
@@ -210,11 +209,12 @@ class UsersController {
     public function logoutUser() {
         // Distrugi sesiunea
         session_start();
+        session_unset();
         session_destroy();
 
-        if (isset($_COOKIE['token'])) {
-            unset($_COOKIE['token']);
-            setcookie('token', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
+        if (isset($_COOKIE['jwr'])) {
+            unset($_COOKIE['jwt']);
+            setcookie('jwt', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
         }
     
         // Setezi un răspuns de succes

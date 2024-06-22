@@ -31,7 +31,7 @@
 
     <div class="main">
         <h1>Statistics of the drug abuse per years:</h1>
-
+        <div id="snackbar"></div>
         <div class="container_1">
             <div class="card">
                 <div class="card_1">
@@ -52,7 +52,7 @@
                 </div>
 
 
-                
+
             </div>
         </div>
 
@@ -115,45 +115,9 @@
             </div>
         </div>
 
-        <div id="snackbar"></div>
-
-        <div class="container_2">
-            <div class="card">
-                <ul>
-                    <h1>Resources:</h1>
-                    <li>
-                        <i class="large material-icons">library_books</i>
-                        <a href="Test.php">Situația confiscărilor de droguri</a>
-                        <button class="button button2" onclick="downloadFile('capturidroguri', 'csv')"><a>Download
-                                Report CSV</a></button>
-                    </li>
-                    <li>
-                        <i class="large material-icons">library_books</i>
-                        <a href="Urgente_medicale.xlsx">Urgențele medicale datorate consumului de droguri</a>
-                        <button class="button button2" onclick="downloadFile('urgentemedicale', 'csv')"><a>Download
-                                Report CSV</a></button>
-
-                    </li>
-                    <li>
-                        <i class="large material-icons">library_books</i>
-                        <a href="Infractiuni_regim_droguri.xlsx">Infracționalitatea la regimul drogurilor</a>
-                        <button class="button button2" onclick="downloadFile('infractionalitate', 'csv')"><a>Download
-                                Report CSV</a></button>
-
-                    </li>
-                    <li>
-                        <i class="large material-icons">library_books</i>
-                        <a href="Proiecte_campanii_prevenire.xlsx">Proiectele și campaniile naționale de prevenire</a>
-                        <button class="button button2" onclick="downloadFile('proiectesicampanii', 'csv')"><a>Download
-                                Report CSV</a></button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     
     <script src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

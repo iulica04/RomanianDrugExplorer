@@ -96,54 +96,50 @@ function saveChart(chartId, filename, format) {
 
 function renderChartConfiscations(stats) {
     var chartData = {
-        labels: ["2021", "2022", "2023"],
+        labels: ["2021","2022", "2023"], // Actualizează etichetele pentru anii pentru care ai date
         datasets: [{
             label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1"], // Culori personalizate
-            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a"], // Culori de border personalizate
-            borderWidth: 1, // Grosimea borderului
-            
-            innerHeight: 300, // Înălțimea interioară a barelor
-            outerHeight: 300, // Înălțimea exterioară a barelor
-            data: [0, 0, 0] // Inițializare cu zero pentru fiecare categorie
+            backgroundColor: ["#007bff", "#87cefa", "#007bff"],
+            borderColor: ["#0056b3", "#6495ed", "#0056b3"],
+            borderWidth: 1,
+            data: [0, 0, 0] // Initializează cu zero pentru fiecare categorie
         }]
     };
 
     stats.forEach(stat => {
-        if (stat.year === '2021') {
-            chartData.datasets[0].data[0] = stat.total_value;
-        } else if (stat.year === '2022' ) {
-            chartData.datasets[0].data[1] = stat.total_value;
-        } else if (stat.year === '2021') {
-            chartData.datasets[0].data[2] = stat.total_value;
-        } 
+        if (stat.year === 2021) {
+            chartData.datasets[0].data[0] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2022) {
+            chartData.datasets[0].data[1] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2023) {
+            chartData.datasets[0].data[2] = parseInt(stat.total_value, 10);
+        }
     });
 
     var ctx = document.getElementById('confiscation-chart').getContext('2d');
-  
+
+    // Distrug graficul existent dacă există
     if (existingChartConfiscationPie) {
         existingChartConfiscationPie.destroy();
     }
-    
-     ctx.canvas.height = 200; // Înălțimea canvas-ului
-    
+
+    ctx.canvas.height = 200; // Setează înălțimea canvas-ului
 
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: {
-            
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Culoarea grilajului
-                        borderDash: [2, 2], // Linie întreruptă pentru grilaj
+                        color: "rgba(0, 0, 0, 0.1)",
+                        borderDash: [2, 2],
                     },
                     title: {
                         display: true,
                         text: 'Number of Cases',
-                        color: '#333', // Culoarea textului
+                        color: '#333',
                         font: {
                             family: 'Arial',
                             size: 14,
@@ -158,7 +154,7 @@ function renderChartConfiscations(stats) {
                     },
                     title: {
                         display: true,
-                        text: 'Category',
+                        text: 'Year',
                         color: '#333',
                         font: {
                             family: 'Arial',
@@ -172,7 +168,7 @@ function renderChartConfiscations(stats) {
                 title: {
                     display: true,
                     text: 'Drug Related Confiscations',
-                    color: '#000', // Culoarea titlului
+                    color: '#000',
                     font: {
                         family: 'Arial',
                         size: 18,
@@ -233,13 +229,13 @@ function renderChartInfractionality(stats) {
     };
 
     stats.forEach(stat => {
-        if (stat.year === '2021' ) {
-            chartData.datasets[0].data[0] = stat.total_value;/////////////
-        } else if (stat.year === '2022' ) {
-            chartData.datasets[0].data[1] = stat.total_value;
-        } else if (stat.year === '2023' ) {
-            chartData.datasets[0].data[2] = stat.total_value;
-        } 
+        if (stat.year === 2021) {
+            chartData.datasets[0].data[0] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2022) {
+            chartData.datasets[0].data[1] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2023) {
+            chartData.datasets[0].data[2] = parseInt(stat.total_value, 10);
+        }
     });
 
     var ctx = document.getElementById('infractionality-chart').getContext('2d');
@@ -356,13 +352,13 @@ function renderChartEmergencyDrug(stats) {
     console.log('AICI Chart data before processing:', chartData);
 
     stats.forEach(stat => {
-        if (stat.year === '2021') {
-            chartData.datasets[0].data[4] = stat.total_value;
-        } else if (stat.year === '2022') {
-            chartData.datasets[0].data[0] = stat.total_value;
-        } else if (stat.year === '2023') {
-            chartData.datasets[0].data[5] = stat.total_value;
-        } 
+        if (stat.year === 2021) {
+            chartData.datasets[0].data[0] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2022) {
+            chartData.datasets[0].data[1] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2023) {
+            chartData.datasets[0].data[2] = parseInt(stat.total_value, 10);
+        }
     });
 
     var ctx = document.getElementById('emergencies-chart').getContext('2d');
@@ -463,7 +459,6 @@ function renderChartEmergencyDrug(stats) {
         }
     });
 }
-
 // Functia pentru afisarea statisticilor de varsta și drog
 function renderChartProjects(stats) {
     var chartData = {
@@ -478,12 +473,13 @@ function renderChartProjects(stats) {
     };
 
     stats.forEach(stat => {
-            if (stat.year === '2021') 
-                chartData.datasets[0].data[0] = stat.total_value;///////////////////
-            else if (stat.year === '2022') 
-                chartData.datasets[0].data[1] = stat.total_value;
-            else if (stat.year=== '2023') 
-                chartData.datasets[0].data[2] = stat.total_value;
+        if (stat.year === 2021) {
+            chartData.datasets[0].data[0] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2022) {
+            chartData.datasets[0].data[1] = parseInt(stat.total_value, 10);
+        } else if (stat.year === 2023) {
+            chartData.datasets[0].data[2] = parseInt(stat.total_value, 10);
+        }
         
     });
 

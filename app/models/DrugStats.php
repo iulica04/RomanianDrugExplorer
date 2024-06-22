@@ -205,6 +205,23 @@ public function getStatsByYearProject($an) {
     }
 }
 
+public function addDataToUrgenteMedicale($year, $category, $subcategory, $drug_type, $cases){
+    try {
+        $sql = "INSERT INTO urgente_medicale (year, category, subcategory, drug_type, cases) VALUES (:year, :category, :subcategory, :drug_type, :cases)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':category', $category, PDO::PARAM_STR);
+        $stmt->bindParam(':subcategory', $subcategory, PDO::PARAM_STR);
+        $stmt->bindParam(':drug_type', $drug_type, PDO::PARAM_STR);
+        $stmt->bindParam(':cases', $cases, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        echo "Error adding data: " . $e->getMessage();
+        return false;
+    }
+}
+
 
    
 }

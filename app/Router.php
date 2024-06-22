@@ -147,6 +147,8 @@ class Router {
                     $controller->forgotPassword();
                  } elseif($controllerName === 'UsersController' && $segments[2] === 'verify-code'){
                     $controller->verifyCode();
+                 } elseif($controllerName === 'DrugStatsController' && $segments[2] === 'add-data' && $segments[3] === 'urgente-medicale' && !empty($segments[4]) && is_numeric($segments[4])){
+                    $controller->addDataUrgenteMedicale($segments[4]);
                  }
                  else {
                     http_response_code(405);

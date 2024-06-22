@@ -188,7 +188,7 @@ class UsersController {
             "iss" => "your_issuer", // Replace with your issuer
             "aud" => "your_audience", // Replace with your audience
             "iat" => time(),
-            "exp" => time() + (60*60), // Token valid for 1 hour
+            "exp" => time() + (60), // Token valid for 1 hour
             "data" => array(
                 "id" => $user['id'],
                 "username" => $user['username']
@@ -197,7 +197,7 @@ class UsersController {
         $jwt = JWT::encode($payload, $key, 'HS256');
 
         // Store JWT in a cookie
-        setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
+        setcookie("jwt", $jwt, time() + 60, "/"); // Cookie valid for 1 hour
         $_SESSION['loggedin'] = true;
         $_SESSION['isAdmin'] = $user['role'] === 'admin' ? true : false;
 
@@ -210,11 +210,12 @@ class UsersController {
     public function logoutUser() {
         // Distrugi sesiunea
         session_start();
+        session_unset();
         session_destroy();
 
-        if (isset($_COOKIE['token'])) {
-            unset($_COOKIE['token']);
-            setcookie('token', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
+        if (isset($_COOKIE['jwr'])) {
+            unset($_COOKIE['jwt']);
+            setcookie('jwt', '', time() - 3600, '/'); // setează data de expirare la o oră în trecut
         }
     
         // Setezi un răspuns de succes

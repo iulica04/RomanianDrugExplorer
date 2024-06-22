@@ -10,9 +10,6 @@ document.getElementById('fileToUpload').addEventListener('change', function(e) {
 document.getElementById('uploadForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    var jwt = getCookie('jwt');
-    console.log(jwt);
-/*
     const fileInput = document.getElementById('fileToUpload');
     const file = fileInput.files[0];
     const yearSelect = document.getElementById('yearSelect').value;
@@ -27,7 +24,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
             'Content-Type': 'multipart/form-data',
         }
     })
-    .then(response => response.json().then(data => ({ status: response.status, body: data })))
+    .then(response => console.log(response.text()))
     .then(({ status, body: data }) => {
             if (status === 200) {
                 showSnackbar(data.message, 'info');
@@ -37,5 +34,5 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     })
     .catch(error => {
         console.error('Error:', error);
-    }); */
+    }); 
 });

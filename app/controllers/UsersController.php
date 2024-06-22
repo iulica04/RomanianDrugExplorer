@@ -145,7 +145,6 @@ class UsersController {
 
         if ($success) {
             // Remove the user from the users array
-
             // Send response with status code 200
             http_response_code(200);
             echo json_encode(['message' => 'User deleted successfully']);
@@ -197,7 +196,7 @@ class UsersController {
         $jwt = JWT::encode($payload, $key, 'HS256');
 
         // Store JWT in a cookie
-        setcookie("jwt", $jwt, time() + 60, "/"); // Cookie valid for 1 hour
+        setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
         $_SESSION['loggedin'] = true;
         $_SESSION['isAdmin'] = $user['role'] === 'admin' ? true : false;
 

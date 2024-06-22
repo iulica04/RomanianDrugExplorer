@@ -13,7 +13,7 @@ document.getElementById('verifyCodeButton').addEventListener('click', function(e
         return;
     }
 
-    fetch('http://localhost/RomanianDrugExplorer/users/verify-code', {
+    fetch('http://localhost:8080/RomanianDrugExplorer/users/verify-code', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

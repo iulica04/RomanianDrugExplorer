@@ -11,7 +11,7 @@ $(document).ready(function() {
             showSnackbar('Passwords do not match.', 'error');
         }
 
-        fetch('http://localhost/RomanianDrugExplorer/users/' + userId + '/reset-password', {
+        fetch('http://localhost:8080/RomanianDrugExplorer/users/' + userId + '/reset-password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

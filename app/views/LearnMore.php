@@ -120,16 +120,28 @@
                     </div>
                     <div class="radio-buttons">
                         <label>
-                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug','emergencies')" />
-                            <span>Emergencie & Drug</span>
-                        </label>
-                        <label>
                             <input name="chartType" type="radio" checked onchange="updateChartEmergencies('gender-drug','emergencies')" />
                             <span>Gender & Drug</span>
                         </label>
                         <label>
                             <input name="chartType" type="radio" onchange="updateChartEmergencies('age-drug','emergencies')" />
                             <span>Age & Drug</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug-canabis','emergencies')" />
+                            <span>Emergencie & Drug Canabis</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug-stimulanti','emergencies')" />
+                            <span>Emergencie & Drug Stimulati</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug-opiacee','emergencies')" />
+                            <span>Emergencie & Drug Opiacee</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartEmergencies('emergencie-drug-NSP','emergencies')" />
+                            <span>Emergencie & Drug NSP</span>
                         </label>
                     </div>
                 </div>

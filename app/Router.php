@@ -147,8 +147,15 @@ class Router {
                     $controller->forgotPassword();
                  } elseif($controllerName === 'UsersController' && $segments[2] === 'verify-code'){
                     $controller->verifyCode();
-                 }
-                 else {
+                 } elseif($controllerName === 'DrugStatsController' && $segments[2] === 'add-data' && $segments[3] === 'urgente-medicale' && !empty($segments[4]) && is_numeric($segments[4])){
+                    $controller->addDataToUrgenteMedicale($segments[4]);
+                 } elseif($controllerName === 'DrugStatsController' && $segments[2] === 'add-data' && $segments[3] === 'infractionalitati' && !empty($segments[4]) && is_numeric($segments[4])){
+                    $controller->addDataToInfractionalitati($segments[4]);
+                } elseif($controllerName === 'DrugStatsController' && $segments[2] === 'add-data' && $segments[3] === 'proiecte' && !empty($segments[4]) && is_numeric($segments[4])){
+                    $controller->addDatatoProiecte($segments[4]);
+                } elseif($controllerName === 'DrugStatsController' && $segments[2] === 'add-data' && $segments[3] === 'confiscari-dorguri' && !empty($segments[4]) && is_numeric($segments[4])){
+                    $controller->addDataToConfiscariDroguri($segments[4]);
+                 }else {
                     http_response_code(405);
                     echo '405 Method Not Allowed';
                     exit;

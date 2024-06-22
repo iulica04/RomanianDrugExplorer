@@ -803,7 +803,7 @@ function renderChartEmergencyDrugCanabis(stats, year) {
     };
 
     stats.forEach(stat => {
-        if(drug_type === 'Canabis') {
+        if(stat.drug_type === 'Canabis') {
         if (stat.subcategory === 'Intoxicatie') {
             chartData.datasets[0].data[0] = stat.cases;
         } else if (stat.subcategory  === 'Utilizare nociva') {
@@ -936,7 +936,7 @@ function renderChartEmergencyDrugStimulanti(stats, year) {
     };
 
     stats.forEach(stat => {
-        if(drug_type === 'Stimulanti') {
+        if(stat.drug_type === 'Stimulanti') {
         if (stat.subcategory === 'Intoxicatie') {
             chartData.datasets[0].data[0] = stat.cases;
         } else if (stat.subcategory  === 'Utilizare nociva') {

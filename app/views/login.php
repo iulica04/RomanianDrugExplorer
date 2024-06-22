@@ -69,7 +69,7 @@
 
         <div id="snackbar"></div>
 
-<script src="/RomanianDrugExplorer/public/utils/clearFormInputs.js"></script>
+
 <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
 <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
 <script src="/RomanianDrugExplorer/public/utils/register.js"></script>

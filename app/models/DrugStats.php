@@ -5,12 +5,12 @@ require_once dirname(__FILE__) .'/../config/Db.php';
 class DrugStats  extends Db{
  
     /////////////////////////////////////////DRUG CONSUMPTION////////////////////////////////////////////
-     public function getStats() {
+    public function getStats() {
         try {
-            $sql = "SELECT * FROM confiscari_droguri";
+            $sql = "SELECT year, SUM(catches) AS total_value FROM confiscari_droguri GROUP BY year";
             $stmt = $this->pdo->query($sql);
-            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $drugs;
+            $stats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stats;
         } catch (PDOException $e) {
             echo "Error fetching drugs: " . $e->getMessage();
             return null;
@@ -40,7 +40,7 @@ class DrugStats  extends Db{
     /////////////////////////////////////////INFRACTIONALITY////////////////////////////////////////////
     public function getStatsInfractionality() {
         try {
-            $sql = "SELECT * FROM infractionalitate ";
+            $sql = "SELECT year, SUM(value) AS total_value FROM infractionalitate GROUP BY year";
             $stmt = $this->pdo->query($sql);
             $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $drugs;
@@ -110,7 +110,7 @@ class DrugStats  extends Db{
 
 public function getStatsMedic() {
     try {
-        $sql = "SELECT * FROM urgente_medicale";
+        $sql = "SELECT year, SUM(cases) AS total_value FROM urgente_medicale GROUP BY year";
         $stmt = $this->pdo->query($sql);
         $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $drugs;
@@ -140,7 +140,7 @@ public function getStatsByYearMedicEmergencyDrug($an) {
         $sql = "SELECT subcategory, drug_type, cases
         FROM urgente_medicale 
         WHERE year = :an 
-        AND category = 'Diagnostic' 
+        AND category = 'Diagnosis' 
         AND subcategory is not null AND subcategory != ''";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
@@ -190,7 +190,7 @@ public function getStatsByYearMedicAgeDrug($an) {
 
 public function getStatsProject() {
     try {
-        $sql = "SELECT * FROM proiecte";
+        $sql = "SELECT year, SUM(beneficiaries) AS total_value FROM proiecte GROUP BY year";
         $stmt = $this->pdo->query($sql);
         $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $drugs;

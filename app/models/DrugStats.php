@@ -20,11 +20,11 @@ class DrugStats  extends Db{
 
     public function getStatsByYear($an) {
         try {
-            $sql = "SELECT drog, capturi 
+            $sql = "SELECT drug_name, catches 
                     FROM confiscari_droguri
-                    WHERE an =:an
-                    And drog IS NOT NULL AND drog != '' 
-                    AND capturi IS NOT NULL AND capturi != ''";
+                    WHERE year =:an
+                    And drug_name IS NOT NULL AND drug_name != '' 
+                    AND catches IS NOT NULL AND catches != ''";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();
@@ -40,10 +40,7 @@ class DrugStats  extends Db{
     /////////////////////////////////////////INFRACTIONALITY////////////////////////////////////////////
     public function getStatsInfractionality() {
         try {
-            $sql = "SELECT an, stare, numar 
-                    FROM infractionalitate 
-                    WHERE an IS NOT NULL AND an != '' 
-                    AND stare IS NOT NULL AND stare != ''";
+            $sql = "SELECT * FROM infractionalitate ";
             $stmt = $this->pdo->query($sql);
             $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $drugs;
@@ -56,7 +53,7 @@ class DrugStats  extends Db{
 
     public function getStatsByYearInfractionality($an) {
         try {
-            $sql = "SELECT * FROM  infractionalitate WHERE an = :an";
+            $sql = "SELECT * FROM  infractionalitate WHERE year = :an";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();
@@ -70,11 +67,14 @@ class DrugStats  extends Db{
 
     public function getStatsByYearInfractionalityGenderAge($an) {
         try {
-            $sql = "SELECT gen, varsta, numar 
+            $sql = "SELECT category, subcategory, type, value
                     FROM infractionalitate 
-                    WHERE an = :an 
-                    AND gen IS NOT NULL AND gen != '' 
-                    AND varsta IS NOT NULL AND varsta != ''";
+                    WHERE year =:an
+                    AND category = 'Persoane condamnate pe sexe' 
+                    AND subcategory IS NOT NULL AND subcategory != ''
+                    AND type IS NOT NULL AND type != 'Total'
+                    AND value IS NOT NULL AND value != ''";
+
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();
@@ -87,10 +87,13 @@ class DrugStats  extends Db{
     }
     public function getStatsByYearInfractionalityPenalities($an) {
         try {
-            $sql = "SELECT stare, numar 
+            $sql = "SELECT category, subcategory, value 
                     FROM infractionalitate 
-                    WHERE an = :an 
-                    AND stare IS NOT NULL AND stare != ''";
+                    WHERE year =:an
+                    AND category = 'Persoane cercetate trimise in judecata si condamnate' 
+                    AND subcategory IS NOT NULL AND subcategory != ''
+                    AND value IS NOT NULL AND value != ''";
+
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();
@@ -200,7 +203,7 @@ public function getStatsProject() {
 
 public function getStatsByYearProject($an) {
     try {
-        $sql = "SELECT * FROM proiecte WHERE an = :an";
+        $sql = "SELECT * FROM proiecte WHERE year = :an";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
         $stmt->execute();

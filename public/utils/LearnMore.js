@@ -14,7 +14,6 @@ function showSnackbar(message, messageType) {
 }
 
 // Afiseaza datele in tabelul specific
-// Afiseaza datele in tabelul specific
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
     
@@ -43,7 +42,7 @@ function renderStats(stats, year, type) {
         var cells = '';
 
         switch(type) {
-            case 'confiscations':
+           /* case 'confiscations':
                 cells = `
                     <td>${stat.drog}</td>
                     <td>${stat.grame}</td>
@@ -61,13 +60,12 @@ function renderStats(stats, year, type) {
                     <td>${stat.diagnostic}</td>
                     <td>${stat.numar}</td>
                 `;
-                break;
+                break;*/
             case 'projects':
                 cells = `
-                    <td>${stat.tip_proiect}</td>
-                    <td>${stat.nume_proiect}</td>
-                    <td>${stat.numar_beneficiari}</td>
-                    <td>${stat.nivel}</td>
+                    <td>${stat.category}</td>
+                    <td>${stat.subcategory}</td>
+                    <td>${stat.beneficiaries}</td>
                 `;
                 break;
         }
@@ -99,7 +97,6 @@ function saveTableAsPNG(tableId, filename) {
         });
     });
 }
-
 
 function saveTableAsSVG(tableId) {
     var table = document.getElementById(tableId);
@@ -154,6 +151,8 @@ function saveTableAsSVG(tableId) {
     link.click();
     showSnackbar('Tabelul a fost salvat ca fișier SVG.', 'info');
 }
+
+
 
 // Download CSV file related to the selected year
 function downloadFile(type, format) {

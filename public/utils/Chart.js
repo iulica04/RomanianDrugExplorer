@@ -53,9 +53,7 @@ var existingChart; // Variabilă globală pentru a păstra referința la chart-u
 var existingChartEmergency; // Variabilă globală pentru a păstra referința la chart-ul existent emergercy
 var existingChartConfiscationPie; // Variabilă globală pentru a păstra referința la chart-ul existent confiscations
 
-
 ///SAVE PNG SI SVG
-// Funcția pentru a salva chart-ul ca PNG sau SVG
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
     
@@ -146,7 +144,6 @@ function savePieChart(chartId, filename, format) {
     }
 }
 
-
 // Funcția pentru actualizarea graficului în funcție de opțiunea selectată la radio buttons
 function updateChart(chartType, statsType) {
     var selectedYear = document.getElementById('year-select').value;
@@ -218,14 +215,14 @@ function renderChartGenderAge(stats, year) {
     };
 
     stats.forEach(stat => {
-        if (stat.gen === 'barbati' && stat.varsta === 'majori') {
-            chartData.datasets[0].data[0] = stat.numar;
-        } else if (stat.gen === 'barbati' && stat.varsta === 'minori') {
-            chartData.datasets[0].data[1] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'majori') {
-            chartData.datasets[0].data[2] = stat.numar;
-        } else if (stat.gen === 'femei' && stat.varsta === 'minori') {
-            chartData.datasets[0].data[3] = stat.numar;
+        if (stat.subcategory === 'Barbati' && stat.type === 'Majori') {
+            chartData.datasets[0].data[0] = stat.value;
+        } else if (stat.subcategory === 'Barbati' && stat.type === 'Minori') {
+            chartData.datasets[0].data[1] = stat.value;
+        } else if (stat.subcategory === 'Femei' && stat.type === 'Majori') {
+            chartData.datasets[0].data[2] = stat.value;
+        } else if (stat.subcategory === 'Femei' && stat.type === 'Minori') {
+            chartData.datasets[0].data[3] = stat.value;
         }
     });
 
@@ -345,12 +342,12 @@ function renderChartPenalitiesSituation(stats, year) {
     };
 
     stats.forEach(stat => {
-        if (stat.stare === 'persoane cercetate' ) {
-            chartData.datasets[0].data[0] = stat.numar;
-        } else if (stat.stare === 'persoane trimise in judecata' ) {
-            chartData.datasets[0].data[1] = stat.numar;
-        } else if (stat.stare === 'persoane condamnate' ) {
-            chartData.datasets[0].data[2] = stat.numar;
+        if (stat.subcategory === 'Persoane cercetate' ) {
+            chartData.datasets[0].data[0] = stat.value;
+        } else if (stat.subcategory === 'Persoane trimise in judecata' ) {
+            chartData.datasets[0].data[1] = stat.value;
+        } else if (stat.subcategory === 'Persoane condamnate' ) {
+            chartData.datasets[0].data[2] = stat.value;
         } 
     });
 
@@ -651,7 +648,6 @@ function renderChartGenderDrug(stats, year) {
         }
     });
 }
-
 
 // Functia pentru afisarea statisticilor de varsta și drog
 function renderChartAgeDrug(stats, year) {
@@ -984,8 +980,8 @@ function renderChartEmergencyDrug(stats, year, type) {
 }
 
 function renderPieChart(stats, year) {
-    var labels = stats.map(stat => stat.drog); // Utilizăm numele drogurilor pentru etichetele graficului
-    var values = stats.map(stat => stat.capturi); // Utilizăm numărul de capturi pentru valorile graficului
+    var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
+    var values = stats.map(stat => stat.catches); // Utilizăm numărul de capturi pentru valorile graficului
     var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
 
     var pieChartData = {
@@ -1039,9 +1035,6 @@ function renderPieChart(stats, year) {
         }
     });
 }
-
-
-
 
 // Funcția pentru afișarea statisticilor generale
 function renderStatsByYears(stats) {

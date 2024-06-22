@@ -30,6 +30,7 @@ header {
     padding: 0; 
     padding-top: 20px;
     height: 60px;
+   
 }
   
 
@@ -506,6 +507,7 @@ header {
     margin-top: 20px;
     position: relative;
     height: 300px; /* Înălțimea poate fi ajustată la necesitatea ta */
+    z-index: 1;
 }
 
 #confiscations-chartpie {

@@ -84,6 +84,8 @@
         /* Adaugă o tranziție pentru iconul meniului */
     }
 
+     
+
     #menu-toggle:checked+.menu-icon {
         transform: rotate(90deg);
         /* Rotirea iconului pentru a arăta că meniul este deschis */

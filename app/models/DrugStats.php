@@ -196,7 +196,7 @@ class DrugStats  extends Db{
 
     public function getStatsProject() {
         try {
-            $sql = "SELECT * FROM proiecte";
+            $sql = "SELECT year, SUM(beneficiaries) AS total_value FROM proiecte GROUP BY year";
             $stmt = $this->pdo->query($sql);
             $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $drugs;
@@ -294,4 +294,3 @@ class DrugStats  extends Db{
     }
 }
 
-?>

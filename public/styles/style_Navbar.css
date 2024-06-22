@@ -5,17 +5,13 @@
     border-bottom: 3px solid #0003;
     display: flex;
     justify-content: space-between;
-    /* Așază elementele în spațiu egal între ele */
     align-items: center;
-    /* Alinează elementele vertical pe axa y */
     padding: 0 40px;
-    /* Ajustează marginile stânga și dreapta */
 }
 
 .list,
 .for_login {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -27,7 +23,6 @@
     text-decoration: none;
     transition: color .5s;
     position: relative;
-    border-bottom: 1px solid #0003;
 }
 
 
@@ -59,11 +54,16 @@
         border-top: 1px solid #0003;
     }
 
+    .list>a,
+    .for_login>a {
+        border-bottom: 1px solid #0003;
+    }
+
     .for_login {
         width: 100%;
         margin: 0px;
         left: 0;
-    }   
+    }
 
     #menu-toggle:checked~.list {
         display: flex;
@@ -84,6 +84,8 @@
         /* Adaugă o tranziție pentru iconul meniului */
     }
 
+     
+
     #menu-toggle:checked+.menu-icon {
         transform: rotate(90deg);
         /* Rotirea iconului pentru a arăta că meniul este deschis */
@@ -93,13 +95,13 @@
         display: none;
     }
 
-    .list a{
+    .list a {
         display: block;
         padding: 10px;
         width: 100%;
     }
 
-    .list>a:hover {
+    .list>a:hover, .for_login>a:hover {
         background-color: #87986A;
         color: #3A4D39;
     }
@@ -108,7 +110,6 @@
 @media all and (min-width: 821px) {
     .menu-icon {
         display: none;
-        /* Ascunde checkbox-ul pentru ecrane mari */
     }
 
     #menu-toggle {
@@ -117,7 +118,6 @@
 
     .list>a:hover {
         color: #3A4D39;
-        /* Schimbă culoarea la hover */
     }
 
     .list>a::after {

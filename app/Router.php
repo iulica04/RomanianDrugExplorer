@@ -71,6 +71,8 @@ class Router {
                                $controller->getDrugStatsInfractionality();
                               // echo 'nu e numeric';
                            }
+                        }else{
+                            $controller->getDrugStatsInfractionality();
                         }
                     }elseif(!empty($segments[2]) && $segments[2]==='emergencies') {
                         if (!empty($segments[3]) &&  $segments[3]=== 'gender'){

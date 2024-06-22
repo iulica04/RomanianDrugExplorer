@@ -1,42 +1,18 @@
+function showSnackbar(message, messageType) {
+    var snackbar = document.getElementById("snackbar");
+    snackbar.innerHTML = message;
+    snackbar.className = "show";
 
-function updateYearUrl() {
-    var selectedYear = document.getElementById('year-select').value;
-    if (selectedYear === '') {
-        return; 
+    // Add the message type class to the Snackbar
+    if (messageType === 'error') {
+        snackbar.className += " error";
+    } else if (messageType === 'info') {
+        snackbar.className += " info";
     }
-    console.log('Selected year:', selectedYear);
 
-    // Trimite cereri GET pentru fiecare tip de statistică
-    ['confiscations', 'emergencies', 'projects'].forEach(type => {
-        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
-        console.log('Requesting data from:', url);
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Response text:', data);
-                try {
-                    const jsonData = JSON.parse(data);
-                    if (jsonData && jsonData.stats) {
-                        renderStats(jsonData.stats, jsonData.year, type);
-                    } else {
-                        console.error('Empty response or invalid data received:', jsonData);
-                    }
-                } catch (error) {
-                    console.error('Error parsing JSON:', error);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    });
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
-// Afiseaza datele in tabelul specific
 // Afiseaza datele in tabelul specific
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
@@ -54,7 +30,7 @@ function renderStats(stats, year, type) {
         if (year) {
             selectedYearElement.textContent = year;
         } else {
-            selectedYearElement.textContent = ' Statistici pe ani ';
+            selectedYearElement.textContent = 'Choose a year...';
         }
     } else {
         console.error('Selected year element not found.');
@@ -66,7 +42,7 @@ function renderStats(stats, year, type) {
         var cells = '';
 
         switch(type) {
-            case 'confiscations':
+           /* case 'confiscations':
                 cells = `
                     <td>${stat.drog}</td>
                     <td>${stat.grame}</td>
@@ -84,13 +60,12 @@ function renderStats(stats, year, type) {
                     <td>${stat.diagnostic}</td>
                     <td>${stat.numar}</td>
                 `;
-                break;
+                break;*/
             case 'projects':
                 cells = `
-                    <td>${stat.tip_proiect}</td>
-                    <td>${stat.nume_proiect}</td>
-                    <td>${stat.numar_beneficiari}</td>
-                    <td>${stat.nivel}</td>
+                    <td>${stat.category}</td>
+                    <td>${stat.subcategory}</td>
+                    <td>${stat.beneficiaries}</td>
                 `;
                 break;
         }
@@ -99,6 +74,85 @@ function renderStats(stats, year, type) {
         tableBody.appendChild(row);
     });
 }
+
+function saveTableAsPNG(tableId, filename) {
+    var tableElement = document.getElementById(tableId);
+
+    // Verifică dacă tabelul există
+    if (!tableElement) {
+        console.error('Table element not found:', tableId);
+        snackbar('Tabelul nu a fost găsit.', 'error');
+        return;
+    }
+
+    // Convertirea tabelului într-un canvas utilizând html2canvas
+    html2canvas(tableElement).then(function(canvas) {
+        // Obține obiectul blob pentru canvas
+        canvas.toBlob(function(blob) {
+            // Crează un element <a> pentru a descărca fișierul PNG
+            var link = document.createElement('a');
+            link.download = filename + '.png';
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        });
+    });
+}
+
+function saveTableAsSVG(tableId) {
+    var table = document.getElementById(tableId);
+    if (!table) {
+        console.error('Table element not found:', tableId);
+        showSnackbar('Tabelul nu a fost găsit.', 'error');
+        return;
+    }
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var svgNS = svg.namespaceURI;
+
+    // Creează un container SVG cu dimensiunile tabelului
+    var svgWidth = table.offsetWidth;
+    var svgHeight = table.offsetHeight;
+
+    svg.setAttribute('width', svgWidth);
+    svg.setAttribute('height', svgHeight);
+
+    // Adaugă stiluri CSS
+    var styleElement = document.createElement('style');
+    styleElement.textContent = `
+        table { font-family: Arial, sans-serif; border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    `;
+    svg.appendChild(styleElement);
+
+    // Creează un container SVG pentru tabel
+    var tableSvg = document.createElementNS(svgNS, 'foreignObject');
+    tableSvg.setAttribute('width', '100%');
+    tableSvg.setAttribute('height', '100%');
+
+    // Creează un div pentru a înfășura tabelul
+    var tableWrapper = document.createElement('div');
+    tableWrapper.appendChild(table.cloneNode(true)); // Clonează tabelul
+
+    // Adaugă div-ul la containerul SVG pentru tabel
+    tableSvg.appendChild(tableWrapper);
+
+    // Adaugă containerul SVG pentru tabel la SVG principal
+    svg.appendChild(tableSvg);
+
+    // Serializează SVG
+    var serializer = new XMLSerializer();
+    var svgString = serializer.serializeToString(svg);
+
+    // Crează un link pentru descărcare
+    var link = document.createElement('a');
+    link.download = 'table.svg';
+    link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+    link.click();
+    showSnackbar('Tabelul a fost salvat ca fișier SVG.', 'info');
+}
+
+
 
 // Download CSV file related to the selected year
 function downloadFile(type, format) {
@@ -137,5 +191,6 @@ function downloadFile(type, format) {
             document.getElementById(`download-error-${type}`).style.display = 'block';
         });
 }
+
 
 

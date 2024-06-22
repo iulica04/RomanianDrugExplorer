@@ -30,6 +30,7 @@ header {
     padding: 0; 
     padding-top: 20px;
     height: 60px;
+   
 }
   
 
@@ -148,8 +149,11 @@ header {
     text-decoration: underline; /* Adăugați subliniere textului */
     font-size: 40px;
 }
-    
+   
+
+
 .container_1 {
+    
     display: flex;
     align-items: flex-start;
     margin-top: 20px;
@@ -183,7 +187,7 @@ header {
     font-size: 20px;
     background-color: #E0FBE2;
     margin-bottom: 20px;
-    width: 40%;
+    width: 20%;
     margin-top: 0%;
 }
 
@@ -197,7 +201,6 @@ header {
    
     text-align: left;
     width: 100%; 
-   
     height: 70px;
 }
   
@@ -478,7 +481,7 @@ header {
 
 .card_2 .radio-buttons {
     display: flex;
-    justify-content:baseline; /* Afișăm radio buttons în centru */
+   
     margin-bottom: 20px;
 }
 
@@ -499,7 +502,18 @@ header {
     border: solid 3px rgb(85, 170, 116);
     
 }
+/* Stiluri pentru graficul pie */
+.chartpie-container {
+    margin-top: 20px;
+    position: relative;
+    height: 300px; /* Înălțimea poate fi ajustată la necesitatea ta */
+    z-index: 1;
+}
 
+#confiscations-chartpie {
+    width: 100%;
+    height: 100%;
+}
 
 
 @media only screen and (max-width: 800px) {

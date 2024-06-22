@@ -120,7 +120,7 @@ public function getStatsMedic() {
 
 public function getStatsByYearMedic($an) {
     try {
-        $sql = "SELECT * FROM urgente_medicale WHERE an = :an";
+        $sql = "SELECT * FROM urgente_medicale WHERE year = :an";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
         $stmt->execute();
@@ -134,11 +134,11 @@ public function getStatsByYearMedic($an) {
 
 public function getStatsByYearMedicEmergencyDrug($an) {
     try {
-        $sql = "SELECT drog, diagnostic, numar 
+        $sql = "SELECT subcategory, drug_type, cases
         FROM urgente_medicale 
-        WHERE an = :an 
-        AND drog IS NOT NULL AND drog != '' 
-        AND diagnostic IS NOT NULL AND diagnostic != ''";
+        WHERE year = :an 
+        AND category = 'Diagnostic' 
+        AND subcategory is not null AND subcategory != ''";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
         $stmt->execute();
@@ -151,11 +151,11 @@ public function getStatsByYearMedicEmergencyDrug($an) {
 }
 public function getStatsByYearMedicGenderDrug($an) {
     try {
-        $sql = "SELECT drog, gen, numar 
-        FROM urgente_medicale 
-        WHERE an = :an 
-        AND drog IS NOT NULL AND drog != '' 
-        AND gen IS NOT NULL AND gen != ''";
+        $sql = "SELECT subcategory, drug_type, cases
+                FROM urgente_medicale 
+                WHERE year = :an 
+                AND category = 'Sex' 
+                AND subcategory IS NOT NULL AND subcategory != ''";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
         $stmt->execute();
@@ -168,11 +168,11 @@ public function getStatsByYearMedicGenderDrug($an) {
 }
 public function getStatsByYearMedicAgeDrug($an) {
     try {
-        $sql = "SELECT drog, varsta, numar 
-        FROM urgente_medicale 
-        WHERE an = :an 
-        AND drog IS NOT NULL AND drog != '' 
-        AND varsta IS NOT NULL AND varsta != ''";
+        $sql = "SELECT subcategory, drug_type, cases
+                FROM urgente_medicale 
+                WHERE year = :an 
+                AND category = 'Age' 
+                AND subcategory IS NOT NULL AND subcategory != ''";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':an', $an, PDO::PARAM_INT);
         $stmt->execute();

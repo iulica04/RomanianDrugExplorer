@@ -148,8 +148,11 @@ header {
     text-decoration: underline; /* Adăugați subliniere textului */
     font-size: 40px;
 }
-    
+   
+
+
 .container_1 {
+    
     display: flex;
     align-items: flex-start;
     margin-top: 20px;

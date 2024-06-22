@@ -13,43 +13,6 @@ function showSnackbar(message, messageType) {
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
-function updateYearUrl() {
-    var selectedYear = document.getElementById('year-select').value;
-    if (selectedYear === '') {
-        return; 
-    }
-    console.log('Selected year:', selectedYear);
-
-    // Trimite cereri GET pentru fiecare tip de statistică
-    ['confiscations', 'emergencies', 'projects'].forEach(type => {
-        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
-        console.log('Requesting data from:', url);
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Response text:', data);
-                try {
-                    const jsonData = JSON.parse(data);
-                    if (jsonData && jsonData.stats) {
-                        renderStats(jsonData.stats, jsonData.year, type);
-                    } else {
-                        console.error('Empty response or invalid data received:', jsonData);
-                    }
-                } catch (error) {
-                    console.error('Error parsing JSON:', error);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    });
-}
-
 // Afiseaza datele in tabelul specific
 // Afiseaza datele in tabelul specific
 function renderStats(stats, year, type) {
@@ -68,7 +31,7 @@ function renderStats(stats, year, type) {
         if (year) {
             selectedYearElement.textContent = year;
         } else {
-            selectedYearElement.textContent = ' Statistici pe ani ';
+            selectedYearElement.textContent = 'Choose a year...';
         }
     } else {
         console.error('Selected year element not found.');
@@ -229,5 +192,6 @@ function downloadFile(type, format) {
             document.getElementById(`download-error-${type}`).style.display = 'block';
         });
 }
+
 
 

@@ -23,34 +23,48 @@
                 <option value="2023">2023</option>
                 <option value="2022">2022</option>
                 <option value="2021">2021</option>
-                <option value="2020">2020</option>
             </select>
         </div>
 
         <div>
-            <h1 id="selected-year">
+            <h2 id="selected-year">
                 <?php if (isset($_GET['year'])) {
                     echo $_GET['year'];
-                }?>
-            </h1>
+                }
+                ?>
+            </h2>
         </div>
 
         <div class="container_1">
             <div class="card">
                 <div class="card_1">
-                    <h1>Drug Confiscation Statistics:</h1>
+                    <h1>Drug Related Confiscations Statistics:</h1>
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
                     <button class="button button2" onclick="savePieChart('confiscations-chartpie', 'chartPie', 'png')">
-                        <a href="#">Download PNG</a>
+                        <a>Download PNG</a>
                     </button>
                     <button class="button button2" onclick="savePieChart('confiscations-chartpie','chartPie', 'svg')">
-                        <a href="#">Download SVG</a>
+                        <a>Download SVG</a>
                     </button>
                 </div>
 
                 <div class="card_2">
                 <div class="chartpie-container">
-                      <canvas id="confiscations-chartpie" width="900" height="900"></canvas>
+                      <canvas id="confiscations-chartpie"></canvas>
+                </div>
+                <div class="radio-buttons">
+                        <label>
+                            <input name="chartType" type="radio" checked onchange="updateChartPie('drug-captures','confiscations')" />
+                            <span>Drug & Captures</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartPie('drug-grams','confiscations')" />
+                            <span>Drug & Grams</span>
+                        </label>
+                        <label>
+                            <input name="chartType" type="radio" onchange="updateChartPie('drug-tablets','confiscations')" />
+                            <span>Drug & Tablets</span>
+                        </label>
                     </div>
                 </div>
 
@@ -138,8 +152,6 @@
                 <div class="card_1">
                     <h1>Anti-Drug Projects Statistics:</h1>
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
-                    <button class="button button2" onclick="saveTableAsPNG('projects-table','png')"><a>Download
-                            PNG</a></button>
                     <button class="button button2" onclick="saveTableAsSVG('projects-table')"><a>Download
                             SVG</a></button>
                 </div>
@@ -152,7 +164,6 @@
                                 <th>Tip Proiect</th>
                                 <th>Nume Proiect</th>
                                 <th>Numar de beneficiari</th>
-                                <th>Nivel</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -165,38 +176,38 @@
 
         <div id="snackbar"></div>
 
-        <div class="container_2">
+     <div class="container_2">
     <div class="card">
         <ul>
             <h1>Resources:</h1>
             <li>
                 <i class="large material-icons">library_books</i>
                 <a>Situația confiscărilor de droguri</a>
-                <button class="button button2" onclick="downloadFile('capturidroguri', 'csv')"><a>Download Report CSV</a></button>
-                <button class="button button2" onclick="openFileInNewTab('capturidroguri', 'csv')"><a>Open in New Tab</a></button>
+                <button class=" button1" onclick="downloadFile('capturidroguri', 'csv')"><a>Download Report CSV</a></button>
+                <button class=" button1" onclick="openFileInNewTab('capturidroguri', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
                 <a>Urgențele medicale datorate consumului de droguri</a>
-                <button class="button button2" onclick="downloadFile('urgentemedicale', 'csv')"><a>Download Report CSV</a></button>
-                <button class="button button2" onclick="openFileInNewTab('urgentemedicale', 'csv')"><a>Open in New Tab</a></button>
+                <button class="button1" onclick="downloadFile('urgentemedicale', 'csv')"><a>Download Report CSV</a></button>
+                <button class="button1" onclick="openFileInNewTab('urgentemedicale', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
                 <a>Infracționalitatea la regimul drogurilor</a>
-                <button class="button button2" onclick="downloadFile('infractionalitate', 'csv')"><a>Download Report CSV</a></button>
-                <button class="button button2" onclick="openFileInNewTab('infractionalitate', 'csv')"><a>Open in New Tab</a></button>
+                <button class="button1" onclick="downloadFile('infractionalitate', 'csv')"><a>Download Report CSV</a></button>
+                <button class="button1" onclick="openFileInNewTab('infractionalitate', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
                 <a>Proiectele și campaniile naționale de prevenire</a>
-                <button class="button button2" onclick="downloadFile('proiectesicampanii', 'csv')"><a>Download Report CSV</a></button>
-                <button class="button button2" onclick="openFileInNewTab('proiectesicampanii', 'csv')"><a>Open in New Tab</a></button>
+                <button class="button1" onclick="downloadFile('proiectesicampanii', 'csv')"><a>Download Report CSV</a></button>
+                <button class="button1" onclick="openFileInNewTab('proiectesicampanii', 'csv')"><a>Open in New Tab</a></button>
             </li>
         </ul>
     </div>
 </div>
-    </div>
+</div>
 
     <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>

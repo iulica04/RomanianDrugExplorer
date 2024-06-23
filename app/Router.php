@@ -46,15 +46,23 @@ class Router {
                 } elseif ($controllerName === 'DrugStatsController') {
                     // Handle GET /DrugStats/{type}/{year}
                     if(!empty($segments[2]) && $segments[2]==='confiscations') {
-                        if (!empty($segments[3]) && is_numeric($segments[3])){
-                       
-                            $controller->getStatsByYear($segments[3]);
-       
-                           } else {
-                               $controller->getDrugStats();
-                              // echo 'nu e numeric';
+                        if (!empty($segments[3]) &&  $segments[3]=== 'captures'){
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                                 $controller->getStatsByYear($segments[4]);
                            }
-                    } elseif(!empty($segments[2]) && $segments[2]==='infractionality') {
+                        }elseif(!empty($segments[3]) &&  $segments[3]='grams') {
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                                 $controller->getStatsByYearGrams($segments[4]);
+                           } 
+                        }elseif(!empty($segments[3]) &&  $segments[3]='tablets') {
+                            if (!empty($segments[4]) && is_numeric($segments[4])){
+                                 $controller->getStatsByYearTablets($segments[4]);
+                           }
+                        }else{
+                            $controller->getDrugStats();
+                        }
+                    
+                  } elseif(!empty($segments[2]) && $segments[2]==='infractionality') {
                         if (!empty($segments[3]) &&  $segments[3]=== 'gender'){
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                             $controller->getStatsByYearInfractionalityGenderAge($segments[4]);

@@ -19,11 +19,13 @@
     <div class="main">
         <h1>Statistics of the drug abuse per years:</h1>
         <div id="snackbar"></div>
+
         <div class="container_1">
             <div class="card">
                 <div class="card_1">
                     <h1>Drug Confiscation Statistics:</h1>
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
+
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                     <button class="button button2" onclick="saveChart('confiscations-chart', 'chart', 'png')">
                         <a>Download PNG</a>
@@ -40,9 +42,6 @@
                       <canvas id="confiscation-chart"></canvas>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
 
@@ -51,6 +50,7 @@
                 <div class="card_1">
                     <h1>Drug Related Infractionality Statistics:</h1>
                     <p>Here you can find the statistics about drug related infractionality in Romania.</p>
+
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                     <button class="button button2"
                         onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
@@ -73,12 +73,12 @@
                 <div class="card_1">
                     <h1>Drug Emergencies Statistics:</h1>
                     <p>Here you can find the statistics about drug emergencies in Romania.</p>
+
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                         <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
                     <?php } else { ?>
                         <button class="button button2" onclick="saveChartNotLoggedIn()"><a>Download PNG</a></button>
                     <?php } ?>
-
                 </div>
 
                 <div class="card_2">
@@ -100,7 +100,6 @@
                     <?php } else { ?>
                         <button class="button button2" onclick="saveChartNotLoggedIn()"><a>Download PNG</a></button>
                     <?php } ?>
-                    
                 </div>
 
                 <div class="card_2">
@@ -122,6 +121,9 @@
         <?php } ?>
         </div>
 
+
+
+</div>
 
     <script src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>

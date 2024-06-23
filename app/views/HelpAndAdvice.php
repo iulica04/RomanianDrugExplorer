@@ -7,8 +7,8 @@
   <meta charset="UTF-8">
 </head>
 <body>
-  <header>
-    <?php include 'elements/navbar.php'; ?>
+
+   <?php include 'elements/navbar.php'; ?>
   </header>
 
   <div class="main">
@@ -80,7 +80,7 @@
             
           </p><p></p> 3. Prepare yourself. Think about how you’d like to respond when someone offers you drugs so you know what to say.
             
-        </p><p>4. Try to understand who’s offering you the drugs and why. Friends should understand if you say no, people you don’t know you very well may expect something in return.
+        <p>4. Try to understand who’s offering you the drugs and why. Friends should understand if you say no, people you don’t know you very well may expect something in return.
             
         </p><p> 5. Say no firmly but clearly and without making a big deal about it. If they try to persuade you, don’t feel like you have to change your mind.
             
@@ -167,7 +167,7 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
             
             If you’re developing a problem with prescribed or over-the-counter medicines, you may find you’ve been hiding the amount you’re taking or lying about your symptoms.
             
-        </p><h3> Step 2: You go to get expert help</h3><p>
+        </p><h3> Step 2: You go to get expert help</h3>
             There are two main ways you can find treatment:
             
             <h4>Through your GP</h4>
@@ -178,7 +178,7 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
             
             You can also call the FRANK helpline and talk confidentially to one of our advisors.
             
-        </p><h3>   Step 3: You’re assessed</h3><p>
+        <h3>   Step 3: You’re assessed</h3><p>
             Before treatment can start, you’ll need to discuss your drug or alcohol use with a doctor, other health professionals or a trained drug and alcohol worker.
             
             They will let you know what treatment options are available for your drug or alcohol use and any other health problems you may have. Your personal care plan will then be developed with you.
@@ -190,7 +190,7 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
             
             Prescribed medication is also needed for certain drug or alcohol problems. See Step 5 for more information on different types of treatment.
             
-        </p><h3>   Step 5: You change your lifestyle</h3><p></p>
+        <h3>   Step 5: You change your lifestyle</h3><p></p>
             Recovery from a drug or alcohol problem often involves a long-term lifestyle change. A number of social factors can help you not to use drugs or alcohol (called abstinence) or to cut down and can help you achieve an improved quality of life.
             
             <h4>These include:</h4>

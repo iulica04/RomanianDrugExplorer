@@ -41,6 +41,36 @@ class DrugStatsController {
             echo json_encode(['stats' => []]);
         }
     }
+    public function getStatsByYearGrams($year) {
+        $stats = $this->drugStatsModel->getStatsByYearGrams($year);
+        header('Content-Type: application/json'); // Ensure the response is JSON
+
+        if ($stats) {
+            $response = [
+                'stats' => $stats,
+                'year' => $year
+            ];
+            echo json_encode($response);
+        } else {
+            echo json_encode(['stats' => [], 'year' => $year]);
+        }
+    }
+
+    public function getStatsByYearTablets($year) {
+        $stats = $this->drugStatsModel->getStatsByYearTablets($year);
+        header('Content-Type: application/json'); 
+
+        if ($stats) {
+            $response = [
+                'stats' => $stats,
+                'year' => $year
+            ];
+            echo json_encode($response);
+        } else {
+            echo json_encode(['stats' => [], 'year' => $year]);
+        }
+    }
+
 
 ///////////////////////////////////////////INFRACTIONALITY////////////////////////////////////////////
 public function getStatsByYearInfractionality($year) {

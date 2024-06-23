@@ -50,9 +50,8 @@ var existingChartProjects; // Variabilă globală pentru a păstra referința la
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
     
-
-    // Verifică dacă canvas-ul există
-    if (existingChart) {
+    // Verifică dacă canvas-ul există pt orice chart 
+    if (existingChart || existingChartEmergency || existingChartConfiscationPie || existingChartProjects) {
         // Salvează ca PNG
         if (format === 'png') {
             chartCanvas.toBlob(function(blob) {
@@ -63,37 +62,13 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         }
-        // Salvează ca SVG
-        else if (format === 'svg') {
-            var chartCanvas = document.getElementById(chartId);
-            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('width', chartCanvas.width);
-            svg.setAttribute('height', chartCanvas.height);
-        
-            // Clonează canvas-ul în SVG
-            var svgRect = chartCanvas.cloneNode(true);
-            svg.appendChild(svgRect);
-        
-            // Serializează SVG
-            var serializer = new XMLSerializer();
-            var svgString = serializer.serializeToString(svg);
-        
-            // Crează un link pentru descărcare
-            var link = document.createElement('a');
-            link.download = filename + '.svg';
-            link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
-            link.click();
-        } else {
-            console.error('Unsupported format:', format);
-        }
     } else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found.', 'error');
     }
 }
 
-
-
+//Funcția pentru afișarea 
 function renderChartConfiscations(stats) {
     var chartData = {
         labels: ["2021","2022", "2023"], // Actualizează etichetele pentru anii pentru care ai date
@@ -129,6 +104,7 @@ function renderChartConfiscations(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -247,7 +223,7 @@ function renderChartInfractionality(stats) {
         type: 'bar',
         data: chartData,
         options: {
-            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -373,6 +349,7 @@ function renderChartEmergencyDrug(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -496,6 +473,7 @@ function renderChartProjects(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,

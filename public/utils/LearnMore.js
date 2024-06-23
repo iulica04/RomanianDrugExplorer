@@ -13,7 +13,7 @@ function showSnackbar(message, messageType) {
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
-// Afiseaza datele in tabelul specific
+// Afiseaza datele in tabelul specific PROJECTS
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
     
@@ -51,16 +51,7 @@ function renderStats(stats, year, type) {
                     <td>${stat.capturi}</td>
                 `;
                 break;
-            case 'emergencies':
-                cells = `
-                    <td>${stat.drog}</td>
-                    <td>${stat.gen}</td>
-                    <td>${stat.varsta}</td>
-                    <td>${stat.administrare}</td>
-                    <td>${stat.diagnostic}</td>
-                    <td>${stat.numar}</td>
-                `;
-                break;*/
+        */
             case 'projects':
                 cells = `
                     <td>${stat.category}</td>

@@ -227,16 +227,13 @@ function renderChartGenderAge(stats, year) {
     });
 
     var ctx = document.getElementById('infractionality-chart').getContext('2d');
-   // ctx.canvas.height = 350; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
-    // Distruge chart-ul existent dacă există
+    
+
     if (existingChart) {
         existingChart.destroy();
     }
     
-     ctx.canvas.height = 200; // Înălțimea canvas-ului
-    //ctx.canvas.backgroundColor = '#f8f9fa'; // Culoarea de fundal a canvas-ului
-
+    ctx.canvas.height = 200; // Setează înălțimea canvas-ului
     existingChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
@@ -513,8 +510,6 @@ function renderChartPenalitiesSituation(stats, year) {
 
 // Functia pentru afisarea statisticilor de gen si droguri
 function renderChartGenderDrug(stats, year) {
-    console.log('AICI Received stats:', stats);
-    console.log('AICI Received year:', year);
 
     var chartData = {
         labels: ["M-Canabis", "M-Stimulanti", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanti", "F-Opiacee", "F-NSP"],
@@ -597,6 +592,7 @@ function renderChartGenderDrug(stats, year) {
                     }
                 }
             },
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -730,6 +726,7 @@ function renderChartAgeDrug(stats, year) {
                     }
                 }
             },
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -927,6 +924,7 @@ function renderChartEmergencyDrug(stats, year, type) {
                     }
                 }
             },
+            responsive: true,
             plugins: {
                 title: {
                     display: true,
@@ -996,8 +994,7 @@ function renderPieChart(stats, year) {
     if (existingChartConfiscationPie) {
         existingChartConfiscationPie.destroy();
     }
-    ctx.canvas.height = 500; // Înălțimea canvas-ului
-
+    
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -1034,130 +1031,7 @@ function renderPieChart(stats, year) {
             }
         }
     });
-}
-
-// Funcția pentru afișarea statisticilor generale
-function renderStatsByYears(stats) {
-    var chartData = {
-        labels: ["2021", "2022", "2023"],
-        datasets: [{
-            label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4"], // Culori personalizate
-            borderColor: ["#0056b3", "#6495ed", "#ff1493"], // Culori de border personalizate
-            borderWidth: 1, // Grosimea borderului
-            data: [0, 0, 0] // Inițializare cu zero pentru fiecare categorie
-        }]
-    };
-
-    // Popularea datelor în funcție de an și stare
-    stats.forEach(stat => {
-        if (stat.stare === 'persoane condamnate') {
-            if (stat.an === '2021') {
-                chartData.datasets[0].data[0] = stat.numar;
-            } else if (stat.an === '2022') {
-                chartData.datasets[0].data[1] = stat.numar;
-            } else if (stat.an === '2023') {
-                chartData.datasets[0].data[2] = stat.numar;
-            }
-        }
-    });
-
-    var ctx = document.getElementById('infractionality-chart').getContext('2d');
-
-    // Distrugerea chart-ului existent, dacă există
-    if (existingChart) {
-        existingChart.destroy();
-    }
-
-    ctx.canvas.height = 200; // Înălțimea canvas-ului
-
-    existingChart = new Chart(ctx, {
-        type: 'bar',
-        data: chartData,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Culoarea grilajului
-                        borderDash: [2, 2], // Linie întreruptă pentru grilaj
-                    },
-                    title: {
-                        display: true,
-                        text: 'Number of Cases',
-                        color: '#333', // Culoarea textului
-                        font: {
-                            family: 'Arial',
-                            size: 14,
-                            weight: 'bold',
-                        },
-                    }
-                },
-                x: {
-                    grid: {
-                        color: "rgba(0, 0, 0, 0.1)",
-                        borderDash: [2, 2],
-                    },
-                    title: {
-                        display: true,
-                        text: 'Category',
-                        color: '#333',
-                        font: {
-                            family: 'Arial',
-                            size: 14,
-                            weight: 'bold',
-                        },
-                    }
-                }
-            },
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Drug Related Infractionality by Gender and Age',
-                    color: '#000', // Culoarea titlului
-                    font: {
-                        family: 'Arial',
-                        size: 18,
-                        weight: 'bold',
-                    },
-                    padding: {
-                        top: 10,
-                        bottom: 30
-                    },
-                },
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        color: '#000',
-                        font: {
-                            family: 'Arial',
-                            size: 12,
-                            weight: 'bold',
-                        },
-                        padding: 20,
-                    },
-                },
-                tooltip: {
-                    backgroundColor: 'rgba(0,0,0,0.8)',
-                    titleFont: {
-                        family: 'Arial',
-                        size: 14,
-                        weight: 'bold',
-                        color: '#fff',
-                    },
-                    bodyFont: {
-                        family: 'Arial',
-                        size: 12,
-                        color: '#fff',
-                    },
-                    callbacks: {
-                        label: function(tooltipItem) {
-                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
-                        }
-                    }
-                }
-            }
-        }
+    window.addEventListener('resize', () => {
+        existingChartConfiscationPie.resize();
     });
 }

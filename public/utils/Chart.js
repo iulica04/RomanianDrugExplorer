@@ -1015,11 +1015,11 @@ function updateChartPie(chartType, statsType) {
                 const jsonData = JSON.parse(data);
                 if (jsonData && jsonData.stats) {
                     if (chartType === 'drug-captures') {
-                        renderChartPieCaptures(jsonData.stats, jsonData.year);
+                        renderPieChartCaptures(jsonData.stats, jsonData.year);
                     } else if (chartType === 'drug-grams') {
-                        renderChartPieGrams(jsonData.stats, jsonData.year);
+                        renderPieChartGrams(jsonData.stats, jsonData.year);
                     } else if (chartType === 'drug-tablets') {
-                        renderChartPieTablets(jsonData.stats, jsonData.year);
+                        renderPieChartTablets(jsonData.stats, jsonData.year);
                     }
                 } else {
                     console.error('Empty response or invalid data received:', jsonData);

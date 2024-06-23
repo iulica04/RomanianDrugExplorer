@@ -1,9 +1,9 @@
 body {
     background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
-    radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
-    radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
-    radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
-    radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+        radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+        radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+        radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
     padding: 0;
     margin: 0;
     font-family: Georgia, serif;
@@ -22,21 +22,27 @@ header {
 .body_for_home {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Alinează titlul orizontal */
-    align-items:center; /* Alinează titlul vertical */
+    justify-content: flex-start;
+    /* Alinează titlul orizontal */
+    align-items: center;
+    /* Alinează titlul vertical */
 }
 
-.body_for_home  h1 {
-    font-size: 80px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
-    text-align: center; /* Alinează textul la centru */
+.body_for_home h1 {
+    font-size: 80px;
+    /* Dimensiunea titlului în funcție de lățimea viewport-ului */
+    text-align: center;
+    /* Alinează textul la centru */
     color: #243024;
     padding-top: 100px;
     margin-bottom: 30px;
 }
 
-.body_for_home  p {
-    font-size: 30px; /* Dimensiunea titlului în funcție de lățimea viewport-ului */
-    text-align: center; /* Alinează textul la centru */
+.body_for_home p {
+    font-size: 30px;
+    /* Dimensiunea titlului în funcție de lățimea viewport-ului */
+    text-align: center;
+    /* Alinează textul la centru */
     color: #757D6B;
     padding: 0px 50px;
     margin-top: 40px;
@@ -45,38 +51,38 @@ header {
 
 @media screen and (max-width: 820px) {
     .body_for_home h1 {
-      font-size: 50px; 
-      text-align: left;
-      padding-left: 50px;
+        font-size: 50px;
+        text-align: left;
+        padding-left: 50px;
     }
 
-    
-       
+
+
 }
 
 @media all and (min-width: 821px) {
 
-    .container_1{
+    .container_1 {
         text-align: center;
         padding: 100px;
         font-size: 5vh;
         color: #243024;
-        grid-row: 1; 
+        grid-row: 1;
     }
-    
-    .container_2{
+
+    .container_2 {
         padding: 20px 30px;
-        grid-row: 1; 
+        grid-row: 1;
     }
-    
-    .container_3{
+
+    .container_3 {
         padding: 20px 30px;
-        grid-row: 2; 
+        grid-row: 2;
     }
-    
-    .container_4{
+
+    .container_4 {
         padding: 20px 30px;
-        grid-row: 3;
+        grid-row: 2;
         grid-column: 2;
     }
 }
@@ -87,15 +93,16 @@ header {
     transition: background-color 0.3s, color 0.3s;
     padding: 10px 50px;
 }
-.buttons p{
+
+.buttons p {
     margin: 10px;
     align-items: center;
     padding: 10px 20px;
     font-size: 40px;
 }
 
-.buttons .button{
-    background-color:  #3A4D39;
+.buttons .button {
+    background-color: #3A4D39;
     padding: 20px 30px;
     color: #becbaf;
     font-size: 30px;
@@ -109,67 +116,66 @@ header {
 }
 
 
-.button:hover{
-    background-color:#8d9188;
-    color:#3A4D39;
+.button:hover {
+    background-color: #8d9188;
+    color: #3A4D39;
     border: 1px solid #87986A;
 }
 
-.about_us{
+.about_us {
     background-color: #becbaf;
     margin-top: 100px;
     padding-top: 100px;
     width: 100%;
     display: grid;
-    height: 140vh;
+    height: 80%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 15%);
     grid-gap: 40px;
 }
 
 @media screen and (max-width: 821px) {
     .about_us {
         display: grid;
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         grid-template-rows: repeat(3, auto);
         height: auto;
         grid-gap: 10px;
     }
+
     .container_1,
     .container_2,
     .container_3,
     .container_4 {
-        grid-row: auto; 
-        grid-column: auto; 
+        grid-row: auto;
+        grid-column: auto;
         margin: 10px 30px;
     }
 
-    .container_1{
+    .container_1 {
         text-align: center;
         font-size: 5vh;
         color: #243024;
-        grid-row: 1; 
-        
+        grid-row: 1;
+
     }
-  }
-  .text-container {
+}
+
+.text-container {
     background-color: #87986A;
     padding-left: 3px;
     border-radius: 10px;
     color: #333333;
 }
 
- .text-container h3{
+.text-container h3 {
     font-size: 5vh;
     text-align: center;
     padding-top: 20px;
 }
 
-.text-container .text{
+.text-container .text {
     color: #333333;
     font-size: 3vh;
     text-align: left;
     padding-bottom: 20px;
 }
-
-

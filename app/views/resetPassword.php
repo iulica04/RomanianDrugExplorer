@@ -10,28 +10,24 @@
 </head>
 <body>
     <div class="main">
-
         <input type="checkbox" id="chk">
 
-        <div class = "forgotPassword">
+        <div class="forgotPassword">
             <form id="forgotPasswordForm" action="send_reset_email.php" method="post">
                 <label class="title" for="chk" aria-hidden="true">Reset Password</label>
                 <div class="input-group">
-                    <label class="label" for="password">Enter your new password: </label>
+                    <label class="label" for="password">Enter your new password:</label>
                     <input type="password" name="password" id="password" class="input" required>
                     <span class="error" id="password-error"></span>
                 </div>
 
                 <div class="input-group">
-                    <label class="label" for="confirm-password">Confirm password: </label>
+                    <label class="label" for="confirm-password">Confirm password:</label>
                     <input type="password" name="confirm-password" id="confirm-password" class="input" required>
                     <span class="error" id="confirm-password-error"></span>
                 </div>
-
-                  
-                <button id = "resetPasswordButton">Reset Password</button>
-
-
+                
+                <button id="resetPasswordButton">Reset Password</button>
             </form>
         </div>
 

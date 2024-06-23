@@ -17,6 +17,9 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     const formData = new FormData();
     formData.append('fileToUpload', file);
 
+    const jwt = getCookiw('jwt');
+    formData.append('jwt', jwt);
+
     fetch('http://localhost/RomanianDrugExplorer/DrugStats/add-data/' + typeSelect + '/' + yearSelect, {
         method: 'POST',
         body: formData,

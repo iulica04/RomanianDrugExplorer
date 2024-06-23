@@ -1,18 +1,17 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/RomanianDrugExplorer/public/styles/style_Register.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Register.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <meta charset="UTF-8">
 </head>
 <body>
     <div class="main">
         <input type="checkbox" id="chk">
-        
-        
+
         <div class="signup">
             <form id="createUserForm" method="post">
                 <label class="title" for="chk" aria-hidden="true">Sign up</label>
@@ -39,12 +38,11 @@
                 <button id="signUpButton" disabled>Sign up</button>
             </form>
             <div class="have-account">
-                <p >Already have an account? </p>
+                <p>Already have an account?</p>
                 <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
             </div>
         </div>
-        
-        
+
         <div class="login">
             <form id="loginForm" method="post">
                 <label class="title-login" for="chk" aria-hidden="true">Login</label>
@@ -58,7 +56,7 @@
                     <label class="label" for="password">Password</label>
                     <span class="error" id="password-error"></span>
                 </div>
-                <button id="loginbutton">Login</button>
+                <button id="loginButton">Login</button>
             </form>   
         </div>
 

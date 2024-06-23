@@ -8,10 +8,8 @@
     position: fixed;
     z-index: 1;
     right: 30px;
-    left: 20px;
     bottom: 30px;
     font-size: 17px;
-
 }
 
 #snackbar.show {
@@ -26,4 +24,10 @@
 
 #snackbar.info {
     background-color: #008000; /* green for info messages */
+}
+
+@media screen and (max-width: 600px) {
+    #snackbar {
+        left: 20px;
+    }
 }

@@ -182,10 +182,10 @@ class UsersController {
         }
 
 
-        $key = "your_secret_key"; // Replace with your secret key
+        $key = "81eddc0ad6797e1e86cfe55dbb1e9d97a344bedc777358daf48dbb190f0764c320fc0fadefe3b9ccacc173dd4297b1926d2907222c424ed8cafedd789f4dd46f"; // Replace with your secret key
         $payload = array(
-            "iss" => "your_issuer", // Replace with your issuer
-            "aud" => "your_audience", // Replace with your audience
+            "iss" => "localhost:80", // Replace with your issuer
+            "aud" => "localhost:80", // Replace with your audience
             "iat" => time(),
             "exp" => time() + (60*60), // Token valid for 1 hour
             "data" => array(

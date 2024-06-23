@@ -87,7 +87,7 @@
         /* Adaugă o tranziție pentru iconul meniului */
     }
 
-     
+
 
     #menu-toggle:checked+.menu-icon {
         transform: rotate(90deg);
@@ -105,7 +105,8 @@
         cursor: pointer;
     }
 
-    .list>a:hover, .for_login>a:hover {
+    .list>a:hover,
+    .for_login>a:hover {
         background-color: #87986A;
         color: #3A4D39;
     }

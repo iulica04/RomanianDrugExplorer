@@ -30,8 +30,8 @@
 		transition: .8s ease-in-out;
 		background-color: #CFE1B9;
 	}
-	
-	
+
+
 	.title-login {
 		color: #243024;
 		font-size: 2.5em;
@@ -43,16 +43,16 @@
 		cursor: pointer;
 		transition: 0.5s ease-in-out;
 	}
-	
-	
+
+
 	#chk:checked~.login {
 		transform: translateY(-550px);
 	}
-	
+
 	#chk:checked~.login label {
 		transform: scale(1);
 	}
-	
+
 	#chk:checked~.signup label {
 		transform: scale(0.6);
 	}

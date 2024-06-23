@@ -1,9 +1,9 @@
 body {
   background-image: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
-  radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
-  radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
-  radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
-  radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
+    radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
+    radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
+    radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
+    radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -21,9 +21,9 @@ header {
 
 /*RESTUL*/
 .main {
-margin-top: 150px;
-margin-left: 50px;
-margin-right: 50px;
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .main .card {
@@ -39,33 +39,35 @@ margin-right: 50px;
 
 /* Stilurile pentru acordeon */
 .main .card .accordion {
-border: 3px solid #0f4233;
-margin-bottom: 15px;
-border-radius: 20px;
+  border: 3px solid #0f4233;
+  margin-bottom: 15px;
+  border-radius: 20px;
 }
 
 .accordion .accordion-header {
-background-color: #e7d9d9;
-padding: 10px;
-cursor: pointer;
-border-radius: 20px ;
+  background-color: #e7d9d9;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
 }
-.accordion h3{
+
+.accordion h3 {
 
   font-size: 50px;
 }
-.accordion .card h5{
+
+.accordion .card h5 {
   font-size: 20px;
 }
 
 .accordion .accordion-header:hover {
-background-color: #ddd;
+  background-color: #ddd;
 }
 
 .accordion .accordion-header .plus-minus-toggle::after {
   content: "+";
   float: right;
-  transition: transform 0.3s ease, color 0.3s ease; 
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 
@@ -75,13 +77,14 @@ background-color: #ddd;
 
 
 .accordion .accordion-header.active .plus-minus-toggle::after {
-  content: "−"; 
-  transform: rotate(45deg); 
-  color: #3A4D39; 
+  content: "−";
+  transform: rotate(45deg);
+  color: #3A4D39;
 }
+
 .accordion .accordion-content {
-padding: 10px;
-display: none;
+  padding: 10px;
+  display: none;
 }
 
 
@@ -94,85 +97,86 @@ display: none;
     margin: 0;
     font-family: Georgia, serif;
     display: flex;
-}
+  }
 
-header {
+  header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-}
+  }
 
 
-.main .card {
+  .main .card {
     font-family: Georgia, serif;
-		background: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
-		radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
-		radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
-		radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
-		radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
+    background: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
+      radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
+      radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
+      radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
+      radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
     padding: 30px;
     margin-bottom: 20px;
     box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
     width: auto;
-   
-}
+
+  }
 
 
-/* Stilurile pentru acordeon */
-.main .card .accordion {
-  border: 3px solid #0f4233;
-  margin-bottom: 15px;
-  border-radius: 20px;
-}
+  /* Stilurile pentru acordeon */
+  .main .card .accordion {
+    border: 3px solid #0f4233;
+    margin-bottom: 15px;
+    border-radius: 20px;
+  }
 
-.accordion
-{
-  background-color: #718355;
-}
+  .accordion {
+    background-color: #718355;
+  }
 
-.accordion .accordion-header {
-  background-color: #e7d9d9;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 20px ;
-}
-.accordion h3{
-    
+  .accordion .accordion-header {
+    background-color: #e7d9d9;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+
+  .accordion h3 {
+
     font-size: 30px;
     color: #E9F5DB;
     text-align: center;
-}
-.accordion .card h5{
-   
+  }
+
+  .accordion .card h5 {
+
     font-size: 20px;
-}
+  }
 
-.accordion .accordion-header:hover {
-  background-color: #ddd;
-}
+  .accordion .accordion-header:hover {
+    background-color: #ddd;
+  }
 
-.accordion .accordion-header .plus-minus-toggle::after {
+  .accordion .accordion-header .plus-minus-toggle::after {
     content: "+";
     float: right;
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transition: transform 0.3s ease, color 0.3s ease;
   }
-  
-  
+
+
   .accordion .accordion-header:hover .plus-minus-toggle::after {
     color: #3A4D39;
   }
-  
-  
+
+
   .accordion .accordion-header.active .plus-minus-toggle::after {
-    content: "−"; 
-    transform: rotate(45deg); 
-    color: #3A4D39; 
+    content: "−";
+    transform: rotate(45deg);
+    color: #3A4D39;
   }
-  
+
   .accordion .accordion-content {
-  padding: 10px;
-  display: none;
+    padding: 10px;
+    display: none;
   }
 }

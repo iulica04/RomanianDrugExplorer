@@ -1,4 +1,4 @@
-@media screen and (min-width: 481px){
+@media screen and (min-width: 481px) {
 	body {
 		margin: 0;
 		padding: 0;
@@ -13,7 +13,7 @@
 			radial-gradient(circle at 93.687% 11.426%, #5e6b51 0%, rgba(233, 245, 219, 0) 70%),
 			radial-gradient(circle at 48.901% 49.521%, #c6d9a5 0%, rgba(255, 255, 255, 0) 100%);
 	}
-	
+
 	.main {
 		width: 550px;
 		height: 550px;
@@ -30,7 +30,7 @@
 		transform: translateY(-180px);
 		transition: 0.8s ease-in-out;
 	}
-	
+
 	.title-sign-up {
 		color: #243024;
 		font-size: 2.5em;
@@ -43,19 +43,19 @@
 		padding-top: 10px;
 		transition: 0.5s ease-in-out;
 	}
-	
-	#chk:checked ~ .signup {
+
+	#chk:checked~.signup {
 		transform: translateY(-650px);
 	}
-	
-	#chk:checked ~ .signup label {
+
+	#chk:checked~.signup label {
 		transform: scale(1);
 	}
-	
-	#chk:checked ~ .login label {
+
+	#chk:checked~.login label {
 		transform: scale(0.6);
 	}
-	
+
 }
 
 .login {
@@ -123,16 +123,16 @@
 	outline: none;
 }
 
-.login .input-group > .input:focus + .label,
-.login .input-group > .input:valid + .label {
+.login .input-group>.input:focus+.label,
+.login .input-group>.input:valid+.label {
 	transform: translateX(-10px) translateY(-60%) scale(1);
 	padding: 0px 10px;
 	background-color: #CFE1B9;
 	color: #363d2b;
 }
 
-.signup .input-group > .input:focus + .label-sg,
-.signup .input-group > .input:valid + .label-sg {
+.signup .input-group>.input:focus+.label-sg,
+.signup .input-group>.input:valid+.label-sg {
 	transform: translateX(-10px) translateY(-60%) scale(1) !important;
 	padding: 0px 10px !important;
 	background-color: #87986A;
@@ -171,7 +171,8 @@ button:hover {
 	font-size: 0.8em;
 }
 
-.forgot-password, .have-account{
+.forgot-password,
+.have-account {
 	display: none;
 }
 
@@ -182,19 +183,19 @@ button:hover {
 	padding: 2px 50px;
 }
 
-.forgot-password1 p{
+.forgot-password1 p {
 	color: #6e7468;
 	font-size: 1.1em;
 }
 
-.forgot-password1 a{
+.forgot-password1 a {
 	color: #3A4D39;
 	font-size: 1.1em;
 	font-weight: bold;
 	padding-left: 10px;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
 	#chk {
 		display: none;
 	}
@@ -227,7 +228,7 @@ button:hover {
 		overflow: hidden;
 	}
 
-	.title{
+	.title {
 		color: #243024;
 		font-size: 4em;
 		display: flex;
@@ -240,27 +241,30 @@ button:hover {
 		padding: 2px 2%;
 	}
 
-	.have-account, .forgot-password {
+	.have-account,
+	.forgot-password {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		padding: 0px 6%;
 	}
 
-	.have-account p, .forgot-password p{
+	.have-account p,
+	.forgot-password p {
 		color: #6e7468;
 		font-size: 0.9em;
 	}
 
-	.have-account a, .forgot-password a{
+	.have-account a,
+	.forgot-password a {
 		color: #3A4D39;
 		font-size: 1.1em;
 		font-weight: bold;
 		padding-left: 10px;
 	}
 
-	.forgot-password1{
+	.forgot-password1 {
 		display: none;
 	}
-	
+
 }

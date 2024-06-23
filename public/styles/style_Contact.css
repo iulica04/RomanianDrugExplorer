@@ -1,37 +1,41 @@
 body {
-    background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
+  background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
     radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
     radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
     radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
     radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    padding: 0;
-    margin: 0;
-    min-height: 100vh;
-    font-family: Georgia, serif;
-    display: flex;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  display: flex;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
+
 .title {
-    background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
+  background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
     radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
     radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
     radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
     radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 
-    text-align: center;
-    width: 100%; /* Face ca titlul să se întindă pe întreaga lățime a .nav-container */
-    margin: 0; /* Elimină marginile pentru a asigura umplerea completă */
-    padding: 0; /* Elimină padding-ul pentru a asigura umplerea completă */
-    padding-top: 20px;
-    height: 60px;
+  text-align: center;
+  width: 100%;
+  /* Face ca titlul să se întindă pe întreaga lățime a .nav-container */
+  margin: 0;
+  /* Elimină marginile pentru a asigura umplerea completă */
+  padding: 0;
+  /* Elimină padding-ul pentru a asigura umplerea completă */
+  padding-top: 20px;
+  height: 60px;
 }
-  
+
 
 /*RESTUL*/
 .main {
@@ -44,12 +48,13 @@ header {
 
 
 .container_1 {
-    margin-top: 50px;
+  margin-top: 50px;
   width: 60%;
 }
 
 .container_2 {
-  margin-top: 50px;;
+  margin-top: 50px;
+  ;
   width: 35%;
 }
 
@@ -83,27 +88,26 @@ header {
 }
 
 
-
 @media only screen and (max-width: 800px) {
 
 
   .title {
-    padding-top: 10px; 
-    height: 50px; 
+    padding-top: 10px;
+    height: 50px;
   }
 
 
   .container_1,
   .container_2 {
-    width: 100%; 
+    width: 100%;
   }
 
   .main {
-    flex-direction: column; 
-    padding-top: 80px; 
-    margin: 0 20px; 
+    flex-direction: column;
+    padding-top: 80px;
+    margin: 0 20px;
   }
-  
+
 }
 
 
@@ -112,6 +116,6 @@ header {
 
   .container_1,
   .container_2 {
-    padding: 0 10px; 
-}
+    padding: 0 10px;
+  }
 }

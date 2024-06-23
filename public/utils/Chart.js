@@ -11,7 +11,7 @@ function updateYearUrl() {
 
     // Pentru fiecare tip de statistică, construiește URL-ul corect cu anul selectat
 
-    ['confiscations', 'infractionality/gender', 'emergencies/gender', 'projects'].forEach(type => {
+    ['confiscations/captures', 'infractionality/gender', 'emergencies/gender', 'projects'].forEach(type => {
         var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
         console.log('Requesting data from:', url);
         fetch(url)

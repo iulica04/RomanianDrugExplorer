@@ -382,6 +382,7 @@ public function addDataToProiecte($year){
 
 public function addDataToInfractionalitati($year){
 
+
     if(isset($_FILES['fileToUpload'])) {
         $file = $_FILES['fileToUpload']['tmp_name'];
 

@@ -1,7 +1,18 @@
-function logout() {
+function toggleMenu() {
+    var navList = document.getElementById('navList');
+    navList.classList.toggle('active');
+}
 
+document.querySelector('.for_login a').addEventListener('click', function(event) {
+    if (event.target.textContent === 'Logout') {
+        event.preventDefault();
+        logout();
+    }
+}); // This closing brace was missing
+
+function logout() {
     // Trimite o cerere la server pentru a încheia sesiunea
-    fetch('http://localhost:8080/RomanianDrugExplorer/users/logout', {
+    fetch('http://localhost/RomanianDrugExplorer/users/logout', {
         method: 'POST',
     })
     .then(response => response.json().then(data => ({ status: response.status, body: data })))

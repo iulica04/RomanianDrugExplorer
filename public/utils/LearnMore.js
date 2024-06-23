@@ -39,34 +39,18 @@ function renderStats(stats, year, type) {
     // Iterează prin fiecare statistică și adaugă un rând nou în tabel pentru fiecare
     stats.forEach(stat => {
         var row = document.createElement('tr');
-        var cells = '';
-
-        switch(type) {
-           /* case 'confiscations':
-                cells = `
-                    <td>${stat.drog}</td>
-                    <td>${stat.grame}</td>
-                    <td>${stat.comprimate}</td>
-                    <td>${stat.mililitri}</td>
-                    <td>${stat.capturi}</td>
-                `;
-                break;
-        */
-            case 'projects':
-                cells = `
+        var cells = `
                     <td>${stat.category}</td>
                     <td>${stat.subcategory}</td>
                     <td>${stat.beneficiaries}</td>
                 `;
-                break;
-        }
-
+               
         row.innerHTML = cells;
         tableBody.appendChild(row);
     });
 }
 
-function saveTableAsPNG(tableId, filename) {
+function saveTableAsPNG(tableId) {
     var tableElement = document.getElementById(tableId);
 
     // Verifică dacă tabelul există
@@ -74,26 +58,16 @@ function saveTableAsPNG(tableId, filename) {
         console.error('Table element not found:', tableId);
         snackbar('Tabelul nu a fost găsit.', 'error');
         return;
+    }else{
+        snackbar('Table cant be saved as PNG.', 'error');
     }
-
-    // Convertirea tabelului într-un canvas utilizând html2canvas
-    html2canvas(tableElement).then(function(canvas) {
-        // Obține obiectul blob pentru canvas
-        canvas.toBlob(function(blob) {
-            // Crează un element <a> pentru a descărca fișierul PNG
-            var link = document.createElement('a');
-            link.download = filename + '.png';
-            link.href = URL.createObjectURL(blob);
-            link.click();
-        });
-    });
 }
 
 function saveTableAsSVG(tableId) {
     var table = document.getElementById(tableId);
     if (!table) {
         console.error('Table element not found:', tableId);
-        showSnackbar('Tabelul nu a fost găsit.', 'error');
+        showSnackbar('Table element not found.', 'error');
         return;
     }
 
@@ -140,7 +114,7 @@ function saveTableAsSVG(tableId) {
     link.download = 'table.svg';
     link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
     link.click();
-    showSnackbar('Tabelul a fost salvat ca fișier SVG.', 'info');
+    showSnackbar('Table saved as SVG!', 'info');
 }
 
 
@@ -150,7 +124,7 @@ function downloadFile(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         console.error('No year selected.');
-        showSnackbar('Selectează un an înainte de a descărca fișierul.', 'error');
+        showSnackbar('Select an year before you want to save a file.', 'error');
         return;
     }
 
@@ -162,7 +136,7 @@ function downloadFile(type, format) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                showSnackbar('Descărcarea fișierului a eșuat.', 'error');
+                showSnackbar('Failed to download file.', 'error');
                 throw new Error('Failed to download file.');
             }
             return response.blob();
@@ -175,11 +149,11 @@ function downloadFile(type, format) {
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            showSnackbar('Descărcarea fișierului a reușit.', 'info');
+            showSnackbar('Downloaded successfully!', 'info');
         })
         .catch(error => {
             console.error('Download error:', error);
-            showSnackbar('Eroare la descărcarea fișierului.', 'error');
+            showSnackbar('Download error.', 'error');
         });
 }
 
@@ -188,7 +162,7 @@ function openFileInNewTab(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         console.error('No year selected.');
-        showSnackbar('Selectează un an înainte de a deschide fișierul.', 'error');
+        showSnackbar('Select an year before you want to save a file!', 'error');
         return;
     }
 
@@ -198,18 +172,18 @@ function openFileInNewTab(type, format) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                showSnackbar('Deschiderea fișierului a eșuat.', 'error');
+                showSnackbar('Failed to download file.', 'error');
                 throw new Error('Failed to open file.');
             }
             return response.text(); // Assuming CSV file is plain text
         })
         .then(data => {
             displayCsvInNewTab(data);
-            showSnackbar('Fișierul a fost deschis într-o filă nouă.', 'info');
+            showSnackbar('Fle open in a new tab.', 'info');
         })
         .catch(error => {
             console.error('Open file error:', error);
-            showSnackbar('Eroare la deschiderea fișierului.', 'error');
+            showSnackbar('Open file error.', 'error');
         });
 }
 

@@ -1,8 +1,10 @@
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
 function updateYearUrl() {
     var selectedYear = document.getElementById('year-select').value;
+
     if (selectedYear === '') {
-      return; // Dacă nu este selectat niciun an, nu face nimic
+        console.log('No year selected');
+        return; // Dacă nu este selectat niciun an, nu face nimic
 
     }else{
     console.log('Selected year:', selectedYear);
@@ -57,9 +59,8 @@ var existingChartConfiscationPie; // Variabilă globală pentru a păstra referi
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
     
-
     // Verifică dacă canvas-ul există
-    if (existingChart) {
+    if (existingChart || existingChartEmergency ) {
         // Salvează ca PNG
         if (format === 'png') {
             chartCanvas.toBlob(function(blob) {
@@ -69,13 +70,19 @@ function saveChart(chartId, filename, format) {
                 link.click();
             });
             showSnackbar('Chart saved as PNG.', 'info');
+
+        }else if(format === 'svg'){
+
+            showSnackbar('Can`t save chart as SVG.', 'error');
         }
+
         // Salvează ca SVG
     } else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found.', 'error');
     }
 }
+
 function savePieChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
 
@@ -90,10 +97,11 @@ function savePieChart(chartId, filename, format) {
                 link.click();
             });
             showSnackbar('Chart saved as PNG.', 'info');
-        }
-        // Salvează ca SVG
-        
-    } else {
+
+        }else if(format === 'svg'){
+            showSnackbar('Can`t save chart as SVG.', 'error');
+        } 
+    }else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving pie chart: Canvas is empty or not found.', 'error');
     }
@@ -1521,3 +1529,5 @@ function renderPieChartTablets(stats, year) {
     });
    
 }
+
+

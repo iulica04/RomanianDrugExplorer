@@ -1,9 +1,9 @@
 body {
   background-image: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
-  radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
-  radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
-  radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
-  radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
+    radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
+    radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
+    radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
+    radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
   padding: 0;
   margin: 0;
   min-height: 100vh;
@@ -24,107 +24,17 @@ header {
   radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
   radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 
-  text-align: center;
-  width: 100%; 
-  margin: 0; 
-  padding: 0; 
-  padding-top: 20px;
-  height: 60px;
- 
-}
-.nav-container {
-  background-color: #E9F5DB;
-  height: 50px;
-  font-size: 1.5em;
-  border-bottom: 1px solid #0003;
-  display: flex;
-  justify-content: space-between; /* Așază elementele în spațiu egal între ele */
-  align-items: center; /* Alinează elementele vertical pe axa y */
-  padding: 0 40px; /* Ajustează marginile stânga și dreapta */
-}
-.logo {
-  padding-left: 50px; 
-  margin: 5px;
-}
 
-.logo a {
-  color: #3A4D39; /* Culoare pentru textul logo-ului */
-  text-decoration: none; /* Fără subliniere pentru link */
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 50px;
-}
-
-
-  
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center; /* Alinează elementele orizontal în centrul containerului */
-}
-
-.list > a {
-  color: #739072;
-  padding: .75em;
-  text-align: center;
-  text-decoration: none;
-  transition: color .5s; /* Tranzitie pentru culoare la hover */
-  position: relative;
-  margin: 0 10px; /* Spațiere între elementele listei */
-}
-
-
-.list > a:hover {
-  color: #3A4D39; /* Schimbă culoarea la hover */
-}
-
-.list > a::after {
-  content: '';
-  width: 0;
-  height: 3px;
-  background: #3A4D39;
-  position: absolute;
-  left: 0;
-  bottom: 15px;
-  transition: width .5s; /* Tranzitie pentru latimea liniei */
-}
-
-.list > a:hover::after {
-  width: 100%;
-}
-
-/*login*/
-.for_login {
-  background-color: #3A4D39;
-  border-radius: 10px;
-  transition: 0.5s;
-}
-
-.for_login > a {
-  color: #becbaf;
-  text-decoration: none;
-  padding: 10px 10px; /* Măriți padding-ul pentru a mări zona colorată */
-  margin: 0 10px;
-  display: inline-block;
-}
-
-.for_login:hover{
-  background-color: #8d9188; /* Schimbă culoarea fundalului la hover/focus */
-}
-
-.for_login a:hover{
-  color: #3A4D39;
-}
 
 /*RESTUL*/
 .main {
-  display: flex;
-    flex-direction: column; 
-    align-items: center; 
-margin-top: 150px;
-margin-left: 50px;
-margin-right: 50px;
-}
+   display: flex;
+   flex-direction: column; 
+   align-items: center; 
+   margin-top: 150px;
+   margin-left: 50px;
+   margin-right: 50px;
+  }
 
 .main .card {
   background-color: #E9F5DB;
@@ -139,33 +49,35 @@ margin-right: 50px;
 
 /* Stilurile pentru acordeon */
 .main .card .accordion {
-border: 3px solid #0f4233;
-margin-bottom: 15px;
-border-radius: 20px;
+  border: 3px solid #0f4233;
+  margin-bottom: 15px;
+  border-radius: 20px;
 }
 
 .accordion .accordion-header {
-background-color: #e7d9d9;
-padding: 10px;
-cursor: pointer;
-border-radius: 20px ;
+  background-color: #e7d9d9;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 20px;
 }
-.accordion h3{
+
+.accordion h3 {
 
   font-size: 50px;
 }
-.accordion .card h5{
+
+.accordion .card h5 {
   font-size: 20px;
 }
 
 .accordion .accordion-header:hover {
-background-color: #ddd;
+  background-color: #ddd;
 }
 
 .accordion .accordion-header .plus-minus-toggle::after {
   content: "+";
   float: right;
-  transition: transform 0.3s ease, color 0.3s ease; 
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 
@@ -175,245 +87,106 @@ background-color: #ddd;
 
 
 .accordion .accordion-header.active .plus-minus-toggle::after {
-  content: "−"; 
-  transform: rotate(45deg); 
-  color: #3A4D39; 
+  content: "−";
+  transform: rotate(45deg);
+  color: #3A4D39;
 }
+
 .accordion .accordion-content {
-padding: 10px;
-display: none;
+  padding: 10px;
+  display: none;
 }
 
-@media screen and (min-width: 1150px){
-  .menu-icon {
-      display: none; /* Ascunde checkbox-ul pentru ecrane mari */
-  }
-  #menu-toggle{
-      display: none;
-  }
-}
-
-
-@media screen and (max-width: 1151px) {
-  .nav-container {
-    padding: 0 20px; 
-  }
-
-  .logo {
-    padding-left: 20px; 
-  }
-
-  .title {
-    padding-top: 10px; 
-    height: 50px; 
-  }
-
-  .list > a {
-    font-size: 1em; 
-  }
-
-  .main {
-    padding: 80px 20px 0; 
-    margin: 0; 
-  }
-
-  .main .card {
-    width: 100%; 
-  }
-
-  .list {
-    display: none; 
-    flex-direction: column;
-    position: absolute;
-    top: 80px; 
-    left: 0;
-    background-color: #283019;;
-    width: 100%;
-    height: auto;
-    transition: opacity 1s ease-in-out; 
-    opacity: 0; 
-  }
-
-  #menu-toggle:checked ~ .list {
-      display: flex;
-      opacity: 1; 
-  }
-
-  #menu-toggle:checked + .menu-icon {
-      display: block; /* Afișează meniul hamburger când meniul este deschis */
-  }
-
-  .menu-icon {
-      color:  #3A4D39;
-      font-size: 24px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out; /* Adaugă o tranziție pentru iconul meniului */
-  }
-
-  #menu-toggle:checked + .menu-icon {
-      transform: rotate(90deg); /* Rotirea iconului pentru a arăta că meniul este deschis */
-  }
-  #menu-toggle{
-      display: none;
-  }
-
-  .main {
-    padding: 150px 40px;
-    }
-    
-    .main .card {
-      background-color: #E9F5DB;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 20px;
-      box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
-      font-size: 20px;
-      width: auto;
-    }
-
-}
 
 @media only screen and (max-width: 480px) {
-  .logo a {
-    font-size: 40px; 
-  }
 
-  .list > a {
-    margin: 0 5px;
-  }
+
 
   body {
     padding: 0;
     margin: 0;
     font-family: Georgia, serif;
     display: flex;
-}
+  }
 
-header {
+  header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-}
-
-.nav-container {
-    background-color: #E9F5DB;
-    height: 80px;
-    font-size: 2em;
-    border-bottom: 1px solid #0003;
-    display: flex;
-    justify-content: space-between; /* Așază elementele în spațiu egal între ele */
-    align-items: center; /* Alinează elementele vertical pe axa y */
-    padding: 0 40px; /* Ajustează marginile stânga și dreapta */
-}
+  }
 
 
-.logo a {
-    color: #3A4D39; /* Culoare pentru textul logo-ului */
-    text-decoration: none; /* Fără subliniere pentru link */
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 50px;
-}
-/*nav bar*/
-/*login*/
-.for_login {
-    background-color: #3A4D39;
-    border-radius: 10px;
-    transition: 0.5s;
-}
-
-.for_login > a {
-    color: #becbaf;
-    text-decoration: none;
-    padding: 10px 10px; /* Măriți padding-ul pentru a mări zona colorată */
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.for_login:hover{
-    background-color: #8d9188; /* Schimbă culoarea fundalului la hover/focus */
-}
-
-.for_login a:hover{
-    color: #3A4D39;
-}
-
-/*RESTUL*/
-.main {
-  padding: 60px 0px;
-  margin: 0px;
-}
-
-.main .card {
+  .main .card {
     font-family: Georgia, serif;
-		background: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
-		radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
-		radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
-		radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
-		radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
+    background: radial-gradient(circle at 100% 100%, #c6d9a5 4%, rgba(56, 87, 30, 0) 40%),
+      radial-gradient(circle at 6.504% 88.037%, #87986A 10%, rgba(187, 201, 170, 0) 50%),
+      radial-gradient(circle at 6.165% 12.617%, #c6d9a5 4%, rgba(135, 152, 106, 0) 83%),
+      radial-gradient(circle at 93.687% 11.426%, #5e6b51 4%, rgba(233, 245, 219, 0) 70%),
+      radial-gradient(circle at 48.901% 49.521%, #c6d9a5 4%, rgba(255, 255, 255, 0) 100%);
     padding: 30px;
     margin-bottom: 20px;
     box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
     width: auto;
-   
-}
+
+  }
 
 
-/* Stilurile pentru acordeon */
-.main .card .accordion {
-  border: 3px solid #0f4233;
-  margin-bottom: 15px;
-  border-radius: 20px;
-}
+  /* Stilurile pentru acordeon */
+  .main .card .accordion {
+    border: 3px solid #0f4233;
+    margin-bottom: 15px;
+    border-radius: 20px;
+  }
 
-.accordion
-{
-  background-color: #718355;
-}
+  .accordion {
+    background-color: #718355;
+  }
 
-.accordion .accordion-header {
-  background-color: #e7d9d9;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 20px ;
-}
-.accordion h3{
-    
+  .accordion .accordion-header {
+    background-color: #e7d9d9;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+
+  .accordion h3 {
+
     font-size: 30px;
     color: #E9F5DB;
     text-align: center;
-}
-.accordion .card h5{
-   
+  }
+
+  .accordion .card h5 {
+
     font-size: 20px;
-}
+  }
 
-.accordion .accordion-header:hover {
-  background-color: #ddd;
-}
+  .accordion .accordion-header:hover {
+    background-color: #ddd;
+  }
 
-.accordion .accordion-header .plus-minus-toggle::after {
+  .accordion .accordion-header .plus-minus-toggle::after {
     content: "+";
     float: right;
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transition: transform 0.3s ease, color 0.3s ease;
   }
-  
-  
+
+
   .accordion .accordion-header:hover .plus-minus-toggle::after {
     color: #3A4D39;
   }
-  
-  
+
+
   .accordion .accordion-header.active .plus-minus-toggle::after {
-    content: "−"; 
-    transform: rotate(45deg); 
-    color: #3A4D39; 
+    content: "−";
+    transform: rotate(45deg);
+    color: #3A4D39;
   }
-  
+
   .accordion .accordion-content {
-  padding: 10px;
-  display: none;
+    padding: 10px;
+    display: none;
   }
 }

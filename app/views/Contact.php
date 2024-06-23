@@ -1,30 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Help and Advice</title>
-  <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Contact.css">
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Help and Advice</title>
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Contact.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
 </head>
 <body>
-  <header>
-    <h1 class="title">Romanian Drug Explorer</h1>
-    <div class="nav-container">
-      <div class="logo">
-        <a href="#">RoDX</a>
-      </div>    
-      
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>        
-      <div class="list">
-      <a href="/RomanianDrugExplorer/app/views/LearnMore.php">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="/RomanianDrugExplorer/app/views/Contact.php">Contact</a>
-          <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
-          <div class="for_login">
-            <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
-          </div>  
-      </div>
-    </div>
   </header>
 
   <div class="main">

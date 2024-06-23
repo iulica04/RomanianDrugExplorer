@@ -1,9 +1,9 @@
 body {
     background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
-    radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
-    radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
-    radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
-    radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+        radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+        radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+        radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
     padding: 0;
     margin: 0;
     min-height: 100vh;
@@ -18,116 +18,36 @@ header {
     left: 0;
     right: 0;
 }
+
 .title {
     background-image: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 0%, rgba(56, 87, 30, 0) 40%),
-    radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
-    radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
-    radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
-    radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        radial-gradient(circle at 6.504% 88.037%, rgba(187, 201, 170, 0.99) 0%, rgba(187, 201, 170, 0) 50%),
+        radial-gradient(circle at 6.165% 12.617%, #87986A 0%, rgba(135, 152, 106, 0) 83%),
+        radial-gradient(circle at 93.687% 11.426%, #E9F5DB 0%, rgba(233, 245, 219, 0) 70%),
+        radial-gradient(circle at 48.901% 49.521%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
 
     text-align: center;
-    width: 100%; 
-    margin: 0; 
-    padding: 0; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
     padding-top: 20px;
     height: 60px;
-   
-}
-  
-.items {
-   
-    background-color: #E9F5DB;
-    height: 50px;
-    font-size: 1.5em;
-    border-bottom: 1px solid #0003;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 40px; 
 
-}
 
-.logo {
-    padding-left: 50px; 
-    margin: 5px;
-}
-
-.logo a {
-    color: #3A4D39; 
-    text-decoration: none; 
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 50px;
-}
-
-.list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center; 
-}
-
-.list > a {
-    color: #739072;
-    padding: .75em;
-    text-align: center;
-    text-decoration: none;
-    transition: color .5s; 
-    position: relative;
-    margin: 0 10px; 
-}
-
-.list > a:hover {
-    color: #3A4D39; 
-}
-/*underline navbar*/
-.list > a::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    background: #3A4D39;
-    position: absolute;
-    left: 0;
-    bottom: 15px;
-    transition: width .5s; }
-
-.list > a:hover::after {
-    width: 100%;
-}
-
-.for_login {
-    background-color: #3A4D39;
-    border-radius: 10px;
-    transition: 0.5s;
-}
-
-.for_login > a {
-    color: #becbaf;
-    text-decoration: none;
-    padding: 10px 10px; 
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.for_login:hover{
-    background-color: #8d9188; 
-}
-
-.for_login a:hover{
-    color: #3A4D39;
-}
 
 /*RESTUL*/
 .main {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    margin: 0 auto; 
-    max-width: 1200px; 
-    width: 100%; 
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
     margin-top: 150px;
 }
-  
+
 .main h1 {
+
     margin-top: 20px; 
     margin-left: 100px; 
     display: inline-block; 
@@ -135,6 +55,7 @@ header {
 }
 
 .container_1 {
+
     display: flex;
     align-items: flex-start;
     margin-top: 20px;
@@ -144,12 +65,14 @@ header {
 
 .card {
     display: flex;
+
     flex-direction: row; /* Aseaza elementele într-un rand din container */
     justify-content: space-between; 
     align-items: flex-start; 
 
     background-color: #FFFFFF;
     padding: 20px; /* Adauga un padding pentru a separa continutul de marginile containerului */
+
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -157,7 +80,9 @@ header {
     width: 100%;
 }
 
+
 .card .card_1{
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -178,6 +103,7 @@ header {
     margin-bottom: 10px; /* Spațierea inferioară între titlu și lista de link-uri */
     margin-left: 0px;
 
+
 }
 
 .card_1 p{
@@ -186,6 +112,7 @@ header {
     padding: 10px;
     padding-left: 20px;
 }
+
 
 /* Stiluri pentru butoane */
 .button {
@@ -196,8 +123,9 @@ header {
     cursor: pointer;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-   
+
 }
+
 
 /*BUTON 2*/
 .card_1 .button2 {
@@ -206,19 +134,24 @@ header {
     transition: 0.5s;
     width: 200px;
 }
+
 .card_1 .button2 > a {
+
     color: #becbaf;
     text-decoration: none;
-    padding: 10px 10px; 
+    padding: 10px 10px;
     margin: 0 10px;
     display: inline-block;
 }
+
 .card_1 .button2:hover{
     background-color: #8d9188; 
 }
 .card_1 .button2 a:hover{
+
     color: #3A4D39;
 }
+
 
 
 .card_1, .card_2 {
@@ -228,6 +161,7 @@ header {
 
 
 .card .card_2{
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -244,6 +178,7 @@ header {
 }
 
 
+
 /*For Charts*/
 .card_2 .chart-container {
  /* Latime de 100% a containerului pentru a ocupa toată latimea disponibila */
@@ -251,11 +186,13 @@ header {
     height: 350px;
     margin: 0 auto; /* Afișăm containerul în centru pe axa orizontală */
     margin-bottom: 20px; /* Adăugăm un spațiu între chart-container și radio buttons */
+
     background-color: #f8f9fa;
     border-radius: 20px;
     border: solid 3px rgb(85, 170, 116);
-    
+
 }
+
 
  
 /*RESPONSIVE*/
@@ -349,18 +286,21 @@ header {
         margin-left: 10px;
         margin-right: 10px;
     }
-    .card_1{
+
+    .card_1 {
         margin-top: 0;
-        flex-direction: column; 
+        flex-direction: column;
         margin-left: 20px;
         margin-right: 20px;
     }
+
 
     .card_1, .card_2 {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0 auto;
+
         max-width: 580px;
         width: 100%;
         margin-top: 20px; /* Ajustează margin-top după nevoie */
@@ -399,11 +339,13 @@ header {
         margin-right: 10px;
     }
     .card_1{
+
         margin-top: 0;
         flex-direction: column; 
         margin-left: 20px;
         margin-right: 20px;
     }
+
 
     .card_1, .card_2 {
         display: flex;
@@ -423,6 +365,7 @@ header {
     .card_2 .chart-container {
         width: 360px; /* Latime de 100% a containerului pentru a ocupa toată latimea disponibila */
         height: 340px;
+
     }
 
     /*buttons*/
@@ -484,4 +427,5 @@ header {
             display: flex;
             flex-direction: column;
         }
+
 }

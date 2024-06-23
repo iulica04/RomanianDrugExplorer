@@ -4,7 +4,7 @@ $('#forgotPasswordForm').on('submit', function(event) {
     const username = $('#username').val();
     const email = $('#email').val();
 
-    fetch('http://localhost:8080/RomanianDrugExplorer/users/forgot-password', {
+    fetch('http://localhost/RomanianDrugExplorer/users/forgot-password', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

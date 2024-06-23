@@ -119,7 +119,7 @@ function downloadFile(type, format) {
     var fileName = selectedYear + '-' + type + '.' + format;
     console.log('Downloading file:', fileName);
 
-    var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName;
+    var url = 'http://localhost/RomanianDrugExplorer/downloads/' + fileName;
 
     fetch(url)
         .then(response => {
@@ -155,7 +155,7 @@ function openFileInNewTab(type, format) {
     }
 
     var fileName = selectedYear + '-' + type + '.' + format;
-    var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName;
+    var url = 'http://localhost/RomanianDrugExplorer/downloads/' + fileName;
 
     fetch(url)
         .then(response => {

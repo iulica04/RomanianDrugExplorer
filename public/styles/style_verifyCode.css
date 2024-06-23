@@ -1,6 +1,5 @@
-@media screen and (min-width: 481px)
-{
-    body {
+@media screen and (min-width: 481px) {
+	body {
 		margin: 0;
 		padding: 0;
 		display: flex;
@@ -22,49 +21,50 @@
 		border-radius: 10px;
 		box-shadow: 5px 20px 50px #000;
 		background-color: #87986A;
-        display: flex;
-        flex-direction: column;
+		display: flex;
+		flex-direction: column;
 	}
 
-    
+
 }
 
-.code-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.code-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .code-input {
-    display: flex;
-    justify-content: center;
-    width: auto;
+	display: flex;
+	justify-content: center;
+	width: auto;
+}
 
-}
 .code-input input {
-    width: 60px;
-    height: 60px;
-    font-size: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 0 3%;
+	width: 60px;
+	height: 60px;
+	font-size: 40px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin: 0 3%;
 }
+
 .title {
-    color: #243024;
-    font-size: 2.7em;
-    display: flex;
-    justify-content: center;
-    margin: 16% 5% 6% 5%;
-    font-weight: bold;
+	color: #243024;
+	font-size: 2.7em;
+	display: flex;
+	justify-content: center;
+	margin: 16% 5% 6% 5%;
+	font-weight: bold;
 }
 
 .description {
-    color: #243024;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: center;
-    margin: 7% 10%;
+	color: #243024;
+	font-size: 1.5em;
+	display: flex;
+	justify-content: center;
+	margin: 7% 10%;
 }
 
 button {
@@ -91,8 +91,8 @@ button:hover {
 }
 
 
-@media screen and (max-width: 480px){
-    body {
+@media screen and (max-width: 480px) {
+	body {
 		font-family: Georgia, serif;
 		background: radial-gradient(circle at 100% 100%, rgba(56, 87, 30, 0.82) 4%, rgba(56, 87, 30, 0) 40%),
 			radial-gradient(circle at 6.504% 88.037%, #87986A 0%, rgba(187, 201, 170, 0) 50%),
@@ -106,7 +106,7 @@ button:hover {
 		align-items: center;
 	}
 
-    .main {
+	.main {
 		width: 100%;
 		height: 70%;
 		padding: 10px;
@@ -116,17 +116,17 @@ button:hover {
 		overflow: hidden;
 	}
 
-    .title{
-        font-size: 3rem;
-    }
+	.title {
+		font-size: 3rem;
+	}
 
-    .description {
-        font-size: 1.2rem;
-    }
+	.description {
+		font-size: 1.2rem;
+	}
 
-    .code-input input {
-        width: 50px;
-        height: 50px;
-    }
-    
+	.code-input input {
+		width: 50px;
+		height: 50px;
+	}
+
 }

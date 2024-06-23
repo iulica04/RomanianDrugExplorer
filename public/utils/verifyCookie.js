@@ -4,7 +4,6 @@ setInterval(function() {
 
     if(jwt == null) {
         logout();
-        
     }
-}, 10000); // 10000 milisecunde = 10 secunde
+}, 10000); 
 

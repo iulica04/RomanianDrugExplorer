@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
      console.log('AICI Sunt in document ready');
 
     ['confiscations', 'infractionality', 'emergencies', 'projects'].forEach(type => {
-        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/';
+        var url = 'http://localhost/RomanianDrugExplorer/DrugStats/' + type + '/';
         console.log('Requesting data from:', url);
         fetch(url)
             .then(response => {
@@ -561,3 +561,6 @@ function renderChartProjects(stats) {
     });
 }
 
+function saveChartNotLoggedIn(){
+    showSnackbar('You need to be logged in to save the chart!', 'error');
+}

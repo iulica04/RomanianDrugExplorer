@@ -50,18 +50,6 @@ function renderStats(stats, year, type) {
     });
 }
 
-function saveTableAsPNG(tableId) {
-    var tableElement = document.getElementById(tableId);
-
-    // Verifică dacă tabelul există
-    if (!tableElement) {
-        console.error('Table element not found:', tableId);
-        snackbar('Tabelul nu a fost găsit.', 'error');
-        return;
-    }else{
-        snackbar('Table cant be saved as PNG.', 'error');
-    }
-}
 
 function saveTableAsSVG(tableId) {
     var table = document.getElementById(tableId);

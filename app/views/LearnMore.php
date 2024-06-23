@@ -166,8 +166,6 @@
                 <div class="card_1">
                     <h1>Anti-Drug Projects Statistics:</h1>
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
-                    <button class="button button2" onclick="saveTableAsPNG('projects-table')"><a>Download
-                            PNG</a></button>
                     <button class="button button2" onclick="saveTableAsSVG('projects-table')"><a>Download
                             SVG</a></button>
                 </div>

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    fetch('http://localhost/RomanianDrugExplorer/users')
+    fetch('http://localhost:8080/RomanianDrugExplorer/users')
     .then(response => response.json())
     .then(users => {
         // Loop through the users and add a row for each one
@@ -19,7 +19,7 @@ $(document).ready(function() {
         $('.deleteButton').click(function() {
             if (confirm('Are you sure you want to delete this user?')) {
                 const id = $(this).parent().parent().children().first().text();
-                fetch(`http://localhost/RomanianDrugExplorer/users/${id}`, {
+                fetch(`http://localhost:8080/RomanianDrugExplorer/users/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

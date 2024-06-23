@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         console.log(userData);
 
-        fetch(`http://localhost/RomanianDrugExplorer/users`, {
+        fetch(`http://localhost:8080/RomanianDrugExplorer/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

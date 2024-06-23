@@ -12,7 +12,7 @@ document.querySelector('.for_login a').addEventListener('click', function(event)
 
 function logout() {
     // Trimite o cerere la server pentru a încheia sesiunea
-    fetch('http://localhost/RomanianDrugExplorer/users/logout', {
+    fetch('http://localhost:8080/RomanianDrugExplorer/users/logout', {
         method: 'POST',
     })
     .then(response => response.json().then(data => ({ status: response.status, body: data })))

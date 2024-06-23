@@ -55,10 +55,10 @@
                     <h1>Drug Related Confiscations Statistics:</h1>
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
                     <button class="button button2" onclick="savePieChart('confiscations-chartpie', 'chartPie', 'png')">
-                        <a href="#">Download PNG</a>
+                        <a>Download PNG</a>
                     </button>
                     <button class="button button2" onclick="savePieChart('confiscations-chartpie','chartPie', 'svg')">
-                        <a href="#">Download SVG</a>
+                        <a>Download SVG</a>
                     </button>
                 </div>
 
@@ -221,7 +221,7 @@
         </ul>
     </div>
 </div>
-    </div>
+</div>
 
     <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>

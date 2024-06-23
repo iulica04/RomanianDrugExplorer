@@ -6,7 +6,9 @@
   <meta charset="UTF-8">
 </head>
 <body>
+
   <header>
+  <h1 class="title">Romanian Drug Explorer</h1>
     <div class="nav-container">
       <div class="logo">
         <a href="#">RoDX</a>
@@ -16,7 +18,7 @@
       <label for="menu-toggle" class="menu-icon">&#9776;</label>        
       <div class="list">
       <a href="/RomanianDrugExplorer/app/views/LearnMore.php">Home</a>
-          <a href="index.html#about">About</a>
+      <a href="/RomanianDrugExplorer/app/views/Statistics.php">Statistics</a>
           <a href="/RomanianDrugExplorer/app/views/Contact.php">Contact</a>
           <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
           <div class="for_login">

@@ -38,8 +38,7 @@
                 <div class="card_1">
                     <h1>Drug Confiscation Statistics:</h1>
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
-                    <button class="button button2" onclick="saveChart('confiscations-chart', 'chart', 'png')">
-                        <a href="#">Download PNG</a>
+                    <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                     </button>
                 </div>
 
@@ -56,8 +55,7 @@
                 <div class="card_1">
                     <h1>Drug Related Infractionality Statistics:</h1>
                     <p>Here you can find the statistics about drug related infractionality in Romania.</p>
-                    <button class="button button2"
-                        onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
+                    <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                 </div>
 
                 <div class="card_2">
@@ -74,8 +72,7 @@
                 <div class="card_1">
                     <h1>Drug Emergencies Statistics:</h1>
                     <p>Here you can find the statistics about drug emergencies in Romania.</p>
-                     <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
-
+                    <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                 </div>
 
                 <div class="card_2">
@@ -92,8 +89,7 @@
                 <div class="card_1">
                     <h1>Anti-Drug Projects Statistics:</h1>
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
-                    <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download
-                            PNG</a></button>
+                    <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                 </div>
 
                 <div class="card_2">
@@ -104,7 +100,7 @@
             </div>
         </div>
 
-    
+</div>
     <script src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

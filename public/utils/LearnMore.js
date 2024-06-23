@@ -188,9 +188,84 @@ function downloadFile(type, format) {
         })
         .catch(error => {
             console.error('Download error:', error);
-            document.getElementById(`download-error-${type}`).style.display = 'block';
+            showSnackbar('Eroare la descărcarea fișierului.', 'error');
         });
 }
 
+// Open CSV file in a new tab related to the selected year
+function openFileInNewTab(type, format) {
+    var selectedYear = document.getElementById('year-select').value;
+    if (selectedYear === '') {
+        console.error('No year selected.');
+        showSnackbar('Selectează un an înainte de a deschide fișierul.', 'error');
+        return;
+    }
 
+    var fileName = selectedYear + '-' + type + '.' + format;
+    var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName;
 
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                showSnackbar('Deschiderea fișierului a eșuat.', 'error');
+                throw new Error('Failed to open file.');
+            }
+            return response.text(); // Assuming CSV file is plain text
+        })
+        .then(data => {
+            displayCsvInNewTab(data);
+            showSnackbar('Fișierul a fost deschis într-o filă nouă.', 'info');
+        })
+        .catch(error => {
+            console.error('Open file error:', error);
+            showSnackbar('Eroare la deschiderea fișierului.', 'error');
+        });
+}
+
+// Function to display CSV content in a new tab
+function displayCsvInNewTab(csvData) {
+    var newTab = window.open();
+    var htmlContent = `
+        <html>
+        <head>
+            <title>CSV Data</title>
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        </head>
+        <body>
+            <table>
+                ${generateTableContent(csvData)}
+            </table>
+        </body>
+        </html>
+    `;
+    newTab.document.open();
+    newTab.document.write(htmlContent);
+    newTab.document.close();
+}
+
+// Function to generate table content from CSV data
+function generateTableContent(csvData) {
+    var rows = csvData.split("\n");
+    var tableContent = '';
+
+    rows.forEach((row, index) => {
+        var columns = row.split(",");
+        var rowContent = columns.map(col => `<td>${col}</td>`).join("");
+        tableContent += `<tr>${rowContent}</tr>`;
+    });
+
+    return tableContent;
+}

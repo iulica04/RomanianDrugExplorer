@@ -7,12 +7,12 @@ $(document).ready(function() {
             email: $('#email').val(),
             phonenumber: $('#phonenumber').val(),
             password: $('#password-for-sign-up').val(),
-            role: 'user'
+            role: 'admin'
         };
 
         console.log(userData);
 
-        fetch(`http://localhost/RomanianDrugExplorer/users`, {
+        fetch(`http://localhost:8080/RomanianDrugExplorer/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

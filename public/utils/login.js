@@ -6,7 +6,9 @@ $('#loginForm').on('submit', function(e) {
         password: $('#password').val()
     };
 
-    fetch(`http://localhost/RomanianDrugExplorer/users/login`, {
+    console.log(userData);
+
+    fetch(`http://localhost:8080/RomanianDrugExplorer/users/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

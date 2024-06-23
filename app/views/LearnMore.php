@@ -68,16 +68,16 @@
                 </div>
                 <div class="radio-buttons">
                         <label>
-                            <input name="chartType" type="radio" checked onchange="updateChart('gender-age','infractionality')" />
-                            <span>Gender & Age</span>
+                            <input name="chartType" type="radio" checked onchange="updateChartPie('drug-captures','confiscations')" />
+                            <span>Drug & Captures</span>
                         </label>
                         <label>
-                            <input name="chartType" type="radio" onchange="updateChart('penalties-situation','infractionality')" />
-                            <span>Penalties & Situation</span>
+                            <input name="chartType" type="radio" onchange="updateChartPie('drug-grams','confiscations')" />
+                            <span>Drug & Grams</span>
                         </label>
                         <label>
-                            <input name="chartType" type="radio" onchange="updateChart('penalties-situation','infractionality')" />
-                            <span>Penalties & Situation</span>
+                            <input name="chartType" type="radio" onchange="updateChartPie('drug-tablets','confiscations')" />
+                            <span>Drug & Tablets</span>
                         </label>
                     </div>
                 </div>

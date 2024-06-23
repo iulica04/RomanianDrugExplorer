@@ -23,8 +23,40 @@ class DrugStats  extends Db{
             $sql = "SELECT drug_name, catches 
                     FROM confiscari_droguri
                     WHERE year =:an
-                    And drug_name IS NOT NULL AND drug_name != '' 
-                    AND catches IS NOT NULL AND catches != ''";
+                    And drug_name IS NOT NULL AND drug_name != ''";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
+    public function getStatsByYearGrams($an) {
+        try {
+            $sql = "SELECT drug_name, grams
+                    FROM confiscari_droguri
+                    WHERE year =:an
+                    And drug_name IS NOT NULL AND drug_name != '' ";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':an', $an, PDO::PARAM_INT);
+            $stmt->execute();
+            $drugs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+            return $drugs;
+        } catch (PDOException $e) {
+            echo "Error fetching drugs: " . $e->getMessage();
+            return null;
+        }
+    }
+
+    public function getStatsByYearTablets($an) {
+        try {
+            $sql = "SELECT drug_name, tablets 
+                    FROM confiscari_droguri
+                    WHERE year =:an
+                    And drug_name IS NOT NULL AND drug_name != ''";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':an', $an, PDO::PARAM_INT);
             $stmt->execute();

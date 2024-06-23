@@ -92,8 +92,7 @@ function saveChart(chartId, filename, format) {
     }
 }
 
-
-
+//Funcția pentru afișarea conficarilor
 function renderChartConfiscations(stats) {
     var chartData = {
         labels: ["2021","2022", "2023"], // Actualizează etichetele pentru anii pentru care ai date
@@ -129,6 +128,7 @@ function renderChartConfiscations(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -247,7 +247,7 @@ function renderChartInfractionality(stats) {
         type: 'bar',
         data: chartData,
         options: {
-            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -373,6 +373,7 @@ function renderChartEmergencyDrug(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -496,6 +497,7 @@ function renderChartProjects(stats) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,

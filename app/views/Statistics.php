@@ -32,6 +32,7 @@
     <div class="main">
         <h1>Statistics of the drug abuse per years:</h1>
         <div id="snackbar"></div>
+
         <div class="container_1">
             <div class="card">
                 <div class="card_1">
@@ -47,9 +48,6 @@
                       <canvas id="confiscation-chart"></canvas>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
 

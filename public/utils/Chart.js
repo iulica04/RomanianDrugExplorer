@@ -12,7 +12,7 @@ function updateYearUrl() {
     // Pentru fiecare tip de statistică, construiește URL-ul corect cu anul selectat
 
     ['confiscations', 'infractionality/gender', 'emergencies/gender', 'projects'].forEach(type => {
-        var url = 'http://localhost/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
+        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/' + selectedYear;
         console.log('Requesting data from:', url);
         fetch(url)
             .then(response => {
@@ -115,7 +115,7 @@ function updateChart(chartType, statsType) {
         return; // Dacă nu este selectat niciun an, nu face nimic
     }
 
-    var url = 'http://localhost/RomanianDrugExplorer/DrugStats/';
+    var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/';
     if (statsType ==='infractionality' ){
         if( chartType === 'gender-age') {
         url += statsType + '/gender/' + selectedYear;
@@ -505,7 +505,7 @@ function renderChartPenalitiesSituation(stats, year) {
         return; // Dacă nu este selectat niciun an, nu face nimic
     }
 
-    var url = 'http://localhost/RomanianDrugExplorer/DrugStats/';
+    var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/';
     if (statsType ==='emergencies'){
           if(chartType === 'age-drug') {
           url += statsType + '/age/' + selectedYear;

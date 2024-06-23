@@ -58,7 +58,7 @@ class DrugStatsController {
 
     public function getStatsByYearTablets($year) {
         $stats = $this->drugStatsModel->getStatsByYearTablets($year);
-        header('Content-Type: application/json'); // Ensure the response is JSON
+        header('Content-Type: application/json'); 
 
         if ($stats) {
             $response = [

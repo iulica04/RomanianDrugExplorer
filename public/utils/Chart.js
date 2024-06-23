@@ -71,28 +71,6 @@ function saveChart(chartId, filename, format) {
             showSnackbar('Chart saved as PNG.', 'info');
         }
         // Salvează ca SVG
-        else if (format === 'svg') {
-            var chartCanvas = document.getElementById(chartId);
-            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('width', chartCanvas.width);
-            svg.setAttribute('height', chartCanvas.height);
-        
-            // Clonează canvas-ul în SVG
-            var svgRect = chartCanvas.cloneNode(true);
-            svg.appendChild(svgRect);
-        
-            // Serializează SVG
-            var serializer = new XMLSerializer();
-            var svgString = serializer.serializeToString(svg);
-        
-            // Crează un link pentru descărcare
-            var link = document.createElement('a');
-            link.download = filename + '.svg';
-            link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
-            link.click();
-        } else {
-            console.error('Unsupported format:', format);
-        }
     } else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found.', 'error');
@@ -114,29 +92,7 @@ function savePieChart(chartId, filename, format) {
             showSnackbar('Chart saved as PNG.', 'info');
         }
         // Salvează ca SVG
-        else if (format === 'svg') {
-            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', chartCanvas.width);
-        svg.setAttribute('height', chartCanvas.height);
-
-        // Clonarea elementului canvas în SVG
-        var svgRect = chartCanvas.cloneNode(true);
-        svg.appendChild(svgRect);
-
-        // Serializarea SVG
-        var serializer = new XMLSerializer();
-        var svgString = serializer.serializeToString(svg);
-
-        // Crearea unui link pentru descărcare
-        var link = document.createElement('a');
-        link.download = filename + '.svg';
-        link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
-        link.click();
-
-        showSnackbar('Pie chart saved as SVG.', 'info');
-        } else {
-            console.error('Unsupported format:', format);
-        }
+        
     } else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving pie chart: Canvas is empty or not found.', 'error');
@@ -198,17 +154,65 @@ function updateChart(chartType, statsType) {
         });
 }
 function renderChartGenderAge(stats, year) {
+    var ctx = document.getElementById('infractionality-chart').getContext('2d');
+    if (existingChart) {
+        existingChart.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
     var chartData = {
         labels: ["Male - Major", "Male - Minor", "Female - Major", "Female - Minor"],
         datasets: [{
             label: 'Number of Cases',
-            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1"], // Culori personalizate
-            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a"], // Culori de border personalizate
-            borderWidth: 1, // Grosimea borderului
-            
-            innerHeight: 300, // Înălțimea interioară a barelor
-            outerHeight: 300, // Înălțimea exterioară a barelor
-            data: [0, 0, 0, 0] // Inițializare cu zero pentru fiecare categorie
+            backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1"],
+            borderColor: ["#0056b3", "#6495ed", "#ff1493", "#ffa07a"],
+            borderWidth: 1,
+            data: [0, 0, 0, 0]
         }]
     };
 
@@ -224,14 +228,7 @@ function renderChartGenderAge(stats, year) {
         }
     });
 
-    var ctx = document.getElementById('infractionality-chart').getContext('2d');
-    
-
-    if (existingChart) {
-        existingChart.destroy();
-    }
-    
-    ctx.canvas.height = 200; // Setează înălțimea canvas-ului
+    ctx.canvas.height = 200;
     existingChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
@@ -241,24 +238,24 @@ function renderChartGenderAge(stats, year) {
                 y: {
                     beginAtZero: true,
                     grid: {
-                        color: "rgba(0, 0, 0, 0.1)", // Culoarea grilajului
-                        borderDash: [2, 2], // Linie întreruptă pentru grilaj
+                        color: "rgba(0, 0, 0, 0.1)",
+                        borderDash: [2, 2]
                     },
                     title: {
                         display: true,
                         text: 'Number of Cases',
-                        color: '#333', // Culoarea textului
+                        color: '#333',
                         font: {
                             family: 'Arial',
                             size: 14,
-                            weight: 'bold',
-                        },
+                            weight: 'bold'
+                        }
                     }
                 },
                 x: {
                     grid: {
                         color: "rgba(0, 0, 0, 0.1)",
-                        borderDash: [2, 2],
+                        borderDash: [2, 2]
                     },
                     title: {
                         display: true,
@@ -267,8 +264,8 @@ function renderChartGenderAge(stats, year) {
                         font: {
                             family: 'Arial',
                             size: 14,
-                            weight: 'bold',
-                        },
+                            weight: 'bold'
+                        }
                     }
                 }
             },
@@ -276,16 +273,16 @@ function renderChartGenderAge(stats, year) {
                 title: {
                     display: true,
                     text: 'Drug Related Infractionality by Gender and Age (' + year + ')',
-                    color: '#000', // Culoarea titlului
+                    color: '#000',
                     font: {
                         family: 'Arial',
                         size: 18,
-                        weight: 'bold',
+                        weight: 'bold'
                     },
                     padding: {
                         top: 10,
                         bottom: 30
-                    },
+                    }
                 },
                 legend: {
                     display: true,
@@ -295,10 +292,10 @@ function renderChartGenderAge(stats, year) {
                         font: {
                             family: 'Arial',
                             size: 12,
-                            weight: 'bold',
+                            weight: 'bold'
                         },
-                        padding: 20,
-                    },
+                        padding: 20
+                    }
                 },
                 tooltip: {
                     backgroundColor: 'rgba(0,0,0,0.8)',
@@ -306,12 +303,12 @@ function renderChartGenderAge(stats, year) {
                         family: 'Arial',
                         size: 14,
                         weight: 'bold',
-                        color: '#fff',
+                        color: '#fff'
                     },
                     bodyFont: {
                         family: 'Arial',
                         size: 12,
-                        color: '#fff',
+                        color: '#fff'
                     },
                     callbacks: {
                         label: function(tooltipItem) {
@@ -325,6 +322,58 @@ function renderChartGenderAge(stats, year) {
 }
 // Funcția pentru afișarea statisticilor de stare si numar
 function renderChartPenalitiesSituation(stats, year) {
+
+    var ctx = document.getElementById('infractionality-chart').getContext('2d');
+    if (existingChart) {
+        existingChart.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
     var chartData = {
         labels: ["Persoane cercetate", "Persoane trimise în judecată", "Persoane condamnate"],
         datasets: [{
@@ -346,10 +395,6 @@ function renderChartPenalitiesSituation(stats, year) {
         } 
     });
 
-    var ctx = document.getElementById('infractionality-chart').getContext('2d');
-    if (existingChart) {
-        existingChart.destroy();
-    }
     ctx.canvas.height = 200;
     existingChart = new Chart(ctx, {
         type: 'bar',
@@ -508,6 +553,58 @@ function renderChartPenalitiesSituation(stats, year) {
 }
 // Functia pentru afisarea statisticilor de gen si droguri
 function renderChartGenderDrug(stats, year) {
+    var ctx = document.getElementById('emergencies-chart').getContext('2d');
+
+    if (existingChartEmergency) {
+        existingChartEmergency.destroy();
+    }
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartEmergency = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
+
 
     var chartData = {
         labels: ["M-Canabis", "M-Stimulanti", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanti", "F-Opiacee", "F-NSP"],
@@ -541,14 +638,6 @@ function renderChartGenderDrug(stats, year) {
         }
     });
 
-    console.log('AICI Chart data after processing:', chartData);
-
-    var ctx = document.getElementById('emergencies-chart').getContext('2d');
-
-    // Destroy the existing chart if it exists
-    if (existingChartEmergency) {
-        existingChartEmergency.destroy();
-    }
 
     ctx.canvas.height = 200; // Set the canvas height
     existingChartEmergency = new Chart(ctx, {
@@ -645,6 +734,59 @@ function renderChartGenderDrug(stats, year) {
 }
 // Functia pentru afisarea statisticilor de varsta și drog
 function renderChartAgeDrug(stats, year) {
+    var ctx = document.getElementById('emergencies-chart').getContext('2d');
+
+    if (existingChartEmergency) {
+        existingChartEmergency.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartEmergency = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
+
     var chartData = {
         labels: ["(<25)-Canabis", "(25-34)-Canabis", "(>35)-Canabis", "(<25)-Stimulanti", "(25-34)-Stimulanti", "(>35)-Stimulanti", "(<25)-Opiacee", "(25-34)-Opiacee", "(>35)-Opiacee", "(<25)-NSP", "(25-34)-NSP", "(>35)-NSP"],
         datasets: [{
@@ -675,13 +817,6 @@ function renderChartAgeDrug(stats, year) {
             else if (stat.subcategory === '>35') chartData.datasets[0].data[11] = stat.cases;
         }
     });
-
-    var ctx = document.getElementById('emergencies-chart').getContext('2d');
-
-    // Destroy existing chart if it exists
-    if (existingChartEmergency) {
-        existingChartEmergency.destroy();
-    }
 
     ctx.canvas.height = 200; // Canvas height
 
@@ -779,6 +914,58 @@ function renderChartAgeDrug(stats, year) {
 }
 //Functia pentru afisarea statisticilor de urgente medicale si droguri
 function renderChartEmergencyDrug(stats, year, type) {
+
+    var ctx = document.getElementById('emergencies-chart').getContext('2d');
+
+    if (existingChartEmergency) {
+        existingChartEmergency.destroy();
+    }
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartEmergency = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
     var chartData = {
         labels: ["Intoxicație", "Utilizare nocivă", "Dependență", "Sevraj", "Tulburări de comportament", "Supradoză", "Alte diagnostice", "Testare toxicologică"],
         datasets: [{
@@ -874,12 +1061,6 @@ function renderChartEmergencyDrug(stats, year, type) {
        }
      });
 
-    var ctx = document.getElementById('emergencies-chart').getContext('2d');
-
-    // Destroy existing chart if it exists
-    if (existingChartEmergency) {
-        existingChartEmergency.destroy();
-    }
 
     ctx.canvas.height = 200; // Canvas height
 
@@ -927,7 +1108,7 @@ function renderChartEmergencyDrug(stats, year, type) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Related Emergencies by Type (' + year + ')',
+                    text: 'Drug Related Emergencies by '+ type +' (' + year + ')',
                     color: '#000', // Title color
                     font: {
                         family: 'Arial',
@@ -1034,6 +1215,59 @@ function updateChartPie(chartType, statsType) {
 }
 
 function renderPieChartCaptures(stats, year) {
+    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
+
+    if (existingChartConfiscationPie) {
+        existingChartConfiscationPie.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartConfiscationPie = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
+
     var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
     var values = stats.map(stat => stat.catches); // Utilizăm numărul de capturi pentru valorile graficului
     var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
@@ -1044,12 +1278,6 @@ function renderPieChartCaptures(stats, year) {
         colors: colors
     };
 
-    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
-
-    // Distruge graficul existent, dacă există
-    if (existingChartConfiscationPie) {
-        existingChartConfiscationPie.destroy();
-    }
     
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',
@@ -1089,6 +1317,59 @@ function renderPieChartCaptures(stats, year) {
     });
 }
 function renderPieChartGrams(stats, year) {
+
+    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
+
+    if (existingChartConfiscationPie) {
+        existingChartConfiscationPie.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartConfiscationPie = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
     var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
     var values = stats.map(stat => stat.grams); // Utilizăm numărul de capturi pentru valorile graficului
     var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
@@ -1099,13 +1380,6 @@ function renderPieChartGrams(stats, year) {
         colors: colors
     };
 
-    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
-
-    // Distruge graficul existent, dacă există
-    if (existingChartConfiscationPie) {
-        existingChartConfiscationPie.destroy();
-    }
-    
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',
         data: {
@@ -1145,6 +1419,59 @@ function renderPieChartGrams(stats, year) {
     
 }
 function renderPieChartTablets(stats, year) {
+
+    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
+
+    if (existingChartConfiscationPie) {
+        existingChartConfiscationPie.destroy();
+    }
+
+    if (stats.length === 0 ) {
+        ctx.canvas.height = 200;
+        existingChartConfiscationPie = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'No data found',
+                    data: [0],
+                    backgroundColor: ['#d3d3d3']
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false
+                    },
+                    x: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'No data found',
+                        color: '#FF0000',
+                        font: {
+                            family: 'Arial',
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+        return;
+    }
+
     var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
     var values = stats.map(stat => stat.grams); // Utilizăm numărul de capturi pentru valorile graficului
     var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
@@ -1155,12 +1482,6 @@ function renderPieChartTablets(stats, year) {
         colors: colors
     };
 
-    var ctx = document.getElementById('confiscations-chartpie').getContext('2d');
-
-    // Distruge graficul existent, dacă există
-    if (existingChartConfiscationPie) {
-        existingChartConfiscationPie.destroy();
-    }
     
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',

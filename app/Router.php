@@ -49,20 +49,14 @@ class Router {
                         if (!empty($segments[3]) &&  $segments[3]=== 'captures'){
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                                  $controller->getStatsByYear($segments[4]);
-                           } else {
-                               $controller->getDrugStats();
                            }
                         }elseif(!empty($segments[3]) &&  $segments[3]='grams') {
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                                  $controller->getStatsByYearGrams($segments[4]);
-                           } else {
-                               $controller->getDrugStats();
-                           }
+                           } 
                         }elseif(!empty($segments[3]) &&  $segments[3]='tablets') {
                             if (!empty($segments[4]) && is_numeric($segments[4])){
                                  $controller->getStatsByYearTablets($segments[4]);
-                           } else {
-                               $controller->getDrugStats();
                            }
                         }else{
                             $controller->getDrugStats();

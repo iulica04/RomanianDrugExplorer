@@ -1,3 +1,6 @@
+import { APP_PORT } from './config.js';
+
+
 document.getElementById('fileToUpload').addEventListener('change', function(e) {
     var fileName = e.target.files[0] ? e.target.files[0].name : null;
     if (fileName) {
@@ -17,17 +20,14 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     const formData = new FormData();
     formData.append('fileToUpload', file);
 
-    const jwt = getCookiw('jwt');
-    formData.append('jwt', jwt);
-
-    fetch('http://localhost:8080/RomanianDrugExplorer/DrugStats/add-data/' + typeSelect + '/' + yearSelect, {
+    fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/add-data/` + typeSelect + '/' + yearSelect, {
         method: 'POST',
         body: formData,
         header : {
             'Content-Type': 'multipart/form-data',
         }
     })
-    .then(response => console.log(response.text()))
+    .then(response => response.json().then(data => ({ status: response.status, body: data })))
     .then(({ status, body: data }) => {
             if (status === 200) {
                 showSnackbar(data.message, 'info');

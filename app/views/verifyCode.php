@@ -28,6 +28,6 @@
     
         <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
         <script src="/RomanianDrugExplorer/public/utils/codeContainer.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/validateCode.js"></script>
+        <script type="module" src="/RomanianDrugExplorer/public/utils/validateCode.js"></script>
 </body>
 </html>

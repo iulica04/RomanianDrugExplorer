@@ -1,9 +1,12 @@
+import { APP_PORT } from './config.js';
+
+
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
 document.addEventListener('DOMContentLoaded', function() {
      console.log('AICI Sunt in document ready');
 
     ['confiscations', 'infractionality', 'emergencies', 'projects'].forEach(type => {
-        var url = 'http://localhost:8080/RomanianDrugExplorer/DrugStats/' + type + '/';
+        var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/` + type + '/';
         console.log('Requesting data from:', url);
         fetch(url)
             .then(response => {

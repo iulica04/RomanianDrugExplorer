@@ -209,8 +209,8 @@
 </div>
 </div>
 
-    <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

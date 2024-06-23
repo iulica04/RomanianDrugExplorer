@@ -42,6 +42,6 @@
     </div>
     <div id="snackbar"></div>
     <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/addDrugData.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/addDrugData.js"></script>
 </body>
 </html>

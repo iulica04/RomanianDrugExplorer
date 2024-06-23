@@ -1,3 +1,5 @@
+import { APP_PORT } from './config.js';
+
 $(document).ready(function() {
     $('#createUserForm').on('submit', function(e) {
         e.preventDefault();
@@ -12,7 +14,7 @@ $(document).ready(function() {
 
         console.log(userData);
 
-        fetch(`http://localhost:8080/RomanianDrugExplorer/users`, {
+        fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

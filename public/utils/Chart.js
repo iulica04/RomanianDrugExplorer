@@ -238,7 +238,7 @@ function renderChartGenderAge(stats, year) {
         type: 'bar',
         data: chartData,
         options: {
-            
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -357,7 +357,7 @@ function renderChartPenalitiesSituation(stats, year) {
         type: 'bar',
         data: chartData,
         options: {
-            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,

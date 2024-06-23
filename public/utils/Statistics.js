@@ -50,9 +50,8 @@ var existingChartProjects; // Variabilă globală pentru a păstra referința la
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
     
-
-    // Verifică dacă canvas-ul există
-    if (existingChart) {
+    // Verifică dacă canvas-ul există pt orice chart 
+    if (existingChart || existingChartEmergency || existingChartConfiscationPie || existingChartProjects) {
         // Salvează ca PNG
         if (format === 'png') {
             chartCanvas.toBlob(function(blob) {
@@ -63,7 +62,6 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         }
-        // Salvează ca SVG
     } else {
         console.error('Canvas element not found:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found.', 'error');

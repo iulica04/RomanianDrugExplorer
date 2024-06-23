@@ -8,8 +8,9 @@
 </head>
 <body>
 
-   <?php include 'elements/navbar.php'; ?>
-  </header>
+<header>
+<h1 class="title">Romanian Drug Explorer</h1>
+<?php include 'elements/navbar.php'; ?>
 
   <div class="main">
     <div class="card">

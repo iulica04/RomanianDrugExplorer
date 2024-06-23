@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <header>
 <h1 class="title">Romanian Drug Explorer</h1>
 <?php include 'elements/navbar.php'; ?>
-
+</header>
   <div class="main">
     <div class="card">
         <div><h1>Help & Advice</h1></div>

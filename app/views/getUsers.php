@@ -28,6 +28,6 @@
     <div id="snackbar"></div>
 
     <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/editUsers.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/editUsers.js"></script>
 </body>
 </html>

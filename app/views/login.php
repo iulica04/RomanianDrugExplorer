@@ -1,12 +1,11 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Login.css">
+    <link rel = "stylesheet" href="/RomanianDrugExplorer/public/styles/style_Login.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
 </head>
 <body>
     <div class="main">
@@ -26,13 +25,17 @@
                     <span class="error" id="password-error"></span>
                 </div>
                 <div class="forgot-password1">
-                    <p>Forgot password?</p>
+                    <p> Forgot password? </p>
                     <a href="/RomanianDrugExplorer/app/views/forgotPassword.php">Reset it</a>
                 </div>
                 <button type="submit">Login</button>
                 <div class="have-account">
-                    <p>Do you already have an account?</p>
+                    <p> Do you already have an account? </p>
                     <a href="/RomanianDrugExplorer/app/views/register.php">Sign Up</a>
+                </div>
+                <div class="forgot-password">
+                    <p> Forgot password? </p>
+                    <a href="/RomanianDrugExplorer/app/views/forgotPassword.php">Reset it</a>
                 </div>
             </form>
         </div>
@@ -46,8 +49,8 @@
                     <span class="error" id="username-for-sign-up-error"></span>
                 </div>
                 <div class="input-group">
-                    <input type="text" name="email" id="email" class="input" required>
-                    <label class="label-sg">Email</label>
+                    <input type="text" name="email"  id="email" class="input" required>
+                    <label class="label-sg" >Email</label>
                     <span class="error" id="email-error"></span>
                 </div>
                 <div class="input-group">
@@ -66,10 +69,13 @@
 
         <div id="snackbar"></div>
 
-        <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/login.js"></script>
+
+<script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
+<script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
+<script type="module" src="/RomanianDrugExplorer/public/utils/register.js"></script>
+<script type="module" src="/RomanianDrugExplorer/public/utils/login.js"></script>
+
     </div>
+    
 </body>
 </html>

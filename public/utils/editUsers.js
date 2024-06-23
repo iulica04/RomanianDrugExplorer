@@ -1,6 +1,9 @@
+import { APP_PORT } from './config.js';
+
+
 $(document).ready(function() {
-    fetch('http://localhost:8080/RomanianDrugExplorer/users')
-    .then(response => response.json())
+    fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users`)
+    .then(response => console.log(response.json()))
     .then(users => {
         // Loop through the users and add a row for each one
         users.forEach(user => {
@@ -19,13 +22,13 @@ $(document).ready(function() {
         $('.deleteButton').click(function() {
             if (confirm('Are you sure you want to delete this user?')) {
                 const id = $(this).parent().parent().children().first().text();
-                fetch(`http://localhost:8080/RomanianDrugExplorer/users/${id}`, {
+                fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 })
-                .then(response => response.json().then(data => ({ status: response.status, body: data })))
+                .then(response =>console.log(response.text()))
                 .then(({ status, body: data }) => {
                     if (status === 200) {
                         showSnackbar(data.message, 'info');

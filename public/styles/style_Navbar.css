@@ -144,7 +144,6 @@
     .list>a,
     .list {
         margin: 0 10px;
-        /* Spațiere între elementele listei */
     }
 
 
@@ -158,14 +157,12 @@
         color: #becbaf;
         text-decoration: none;
         padding: 10px 10px;
-        /* Măriți padding-ul pentru a mări zona colorată */
         margin: 0 10px;
         display: inline-block;
     }
 
     .for_login:hover {
         background-color: #8d9188;
-        /* Schimbă culoarea fundalului la hover/focus */
     }
 
     .for_login a:hover {

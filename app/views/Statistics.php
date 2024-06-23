@@ -31,7 +31,7 @@
                         <a>Download PNG</a>
                     </button>
                     <?php } else { ?>
-                        <button class="button button2" onclick="saveChartNotLoggedIn()">
+                        <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')">
                             <a>Download PNG</a>
                         </button>
                     <?php } ?>
@@ -55,7 +55,7 @@
                     <button class="button button2"
                         onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
                     <?php } else { ?>
-                        <button class="button button2" onclick="saveChartNotLoggedIn()"><a>Download PNG</a></button>
+                        <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
                 </div>
 
@@ -77,7 +77,7 @@
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                         <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
                     <?php } else { ?>
-                        <button class="button button2" onclick="saveChartNotLoggedIn()"><a>Download PNG</a></button>
+                        <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
                 </div>
 
@@ -98,7 +98,7 @@
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                         <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                     <?php } else { ?>
-                        <button class="button button2" onclick="saveChartNotLoggedIn()"><a>Download PNG</a></button>
+                        <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
                 </div>
 
@@ -116,7 +116,7 @@
             to explore personalized statistics and uncover insights that are tailored to your interests.</p>
         <?php } else { ?>
             <p>Interested in a deeper dive? 
-            <a class="click-here" onclick=" showSnackbar('Please log in to uncover more personalized insights','error')">Click here</a> 
+            <a class="click-here" onclick=" showSnackbar('Please log in to uncover more personalized insights.','error')">Click here</a> 
             to explore personalized statistics and uncover insights that are tailored to your interests.</p>
         <?php } ?>
         </div>
@@ -125,7 +125,7 @@
 
 </div>
 
-    <script src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>

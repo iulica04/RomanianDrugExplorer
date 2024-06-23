@@ -29,12 +29,10 @@
       <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
         <script src="/RomanianDrugExplorer/public/utils/verifyCookie.js"></script>
             <a>Logout</a>
-            <script src="/RomanianDrugExplorer/public/utils/logout.js"></script>
+            <script type="module" src="/RomanianDrugExplorer/public/utils/logout.js"></script>
       <?php else: ?>
              <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
       <?php endif; ?>
       </div> 
     </div>
 </nav>
-
-

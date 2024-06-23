@@ -16,6 +16,9 @@ class UsersController {
 
     public function getUsers() {
         // Send response with status code 200
+
+        include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
+
         http_response_code(200);
         echo json_encode($this->userModel->getUsers());
     }
@@ -182,6 +185,7 @@ class UsersController {
         }
 
 
+        
         $key = "81eddc0ad6797e1e86cfe55dbb1e9d97a344bedc777358daf48dbb190f0764c320fc0fadefe3b9ccacc173dd4297b1926d2907222c424ed8cafedd789f4dd46f"; // Replace with your secret key
         $payload = array(
             "iss" => "localhost:80", // Replace with your issuer
@@ -193,7 +197,12 @@ class UsersController {
                 "username" => $user['username']
             )
         );
-        $jwt = JWT::encode($payload, $key, 'HS256');
+        $header = [
+            "alg" => "HS256",
+            "typ" => "JWT",
+            "kid" => "d111111111111111111111111111111111" // Empty kid
+        ];
+        $jwt = JWT::encode($payload, $key, 'HS256', $header);
 
         // Store JWT in a cookie
         setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour
@@ -380,4 +389,3 @@ class UsersController {
     }
 }
 
-?>

@@ -185,25 +185,25 @@
             <h1>Resources:</h1>
             <li>
                 <i class="large material-icons">library_books</i>
-                <a href="Test.php">Situația confiscărilor de droguri</a>
+                <a>Situația confiscărilor de droguri</a>
                 <button class="button button2" onclick="downloadFile('capturidroguri', 'csv')"><a>Download Report CSV</a></button>
                 <button class="button button2" onclick="openFileInNewTab('capturidroguri', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
-                <a href="Urgente_medicale.xlsx">Urgențele medicale datorate consumului de droguri</a>
+                <a>Urgențele medicale datorate consumului de droguri</a>
                 <button class="button button2" onclick="downloadFile('urgentemedicale', 'csv')"><a>Download Report CSV</a></button>
                 <button class="button button2" onclick="openFileInNewTab('urgentemedicale', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
-                <a href="Infractiuni_regim_droguri.xlsx">Infracționalitatea la regimul drogurilor</a>
+                <a>Infracționalitatea la regimul drogurilor</a>
                 <button class="button button2" onclick="downloadFile('infractionalitate', 'csv')"><a>Download Report CSV</a></button>
                 <button class="button button2" onclick="openFileInNewTab('infractionalitate', 'csv')"><a>Open in New Tab</a></button>
             </li>
             <li>
                 <i class="large material-icons">library_books</i>
-                <a href="Proiecte_campanii_prevenire.xlsx">Proiectele și campaniile naționale de prevenire</a>
+                <a>Proiectele și campaniile naționale de prevenire</a>
                 <button class="button button2" onclick="downloadFile('proiectesicampanii', 'csv')"><a>Download Report CSV</a></button>
                 <button class="button button2" onclick="openFileInNewTab('proiectesicampanii', 'csv')"><a>Open in New Tab</a></button>
             </li>
@@ -214,7 +214,6 @@
 
     <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

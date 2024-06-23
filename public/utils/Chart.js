@@ -1068,7 +1068,7 @@ function renderPieChartCaptures(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics (' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Catches(' + year + ')', // Titlul graficului cu anul curent
                     font: {
                         size: 18
                     }
@@ -1086,9 +1086,6 @@ function renderPieChartCaptures(stats, year) {
                 }
             }
         }
-    });
-    window.addEventListener('resize', () => {
-        existingChartConfiscationPie.resize();
     });
 }
 function renderPieChartGrams(stats, year) {
@@ -1126,7 +1123,7 @@ function renderPieChartGrams(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics (' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Grams(' + year + ')', // Titlul graficului cu anul curent
                     font: {
                         size: 18
                     }
@@ -1145,13 +1142,11 @@ function renderPieChartGrams(stats, year) {
             }
         }
     });
-    window.addEventListener('resize', () => {
-        existingChartConfiscationPie.resize();
-    });
+    
 }
 function renderPieChartTablets(stats, year) {
     var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
-    var values = stats.map(stat => stat.tablets); // Utilizăm numărul de capturi pentru valorile graficului
+    var values = stats.map(stat => stat.grams); // Utilizăm numărul de capturi pentru valorile graficului
     var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
 
     var pieChartData = {
@@ -1184,7 +1179,7 @@ function renderPieChartTablets(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics (' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Tablets (' + year + ')', // Titlul graficului cu anul curent
                     font: {
                         size: 18
                     }
@@ -1203,7 +1198,5 @@ function renderPieChartTablets(stats, year) {
             }
         }
     });
-    window.addEventListener('resize', () => {
-        existingChartConfiscationPie.resize();
-    });
+   
 }

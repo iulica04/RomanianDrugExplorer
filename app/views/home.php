@@ -11,39 +11,17 @@
 </head>
 <body>
     <header>
-        <nav class="items">
-            <div class="logo">
-                <a href="#">RoDX</a>
-            </div>           
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="menu-icon">&#9776;</label>
-            <div class="list">
-            <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true)
-            { ?>
-                <a href="/RomanianDrugExplorer/app/views/addData.php">Add Data</a>
-                <a href="/RomanianDrugExplorer/app/views/getUsers.php">Users</a>
-              <?php }  else { ?>
-                <a href="#about">About</a>
-                <a href="#">Contact</a>
-                <?php } ?>
-              <div class="for_login">
-              <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
-                <script src="/RomanianDrugExplorer/public/utils/verifyCookie.js"></script>
-                    <a>Logout</a>
-              <?php else: ?>
-                     <a href="/RomanianDrugExplorer/app/views/login.php">Login</a>
-              <?php endif; ?>
-              </div> 
-            </div>
-        </nav>
+    <?php include 'elements/navbar.php'; ?>
     </header>
     <div class="body_for_home">
         <h1>Exploring the World of Drugs Together</h1><br><br>
         <p>At Romanian Drug Explorer, we're here for you. Our mission is to provide support, resources, and information about drugs to help individuals live healthier lives. We believe in the power of community and are committed to helping those who need it most</p>
         <div class="buttons">
             <a href="/RomanianDrugExplorer/app/views/Statistics.php" class="button" >Learn more</a>
+            <?php if(!(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)) {?>
             <p>or</p>
             <a href="/RomanianDrugExplorer/app/views/register.php" class="button" >Sign up</a>
+            <?php } ?>
         </div>
         <div id="about" class="about_us">
             <div class ="container_1"> <h2>About Us</h2> </div>
@@ -74,7 +52,6 @@
             </footer>
         </div>
     </div>   
-    <script src="/RomanianDrugExplorer/public/utils/logout.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
     <script>
         function toggleMenu() {

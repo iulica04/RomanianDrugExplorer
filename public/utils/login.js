@@ -8,7 +8,7 @@ $('#loginForm').on('submit', function(e) {
 
     console.log(userData);
 
-    fetch(`http://localhost:8080/RomanianDrugExplorer/users/login`, {
+    fetch(`http://localhost/RomanianDrugExplorer/users/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

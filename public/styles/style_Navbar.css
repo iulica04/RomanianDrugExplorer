@@ -13,7 +13,9 @@
 .for_login {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
+
 
 .list>a,
 .for_login>a {
@@ -40,7 +42,7 @@
     font-size: 50px;
 }
 
-@media all and (max-width: 820px) {
+@media all and (max-width: 1000px) {
     .list {
         flex-direction: column;
         position: absolute;
@@ -63,6 +65,7 @@
         width: 100%;
         margin: 0px;
         left: 0;
+        cursor: pointer;
     }
 
     #menu-toggle:checked~.list {
@@ -99,6 +102,7 @@
         display: block;
         padding: 10px;
         width: 100%;
+        cursor: pointer;
     }
 
     .list>a:hover, .for_login>a:hover {
@@ -107,7 +111,7 @@
     }
 }
 
-@media all and (min-width: 821px) {
+@media all and (min-width: 1001px) {
     .menu-icon {
         display: none;
     }

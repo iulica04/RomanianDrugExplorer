@@ -187,7 +187,7 @@ class UsersController {
             "iss" => "your_issuer", // Replace with your issuer
             "aud" => "your_audience", // Replace with your audience
             "iat" => time(),
-            "exp" => time() + (60), // Token valid for 1 hour
+            "exp" => time() + (60*60), // Token valid for 1 hour
             "data" => array(
                 "id" => $user['id'],
                 "username" => $user['username']

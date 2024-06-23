@@ -557,6 +557,7 @@ function renderChartGenderDrug(stats, year) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -691,6 +692,7 @@ function renderChartAgeDrug(stats, year) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -889,6 +891,7 @@ function renderChartEmergencyDrug(stats, year, type) {
         type: 'bar',
         data: chartData,
         options: {
+            maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true,

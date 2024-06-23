@@ -437,6 +437,20 @@ header {
   }
 
 /*for main*/
+@media only screen and (min-width: 980px) {
+    .card_1, .card_2 {
+        flex: 1; 
+        width: auto; 
+        margin-right: 20px; 
+        margin-top: 0; 
+        margin-right: 20px;
+    }
+    
+    .card_2 {
+        margin-top: 150px; 
+        margin-right: 20px;
+    }
+}
 @media only screen and (max-width: 980px) {
     .card {
         flex-direction: column; 
@@ -484,24 +498,6 @@ header {
             display: flex;
             flex-direction: column;
         }
-}
-
-
-
-/* Stilurile pentru ecranele mai mari */
-@media only screen and (min-width: 980px) {
-    .card_1, .card_2 {
-        flex: 1; 
-        width: auto; 
-        margin-right: 20px; 
-        margin-top: 0; 
-        margin-right: 20px;
-    }
-    
-    .card_2 {
-        margin-top: 150px; 
-        margin-right: 20px;
-    }
 }
 
 @media screen and (max-width: 725px) {

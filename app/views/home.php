@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Home.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Footer.css">
     <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
 </head>
 <body>
     <header>
@@ -48,16 +50,7 @@
         </div>
         <div id="snackbar"></div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Romanian Drug Explorer. All Rights Reserved.</p>
-            <p>
-                <a href="/RomanianDrugExplorer/app/views/PrivacyPolicy.php">Privacy Policy</a> |
-                <a href="/RomanianDrugExplorer/app/views/TermsOfService.php">Terms of Service</a> |
-                <a href="/RomanianDrugExplorer/app/views/ContactUs.php">Contact Us</a>
-            </p>
-        </div>
-    </footer>
-    <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
+    <?php include 'elements/footer.php'; ?>
+   
 </body>
 </html>

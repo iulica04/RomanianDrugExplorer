@@ -1,0 +1,90 @@
+footer{
+    background-color: #97A97C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;  
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+
+footer{
+    padding: 2% 4%;
+}
+
+footer .little-text{
+    font-size: 12px;
+    color: #1a2919;
+    text-align: center;
+}
+
+
+footer .logo {
+    padding-left: 0px;
+    margin: 0px;
+}
+
+footer .logo a {
+    color: #1a2919;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 50px;
+}
+
+footer footer .group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+
+}
+
+footer .group h3{
+    color: #1a2919;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+footer .group ul{
+    list-style-type: none;
+    font-size: 1.3rem;
+}
+
+footer .group li {
+    margin: 10px 0;
+    text-decoration: none;
+    color: #495748;
+
+}
+
+footer .group ul li a {
+    text-decoration: none;
+    color: #495748;
+    cursor: pointer;
+}
+
+footer .group ul li a:hover {
+    color: #1a2919;
+}
+
+
+.fab.fa-instagram {
+    color: #495748;
+    font-size: 24px; /* Dimensiunea iconiței */
+    margin-right: 5px; /* Spațiere între iconiță și nume */
+}
+
+
+
+
+

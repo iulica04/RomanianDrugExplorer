@@ -3,8 +3,10 @@
 <html>
 <head>
   <title>Help and Advice</title>
+  <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Footer.css">
   <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_HelpAndAdvice.css">
   <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
+  <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
   <meta charset="UTF-8">
 </head>
 <body>
@@ -208,6 +210,7 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
     </div>
   </div>
 
+
   <script>
     // Funcția pentru afișarea și ascunderea conținutului acordeonului
     function toggleAccordion(accordionHeader) {
@@ -231,5 +234,7 @@ If you know what drug they’ve taken tell the ambulance crew immediately, it mi
           navList.classList.toggle('active');
         }
       </script> 
+
+<?php include 'elements/footer.php'; ?>
 </body>
 </html>

@@ -229,8 +229,99 @@ class User extends DB {
                     <p>Hello, ' . $username . '</p>
                     <p>We received a request to reset your account password. Please use the code below to reset your password:</p>
                     <div class="code">' . $code . '</div>
-                    <p>This reset code is valid for 30 minutes. If you did not request a password reset, please ignore this email.</p>
+                    <p>If you did not request a password reset, please ignore this email.</p>
                     <p>Thank you!</p>
+                    <p>Romanian Drug Explorer Team</p>
+                    <div class="footer">
+                        <p> 2024 Your Company. All rights reserved.</p>
+                    </div>
+                </div>
+            </body>
+            </html>';
+            
+    
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function sendConfirmation($email, $username) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = 0; // Enable verbose debug output
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->Host = 'smtp.office365.com'; // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true; // Enable SMTP authentication
+            $mail->Username = 'romaniandrugexplorer@outlook.com'; // Your Gmail address
+            $mail->Password = 'DrugSafe@12'; // Your Gmail password
+            $mail->SMTPSecure = 'tls'; // Enable TLS encryption, `ssl` also accepted
+            $mail->Port = 587; // TCP port to connect to
+
+    
+            $mail->setFrom('romaniandrugexplorer@outlook.com', 'Drug Info');
+            $mail->addAddress($email, $username);
+
+            
+            $mail->isHTML(true);
+            $mail->Subject = 'Confirm Your Account';
+            $mail->Body = '<!DOCTYPE html>
+            <html>
+            <head>
+                <title>Password Reset</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f9;
+                        color: #333;
+                        margin: 0;
+                        padding: 20px;
+                    }
+                    .email-container {
+                        background-color: #CFE1B9;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                        max-width: 600px;
+                        margin: 0 auto;
+                    }
+                    .email-container h2 {
+                        margin-top: 0;
+                        font-size: 24px;
+                        color: #333;
+                    }
+                    .email-container p {
+                        font-size: 16px;
+                        color: #666;
+                    }
+                    .code {
+                        display: block;
+                        width: fit-content;
+                        margin: 20px auto;
+                        padding: 10px 20px;
+                        background-color: #5e6b51;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        font-size: 18px;
+                        color: #c6d9a5;
+                    }
+                    .footer {
+                        margin-top: 30px;
+                        font-size: 12px;
+                        color: #999;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="email-container">
+                    <h2>Confirm Your Account</h2>
+                    <p>Dear, ' . $username . '</p>
+                    <p> We are pleased to inform you that your account on the RoDx platform has been successfully created. Welcome to our community!</p>
+                    <p>With your new account, you can now access advanced tools and resources for analyzing and managing data related to drug use in Romania. Explore up-to-date information, interactive visualizations, and exportable reports to support informed decision-making and effective strategies.</p>
+                    <p>Thank you for joining RoDx. We look forward to your participation and contributions towards promoting public health and preventing drug use.</p>
+                    <p>Sincerely,</p>
                     <p>Romanian Drug Explorer Team</p>
                     <div class="footer">
                         <p> 2024 Your Company. All rights reserved.</p>

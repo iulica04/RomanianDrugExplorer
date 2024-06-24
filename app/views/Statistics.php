@@ -29,8 +29,9 @@
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
 
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-                        <button class="button button2" data-chart-id="confiscation-chart" data-chart-type="chart"
-                        data-file-type="png"><a>Download PNG</a></button>
+                    <button class="button button2" onclick="saveChart('confiscations-chart', 'chart', 'png')">
+                        <a>Download PNG</a>
+                    </button>
                     <?php } else { ?>
                         <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')">
                             <a>Download PNG</a>
@@ -53,9 +54,8 @@
                     <p>Here you can find the statistics about drug related infractionality in Romania.</p>
 
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-                        <button class="button button2" data-chart-id="infractionality-chart" data-chart-type="chart"
-                        data-file-type="png">
-                        <a>Download PNG</a></button>
+                    <button class="button button2"
+                        onclick="saveChart('infractionality-chart' , 'chart', 'png')"><a>Download PNG</a></button>
                     <?php } else { ?>
                         <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
@@ -77,9 +77,7 @@
                     <p>Here you can find the statistics about drug emergencies in Romania.</p>
 
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-                        <button class="button button2" data-chart-id="emergencies-chart" data-chart-type="chart"
-                        data-file-type="png">
-                        <a>Download PNG</a></button>
+                        <button class="button button2" onclick="saveChart('emergencies-chart' , 'chart', 'png')"><a>Download PNG</a></button>
                     <?php } else { ?>
                         <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
@@ -100,9 +98,7 @@
                     <h1>Anti-Drug Projects Statistics:</h1>
                     <p>Here you can find the statistics about projects and campaigns against drugs in Romania.</p>
                     <?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-                        <button class="button button2" data-chart-id="projects-chart" data-chart-type="chart"
-                        data-file-type="png">
-                        <a>Download PNG</a></button>
+                        <button class="button button2" onclick="saveChart('projects-chart','chart','png')"><a>Download PNG</a></button>
                     <?php } else { ?>
                         <button class="button button2" onclick=" showSnackbar('Please log in to downloand the statistics.','error')"><a>Download PNG</a></button>
                     <?php } ?>
@@ -128,7 +124,7 @@
         </div>
 
     </div>
-    <?php include 'elements/footer.php'; ?>
+    
 
     <script type="module" src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>

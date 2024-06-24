@@ -12,7 +12,6 @@ $(document).ready(function() {
             role: 'user'
         };
 
-        console.log(userData);
 
         fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users`, {
             method: 'POST',

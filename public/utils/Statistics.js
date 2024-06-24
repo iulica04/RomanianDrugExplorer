@@ -1,13 +1,10 @@
 import { APP_PORT } from './config.js';
 
-
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
 document.addEventListener('DOMContentLoaded', function() {
-     console.log('AICI Sunt in document ready');
 
     ['confiscations', 'infractionality', 'emergencies', 'projects'].forEach(type => {
         var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/` + type + '/';
-        console.log('Requesting data from:', url);
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -16,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.text();
             })
             .then(data => {
-                console.log('Response text:', data);
                 try {
                     const jsonData = JSON.parse(data);
                     if (jsonData && jsonData.stats) {
@@ -291,7 +287,6 @@ function renderChartInfractionality(stats) {
 }
  ////////////////////PENTRU EMRGENCIES
 function renderChartEmergencyDrug(stats) {
-    console.log('AICI Received stats:', stats);
 
     var chartData = {
         labels: ["2021", "2022", "2023"],
@@ -304,7 +299,6 @@ function renderChartEmergencyDrug(stats) {
         }]
     };
 
-    console.log('AICI Chart data before processing:', chartData);
 
     stats.forEach(stat => {
         if (stat.year === 2021) {
@@ -555,7 +549,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const chartId = this.getAttribute('data-chart-id');
             const chartType = this.getAttribute('data-chart-type');
             const fileType = this.getAttribute('data-file-type');
-            console.log('Button clicked:', this, chartId, chartType, fileType);
 
             if(chartId=== 'not-logged'){
                 showSnackbar('Please log in to downloand the statistics.','error');
@@ -582,7 +575,6 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'emergencies-chart' && existingChartEmergency) {
@@ -596,7 +588,6 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'confiscation-chart' && existingChartConfiscationPie) {
@@ -610,7 +601,6 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'projects-chart' && existingChartProjects) {
@@ -624,11 +614,9 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         }else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else {
-        console.error('Canvas element not found or chart type mismatch:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found for the specified chart type.', 'error');
     }
 }

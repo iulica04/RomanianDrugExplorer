@@ -1,15 +1,10 @@
 import { APP_PORT } from './config.js';
 
-
-
-console.log("test");
-
 // Afiseaza datele in tabelul specific PROJECTS
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
     
     if (!tableBody) {
-        console.error(`Table body for type "${type}" not found.`);
         return; // Încheie funcția dacă tabelul nu este găsit
     }
 
@@ -45,7 +40,6 @@ function renderStats(stats, year, type) {
 function saveTableAsSVG(tableId) {
     var table = document.getElementById(tableId);
     if (!table) {
-        console.error('Table element not found:', tableId);
         showSnackbar('Table element not found.', 'error');
         return;
     }
@@ -102,13 +96,11 @@ function saveTableAsSVG(tableId) {
 function downloadFile(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
-        console.error('No year selected.');
         showSnackbar('Select an year before you want to save a file.', 'error');
         return;
     }
 
     var fileName = selectedYear + '-' + type + '.' + format;
-    console.log('Downloading file:', fileName);
 
     var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
 
@@ -131,7 +123,6 @@ function downloadFile(type, format) {
             showSnackbar('Downloaded successfully!', 'info');
         })
         .catch(error => {
-            console.error('Download error:', error);
             showSnackbar('Download error.', 'error');
         });
 }
@@ -140,7 +131,6 @@ function downloadFile(type, format) {
 function openFileInNewTab(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
-        console.error('No year selected.');
         showSnackbar('Select an year before you want to save a file!', 'error');
         return;
     }
@@ -161,7 +151,6 @@ function openFileInNewTab(type, format) {
             showSnackbar('Fle open in a new tab.', 'info');
         })
         .catch(error => {
-            console.error('Open file error:', error);
             showSnackbar('Open file error.', 'error');
         });
 }

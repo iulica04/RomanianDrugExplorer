@@ -13,10 +13,9 @@ function showSnackbar(message, messageType) {
         snackbar.className += " info";
     }
 
-    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 4000);
+    setTimeout(function () { snackbar.className = snackbar.className.replace("show", ""); }, 4000);
 }
 
-console.log('esti aici in chart.js??');
 
 /*UpddateYearURL */
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -30,53 +29,50 @@ function updateYearUrl() {
     var selectedYear = document.getElementById('year-select').value;
 
     if (selectedYear === '') {
-        console.log('No year selected');
         return; // Dacă nu este selectat niciun an, nu face nimic
 
-    }else{
-    console.log('Selected year:', selectedYear);
+    } else {
 
-    // Pentru fiecare tip de statistică, construiește URL-ul corect cu anul selectat
+        // Pentru fiecare tip de statistică, construiește URL-ul corect cu anul selectat
 
-    ['confiscations/captures', 'infractionality/gender', 'emergencies/gender', 'projects'].forEach(type => {
-        var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/` + type + '/' + selectedYear;
-        console.log('Requesting data from:', url);
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                console.log('Response text:', data);
-                try {
-                    const jsonData = JSON.parse(data);
-                    if (jsonData && jsonData.stats) {
-                           if(type === 'emergencies/gender') {  
-                            console.log('Apelând renderChartGenderDrug');
-                            renderChartGenderDrug(jsonData.stats, jsonData.year);
-                           }else if(type === 'infractionality/gender') {
-                            console.log('Apelând renderChartGenderAGE');
-                            renderChartGenderAge(jsonData.stats, jsonData.year);
-                           }else if(type === 'confiscations/captures'){
-                                renderPieChartCaptures(jsonData.stats, jsonData.year);
-                            
-                           }else {
-                            renderStats(jsonData.stats, jsonData.year, type);
-                           }
-                    } else {
-                        console.error('Empty response or invalid data received:', jsonData);
+        ['confiscations/captures', 'infractionality/gender', 'emergencies/gender', 'projects'].forEach(type => {
+            var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/` + type + '/' + selectedYear;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
                     }
-                } catch (error) {
-                    console.error('Error parsing JSON:', error);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    });
-  }
+                    return response.text();
+                })
+                .then(data => {
+
+                    try {
+                        const jsonData = JSON.parse(data);
+                        if (jsonData && jsonData.stats) {
+                            if (type === 'emergencies/gender') {
+
+                                renderChartGenderDrug(jsonData.stats, jsonData.year);
+                            } else if (type === 'infractionality/gender') {
+
+                                renderChartGenderAge(jsonData.stats, jsonData.year);
+                            } else if (type === 'confiscations/captures') {
+                                renderPieChartCaptures(jsonData.stats, jsonData.year);
+
+                            } else {
+                                renderStats(jsonData.stats, jsonData.year, type);
+                            }
+                        } else {
+                            console.error('Empty response or invalid data received:', jsonData);
+                        }
+                    } catch (error) {
+                        console.error('Error parsing JSON:', error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    }
 }
 
 var existingChart; // Variabilă globală pentru a păstra referința la chart-ul existent infractionality
@@ -86,18 +82,18 @@ var existingChartConfiscationPie; // Variabilă globală pentru a păstra referi
 /*Save charts buttons*/
 const saveChartButtons = document.querySelectorAll('.button2');
 saveChartButtons.forEach(button => {
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function (event) {
         // Prevent default action if needed
         event.preventDefault();
         const chartId = this.getAttribute('data-chart-id');
         const chartType = this.getAttribute('data-chart-type');
         const fileType = this.getAttribute('data-file-type');
 
-        if(chartType === 'chart') {
-        saveChart(chartId, chartType, fileType);
-        }else if(chartType=== 'chartPie') {
+        if (chartType === 'chart') {
+            saveChart(chartId, chartType, fileType);
+        } else if (chartType === 'chartPie') {
             savePieChart(chartId, chartType, fileType);
-        }else if(chartId === 'projects-table') {
+        } else if (chartId === 'projects-table') {
             saveTableAsSVG(chartId);
         }
     });
@@ -105,12 +101,12 @@ saveChartButtons.forEach(button => {
 ///SAVE PNG SI SVG
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
-    
+
     // Verifică dacă canvas-ul există
-    if (existingChart || existingChartEmergency ) {
+    if (existingChart || existingChartEmergency) {
         // Salvează ca PNG
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
@@ -118,7 +114,7 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
 
-        }else if(format === 'svg'){
+        } else if (format === 'svg') {
 
             showSnackbar('Can`t save chart as SVG.', 'error');
         }
@@ -133,11 +129,10 @@ function saveChart(chartId, filename, format) {
 function savePieChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
 
-    // Verifică dacă canvas-ul există
     if (existingChartConfiscationPie) {
         // Salvează ca PNG
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
@@ -145,32 +140,28 @@ function savePieChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
 
-        }else if(format === 'svg'){
+        } else if (format === 'svg') {
             showSnackbar('Can`t save chart as SVG.', 'error');
-        } 
-    }else {
-        console.error('Canvas element not found:', chartId);
+        }
+    } else {
         showSnackbar('Error saving pie chart: Canvas is empty or not found.', 'error');
     }
 }
 
 
 /*Charts buttons listeners */
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.radio-buttons').forEach(function(container) {
-        container.addEventListener('change', function(event) {
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.radio-buttons').forEach(function (container) {
+        container.addEventListener('change', function (event) {
             if (event.target.type === 'radio') {
                 const chartId = event.target.getAttribute('data-chart-id');
                 const chartType = event.target.getAttribute('data-chart-type');
-                console.log('Chart type:', chartType);
-                console.log('Chart id:', chartId);
 
-                if(chartType === 'infractionality') {
+                if (chartType === 'infractionality') {
                     updateChart(chartId, chartType);
-                } else if(chartType === 'emergencies') {
-                    console.log('Update chart: Sunt aici in emergencies');
+                } else if (chartType === 'emergencies') {
                     updateChartEmergencies(chartId, chartType);
-                } else if(chartType === 'confiscations') {
+                } else if (chartType === 'confiscations') {
                     updateChartPie(chartId, chartType);
                 }
             }
@@ -180,19 +171,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Funcția pentru actualizarea graficului în funcție de opțiunea selectată la radio buttons
 function updateChart(chartType, statsType) {
-    console.log('Update chart: UPDATE CHART');
+
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         return; // Dacă nu este selectat niciun an, nu face nimic
     }
 
     var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/`;
-    if (statsType ==='infractionality' ){
-        if( chartType === 'gender-age') {
-        url += statsType + '/gender/' + selectedYear;
-        } else if ( chartType === 'penalties-situation') {
-        url += statsType + '/penalities/' + selectedYear;
-    }
+    if (statsType === 'infractionality') {
+        if (chartType === 'gender-age') {
+            url += statsType + '/gender/' + selectedYear;
+        } else if (chartType === 'penalties-situation') {
+            url += statsType + '/penalities/' + selectedYear;
+        }
     } else {
         console.error('Unsupported chart type:', chartType);
         return;
@@ -206,12 +197,12 @@ function updateChart(chartType, statsType) {
             return response.text();
         })
         .then(data => {
-            console.log('Response text:', data);
-             // Verifică dacă răspunsul nu este gol
-        if (data.trim().length === 0) {
-            throw new Error('Empty response received');
-        }
-        try {
+
+            // Verifică dacă răspunsul nu este gol
+            if (data.trim().length === 0) {
+                throw new Error('Empty response received');
+            }
+            try {
                 const jsonData = JSON.parse(data);
                 if (jsonData && jsonData.stats) {
                     if (chartType === 'gender-age') {
@@ -233,13 +224,13 @@ function updateChart(chartType, statsType) {
         });
 }
 function renderChartGenderAge(stats, year) {
-    
+
     var ctx = document.getElementById('infractionality-chart').getContext('2d');
     if (existingChart) {
         existingChart.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChart = new Chart(ctx, {
             type: 'bar',
@@ -297,9 +288,9 @@ function renderChartGenderAge(stats, year) {
     };
 
     stats.forEach(stat => {
-        if (stat.subcategory === 'Barbati' && stat.type === 'Majori') {
+        if (stat.subcategory === 'Bărbați' && stat.type === 'Majori') {
             chartData.datasets[0].data[0] = stat.value;
-        } else if (stat.subcategory === 'Barbati' && stat.type === 'Minori') {
+        } else if (stat.subcategory === 'Bărbați' && stat.type === 'Minori') {
             chartData.datasets[0].data[1] = stat.value;
         } else if (stat.subcategory === 'Femei' && stat.type === 'Majori') {
             chartData.datasets[0].data[2] = stat.value;
@@ -391,7 +382,7 @@ function renderChartGenderAge(stats, year) {
                         color: '#fff'
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -408,7 +399,7 @@ function renderChartPenalitiesSituation(stats, year) {
         existingChart.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChart = new Chart(ctx, {
             type: 'bar',
@@ -466,13 +457,13 @@ function renderChartPenalitiesSituation(stats, year) {
     };
 
     stats.forEach(stat => {
-        if (stat.subcategory === 'Persoane cercetate' ) {
+        if (stat.subcategory === 'Persoane cercetate') {
             chartData.datasets[0].data[0] = stat.value;
-        } else if (stat.subcategory === 'Persoane trimise in judecata' ) {
+        } else if (stat.subcategory === 'Persoane trimise în judecată') {
             chartData.datasets[0].data[1] = stat.value;
-        } else if (stat.subcategory === 'Persoane condamnate' ) {
+        } else if (stat.subcategory === 'Persoane condamnate') {
             chartData.datasets[0].data[2] = stat.value;
-        } 
+        }
     });
 
     ctx.canvas.height = 200;
@@ -558,7 +549,7 @@ function renderChartPenalitiesSituation(stats, year) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -568,28 +559,28 @@ function renderChartPenalitiesSituation(stats, year) {
     });
 }
 
- ////////////////////PENTRU EMRGENCIES
- // Funcția pentru actualizarea graficului în funcție de opțiunea selectată la radio buttons
- function updateChartEmergencies(chartType, statsType) {
+////////////////////PENTRU EMRGENCIES
+// Funcția pentru actualizarea graficului în funcție de opțiunea selectată la radio buttons
+function updateChartEmergencies(chartType, statsType) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         return; // Dacă nu este selectat niciun an, nu face nimic
     }
 
     var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/`;
-    if (statsType ==='emergencies'){
-          if(chartType === 'age-drug') {
-          url += statsType + '/age/' + selectedYear;
-          } else if (chartType === 'gender-drug') {
-           url += statsType + '/gender/' + selectedYear;
-           } else if ( chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-stimulanti' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
-             url += statsType + '/emergency/' + selectedYear;
-            }
+    if (statsType === 'emergencies') {
+        if (chartType === 'age-drug') {
+            url += statsType + '/age/' + selectedYear;
+        } else if (chartType === 'gender-drug') {
+            url += statsType + '/gender/' + selectedYear;
+        } else if (chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-stimulanti' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
+            url += statsType + '/emergency/' + selectedYear;
+        }
     } else {
         console.error('Unsupported chart type:', chartType);
         return;
     }
-   console.log('Requesting data from 1 :', url);
+
     // Trimite cererea GET pentru tipul de statistică selectat
     fetch(url)
         .then(response => {
@@ -599,24 +590,23 @@ function renderChartPenalitiesSituation(stats, year) {
             return response.text();
         })
         .then(data => {
-            console.log('Response text:', data);
-             // Verifică dacă răspunsul nu este gol
-        if (data.trim().length === 0) {
-            throw new Error('Empty response received');
-        }
-        try {
+
+            // Verifică dacă răspunsul nu este gol
+            if (data.trim().length === 0) {
+                throw new Error('Empty response received');
+            }
+            try {
                 const jsonData = JSON.parse(data);
                 if (jsonData && jsonData.stats) {
-                   if (chartType === 'age-drug') {
+                    if (chartType === 'age-drug') {
                         renderChartAgeDrug(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'gender-drug') {
+                    } else if (chartType === 'gender-drug') {
                         renderChartGenderDrug(jsonData.stats, jsonData.year);
-                    }else if (chartType === 'emergencie-drug-stimulanti' ||chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
+                    } else if (chartType === 'emergencie-drug-stimulanti' || chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
                         let parts = chartType.split('-');
                         let type = parts[parts.length - 1];
-                        console.log('Type:', type);
                         renderChartEmergencyDrug(jsonData.stats, jsonData.year, type);
-                    }else {
+                    } else {
                         renderStats(jsonData.stats, jsonData.year, chartType);
                     }
                 } else {
@@ -637,7 +627,7 @@ function renderChartGenderDrug(stats, year) {
     if (existingChartEmergency) {
         existingChartEmergency.destroy();
     }
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartEmergency = new Chart(ctx, {
             type: 'bar',
@@ -683,9 +673,9 @@ function renderChartGenderDrug(stats, year) {
         return;
     }
 
-    
+
     var chartData = {
-        labels: ["M-Canabis", "M-Stimulanti", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanti", "F-Opiacee", "F-NSP"],
+        labels: ["M-Canabis", "M-Stimulanți", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanți", "F-Opiacee", "F-NSP"],
         datasets: [{
             label: 'Number of Cases',
             backgroundColor: ["#007bff", "#87cefa", "#26c4ec", "#73cde3", "#ff69b4", "#ffb6c1", "#fd3f92", "#e11b72"],
@@ -695,15 +685,15 @@ function renderChartGenderDrug(stats, year) {
         }]
     };
 
-    console.log('AICI Chart data before processing:', chartData);
+
     stats.forEach(stat => {
         if (stat.drug_type === 'Canabis' && stat.subcategory === 'Feminin') {
             chartData.datasets[0].data[4] = stat.cases;
         } else if (stat.drug_type === 'Canabis' && stat.subcategory === 'Masculin') {
             chartData.datasets[0].data[0] = stat.cases;
-        } else if (stat.drug_type === 'Stimulanti' && stat.subcategory === 'Feminin') {
+        } else if (stat.drug_type === 'Stimulanți' && stat.subcategory === 'Feminin') {
             chartData.datasets[0].data[5] = stat.cases;
-        } else if (stat.drug_type === 'Stimulanti' && stat.subcategory === 'Masculin') {
+        } else if (stat.drug_type === 'Stimulanți' && stat.subcategory === 'Masculin') {
             chartData.datasets[0].data[1] = stat.cases;
         } else if (stat.drug_type === 'Opiacee' && stat.subcategory === 'Feminin') {
             chartData.datasets[0].data[6] = stat.cases;
@@ -801,7 +791,7 @@ function renderChartGenderDrug(stats, year) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -818,7 +808,7 @@ function renderChartAgeDrug(stats, year) {
         existingChartEmergency.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartEmergency = new Chart(ctx, {
             type: 'bar',
@@ -866,7 +856,7 @@ function renderChartAgeDrug(stats, year) {
 
 
     var chartData = {
-        labels: ["(<25)-Canabis", "(25-34)-Canabis", "(>35)-Canabis", "(<25)-Stimulanti", "(25-34)-Stimulanti", "(>35)-Stimulanti", "(<25)-Opiacee", "(25-34)-Opiacee", "(>35)-Opiacee", "(<25)-NSP", "(25-34)-NSP", "(>35)-NSP"],
+        labels: ["(<25)-Canabis", "(25-34)-Canabis", "(>35)-Canabis", "(<25)-Stimulanți", "(25-34)-Stimulanți", "(>35)-Stimulanți", "(<25)-Opiacee", "(25-34)-Opiacee", "(>35)-Opiacee", "(<25)-NSP", "(25-34)-NSP", "(>35)-NSP"],
         datasets: [{
             label: 'Number of Cases',
             backgroundColor: ["#007bff", "#87cefa", "#ff69b4", "#ffb6c1", "#7bff00", "#cefa87", "#69b4ff", "#b6c1ff", "#ff8c00", "#ffd700", "#32cd32", "#8b0000"], // Custom colors
@@ -881,7 +871,7 @@ function renderChartAgeDrug(stats, year) {
             if (stat.subcategory === '<25') chartData.datasets[0].data[0] = stat.cases;
             else if (stat.subcategory === '25-34') chartData.datasets[0].data[1] = stat.cases;
             else if (stat.subcategory === '>35') chartData.datasets[0].data[2] = stat.cases;
-        } else if (stat.drug_type === 'Stimulanti') {
+        } else if (stat.drug_type === 'Stimulanți') {
             if (stat.subcategory === '<25') chartData.datasets[0].data[3] = stat.cases;
             else if (stat.subcategory === '25-34') chartData.datasets[0].data[4] = stat.cases;
             else if (stat.subcategory === '>35') chartData.datasets[0].data[5] = stat.cases;
@@ -981,7 +971,7 @@ function renderChartAgeDrug(stats, year) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -998,7 +988,7 @@ function renderChartEmergencyDrug(stats, year, type) {
     if (existingChartEmergency) {
         existingChartEmergency.destroy();
     }
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartEmergency = new Chart(ctx, {
             type: 'bar',
@@ -1056,88 +1046,88 @@ function renderChartEmergencyDrug(stats, year, type) {
     };
 
     stats.forEach(stat => {
-        if(type === 'stimulanti') {
-        if(stat.drug_type === 'Stimulanti') {
-        if (stat.subcategory === 'Intoxicatie') {
-            chartData.datasets[0].data[0] = stat.cases;
-        } else if (stat.subcategory  === 'Utilizare nociva') {
-            chartData.datasets[0].data[1] = stat.cases;
-        } else if (stat.subcategory  === 'Dependenta') {
-            chartData.datasets[0].data[2] = stat.cases;
-        } else if (stat.subcategory  === 'Sevraj') {
-            chartData.datasets[0].data[3] =stat.cases;
-        } else if (stat.subcategory  === 'Tulburari de comportament') {
-            chartData.datasets[0].data[4] = stat.cases;
-        } else if (stat.subcategory  === 'Supradoaza') {
-            chartData.datasets[0].data[5] = stat.cases;
-        } else if (stat.subcategory  === 'Alte diagnostice') {
-            chartData.datasets[0].data[6] = stat.cases;
-        } else if (stat.subcategory  === 'Testare toxicologica') {
-            chartData.datasets[0].data[7] = stat.cases;
+        if (type === 'stimulanti') {
+            if (stat.drug_type === 'Stimulanți') {
+                if (stat.subcategory === 'Intoxicație') {
+                    chartData.datasets[0].data[0] = stat.cases;
+                } else if (stat.subcategory === 'Utilizare nocivă') {
+                    chartData.datasets[0].data[1] = stat.cases;
+                } else if (stat.subcategory === 'Dependență') {
+                    chartData.datasets[0].data[2] = stat.cases;
+                } else if (stat.subcategory === 'Sevraj') {
+                    chartData.datasets[0].data[3] = stat.cases;
+                } else if (stat.subcategory === 'Tulburări de comportament') {
+                    chartData.datasets[0].data[4] = stat.cases;
+                } else if (stat.subcategory === 'Supradoză') {
+                    chartData.datasets[0].data[5] = stat.cases;
+                } else if (stat.subcategory === 'Alte diagnostice') {
+                    chartData.datasets[0].data[6] = stat.cases;
+                } else if (stat.subcategory === 'Testare toxicologică') {
+                    chartData.datasets[0].data[7] = stat.cases;
+                }
+            }
+        } else if (type === 'canabis') {
+            if (stat.drug_type === 'Canabis') {
+                if (stat.subcategory === 'Intoxicație') {
+                    chartData.datasets[0].data[0] = stat.cases;
+                } else if (stat.subcategory === 'Utilizare nocivă') {
+                    chartData.datasets[0].data[1] = stat.cases;
+                } else if (stat.subcategory === 'Dependență') {
+                    chartData.datasets[0].data[2] = stat.cases;
+                } else if (stat.subcategory === 'Sevraj') {
+                    chartData.datasets[0].data[3] = stat.cases;
+                } else if (stat.subcategory === 'Tulburări de comportament') {
+                    chartData.datasets[0].data[4] = stat.cases;
+                } else if (stat.subcategory === 'Supradoză') {
+                    chartData.datasets[0].data[5] = stat.cases;
+                } else if (stat.subcategory === 'Alte diagnostice') {
+                    chartData.datasets[0].data[6] = stat.cases;
+                } else if (stat.subcategory === 'Testare toxicologică') {
+                    chartData.datasets[0].data[7] = stat.cases;
+                }
+            }
+        } else if (type === 'opiacee') {
+            if (stat.drug_type === 'Opiacee') {
+                if (stat.subcategory === 'Intoxicație') {
+                    chartData.datasets[0].data[0] = stat.cases;
+                } else if (stat.subcategory === 'Utilizare nocivă') {
+                    chartData.datasets[0].data[1] = stat.cases;
+                } else if (stat.subcategory === 'Dependență') {
+                    chartData.datasets[0].data[2] = stat.cases;
+                } else if (stat.subcategory === 'Sevraj') {
+                    chartData.datasets[0].data[3] = stat.cases;
+                } else if (stat.subcategory === 'Tulburări de comportament') {
+                    chartData.datasets[0].data[4] = stat.cases;
+                } else if (stat.subcategory === 'Supradoză') {
+                    chartData.datasets[0].data[5] = stat.cases;
+                } else if (stat.subcategory === 'Alte diagnostice') {
+                    chartData.datasets[0].data[6] = stat.cases;
+                } else if (stat.subcategory === 'Testare toxicologică') {
+                    chartData.datasets[0].data[7] = stat.cases;
+                }
+            }
+        } else if (type === 'NSP') {
+            if (stat.drug_type === 'NSP') {
+                if (stat.subcategory === 'Intoxicație') {
+                    chartData.datasets[0].data[0] = stat.cases;
+                } else if (stat.subcategory === 'Utilizare nocivă') {
+                    chartData.datasets[0].data[1] = stat.cases;
+                } else if (stat.subcategory === 'Dependență') {
+                    chartData.datasets[0].data[2] = stat.cases;
+                } else if (stat.subcategory === 'Sevraj') {
+                    chartData.datasets[0].data[3] = stat.cases;
+                } else if (stat.subcategory === 'Tulburări de comportament') {
+                    chartData.datasets[0].data[4] = stat.cases;
+                } else if (stat.subcategory === 'Supradoză') {
+                    chartData.datasets[0].data[5] = stat.cases;
+                } else if (stat.subcategory === 'Alte diagnostice') {
+                    chartData.datasets[0].data[6] = stat.cases;
+                } else if (stat.subcategory === 'Testare toxicologică') {
+                    chartData.datasets[0].data[7] = stat.cases;
+                }
+            }
         }
-       }
-    }else if(type === 'canabis'){
-        if(stat.drug_type === 'Canabis') {
-            if (stat.subcategory === 'Intoxicatie') {
-                chartData.datasets[0].data[0] = stat.cases;
-            } else if (stat.subcategory  === 'Utilizare nociva') {
-                chartData.datasets[0].data[1] = stat.cases;
-            } else if (stat.subcategory  === 'Dependenta') {
-                chartData.datasets[0].data[2] = stat.cases;
-            } else if (stat.subcategory  === 'Sevraj') {
-                chartData.datasets[0].data[3] =stat.cases;
-            } else if (stat.subcategory  === 'Tulburari de comportament') {
-                chartData.datasets[0].data[4] = stat.cases;
-            } else if (stat.subcategory  === 'Supradoaza') {
-                chartData.datasets[0].data[5] = stat.cases;
-            } else if (stat.subcategory  === 'Alte diagnostice') {
-                chartData.datasets[0].data[6] = stat.cases;
-            } else if (stat.subcategory  === 'Testare toxicologica') {
-                chartData.datasets[0].data[7] = stat.cases;
-            }
-           }
-       }else if(type === 'opiacee'){
-        if(stat.drug_type === 'Opiacee') {
-            if (stat.subcategory === 'Intoxicatie') {
-                chartData.datasets[0].data[0] = stat.cases;
-            } else if (stat.subcategory  === 'Utilizare nociva') {
-                chartData.datasets[0].data[1] = stat.cases;
-            } else if (stat.subcategory  === 'Dependenta') {
-                chartData.datasets[0].data[2] = stat.cases;
-            } else if (stat.subcategory  === 'Sevraj') {
-                chartData.datasets[0].data[3] =stat.cases;
-            } else if (stat.subcategory  === 'Tulburari de comportament') {
-                chartData.datasets[0].data[4] = stat.cases;
-            } else if (stat.subcategory  === 'Supradoaza') {
-                chartData.datasets[0].data[5] = stat.cases;
-            } else if (stat.subcategory  === 'Alte diagnostice') {
-                chartData.datasets[0].data[6] = stat.cases;
-            } else if (stat.subcategory  === 'Testare toxicologica') {
-                chartData.datasets[0].data[7] = stat.cases;
-            }
-           }
-       }else if(type === 'NSP'){
-        if(stat.drug_type === 'NSP') {
-            if (stat.subcategory === 'Intoxicatie') {
-                chartData.datasets[0].data[0] = stat.cases;
-            } else if (stat.subcategory  === 'Utilizare nociva') {
-                chartData.datasets[0].data[1] = stat.cases;
-            } else if (stat.subcategory  === 'Dependenta') {
-                chartData.datasets[0].data[2] = stat.cases;
-            } else if (stat.subcategory  === 'Sevraj') {
-                chartData.datasets[0].data[3] =stat.cases;
-            } else if (stat.subcategory  === 'Tulburari de comportament') {
-                chartData.datasets[0].data[4] = stat.cases;
-            } else if (stat.subcategory  === 'Supradoaza') {
-                chartData.datasets[0].data[5] = stat.cases;
-            } else if (stat.subcategory  === 'Alte diagnostice') {
-                chartData.datasets[0].data[6] = stat.cases;
-            } else if (stat.subcategory  === 'Testare toxicologica') {
-                chartData.datasets[0].data[7] = stat.cases;
-            }
-           }
-       }
-     });
+    });
 
 
     ctx.canvas.height = 200; // Canvas height
@@ -1186,7 +1176,7 @@ function renderChartEmergencyDrug(stats, year, type) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Related Emergencies by '+ type +' (' + year + ')',
+                    text: 'Drug Related Emergencies by ' + type + ' (' + year + ')',
                     color: '#000', // Title color
                     font: {
                         family: 'Arial',
@@ -1225,7 +1215,7 @@ function renderChartEmergencyDrug(stats, year, type) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -1244,19 +1234,19 @@ function updateChartPie(chartType, statsType) {
     }
 
     var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/`;
-    if (statsType ==='confiscations' ){
-        if( chartType === 'drug-captures') {
-        url += statsType + '/captures/' + selectedYear;
-        } else if ( chartType === 'drug-grams') {
-        url += statsType + '/grams/' + selectedYear;
-       }else if ( chartType === 'drug-tablets') {
-        url += statsType + '/tablets/' + selectedYear;
+    if (statsType === 'confiscations') {
+        if (chartType === 'drug-captures') {
+            url += statsType + '/captures/' + selectedYear;
+        } else if (chartType === 'drug-grams') {
+            url += statsType + '/grams/' + selectedYear;
+        } else if (chartType === 'drug-tablets') {
+            url += statsType + '/tablets/' + selectedYear;
         }
     } else {
         console.error('Unsupported chart type:', chartType);
         return;
     }
-   console.log('Requesting data from 1 :', url);
+
     // Trimite cererea GET pentru tipul de statistică selectat
     fetch(url)
         .then(response => {
@@ -1266,12 +1256,12 @@ function updateChartPie(chartType, statsType) {
             return response.text();
         })
         .then(data => {
-            console.log('Response text:', data);
-             // Verifică dacă răspunsul nu este gol
-        if (data.trim().length === 0) {
-            throw new Error('Empty response received');
-        }
-        try {
+
+            // Verifică dacă răspunsul nu este gol
+            if (data.trim().length === 0) {
+                throw new Error('Empty response received');
+            }
+            try {
                 const jsonData = JSON.parse(data);
                 if (jsonData && jsonData.stats) {
                     if (chartType === 'drug-captures') {
@@ -1300,7 +1290,7 @@ function renderPieChartCaptures(stats, year) {
         existingChartConfiscationPie.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartConfiscationPie = new Chart(ctx, {
             type: 'bar',
@@ -1347,9 +1337,9 @@ function renderPieChartCaptures(stats, year) {
     }
 
 
-    var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
-    var values = stats.map(stat => stat.catches); // Utilizăm numărul de capturi pentru valorile graficului
-    var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
+    var labels = stats.map(stat => stat.drug_name);
+    var values = stats.map(stat => stat.catches);
+    var colors = ['#b91d47', '#00aba9', '#2b5797', '#e8c3b9', '#1e7145', '#007bff', '#28a745', '#dc3545'];
 
     var pieChartData = {
         labels: labels,
@@ -1357,13 +1347,13 @@ function renderPieChartCaptures(stats, year) {
         colors: colors
     };
 
-    
+
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: pieChartData.labels,
             datasets: [{
-                label: 'Number of Captures', // Titlul pentru dataset
+                label: 'Number of Captures',
                 data: pieChartData.values,
                 backgroundColor: pieChartData.colors,
                 borderWidth: 1,
@@ -1375,7 +1365,7 @@ function renderPieChartCaptures(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics By Catches(' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Catches(' + year + ')',
                     font: {
                         size: 18
                     }
@@ -1386,7 +1376,7 @@ function renderPieChartCaptures(stats, year) {
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return `${tooltipItem.label}: ${tooltipItem.raw}`;
                         }
                     }
@@ -1403,7 +1393,7 @@ function renderPieChartGrams(stats, year) {
         existingChartConfiscationPie.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartConfiscationPie = new Chart(ctx, {
             type: 'bar',
@@ -1449,9 +1439,9 @@ function renderPieChartGrams(stats, year) {
         return;
     }
 
-    var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
-    var values = stats.map(stat => stat.grams); // Utilizăm numărul de capturi pentru valorile graficului
-    var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
+    var labels = stats.map(stat => stat.drug_name);
+    var values = stats.map(stat => stat.grams);
+    var colors = ['#b91d47', '#00aba9', '#2b5797', '#e8c3b9', '#1e7145', '#007bff', '#28a745', '#dc3545'];
 
     var pieChartData = {
         labels: labels,
@@ -1464,7 +1454,7 @@ function renderPieChartGrams(stats, year) {
         data: {
             labels: pieChartData.labels,
             datasets: [{
-                label: 'Number of Captures', // Titlul pentru dataset
+                label: 'Number of Captures',
                 data: pieChartData.values,
                 backgroundColor: pieChartData.colors,
                 borderWidth: 1,
@@ -1476,7 +1466,7 @@ function renderPieChartGrams(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics By Grams(' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Grams(' + year + ')',
                     font: {
                         size: 18
                     }
@@ -1487,7 +1477,7 @@ function renderPieChartGrams(stats, year) {
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return `${tooltipItem.label}: ${tooltipItem.raw}`;
                         }
                     }
@@ -1495,7 +1485,7 @@ function renderPieChartGrams(stats, year) {
             }
         }
     });
-    
+
 }
 function renderPieChartTablets(stats, year) {
 
@@ -1505,7 +1495,7 @@ function renderPieChartTablets(stats, year) {
         existingChartConfiscationPie.destroy();
     }
 
-    if (stats.length === 0 ) {
+    if (stats.length === 0) {
         ctx.canvas.height = 200;
         existingChartConfiscationPie = new Chart(ctx, {
             type: 'bar',
@@ -1551,9 +1541,9 @@ function renderPieChartTablets(stats, year) {
         return;
     }
 
-    var labels = stats.map(stat => stat.drug_name); // Utilizăm numele drogurilor pentru etichetele graficului
-    var values = stats.map(stat => stat.grams); // Utilizăm numărul de capturi pentru valorile graficului
-    var colors = ['#b91d47','#00aba9','#2b5797','#e8c3b9','#1e7145','#007bff', '#28a745', '#dc3545']; // Culorile pentru fiecare sectiune, poti ajusta la preferinta ta
+    var labels = stats.map(stat => stat.drug_name);
+    var values = stats.map(stat => stat.grams);
+    var colors = ['#b91d47', '#00aba9', '#2b5797', '#e8c3b9', '#1e7145', '#007bff', '#28a745', '#dc3545'];
 
     var pieChartData = {
         labels: labels,
@@ -1561,13 +1551,13 @@ function renderPieChartTablets(stats, year) {
         colors: colors
     };
 
-    
+
     existingChartConfiscationPie = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: pieChartData.labels,
             datasets: [{
-                label: 'Number of Captures', // Titlul pentru dataset
+                label: 'Number of Captures',
                 data: pieChartData.values,
                 backgroundColor: pieChartData.colors,
                 borderWidth: 1,
@@ -1579,7 +1569,7 @@ function renderPieChartTablets(stats, year) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Drug Confiscation Statistics By Tablets (' + year + ')', // Titlul graficului cu anul curent
+                    text: 'Drug Confiscation Statistics By Tablets (' + year + ')',
                     font: {
                         size: 18
                     }
@@ -1590,7 +1580,7 @@ function renderPieChartTablets(stats, year) {
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return `${tooltipItem.label}: ${tooltipItem.raw}`;
                         }
                     }
@@ -1599,7 +1589,7 @@ function renderPieChartTablets(stats, year) {
         }
     });
 
-   
+
 }
 
 
@@ -1609,15 +1599,14 @@ function renderPieChartTablets(stats, year) {
 // Afiseaza datele in tabelul specific PROJECTS
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
-    
+
     if (!tableBody) {
         console.error(`Table body for type "${type}" not found.`);
-        return; // Încheie funcția dacă tabelul nu este găsit
+        return;
     }
 
-    tableBody.innerHTML = ''; // Curăță conținutul actual al tabelului
+    tableBody.innerHTML = '';
 
-    // Actualizează textul anului selectat pe pagină
     var selectedYearElement = document.getElementById('selected-year');
     if (selectedYearElement) {
         if (year) {
@@ -1629,7 +1618,6 @@ function renderStats(stats, year, type) {
         console.error('Selected year element not found.');
     }
 
-    // Iterează prin fiecare statistică și adaugă un rând nou în tabel pentru fiecare
     stats.forEach(stat => {
         var row = document.createElement('tr');
         var cells = `
@@ -1637,7 +1625,7 @@ function renderStats(stats, year, type) {
                     <td>${stat.subcategory}</td>
                     <td>${stat.beneficiaries}</td>
                 `;
-               
+
         row.innerHTML = cells;
         tableBody.appendChild(row);
     });
@@ -1647,7 +1635,7 @@ function renderStats(stats, year, type) {
 function saveTableAsSVG(tableId) {
     var table = document.getElementById(tableId);
     if (!table) {
-        console.error('Table element not found:', tableId);
+
         showSnackbar('Table element not found.', 'error');
         return;
     }
@@ -1655,14 +1643,12 @@ function saveTableAsSVG(tableId) {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     var svgNS = svg.namespaceURI;
 
-    // Creează un container SVG cu dimensiunile tabelului
     var svgWidth = table.offsetWidth;
     var svgHeight = table.offsetHeight;
 
     svg.setAttribute('width', svgWidth);
     svg.setAttribute('height', svgHeight);
 
-    // Adaugă stiluri CSS
     var styleElement = document.createElement('style');
     styleElement.textContent = `
         table { font-family: Arial, sans-serif; border-collapse: collapse; width: 100%; }
@@ -1671,26 +1657,20 @@ function saveTableAsSVG(tableId) {
     `;
     svg.appendChild(styleElement);
 
-    // Creează un container SVG pentru tabel
     var tableSvg = document.createElementNS(svgNS, 'foreignObject');
     tableSvg.setAttribute('width', '100%');
     tableSvg.setAttribute('height', '100%');
 
-    // Creează un div pentru a înfășura tabelul
     var tableWrapper = document.createElement('div');
-    tableWrapper.appendChild(table.cloneNode(true)); // Clonează tabelul
+    tableWrapper.appendChild(table.cloneNode(true));
 
-    // Adaugă div-ul la containerul SVG pentru tabel
     tableSvg.appendChild(tableWrapper);
 
-    // Adaugă containerul SVG pentru tabel la SVG principal
     svg.appendChild(tableSvg);
 
-    // Serializează SVG
     var serializer = new XMLSerializer();
     var svgString = serializer.serializeToString(svg);
 
-    // Crează un link pentru descărcare
     var link = document.createElement('a');
     link.download = 'table.svg';
     link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
@@ -1700,9 +1680,9 @@ function saveTableAsSVG(tableId) {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.button1').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const action = this.getAttribute('data-action');
             const file = this.getAttribute('data-file');
             const type = this.getAttribute('data-type');
@@ -1720,13 +1700,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function downloadFile(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
-        console.error('No year selected.');
+
         showSnackbar('Select an year before you want to save a file.', 'error');
         return;
     }
 
     var fileName = selectedYear + '-' + type + '.' + format;
-    console.log('Downloading file:', fileName);
+
 
     var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
 
@@ -1749,7 +1729,7 @@ function downloadFile(type, format) {
             showSnackbar('Downloaded successfully!', 'info');
         })
         .catch(error => {
-            console.error('Download error:', error);
+
             showSnackbar('Download error.', 'error');
         });
 }
@@ -1758,7 +1738,7 @@ function downloadFile(type, format) {
 function openFileInNewTab(type, format) {
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
-        console.error('No year selected.');
+
         showSnackbar('Select an year before you want to save a file!', 'error');
         return;
     }
@@ -1779,7 +1759,7 @@ function openFileInNewTab(type, format) {
             showSnackbar('Fle open in a new tab.', 'info');
         })
         .catch(error => {
-            console.error('Open file error:', error);
+
             showSnackbar('Open file error.', 'error');
         });
 }

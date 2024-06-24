@@ -209,8 +209,10 @@
 </div>
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
-    <script src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
+     <script type="module" src="/RomanianDrugExplorer/public/utils/snackBar.js" defer></script>
+     <script type="module" src="/RomanianDrugExplorer/public/utils/Chart.js" defer></script>
+     <script type="module" src="/RomanianDrugExplorer/public/utils/LearnMore.js" defer></script>
+     <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    
 </body>
 </html>

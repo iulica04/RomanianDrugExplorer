@@ -1,5 +1,6 @@
 import { APP_PORT } from './config.js';
 
+console.log('esti aici ??');
 document.addEventListener('DOMContentLoaded', (event) => {
     const yearSelect = document.getElementById('year-select');
     if (yearSelect) {
@@ -7,9 +8,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
-
-
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
+document.addEventListener('DOMContentLoaded', function() {
+    var yearSelect = document.getElementById('year-select');
+    if (yearSelect) {
+        yearSelect.addEventListener('change', function() {
+            updateYearUrl();
+        });
+    }
+});
+
 function updateYearUrl() {
     var selectedYear = document.getElementById('year-select').value;
 
@@ -67,6 +75,28 @@ var existingChart; // Variabilă globală pentru a păstra referința la chart-u
 var existingChartEmergency; // Variabilă globală pentru a păstra referința la chart-ul existent emergercy
 var existingChartConfiscationPie; // Variabilă globală pentru a păstra referința la chart-ul existent confiscations
 
+document.addEventListener('DOMContentLoaded', function() {
+    var myButton = document.getElementById('my-button-id');
+    if (myButton) {
+        myButton.addEventListener('click', function() {
+            // Acțiunea care va fi executată când butonul este apăsat
+            console.log('Butonul a fost apăsat');
+            // Aici puteți adăuga cod pentru a actualiza graficul sau pentru a face o nouă cerere la server
+        });
+    }
+});
+
+document.querySelectorAll('.button2').forEach(button => {
+    button.addEventListener('click', function(event) {
+        // Verifică dacă textul din buton îndeplinește o anumită condiție
+        // De exemplu, dacă butonul are textul "Download PNG"
+        if (event.target.textContent.includes('Download PNG')) {
+            event.preventDefault(); // Previne comportamentul default al butonului
+            saveChart('confiscations-chartpie', 'chartPie', 'png');// Apelarea unei funcții specifice, de exemplu saveChart()
+            console.log('Funcția de descărcare PNG a fost apelată.');
+        }
+    });
+});
 ///SAVE PNG SI SVG
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);

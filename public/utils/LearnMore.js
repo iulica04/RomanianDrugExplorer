@@ -1,6 +1,7 @@
 import { APP_PORT } from './config.js';
 
 
+
 console.log("test");
 
 // Afiseaza datele in tabelul specific PROJECTS

@@ -1,6 +1,13 @@
 import { APP_PORT } from './config.js';
 
 console.log('esti aici ??');
+document.addEventListener('DOMContentLoaded', (event) => {
+    const yearSelect = document.getElementById('year-select');
+    if (yearSelect) {
+        yearSelect.addEventListener('change', updateYearUrl);
+    }
+});
+
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
 document.addEventListener('DOMContentLoaded', function() {
     var yearSelect = document.getElementById('year-select');

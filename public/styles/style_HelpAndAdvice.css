@@ -33,6 +33,11 @@ header {
 
 }
 
+.list,
+.for_login{
+    margin-top: 60px;
+}
+
 /*RESTUL*/
 .main {
 margin-top: 200px;

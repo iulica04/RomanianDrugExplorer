@@ -1,5 +1,9 @@
 import { APP_PORT } from './config.js';
 
+
+
+console.log("test");
+
 // Afiseaza datele in tabelul specific PROJECTS
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);

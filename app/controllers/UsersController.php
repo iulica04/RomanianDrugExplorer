@@ -202,7 +202,7 @@ class UsersController {
             "typ" => "JWT",
             "kid" => "d111111111111111111111111111111111" // Empty kid
         ];
-        $jwt = JWT::encode($payload, $key, 'HS256', $header);
+        $jwt = JWT::encode($payload, $key, 'HS256',null,  $header);
 
         // Store JWT in a cookie
         setcookie("jwt", $jwt, time() + (60*60), "/"); // Cookie valid for 1 hour

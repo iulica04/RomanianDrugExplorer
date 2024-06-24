@@ -162,7 +162,7 @@ class UsersController {
         ];
         $jwt = JWT::encode($payload, $key, 'HS256', null, $header);
 
-        setcookie("jwt", $jwt, time() + (60*60), "/");
+        setcookie("jwt", $jwt, time() + (4 * 24 * 60 * 60), "/");
         $_SESSION['loggedin'] = true;
         $_SESSION['isAdmin'] = $user['role'] === 'admin' ? true : false;
 

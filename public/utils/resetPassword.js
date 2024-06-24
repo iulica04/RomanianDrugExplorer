@@ -1,3 +1,5 @@
+import { APP_PORT } from './config.js';
+
 $(document).ready(function() {
     $('#forgotPasswordForm').on('submit', function(event) {
         event.preventDefault();
@@ -11,7 +13,7 @@ $(document).ready(function() {
             showSnackbar('Passwords do not match.', 'error');
         }
 
-        fetch('http://localhost:8080/RomanianDrugExplorer/users/' + userId + '/reset-password', {
+        fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users/` + userId + '/reset-password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

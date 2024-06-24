@@ -1,3 +1,5 @@
+import { APP_PORT } from './config.js';
+
 document.getElementById('verifyCodeButton').addEventListener('click', function(event) {
     event.preventDefault(); // prevent the form from submitting normally
 
@@ -13,7 +15,7 @@ document.getElementById('verifyCodeButton').addEventListener('click', function(e
         return;
     }
 
-    fetch('http://localhost/RomanianDrugExplorer/users/verify-code', {
+    fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users/verify-code`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

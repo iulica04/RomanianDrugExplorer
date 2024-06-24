@@ -35,7 +35,7 @@
 
         <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
         <script src="/RomanianDrugExplorer/public/utils/checkPasswordsMatch.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/resetPassword.js"></script>
+        <script type="module" src="/RomanianDrugExplorer/public/utils/resetPassword.js"></script>
     </div>
 </body>
 </html>

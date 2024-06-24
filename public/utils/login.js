@@ -1,3 +1,6 @@
+import { APP_PORT } from './config.js';
+
+
 $('#loginForm').on('submit', function(e) {
     e.preventDefault();
 
@@ -6,9 +9,8 @@ $('#loginForm').on('submit', function(e) {
         password: $('#password').val()
     };
 
-    console.log(userData);
 
-    fetch(`http://localhost:8080/RomanianDrugExplorer/users/login`, {
+    fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

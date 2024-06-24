@@ -65,8 +65,8 @@
         <script src="/RomanianDrugExplorer/public/utils/clearFormInputs.js"></script>
         <script src="/RomanianDrugExplorer/public/utils/checkValidityRegister.js"></script>
         <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/register.js"></script>
-        <script src="/RomanianDrugExplorer/public/utils/login.js"></script>
+        <script type="module" src="/RomanianDrugExplorer/public/utils/register.js"></script>
+        <script type="module" src="/RomanianDrugExplorer/public/utils/login.js"></script>
     </div>
 </body>
 </html>

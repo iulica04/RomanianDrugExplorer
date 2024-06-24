@@ -1,3 +1,5 @@
+import { APP_PORT } from './config.js';
+
 function showSnackbar(message, messageType) {
     var snackbar = document.getElementById("snackbar");
     snackbar.innerHTML = message;
@@ -119,7 +121,7 @@ function downloadFile(type, format) {
     var fileName = selectedYear + '-' + type + '.' + format;
     console.log('Downloading file:', fileName);
 
-    var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName;
+    var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
 
     fetch(url)
         .then(response => {
@@ -155,7 +157,7 @@ function openFileInNewTab(type, format) {
     }
 
     var fileName = selectedYear + '-' + type + '.' + format;
-    var url = 'http://localhost:8080/RomanianDrugExplorer/downloads/' + fileName;
+    var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
 
     fetch(url)
         .then(response => {

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,9 @@
     <title>Contact</title>
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Contact.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Footer.css">
+    <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
+    
 </head>
 <body>
     <header>
@@ -54,6 +58,7 @@
             </div>
         </div>
     </div>
+    <?php include 'elements/footer.php'; ?>
 
     <script>
         function toggleMenu() {

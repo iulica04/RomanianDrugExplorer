@@ -1,7 +1,9 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Learn More</title>
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Footer.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
@@ -9,6 +11,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
     <script type="module" src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
+    <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
     <meta charset="UTF-8">
 </head>
 
@@ -209,6 +212,7 @@
             </li>
         </ul>
     </div>
+    <?php include 'elements/footer.php'; ?>
 </div>
 </div>
 </body>

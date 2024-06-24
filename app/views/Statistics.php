@@ -3,10 +3,12 @@
 <html lang="en">
 <head>
     <title>Learn More</title>
+    <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Footer.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_LearnMore.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
     <meta charset="UTF-8">
 </head>
 
@@ -121,9 +123,8 @@
         <?php } ?>
         </div>
 
-
-
-</div>
+    </div>
+    <?php include 'elements/footer.php'; ?>
 
     <script type="module" src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>

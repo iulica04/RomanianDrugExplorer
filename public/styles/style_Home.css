@@ -181,29 +181,3 @@ header {
 }
 
 
-/*footer*/
-footer {
-    background-color: #3A4D39;
-    color: #E9F5DB;
-    text-align: center;
-    padding: 20px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: #E9F5DB;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}

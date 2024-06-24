@@ -5,6 +5,7 @@
     <meta name="viewport">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_AddData.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
+    <script src="/RomanianDrugExplorer/public/utils/getCookie.js"></script>
     <title>Upload Excel File</title>
 </head>
 <body>

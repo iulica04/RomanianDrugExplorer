@@ -3,7 +3,7 @@ import { APP_PORT } from './config.js';
 // Afiseaza datele in tabelul specific PROJECTS
 function renderStats(stats, year, type) {
     var tableBody = document.querySelector(`#${type}-table tbody`);
-    
+
     if (!tableBody) {
         return; // Încheie funcția dacă tabelul nu este găsit
     }
@@ -30,7 +30,7 @@ function renderStats(stats, year, type) {
                     <td>${stat.subcategory}</td>
                     <td>${stat.beneficiaries}</td>
                 `;
-               
+
         row.innerHTML = cells;
         tableBody.appendChild(row);
     });

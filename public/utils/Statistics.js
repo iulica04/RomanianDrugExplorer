@@ -47,30 +47,6 @@ var existingChartEmergency; // Variabilă globală pentru a păstra referința l
 var existingChartConfiscationPie; // Variabilă globală pentru a păstra referința la chart-ul existent confiscations
 var existingChartProjects; // Variabilă globală pentru a păstra referința la chart-ul existent projects
 
-///////////////////////////////////////////////////////////////
-
-///SAVE PNG SI SVG
-function saveChart(chartId, filename, format) {
-    var chartCanvas = document.getElementById(chartId);
-    
-    // Verifică dacă canvas-ul există pt orice chart 
-    if (existingChart || existingChartEmergency || existingChartConfiscationPie || existingChartProjects) {
-        // Salvează ca PNG
-        if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
-                var link = document.createElement('a');
-                link.download = filename + '.png';
-                link.href = URL.createObjectURL(blob);
-                link.click();
-            });
-            showSnackbar('Chart saved as PNG.', 'info');
-        }
-    } else {
-        console.error('Canvas element not found:', chartId);
-        showSnackbar('Error saving chart: Canvas is empty or not found.', 'error');
-    }
-}
-
 //Funcția pentru afișarea 
 function renderChartConfiscations(stats) {
     var chartData = {
@@ -564,6 +540,92 @@ function renderChartProjects(stats) {
     });
 }
 
-function saveChartNotLoggedIn(){
-    showSnackbar('You need to be logged in to save the chart!', 'error');
+/*Save charts buttons*/
+document.addEventListener('DOMContentLoaded', function() {
+    // Select all buttons with class 'button2'
+    const saveChartButtons = document.querySelectorAll('.button2');
+
+    // Attach event listeners to each button
+    saveChartButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            // Prevent default action if needed
+            event.preventDefault();
+
+            // Retrieve data attributes from the button
+            const chartId = this.getAttribute('data-chart-id');
+            const chartType = this.getAttribute('data-chart-type');
+            const fileType = this.getAttribute('data-file-type');
+
+            // Call function to save the chart based on file type
+            saveChart(chartId, chartType, fileType);
+        });
+    });
+});
+
+///SAVE PNG SI SVG
+function saveChart(chartId, filename, format) {
+    var chartCanvas = document.getElementById(chartId);
+    
+    // Verifică dacă canvas-ul există pentru orice tip de grafic
+    if (chartId === 'infractionality-chart' && existingChart) {
+        // Salvează ca PNG sau SVG
+        if (format === 'png') {
+            chartCanvas.toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+            showSnackbar('Chart saved as PNG.', 'info');
+        } else {
+            console.error('Unsupported file format:', format);
+            showSnackbar('Error saving chart: Unsupported file format.', 'error');
+        }
+    } else if (chartId === 'emergencies-chart' && existingChartEmergency) {
+        // Salvează ca PNG sau SVG pentru chart-ul de urgente
+        if (format === 'png') {
+            chartCanvas.toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+            showSnackbar('Chart saved as PNG.', 'info');
+        } else {
+            console.error('Unsupported file format:', format);
+            showSnackbar('Error saving chart: Unsupported file format.', 'error');
+        }
+    } else if (chartId === 'confiscation-chart' && existingChartConfiscationPie) {
+        // Salvează doar ca PNG pentru chart-ul de confiscări (alt tip de chart în exemplu tău)
+        if (format === 'png') {
+            chartCanvas.toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+            showSnackbar('Chart saved as PNG.', 'info');
+        } else {
+            console.error('Unsupported file format:', format);
+            showSnackbar('Error saving chart: Unsupported file format.', 'error');
+        }
+    } else if (chartId === 'projects-chart' && existingChartProjects) {
+        // Salvează ca PNG sau SVG pentru chart-ul de proiecte
+        if (format === 'png') {
+            chartCanvas.toBlob(function(blob) {
+                var link = document.createElement('a');
+                link.download = filename + '.png';
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+            showSnackbar('Chart saved as PNG.', 'info');
+        }else {
+            console.error('Unsupported file format:', format);
+            showSnackbar('Error saving chart: Unsupported file format.', 'error');
+        }
+    } else {
+        console.error('Canvas element not found or chart type mismatch:', chartId);
+        showSnackbar('Error saving chart: Canvas is empty or not found for the specified chart type.', 'error');
+    }
 }
+

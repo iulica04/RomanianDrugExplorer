@@ -2,6 +2,7 @@
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+
 // Get JWT from cookies
 $jwt = isset($_COOKIE['jwt']) ? $_COOKIE['jwt'] : "";
 

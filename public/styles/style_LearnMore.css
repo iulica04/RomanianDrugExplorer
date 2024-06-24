@@ -11,6 +11,12 @@ body {
     display: flex;
 }
 
+.list,
+.for_login{
+    margin-top: 60px;
+}
+
+
 /*NAVBAR*/
 header {
     position: fixed;

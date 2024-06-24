@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_ShackBar.css">
     <link rel="stylesheet" href="/RomanianDrugExplorer/public/styles/style_Navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
+    <script type="module" src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
     <meta charset="UTF-8">
 </head>
 
@@ -208,9 +211,6 @@
     </div>
 </div>
 </div>
-
-    <script type="module" src="/RomanianDrugExplorer/public/utils/LearnMore.js"></script>
-    <script type="module" src="/RomanianDrugExplorer/public/utils/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
 </body>
 </html>

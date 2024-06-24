@@ -1,20 +1,28 @@
 import { APP_PORT } from './config.js';
 
-console.log('esti aici ??');
+/*SnackBar*/
+function showSnackbar(message, messageType) {
+    var snackbar = document.getElementById("snackbar");
+    snackbar.innerHTML = message;
+    snackbar.className = "show";
+
+    // Add the message type class to the Snackbar
+    if (messageType === 'error') {
+        snackbar.className += " error";
+    } else if (messageType === 'info') {
+        snackbar.className += " info";
+    }
+
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 4000);
+}
+
+console.log('esti aici in chart.js??');
+
+/*UpddateYearURL */
 document.addEventListener('DOMContentLoaded', (event) => {
     const yearSelect = document.getElementById('year-select');
     if (yearSelect) {
         yearSelect.addEventListener('change', updateYearUrl);
-    }
-});
-
-// Funcția pentru actualizarea URL-ului în funcție de anul selectat
-document.addEventListener('DOMContentLoaded', function() {
-    var yearSelect = document.getElementById('year-select');
-    if (yearSelect) {
-        yearSelect.addEventListener('change', function() {
-            updateYearUrl();
-        });
     }
 });
 
@@ -75,25 +83,22 @@ var existingChart; // Variabilă globală pentru a păstra referința la chart-u
 var existingChartEmergency; // Variabilă globală pentru a păstra referința la chart-ul existent emergercy
 var existingChartConfiscationPie; // Variabilă globală pentru a păstra referința la chart-ul existent confiscations
 
-document.addEventListener('DOMContentLoaded', function() {
-    var myButton = document.getElementById('my-button-id');
-    if (myButton) {
-        myButton.addEventListener('click', function() {
-            // Acțiunea care va fi executată când butonul este apăsat
-            console.log('Butonul a fost apăsat');
-            // Aici puteți adăuga cod pentru a actualiza graficul sau pentru a face o nouă cerere la server
-        });
-    }
-});
-
-document.querySelectorAll('.button2').forEach(button => {
+/*Save charts buttons*/
+const saveChartButtons = document.querySelectorAll('.button2');
+saveChartButtons.forEach(button => {
     button.addEventListener('click', function(event) {
-        // Verifică dacă textul din buton îndeplinește o anumită condiție
-        // De exemplu, dacă butonul are textul "Download PNG"
-        if (event.target.textContent.includes('Download PNG')) {
-            event.preventDefault(); // Previne comportamentul default al butonului
-            saveChart('confiscations-chartpie', 'chartPie', 'png');// Apelarea unei funcții specifice, de exemplu saveChart()
-            console.log('Funcția de descărcare PNG a fost apelată.');
+        // Prevent default action if needed
+        event.preventDefault();
+        const chartId = this.getAttribute('data-chart-id');
+        const chartType = this.getAttribute('data-chart-type');
+        const fileType = this.getAttribute('data-file-type');
+
+        if(chartType === 'chart') {
+        saveChart(chartId, chartType, fileType);
+        }else if(chartType=== 'chartPie') {
+            savePieChart(chartId, chartType, fileType);
+        }else if(chartId === 'projects-table') {
+            saveTableAsSVG(chartId);
         }
     });
 });
@@ -149,8 +154,33 @@ function savePieChart(chartId, filename, format) {
     }
 }
 
+
+/*Charts buttons listeners */
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.radio-buttons').forEach(function(container) {
+        container.addEventListener('change', function(event) {
+            if (event.target.type === 'radio') {
+                const chartId = event.target.getAttribute('data-chart-id');
+                const chartType = event.target.getAttribute('data-chart-type');
+                console.log('Chart type:', chartType);
+                console.log('Chart id:', chartId);
+
+                if(chartType === 'infractionality') {
+                    updateChart(chartId, chartType);
+                } else if(chartType === 'emergencies') {
+                    console.log('Update chart: Sunt aici in emergencies');
+                    updateChartEmergencies(chartId, chartType);
+                } else if(chartType === 'confiscations') {
+                    updateChartPie(chartId, chartType);
+                }
+            }
+        });
+    });
+});
+
 // Funcția pentru actualizarea graficului în funcție de opțiunea selectată la radio buttons
 function updateChart(chartType, statsType) {
+    console.log('Update chart: UPDATE CHART');
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         return; // Dacă nu este selectat niciun an, nu face nimic
@@ -203,6 +233,7 @@ function updateChart(chartType, statsType) {
         });
 }
 function renderChartGenderAge(stats, year) {
+    
     var ctx = document.getElementById('infractionality-chart').getContext('2d');
     if (existingChart) {
         existingChart.destroy();
@@ -1206,6 +1237,7 @@ function renderChartEmergencyDrug(stats, year, type) {
 
 //////////////////////PENTRU CONFISCATIONS
 function updateChartPie(chartType, statsType) {
+
     var selectedYear = document.getElementById('year-select').value;
     if (selectedYear === '') {
         return; // Dacă nu este selectat niciun an, nu face nimic
@@ -1572,3 +1604,230 @@ function renderPieChartTablets(stats, year) {
 
 
 
+//LEARN MORE
+
+// Afiseaza datele in tabelul specific PROJECTS
+function renderStats(stats, year, type) {
+    var tableBody = document.querySelector(`#${type}-table tbody`);
+    
+    if (!tableBody) {
+        console.error(`Table body for type "${type}" not found.`);
+        return; // Încheie funcția dacă tabelul nu este găsit
+    }
+
+    tableBody.innerHTML = ''; // Curăță conținutul actual al tabelului
+
+    // Actualizează textul anului selectat pe pagină
+    var selectedYearElement = document.getElementById('selected-year');
+    if (selectedYearElement) {
+        if (year) {
+            selectedYearElement.textContent = year;
+        } else {
+            selectedYearElement.textContent = 'Choose a year...';
+        }
+    } else {
+        console.error('Selected year element not found.');
+    }
+
+    // Iterează prin fiecare statistică și adaugă un rând nou în tabel pentru fiecare
+    stats.forEach(stat => {
+        var row = document.createElement('tr');
+        var cells = `
+                    <td>${stat.category}</td>
+                    <td>${stat.subcategory}</td>
+                    <td>${stat.beneficiaries}</td>
+                `;
+               
+        row.innerHTML = cells;
+        tableBody.appendChild(row);
+    });
+}
+
+
+function saveTableAsSVG(tableId) {
+    var table = document.getElementById(tableId);
+    if (!table) {
+        console.error('Table element not found:', tableId);
+        showSnackbar('Table element not found.', 'error');
+        return;
+    }
+
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var svgNS = svg.namespaceURI;
+
+    // Creează un container SVG cu dimensiunile tabelului
+    var svgWidth = table.offsetWidth;
+    var svgHeight = table.offsetHeight;
+
+    svg.setAttribute('width', svgWidth);
+    svg.setAttribute('height', svgHeight);
+
+    // Adaugă stiluri CSS
+    var styleElement = document.createElement('style');
+    styleElement.textContent = `
+        table { font-family: Arial, sans-serif; border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    `;
+    svg.appendChild(styleElement);
+
+    // Creează un container SVG pentru tabel
+    var tableSvg = document.createElementNS(svgNS, 'foreignObject');
+    tableSvg.setAttribute('width', '100%');
+    tableSvg.setAttribute('height', '100%');
+
+    // Creează un div pentru a înfășura tabelul
+    var tableWrapper = document.createElement('div');
+    tableWrapper.appendChild(table.cloneNode(true)); // Clonează tabelul
+
+    // Adaugă div-ul la containerul SVG pentru tabel
+    tableSvg.appendChild(tableWrapper);
+
+    // Adaugă containerul SVG pentru tabel la SVG principal
+    svg.appendChild(tableSvg);
+
+    // Serializează SVG
+    var serializer = new XMLSerializer();
+    var svgString = serializer.serializeToString(svg);
+
+    // Crează un link pentru descărcare
+    var link = document.createElement('a');
+    link.download = 'table.svg';
+    link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgString);
+    link.click();
+    showSnackbar('Table saved as SVG!', 'info');
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.button1').forEach(button => {
+        button.addEventListener('click', function() {
+            const action = this.getAttribute('data-action');
+            const file = this.getAttribute('data-file');
+            const type = this.getAttribute('data-type');
+
+            if (action === 'downloadFile') {
+                downloadFile(file, type);
+            } else if (action === 'openFileInNewTab') {
+                openFileInNewTab(file, type);
+            }
+        });
+    });
+});
+
+// Download CSV file related to the selected year
+function downloadFile(type, format) {
+    var selectedYear = document.getElementById('year-select').value;
+    if (selectedYear === '') {
+        console.error('No year selected.');
+        showSnackbar('Select an year before you want to save a file.', 'error');
+        return;
+    }
+
+    var fileName = selectedYear + '-' + type + '.' + format;
+    console.log('Downloading file:', fileName);
+
+    var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                showSnackbar('Failed to download file.', 'error');
+                throw new Error('Failed to download file.');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            var url = window.URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showSnackbar('Downloaded successfully!', 'info');
+        })
+        .catch(error => {
+            console.error('Download error:', error);
+            showSnackbar('Download error.', 'error');
+        });
+}
+
+// Open CSV file in a new tab related to the selected year
+function openFileInNewTab(type, format) {
+    var selectedYear = document.getElementById('year-select').value;
+    if (selectedYear === '') {
+        console.error('No year selected.');
+        showSnackbar('Select an year before you want to save a file!', 'error');
+        return;
+    }
+
+    var fileName = selectedYear + '-' + type + '.' + format;
+    var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/downloads/` + fileName;
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                showSnackbar('Failed to download file.', 'error');
+                throw new Error('Failed to open file.');
+            }
+            return response.text(); // Assuming CSV file is plain text
+        })
+        .then(data => {
+            displayCsvInNewTab(data);
+            showSnackbar('Fle open in a new tab.', 'info');
+        })
+        .catch(error => {
+            console.error('Open file error:', error);
+            showSnackbar('Open file error.', 'error');
+        });
+}
+
+// Function to display CSV content in a new tab
+function displayCsvInNewTab(csvData) {
+    var newTab = window.open();
+    var htmlContent = `
+        <html>
+        <head>
+            <title>CSV Data</title>
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+            </style>
+        </head>
+        <body>
+            <table>
+                ${generateTableContent(csvData)}
+            </table>
+        </body>
+        </html>
+    `;
+    newTab.document.open();
+    newTab.document.write(htmlContent);
+    newTab.document.close();
+}
+
+// Function to generate table content from CSV data
+function generateTableContent(csvData) {
+    var rows = csvData.split("\n");
+    var tableContent = '';
+
+    rows.forEach((row, index) => {
+        var columns = row.split(",");
+        var rowContent = columns.map(col => `<td>${col}</td>`).join("");
+        tableContent += `<tr>${rowContent}</tr>`;
+    });
+
+    return tableContent;
+}

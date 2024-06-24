@@ -48,6 +48,16 @@
         </div>
         <div id="snackbar"></div>
     </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Romanian Drug Explorer. All Rights Reserved.</p>
+            <p>
+                <a href="/RomanianDrugExplorer/app/views/PrivacyPolicy.php">Privacy Policy</a> |
+                <a href="/RomanianDrugExplorer/app/views/TermsOfService.php">Terms of Service</a> |
+                <a href="/RomanianDrugExplorer/app/views/ContactUs.php">Contact Us</a>
+            </p>
+        </div>
+    </footer>
     <script src="/RomanianDrugExplorer/public/utils/snackBar.js"></script>
 </body>
 </html>

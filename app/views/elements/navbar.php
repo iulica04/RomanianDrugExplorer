@@ -13,7 +13,7 @@
         <a href="/RomanianDrugExplorer/app/views/getUsers.php">Users</a>
       <?php }  else { ?>
         <a href="#about">About</a>
-        <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
+        <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help</a>
         <a href="/RomanianDrugExplorer/app/views/Contact.php"> Contact</a>
         <?php } ?>
     <?php 
@@ -22,7 +22,7 @@
         <?php if ($_SERVER['REQUEST_URI'] == "/RomanianDrugExplorer/app/views/LearnMore.php") { ?>
         <a href="/RomanianDrugExplorer/app/views/Statistics.php">Statistics</a>
         <?php } ?>
-        <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help & Advice</a>
+        <a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Help</a>
         <a href="/RomanianDrugExplorer/app/views/Contact.php"> Contact</a>
     <?php } ?>
       <div class="for_login">

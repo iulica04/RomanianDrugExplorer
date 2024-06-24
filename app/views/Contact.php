@@ -46,9 +46,9 @@
             <div class="card">
                 <h2>Concerned about...</h2>
                 <ul>
-                    <li><a href="HelpAndAdvice.html">A friend</a></li>
-                    <li><a href="HelpAndAdvice.html">A child</a></li>
-                    <li><a href="HelpAndAdvice.html">Pressure to take drugs</a></li>
+                    <li><a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">A friend</a></li>
+                    <li><a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">A child</a></li>
+                    <li><a href="/RomanianDrugExplorer/app/views/HelpAndAdvice.php">Pressure to take drugs</a></li>
                 </ul>
             </div>
 

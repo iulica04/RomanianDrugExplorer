@@ -237,6 +237,7 @@ public function getDrugStatsProject() {
 
 //-------------------------------------------
 public function addDataToUrgenteMedicale($year){
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
 
     if(isset($_FILES['fileToUpload'])) {
         $file = $_FILES['fileToUpload']['tmp_name'];
@@ -309,6 +310,7 @@ public function addDataToUrgenteMedicale($year){
 }
 
 public function addDataToProiecte($year){
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
 
     if(isset($_FILES['fileToUpload'])) {
         $file = $_FILES['fileToUpload']['tmp_name'];
@@ -401,6 +403,7 @@ public function addDataToProiecte($year){
 }
 
 public function addDataToInfractionalitati($year){
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
 
 
     if(isset($_FILES['fileToUpload'])) {
@@ -490,6 +493,8 @@ public function addDataToInfractionalitati($year){
 }
 
 public function addDataToConfiscariDroguri($year){
+
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
 
     if(isset($_FILES['fileToUpload'])) {
         $file = $_FILES['fileToUpload']['tmp_name'];

@@ -153,7 +153,6 @@ header {
 }
 
 
-
 .card_1, .card_2 {
     flex: 1; /* Atribuie spatiul disponibil în mod egal ambelor card-uri */
     margin-right: 20px; 
@@ -193,75 +192,11 @@ header {
 
 }
 
+.list,
+.for_login{
+    margin-top: 60px;
+}
 
- 
-/*RESPONSIVE*/
-/*for navbar*/
-@media only screen and (max-width: 980px) {
-    .items {
-      padding: 0 20px; 
-    }
-  
-    .logo {
-      padding-left: 20px; 
-    }
-  
-    .title {
-      padding-top: 10px; 
-      height: 50px; 
-    }
-  
-    .list > a {
-      font-size: 1em; 
-    }
-  
-    .list {
-      display: none; 
-      flex-direction: column;
-      position: absolute;
-      top: 80px; 
-      left: 0;
-      background-color: #283019;;
-      width: 100%;
-      height: auto;
-      transition: opacity 1s ease-in-out; 
-      opacity: 0; 
-  }
-  
-    #menu-toggle:checked ~ .list {
-      display: flex;
-      opacity: 1; 
-  }
-  
-  #menu-toggle:checked + .menu-icon {
-      display: block; 
-  }
-  
-  .menu-icon {
-      color:  #3A4D39;
-      font-size: 24px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out; 
-  }
-  
-  #menu-toggle:checked + .menu-icon {
-      transform: rotate(90deg); 
-  }
-  #menu-toggle{
-      display: none;
-  }
-
-  
-  }
-  
-@media all and (min-width: 980px) {
-    .menu-icon {
-        display: none; 
-    }
-    #menu-toggle{
-        display: none;
-    }
-  }
 
 /*for main*/
 @media only screen and (min-width: 980px) {

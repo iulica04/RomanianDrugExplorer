@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 100px;
 }
 
 .list,
@@ -54,6 +54,7 @@
         transition: opacity 1s ease-in-out;
         opacity: 0;
         border-top: 1px solid #0003;
+        display: none;
     }
 
     .list>a,
@@ -86,8 +87,6 @@
         transition: transform 0.3s ease-in-out;
 
     }
-
-
 
     #menu-toggle:checked+.menu-icon {
         transform: rotate(90deg);
@@ -143,7 +142,7 @@
 
     .list>a,
     .list {
-        margin: 0 10px;
+        margin: 0 20px;
     }
 
 

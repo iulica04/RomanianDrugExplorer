@@ -58,6 +58,12 @@ header {
   font-size: 20px;
 }
 
+.list,
+.for_login{
+    margin-top: 60px;
+}
+
+
 .card h2 {
   color: #3A4D39;
 }

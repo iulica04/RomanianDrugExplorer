@@ -9,7 +9,7 @@ $(document).ready(function() {
             email: $('#email').val(),
             phonenumber: $('#phonenumber').val(),
             password: $('#password-for-sign-up').val(),
-            role: 'admin'
+            role: 'user'
         };
 
         console.log(userData);

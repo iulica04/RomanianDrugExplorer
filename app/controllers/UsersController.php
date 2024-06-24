@@ -65,7 +65,7 @@ class UsersController {
              }
          }
 
-        $result = $this->userModel->editUser($id, $data['username'], $data['email'], $data['phonenumber'], $data['password'], $data['role']);
+        $result = $this->userModel->editUser($id, $data['username'], $data['email'], $data['phonenumber']);
 
 
         //You can be more thorough with error codes for example and include the 204 no content

@@ -128,7 +128,6 @@ function updateChart(chartType, statsType) {
         console.error('Unsupported chart type:', chartType);
         return;
     }
-   console.log('Requesting data from 1 :', url);
     // Trimite cererea GET pentru tipul de statistică selectat
     fetch(url)
         .then(response => {
@@ -541,7 +540,6 @@ function renderChartPenalitiesSituation(stats, year) {
                    if (chartType === 'age-drug') {
                         renderChartAgeDrug(jsonData.stats, jsonData.year);
                     }else if (chartType === 'gender-drug') {
-                       
                         renderChartGenderDrug(jsonData.stats, jsonData.year);
                     }else if (chartType === 'emergencie-drug-stimulanti' ||chartType === 'emergencie-drug-canabis' || chartType === 'emergencie-drug-opiacee' || chartType === 'emergencie-drug-NSP') {
                         let parts = chartType.split('-');
@@ -615,8 +613,7 @@ function renderChartGenderDrug(stats, year) {
         return;
     }
 
-
-
+    
     var chartData = {
         labels: ["M-Canabis", "M-Stimulanti", "M-Opiacee", "M-NSP", "F-Canabis", "F-Stimulanti", "F-Opiacee", "F-NSP"],
         datasets: [{

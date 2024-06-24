@@ -235,16 +235,6 @@ public function getDrugStatsProject() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 //-------------------------------------------
 public function addDataToUrgenteMedicale($year){
 
@@ -553,4 +543,3 @@ public function addDataToConfiscariDroguri($year){
 
 
 }
-

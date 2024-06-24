@@ -13,7 +13,7 @@ $('#forgotPasswordForm').on('submit', function(event) {
         },
         body: JSON.stringify({ username, email }),
     })
-    .then(response =>console.log(response.text()))
+    .then(response => response.json().then(data => ({ status: response.status, body: data })))
     .then(({ status, body: data }) => {
         if (status === 200) {
             showSnackbar("Password reset code sent. Check inbox and spam folder.", 'info');

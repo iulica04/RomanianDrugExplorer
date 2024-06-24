@@ -129,7 +129,7 @@
         </div>
 
     </div>
-    <?php include 'elements/footer.php'; ?>
+    
 
     <script type="module" src="/RomanianDrugExplorer/public/utils/Statistics.js"></script>
     <script src="/RomanianDrugExplorer/public/utils/SnackBar.js"></script>

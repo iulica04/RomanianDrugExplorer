@@ -555,9 +555,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const chartId = this.getAttribute('data-chart-id');
             const chartType = this.getAttribute('data-chart-type');
             const fileType = this.getAttribute('data-file-type');
+            console.log('Button clicked:', this, chartId, chartType, fileType);
 
-            // Call function to save the chart based on file type
-            saveChart(chartId, chartType, fileType);
+            if(chartId=== 'not-logged'){
+                showSnackbar('Please log in to downloand the statistics.','error');
+            }else {
+                 saveChart(chartId, chartType, fileType);
+            }
         });
     });
 });

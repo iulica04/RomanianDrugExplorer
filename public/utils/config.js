@@ -1,1 +1,1 @@
-export const APP_PORT = '';
+export const APP_PORT = ':8080';

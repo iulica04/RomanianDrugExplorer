@@ -3,7 +3,7 @@ import { APP_PORT } from './config.js';
 
 $(document).ready(function() {
     fetch(`http://localhost${APP_PORT}/RomanianDrugExplorer/users`)
-    .then(response => console.log(response.json()))
+    .then(response => response.json())
     .then(users => {
         // Loop through the users and add a row for each one
         users.forEach(user => {
@@ -28,7 +28,7 @@ $(document).ready(function() {
                         'Content-Type': 'application/json',
                     },
                 })
-                .then(response =>console.log(response.text()))
+                .then(response => response.json().then(data => ({ status: response.status, body: data })))
                 .then(({ status, body: data }) => {
                     if (status === 200) {
                         showSnackbar(data.message, 'info');

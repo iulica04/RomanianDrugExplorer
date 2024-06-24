@@ -14,6 +14,8 @@ class DrugStatsController {
     ///////////////////////////////////////////////DRUG CONSUMPTION////////////////////////////////////////////
 
     public function getStatsByYear($year) {
+        include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
+
         $stats = $this->drugStatsModel->getStatsByYear($year);
         header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -42,6 +44,7 @@ class DrugStatsController {
         }
     }
     public function getStatsByYearGrams($year) {
+        include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
         $stats = $this->drugStatsModel->getStatsByYearGrams($year);
         header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -57,6 +60,7 @@ class DrugStatsController {
     }
 
     public function getStatsByYearTablets($year) {
+        include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
         $stats = $this->drugStatsModel->getStatsByYearTablets($year);
         header('Content-Type: application/json'); 
 
@@ -74,6 +78,7 @@ class DrugStatsController {
 
 ///////////////////////////////////////////INFRACTIONALITY////////////////////////////////////////////
 public function getStatsByYearInfractionality($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearInfractionality($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -103,6 +108,7 @@ public function getDrugStatsInfractionality() {
 }
 
 public function getStatsByYearInfractionalityGenderAge($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearInfractionalityGenderAge($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -117,6 +123,7 @@ public function getStatsByYearInfractionalityGenderAge($year) {
     }
 }
 public function getStatsByYearInfractionalityPenalities($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearInfractionalityPenalities($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -133,6 +140,7 @@ public function getStatsByYearInfractionalityPenalities($year) {
 
 ///////////////////////////////////////////MEDICAL EMERGENCIES////////////////////////////////////////////
 public function getStatsByYearMedic($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearMedic($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -147,6 +155,7 @@ public function getStatsByYearMedic($year) {
     }
 }
 public function getStatsByYearMedicEmergencyDrug($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearMedicEmergencyDrug($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -161,6 +170,7 @@ public function getStatsByYearMedicEmergencyDrug($year) {
     }
 }
 public function getStatsByYearMedicGenderDrug($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearMedicGenderDrug($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -175,6 +185,7 @@ public function getStatsByYearMedicGenderDrug($year) {
     }
 }
 public function getStatsByYearMedicAgeDrug($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearMedicAgeDrug($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 
@@ -204,6 +215,7 @@ public function getDrugStatsMedic() {
 }
 //////////////////////////////////////////PROJECTS////////////////////////////////////////////
 public function getStatsByYearProject($year) {
+    include_once 'D:\\ProgramFiles\\htdocs\\RomanianDrugExplorer\\public\\utils\\validate_jwt.php';
     $stats = $this->drugStatsModel->getStatsByYearProject($year);
     header('Content-Type: application/json'); // Ensure the response is JSON
 

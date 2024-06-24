@@ -143,38 +143,30 @@ header {
 }
 
 /* Stiluri pentru butoane */
-.button {
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-   
+button{
+	height: 60px;
+	margin: 10px 24%;
+	justify-content: center;
+	display: block;
+	color: #becbaf;
+	background: #3A4D39;
+	font-size:  16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	outline: none;
+	border: 1px solid #ccc;
+	cursor: pointer;
 }
 
-/*BUTON 2*/
-.card_1 .button2 {
-    background-color: #3A4D39;
+button:hover {
+	background: #becbaf;
+	color: #3A4D39;
+}
+.card_1 .button2{
     border-radius: 10px;
     transition: 0.5s;
     width: 200px;
 }
-.card_1 .button2 > a {
-    color: #becbaf;
-    text-decoration: none;
-    padding: 10px 10px; 
-    margin: 0 10px;
-    display: inline-block;
-}
-.card_1 .button2:hover{
-    background-color: #8d9188; 
-}
-.card_1 .button2 a:hover{
-    color: #3A4D39;
-}
-
 
 .card_1, .card_2 {
     flex: 1; /* Atribuie spatiul disponibil în mod egal ambelor card-uri */
@@ -279,21 +271,19 @@ header {
     border-radius: 10px;
     transition: 0.5s;
     width: 250px;
-   
-}
-.container_2 .button1 > a {
-    color: #2a865d;
+    color: #3A4D39;
     text-decoration: none;
     padding: 10px 10px; 
     margin: 0 10px;
     display: inline-block;
+    margin-bottom: 10px;
 }
+
 .container_2 .button1:hover{
-    background-color: #436918; 
-}
-.container_2 .button1 a:hover{
+    background-color:#3A4D39;
     color: #7f9f7d;
 }
+
   
  
 /*RESPONSIVE*/

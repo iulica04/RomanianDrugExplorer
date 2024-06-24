@@ -49,10 +49,10 @@
                     <p>Here you can find the statistics about drug confiscation in Romania.</p>
                     <button class="button button2" data-chart-id="confiscations-chartpie" data-chart-type="chartPie"
                         data-file-type="png">
-                        <a>Download PNG</a></button>
+                        Download PNG</button>
                     <button class="button button2" data-chart-id="confiscations-chartpie" data-chart-type="chartPie"
                         data-file-type="svg">
-                        <a>Download SVG</a></button>
+                        Download SVG</button>
                 </div>
 
                 <div class="card_2">
@@ -87,10 +87,10 @@
             <h1>Drug Related Infractionality Statistics:</h1>
             <p>Here you can find the statistics about drug related infractionality in Romania.</p>
             <button class="button button2" data-chart-id="infractionality-chart" data-chart-type="chart" data-file-type="png">
-                <a>Download PNG</a>
+                Download PNG
             </button>
             <button class="button button2" data-chart-id="infractionality-chart" data-chart-type="chart" data-file-type="svg">
-                <a>Download SVG</a>
+                Download SVG
             </button>
         </div>
         <div class="card_2">
@@ -117,10 +117,10 @@
             <h1>Drug Emergencies Statistics:</h1>
             <p>Here you can find the statistics about drug emergencies in Romania.</p>
             <button class="button button2" data-chart-id="emergencies-chart" data-chart-type="chart" data-file-type="png">
-                <a>Download PNG</a>
+                Download PNG
             </button>
             <button class="button button2" data-chart-id="emergencies-chart" data-chart-type="chart" data-file-type="svg">
-                <a>Download SVG</a>
+                Download SVG
             </button>
         </div>
         <div class="card_2">
@@ -165,7 +165,7 @@
 
                     <button class="button button2" data-chart-id="projects-table" data-chart-type="table"
                         data-file-type="svg">
-                        <a>Download SVG</a></button>
+                        Download SVG</button>
 
                 </div>
 
@@ -197,34 +197,34 @@
                         <i class="large material-icons">library_books</i>
                         <a>Situația confiscărilor de droguri</a>
                         <button class="button1" data-action="downloadFile" data-file="capturidroguri"
-                            data-type="csv"><a>Download Report CSV</a></button>
+                            data-type="csv">Download Report CSV</button>
                         <button class="button1" data-action="openFileInNewTab" data-file="capturidroguri"
-                            data-type="csv"><a>Open in New Tab</a></button>
+                            data-type="csv">Open in New Tab</button>
                     </li>
                     <li>
                         <i class="large material-icons">library_books</i>
                         <a>Urgențele medicale datorate consumului de droguri</a>
                         <button class="button1" data-action="downloadFile" data-file="urgentemedicale"
-                        data-type="csv"><a>Download Report
-                                CSV</a></button>
+                        data-type="csv">Download Report
+                                CSV</button>
                         <button class="button1"  data-action="openFileInNewTab" data-file="urgentemedicale"
-                        data-type="csv"><a>Open in New Tab</a></button>
+                        data-type="csv">Open in New Tab</button>
                     </li>
                     <li>
                         <i class="large material-icons">library_books</i>
                         <a>Infracționalitatea la regimul drogurilor</a>
                         <button class="button1" data-action="downloadFile" data-file="infractionalitate"
-                        data-type="csv"><a>Download Report CSV</a></button>
+                        data-type="csv">Download Report CSV</button>
                         <button class="button1" data-action="openFileInNewTab" data-file="infractionalitate"
-                        data-type="csv"><a>Open in New Tab</a></button>
+                        data-type="csv">Open in New Tab</button>
                     </li>
                     <li>
                         <i class="large material-icons">library_books</i>
                         <a>Proiectele și campaniile naționale de prevenire</a>
                         <button class="button1"  data-action="downloadFile" data-file="proiectesicampanii"
-                        data-type="csv"><a>Download Report CSV</a></button>
+                        data-type="csv">Download Report CSV</button>
                         <button class="button1"  data-action="openFileInNewTab" data-file="proiectesicampanii"
-                        data-type="csv"><a>Open in New Tab</a></button>
+                        data-type="csv">Open in New Tab</button>
                     </li>
                 </ul>
             </div>

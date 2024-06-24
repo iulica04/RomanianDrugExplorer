@@ -115,19 +115,32 @@ header {
 
 
 /* Stiluri pentru butoane */
-.button {
-    border-radius: 10px;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+button{
+	width: 50%;
+	height: 50px;
+	margin: 10px 24%;
+	justify-content: center;
+	display: block;
+	color: #becbaf;
+	background: #3A4D39;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
 
+button:hover {
+	background: #becbaf;
+	color: #3A4D39;
 }
 
 
-/*BUTON 2*/
+
+/*BUTON 2
 .card_1 .button2 {
     background-color: #3A4D39;
     border-radius: 10px;
@@ -150,7 +163,8 @@ header {
 .card_1 .button2 a:hover{
 
     color: #3A4D39;
-}
+}*/
+
 
 
 .card_1, .card_2 {

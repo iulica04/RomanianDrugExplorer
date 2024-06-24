@@ -1,13 +1,10 @@
 import { APP_PORT } from './config.js';
 
-
 // Funcția pentru actualizarea URL-ului în funcție de anul selectat
-document.addEventListener('DOMContentLoaded', function() {
-     console.log('AICI Sunt in document ready');
+document.addEventListener('DOMContentLoaded', function () {
 
     ['confiscations', 'infractionality', 'emergencies', 'projects'].forEach(type => {
         var url = `http://localhost${APP_PORT}/RomanianDrugExplorer/DrugStats/` + type + '/';
-        console.log('Requesting data from:', url);
         fetch(url)
             .then(response => {
                 if (!response.ok) {
@@ -16,19 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.text();
             })
             .then(data => {
-                console.log('Response text:', data);
                 try {
                     const jsonData = JSON.parse(data);
                     if (jsonData && jsonData.stats) {
-                           if(type === 'emergencies') {  
-                             renderChartEmergencyDrug(jsonData.stats);
-                           }else if(type === 'infractionality') {
+                        if (type === 'emergencies') {
+                            renderChartEmergencyDrug(jsonData.stats);
+                        } else if (type === 'infractionality') {
                             renderChartInfractionality(jsonData.stats);
-                           }else if(type === 'confiscations'){
+                        } else if (type === 'confiscations') {
                             renderChartConfiscations(jsonData.stats);
-                           }else if(type === 'projects'){
+                        } else if (type === 'projects') {
                             renderChartProjects(jsonData.stats);
-                       }
+                        }
                     } else {
                         console.error('Empty response or invalid data received:', jsonData);
                     }
@@ -50,7 +46,7 @@ var existingChartProjects; // Variabilă globală pentru a păstra referința la
 //Funcția pentru afișarea 
 function renderChartConfiscations(stats) {
     var chartData = {
-        labels: ["2021","2022", "2023"], // Actualizează etichetele pentru anii pentru care ai date
+        labels: ["2021", "2022", "2023"], // Actualizează etichetele pentru anii pentru care ai date
         datasets: [{
             label: 'Number of Cases',
             backgroundColor: ["#007bff", "#87cefa", "#007bff"],
@@ -161,7 +157,7 @@ function renderChartConfiscations(stats) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -280,7 +276,7 @@ function renderChartInfractionality(stats) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -289,9 +285,8 @@ function renderChartInfractionality(stats) {
         }
     });
 }
- ////////////////////PENTRU EMRGENCIES
+////////////////////PENTRU EMRGENCIES
 function renderChartEmergencyDrug(stats) {
-    console.log('AICI Received stats:', stats);
 
     var chartData = {
         labels: ["2021", "2022", "2023"],
@@ -300,11 +295,10 @@ function renderChartEmergencyDrug(stats) {
             backgroundColor: ["#007bff", "#87cefa", "#26c4ec"],
             borderColor: ["#0056b3", "#6495ed", "#1a99c4"],
             borderWidth: 1,
-            data: [0, 0, 0 ]
+            data: [0, 0, 0]
         }]
     };
 
-    console.log('AICI Chart data before processing:', chartData);
 
     stats.forEach(stat => {
         if (stat.year === 2021) {
@@ -406,7 +400,7 @@ function renderChartEmergencyDrug(stats) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -436,7 +430,7 @@ function renderChartProjects(stats) {
         } else if (stat.year === 2023) {
             chartData.datasets[0].data[2] = parseInt(stat.total_value, 10);
         }
-        
+
     });
 
     var ctx = document.getElementById('projects-chart').getContext('2d');
@@ -448,7 +442,7 @@ function renderChartProjects(stats) {
 
     ctx.canvas.height = 200; // Canvas height
 
-    existingChartProjects= new Chart(ctx, {
+    existingChartProjects = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: {
@@ -530,7 +524,7 @@ function renderChartProjects(stats) {
                         color: '#fff',
                     },
                     callbacks: {
-                        label: function(tooltipItem) {
+                        label: function (tooltipItem) {
                             return tooltipItem.dataset.label + ': ' + tooltipItem.raw;
                         }
                     }
@@ -541,13 +535,13 @@ function renderChartProjects(stats) {
 }
 
 /*Save charts buttons*/
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Select all buttons with class 'button2'
     const saveChartButtons = document.querySelectorAll('.button2');
 
     // Attach event listeners to each button
     saveChartButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function (event) {
             // Prevent default action if needed
             event.preventDefault();
 
@@ -556,8 +550,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const chartType = this.getAttribute('data-chart-type');
             const fileType = this.getAttribute('data-file-type');
 
-            // Call function to save the chart based on file type
-            saveChart(chartId, chartType, fileType);
+            if (chartId === 'not-logged') {
+                showSnackbar('Please log in to downloand the statistics.', 'error');
+            } else {
+                saveChart(chartId, chartType, fileType);
+            }
         });
     });
 });
@@ -565,12 +562,12 @@ document.addEventListener('DOMContentLoaded', function() {
 ///SAVE PNG SI SVG
 function saveChart(chartId, filename, format) {
     var chartCanvas = document.getElementById(chartId);
-    
+
     // Verifică dacă canvas-ul există pentru orice tip de grafic
     if (chartId === 'infractionality-chart' && existingChart) {
         // Salvează ca PNG sau SVG
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
@@ -578,13 +575,12 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'emergencies-chart' && existingChartEmergency) {
         // Salvează ca PNG sau SVG pentru chart-ul de urgente
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
@@ -592,13 +588,12 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'confiscation-chart' && existingChartConfiscationPie) {
         // Salvează doar ca PNG pentru chart-ul de confiscări (alt tip de chart în exemplu tău)
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
@@ -606,25 +601,22 @@ function saveChart(chartId, filename, format) {
             });
             showSnackbar('Chart saved as PNG.', 'info');
         } else {
-            console.error('Unsupported file format:', format);
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else if (chartId === 'projects-chart' && existingChartProjects) {
         // Salvează ca PNG sau SVG pentru chart-ul de proiecte
         if (format === 'png') {
-            chartCanvas.toBlob(function(blob) {
+            chartCanvas.toBlob(function (blob) {
                 var link = document.createElement('a');
                 link.download = filename + '.png';
                 link.href = URL.createObjectURL(blob);
                 link.click();
             });
             showSnackbar('Chart saved as PNG.', 'info');
-        }else {
-            console.error('Unsupported file format:', format);
+        } else {
             showSnackbar('Error saving chart: Unsupported file format.', 'error');
         }
     } else {
-        console.error('Canvas element not found or chart type mismatch:', chartId);
         showSnackbar('Error saving chart: Canvas is empty or not found for the specified chart type.', 'error');
     }
 }

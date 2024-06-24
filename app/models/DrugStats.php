@@ -53,7 +53,7 @@ class DrugStats  extends Db{
 
     public function getStatsByYearTablets($an) {
         try {
-            $sql = "SELECT drug_name, tablets 
+            $sql = "SELECT drug_name, tablets
                     FROM confiscari_droguri
                     WHERE year =:an
                     And drug_name IS NOT NULL AND drug_name != ''";
